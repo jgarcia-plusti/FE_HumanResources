@@ -1,0 +1,28 @@
+﻿@page "/dashboard"
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+
+<h1>Welcome @username</h1>
+
+
+@code {
+    private UserModel? userModel = new UserModel();
+    string username = "";
+    protected override async Task OnInitializedAsync()
+    {
+
+        userModel = null;
+        string? usr = await LocalStorage.GetItemAsync<string>("logenUser");
+
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            username = userModel.UserName + " " + userModel.LastName;
+        }
+        else
+        {
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+}

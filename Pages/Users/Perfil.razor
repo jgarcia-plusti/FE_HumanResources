@@ -1,0 +1,151 @@
+﻿@page "/perfil"
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+
+<br />
+<br />
+<hr />
+<div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                @if (editingEnable)
+                {
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.UserName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Genero</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Gender">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Documento de identificacion</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Identification">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Pais</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Country">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.LastName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Telefono</label>
+                            <input type="number" class="form-control" id="" @bind-value="userModel.Phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="" @bind-value="userModel.Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Departamento</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Department">
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.UserName" disabled readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Genero</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Documento de identificacion</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Identification" disabled readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Pais</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Country" disabled readonly>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.LastName" disabled readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Telefono</label>
+                            <input type="number" class="form-control" id="" @bind-value="userModel.Phone" disabled readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Departamento</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Department" disabled readonly>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    @if(!editingEnable)
+                    {
+                        <div class="d-grid mb-10">
+                            <button id="kt_sign_in_submit" class="btn btn-primary" @onclick="() => editing(true)">Editar</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-grid mb-10">
+                            <button id="kt_sign_in_submit" class="btn btn-success" @onclick="@(() => showInfo())">Guardar</button>
+                        </div>
+                        <div class="d-grid mb-10">
+                            <button id="kt_sign_in_submit" class="btn btn-danger" @onclick="() => editing(false)">Cancelar</button>
+                        </div>
+                    }
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
+@code {
+    private UserModel? userModel = new UserModel();
+    string username = "";
+    bool editingEnable = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        userModel = null;
+        string? usr = await LocalStorage.GetItemAsync<string>("logenUser");
+
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+        }
+        else
+        {
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    private void editing(bool edit) => editingEnable = edit;
+
+    private void showInfo()
+    {
+        string messageInfo = $"Gracias por visitarnos {userModel.UserName}, muy pronto se habilitara opcion, Ten un gran dia!!";
+        toastService.ShowInfo(@messageInfo);
+        editingEnable = false;
+    }
+}
