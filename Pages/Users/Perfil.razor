@@ -128,7 +128,7 @@
     protected override async Task OnInitializedAsync()
     {
         userModel = null;
-        string? usr = await LocalStorage.GetItemAsync<string>("logenUser");
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 
         if (!string.IsNullOrEmpty(usr))
         {
@@ -145,7 +145,7 @@
     private void showInfo()
     {
         string messageInfo = $"Gracias por visitarnos {userModel.UserName}, muy pronto se habilitara opcion, Ten un gran dia!!";
-        toastService.ShowInfo(@messageInfo);
+        toastService.ShowInfo(messageInfo);
         editingEnable = false;
     }
 }

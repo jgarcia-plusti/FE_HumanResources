@@ -3,6 +3,8 @@
 @inject HttpClient Http
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject AuthenticationStateProvider AuthStateProvider
 
 <PageTitle>PRODISA</PageTitle>
 
@@ -58,20 +60,31 @@
         try
         {
             HttpResponseMessage response = await Http.PostAsJsonAsync("api/login", loginModel);
-            string content = response.Content.ReadAsStringAsync().Result;
-            UserModel? user = JsonConvert.DeserializeObject<UserModel>(content);
-            if (user != null)
+            if (response.IsSuccessStatusCode)
             {
-                string? logenUser = await LocalStorage.GetItemAsync<string>("logenUser");
-                if (string.IsNullOrEmpty(logenUser))
+                string content = response.Content.ReadAsStringAsync().Result;
+                UserModel? user = JsonConvert.DeserializeObject<UserModel>(content);
+                if (user != null)
                 {
-                    await LocalStorage.SetItemAsStringAsync("logenUser", content);
-                    NavigationManager.NavigateTo("dashboard", true);
+                    string? logenUser = await LocalStorage.GetItemAsync<string>("logedUser");
+                    if (string.IsNullOrEmpty(logenUser))
+                    {
+                        await LocalStorage.SetItemAsStringAsync("logedUser", content);
+                        await LocalStorage.SetItemAsStringAsync("jwt", user.JsonWebToken);
+
+                        await AuthStateProvider.GetAuthenticationStateAsync();
+                        NavigationManager.NavigateTo("dashboard", true);
+                    }
+                    else
+                    {
+                        NavigationManager.NavigateTo("dashboard", true);
+                    }
                 }
-                else
-                {
-                    NavigationManager.NavigateTo("dashboard", true);
-                }
+            }
+            else if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                string messageInfo = $"Error al intentar ingresar, Usted no esta autorizado!";
+                toastService.ShowError(messageInfo);
             }
         }
         catch (Exception e)

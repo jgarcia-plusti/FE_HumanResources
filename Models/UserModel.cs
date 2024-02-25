@@ -18,5 +18,7 @@ namespace FE_HumanResources.Models
         public string Country { get;set; }
         public string Department { get; set; }
         public string JobTitle { get; set; }
+        public string JsonWebToken { get; set; }
+
     }
 }
