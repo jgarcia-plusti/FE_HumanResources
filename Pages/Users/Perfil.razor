@@ -3,6 +3,7 @@
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
+@inject HttpClient Http
 
 <br />
 <br />
@@ -20,7 +21,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Genero</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Gender">
+                            <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Documento de identificacion</label>
@@ -29,6 +30,10 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Pais</label>
                             <input type="text" class="form-control" id="" @bind-value="userModel.Country">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Titulo</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle">
                         </div>
                     </div>
                     <div class="col">
@@ -42,11 +47,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="" @bind-value="userModel.Email">
+                            <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Departamento</label>
                             <input type="text" class="form-control" id="" @bind-value="userModel.Department">
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Departamento</label>
+                            <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth">
                         </div>
                     </div>
                 }
@@ -69,6 +78,10 @@
                             <label for="" class="form-label">Pais</label>
                             <input type="text" class="form-control" id="" @bind-value="userModel.Country" disabled readonly>
                         </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Titulo</label>
+                            <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle" disabled readonly>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
@@ -87,6 +100,10 @@
                             <label for="" class="form-label">Departamento</label>
                             <input type="text" class="form-control" id="" @bind-value="userModel.Department" disabled readonly>
                         </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Departamento</label>
+                            <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth" disabled readonly>
+                        </div>
                     </div>
                 }
 
@@ -104,7 +121,7 @@
                     else
                     {
                         <div class="d-grid mb-10">
-                            <button id="kt_sign_in_submit" class="btn btn-success" @onclick="@(() => showInfo())">Guardar</button>
+                            <button id="kt_sign_in_submit" class="btn btn-success" @onclick="@(() => UpdateUser())">Guardar</button>
                         </div>
                         <div class="d-grid mb-10">
                             <button id="kt_sign_in_submit" class="btn btn-danger" @onclick="() => editing(false)">Cancelar</button>
@@ -132,7 +149,16 @@
 
         if (!string.IsNullOrEmpty(usr))
         {
-            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            UserModel? logedUser = JsonConvert.DeserializeObject<UserModel>(usr);
+            if (logedUser != null)
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/GetUser", new { Uuid = logedUser.Uuid });
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = response.Content.ReadAsStringAsync().Result;
+                    userModel = JsonConvert.DeserializeObject<UserModel>(content);
+                }
+            }
         }
         else
         {
@@ -142,10 +168,23 @@
 
     private void editing(bool edit) => editingEnable = edit;
 
-    private void showInfo()
+    private async void UpdateUser()
     {
-        string messageInfo = $"Gracias por visitarnos {userModel.UserName}, muy pronto se habilitara opcion, Ten un gran dia!!";
-        toastService.ShowInfo(messageInfo);
-        editingEnable = false;
+        if (userModel != null)
+        {
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/UpdateUser", userModel);
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                UserModel? updatedUser = JsonConvert.DeserializeObject<UserModel>(content);
+                if (updatedUser != null)
+                {
+                    userModel = updatedUser;
+                    string messageInfo = $"Se actualizao la información con exito";
+                    toastService.ShowSuccess(messageInfo);
+                }
+            }
+        }
     }
+
 }

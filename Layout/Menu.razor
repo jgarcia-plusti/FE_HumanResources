@@ -39,7 +39,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         userModel = null;
-        string? usr = await LocalStorage.GetItemAsync<string>("logenUser");
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 
         if (!string.IsNullOrEmpty(usr))
         {

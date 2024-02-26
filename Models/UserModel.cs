@@ -15,10 +15,10 @@ namespace FE_HumanResources.Models
         public string Password { get; set; }
         public bool Active { get; set; }
         public string Picture { get; set; }
-        public string Country { get;set; }
+        public string Country { get; set; }
         public string Department { get; set; }
         public string JobTitle { get; set; }
-        public string JsonWebToken { get; set; }
+        public string JsonWebToken { get; set; } = "";
 
     }
 }

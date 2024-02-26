@@ -40,7 +40,7 @@
 
     private async void logout()
     {
-        await LocalStorage.RemoveItemAsync("logenUser");
+        await LocalStorage.RemoveItemAsync("logedUser");
         NavigationManager.NavigateTo("login", true);
     }
 }

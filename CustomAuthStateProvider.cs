@@ -2,7 +2,6 @@
 using FE_HumanResources.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Newtonsoft.Json;
-using System.Globalization;
 using System.Security.Claims;
 
 namespace FE_HumanResources

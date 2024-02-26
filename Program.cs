@@ -1,9 +1,9 @@
-using FE_HumanResources;
-using Microsoft.AspNetCore.Components.Web;
 using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Blazored.Toast;
+using FE_HumanResources;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
