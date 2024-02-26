@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {}
+    "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {
+    "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
+        "projectUniqueName": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
         "projectName": "FE_HumanResources",
-        "projectPath": "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
+        "projectPath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
         "packagesPath": "C:\\Users\\Oscar León\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\obj\\",
+        "outputPath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Oscar León\\AppData\\Roaming\\NuGet\\NuGet.Config"
