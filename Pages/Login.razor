@@ -3,6 +3,8 @@
 @inject HttpClient Http
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject AuthenticationStateProvider AuthStateProvider
 
 <PageTitle>PRODISA RH</PageTitle>
 
@@ -39,12 +41,23 @@
 
                         @* Encabezado del formulario / Logos *@
                         <div class="text-center mb-11">
+<<<<<<< HEAD
                             <a href="#" class="mb-0 mb-lg-12">
                                 <img alt="Logo" src="img/Logo-512x512.png" width="110px" />
                             </a>
                             <br>
                             <a href="#" class="mb-0 mb-lg-12">
                                 <img alt="Logo" src="img/Logotipo.png" class="h-50px h-lg-75px" />
+=======
+                            <a class="mb-0 mb-lg-12">
+                                <img alt="Logo" src="img/Logo-512x512.png" class="h-60px h-lg-75px" />
+                            </a>
+                        </div>
+                        <br>
+                        <div class="text-center mb-11">
+                            <a class="mb-0 mb-lg-12">
+                                <img alt="Logo" src="img/Logotipo.png" class="h-60px h-lg-75px" />
+>>>>>>> b2d5ace7bc2db002e18e477d5673712b36dc1f34
                             </a>
 
                         </div>
@@ -62,12 +75,21 @@
                         @* END *@
                         @* Inputs login *@
                         <div class="fv-row mb-8">
+<<<<<<< HEAD
                             <input type="text" placeholder="Correo electrónico" name="email" autocomplete="off"
                                 class="form-control bg-transparent" @bind-value="loginModel.Email" />
                         </div>
                         <div class="fv-row mb-3">
                             <input type="password" placeholder="Contraseña" name="password" autocomplete="off"
                                 class="form-control bg-transparent" @bind-value="loginModel.Password" />
+=======
+                            <input type="text" placeholder="Correo electrónico" name="email"
+                                   class="form-control bg-transparent" @bind-value="loginModel.Email" />
+                        </div>
+                        <div class="fv-row mb-3">
+                            <input type="password" placeholder="Contraseña" name="password"
+                                   class="form-control bg-transparent" @bind-value="loginModel.Password"/>
+>>>>>>> b2d5ace7bc2db002e18e477d5673712b36dc1f34
                         </div>
                         @* END *@
                         @* <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
@@ -78,6 +100,7 @@
 
                         @* Iniciar sesión btn *@
                         <div class="d-grid mb-10">
+<<<<<<< HEAD
                             <button id="kt_sign_in_submit" class="btn btn-primary" @onclick="login"
                                 style="background-color: #22355d;">
 
@@ -88,6 +111,9 @@
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                 <!--end::Indicator progress-->
                             </button>
+=======
+                            <button class="btn btn-primary" @onclick="login">Iniciar sesión</button>
+>>>>>>> b2d5ace7bc2db002e18e477d5673712b36dc1f34
                         </div>
                         @* END *@
 
@@ -116,24 +142,58 @@
 
 @code {
     private LoginModel loginModel = new LoginModel();
+    private string messageInfo;
     private async void login()
     {
         try
         {
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/login", loginModel);
-            string content = response.Content.ReadAsStringAsync().Result;
-            UserModel? user = JsonConvert.DeserializeObject<UserModel>(content);
-            if (user != null)
+            if (string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
-                string? logenUser = await LocalStorage.GetItemAsync<string>("logenUser");
-                if (string.IsNullOrEmpty(logenUser))
+                messageInfo = $"No se admite un campo vacio!";
+                toastService.ShowError(messageInfo);
+            }
+            else
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login", loginModel);
+                if (response.IsSuccessStatusCode)
                 {
-                    await LocalStorage.SetItemAsStringAsync("logenUser", content);
-                    NavigationManager.NavigateTo("dashboard", true);
+                    string content = response.Content.ReadAsStringAsync().Result;
+                    UserModel? user = JsonConvert.DeserializeObject<UserModel>(content);
+                    if (user != null)
+                    {
+                        if (user.Active)
+                        {
+                            string? logenUser = await LocalStorage.GetItemAsync<string>("logedUser");
+                            if (string.IsNullOrEmpty(logenUser))
+                            {
+                                await LocalStorage.SetItemAsStringAsync("logedUser", content);
+                                await LocalStorage.SetItemAsStringAsync("uuidUser", user.Uuid);
+                                //await LocalStorage.SetItemAsStringAsync("jwt", user.JsonWebToken);
+
+                                await AuthStateProvider.GetAuthenticationStateAsync();
+                                NavigationManager.NavigateTo("dashboard", true);
+                            }
+                            else
+                            {
+                                NavigationManager.NavigateTo("dashboard", true);
+                            }
+                        }
+                        else
+                        {
+                            messageInfo = $"Usuario inactivo!";
+                            toastService.ShowError(messageInfo);
+                        }
+                    }
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    messageInfo = $"Usted no esta autorizado, Contraseña o Correo erroneo";
+                    toastService.ShowError(messageInfo);
                 }
                 else
                 {
-                    NavigationManager.NavigateTo("dashboard", true);
+                    messageInfo = $"Error al intentar ingresar.";
+                    toastService.ShowError(messageInfo);
                 }
             }
         }

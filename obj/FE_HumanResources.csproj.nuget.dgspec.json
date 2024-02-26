@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {}
+    "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {
+    "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
+        "projectUniqueName": "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
         "projectName": "FE_HumanResources",
-        "projectPath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
+        "projectPath": "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\FE_HumanResources.csproj",
         "packagesPath": "C:\\Users\\Oscar León\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\obj\\",
+        "outputPath": "c:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\SISTEMA (ESTE REPO)\\FE_HumanResources\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Oscar León\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -50,6 +50,10 @@
             "Blazored.Toast": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
