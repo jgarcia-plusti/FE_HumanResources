@@ -13,7 +13,8 @@
         <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
             <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                 <div class="w-lg-500px p-10">
-                    <div class="form w-100" id="kt_sign_in_form">
+                    <EditForm Model="loginModel" OnValidSubmit="login" class="form w-100" id="kt_sign_in_form">
+                        <DataAnnotationsValidator />
                         <div class="text-center mb-11">
                             <a class="mb-0 mb-lg-12">
                                 <img alt="Logo" src="img/Logo-512x512.png" class="h-60px h-lg-75px" />
@@ -26,8 +27,8 @@
                             </a>
                         </div>
                         <div class="fv-row mb-8">
-                            <input type="text" placeholder="Correo electrónico" name="email"
-                                   class="form-control bg-transparent" @bind-value="loginModel.Email" />
+                            <input type="text" placeholder="Correo electrónico" name="email" class="form-control bg-transparent" @bind-value="loginModel.Email" />
+                            <ValidationMessage For="(()=> loginModel.Email)"></ValidationMessage>
                         </div>
                         <div class="fv-row mb-3">
                             <input type="password" placeholder="Contraseña" name="password"
@@ -39,9 +40,9 @@
                                 tu contraseña?</a>
                         </div> *@
                         <div class="d-grid mb-10">
-                            <button class="btn btn-primary" @onclick="login">Iniciar sesión</button>
+                            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
                         </div>
-                    </div>
+                    </EditForm>
                 </div>
             </div>
             <div class="w-lg-500px d-flex flex-center px-10 mx-auto">

@@ -9,131 +9,142 @@
 <br />
 <hr />
 <div>
-    <div class="row">
-        <div class="col">
-            <div class="row">
-                @if (editingEnable)
-                {
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Nombres</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.UserName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Genero</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Documento de identificacion</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Identification">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Pais</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Country">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Titulo</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.LastName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Telefono</label>
-                            <input type="number" class="form-control" id="" @bind-value="userModel.Phone">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Departamento</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Department">
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Departamento</label>
-                            <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth">
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Nombres</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.UserName" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Genero</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Documento de identificacion</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Identification" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Pais</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Country" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Titulo</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle" disabled readonly>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.LastName" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Telefono</label>
-                            <input type="number" class="form-control" id="" @bind-value="userModel.Phone" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Correo</label>
-                            <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Departamento</label>
-                            <input type="text" class="form-control" id="" @bind-value="userModel.Department" disabled readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Departamento</label>
-                            <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth" disabled readonly>
-                        </div>
-                    </div>
-                }
-
-            </div>
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    @if(!editingEnable)
+    <EditForm Model="userModel" OnValidSubmit="UpdateUser" class="form w-100" id="kt_sign_in_form">
+    <DataAnnotationsValidator />
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    @if (editingEnable)
                     {
-                        <div class="d-grid mb-10">
-                            <button id="kt_sign_in_submit" class="btn btn-primary" @onclick="() => editing(true)">Editar</button>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.UserName" />
+                                <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Genero</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly />
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Documento de identificacion</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Identification" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Pais</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Country" />
+                                <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Titulo</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle" />
+                                <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.LastName" />
+                                <ValidationMessage For="(()=> userModel.LastName)"></ValidationMessage>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Telefono</label>
+                                <input type="number" class="form-control" id="" @bind-value="userModel.Phone" />
+                                <ValidationMessage For="(()=> userModel.Phone)"></ValidationMessage>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly />
+                                <ValidationMessage For="(()=> userModel.Email)"></ValidationMessage>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Departamento</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Department" />
+                                <ValidationMessage For="(()=> userModel.Department)"></ValidationMessage>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth" />
+                                <ValidationMessage For="(()=> userModel.DateOfBirth)"></ValidationMessage>
+                            </div>
                         </div>
                     }
                     else
                     {
-                        <div class="d-grid mb-10">
-                            <button id="kt_sign_in_submit" class="btn btn-success" @onclick="@(() => UpdateUser())">Guardar</button>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.UserName" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Genero</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Documento de identificacion</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Identification" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Pais</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Country" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Titulo</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle" disabled readonly>
+                            </div>
                         </div>
-                        <div class="d-grid mb-10">
-                            <button id="kt_sign_in_submit" class="btn btn-danger" @onclick="() => editing(false)">Cancelar</button>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.LastName" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Telefono</label>
+                                <input type="number" class="form-control" id="" @bind-value="userModel.Phone" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Correo</label>
+                                <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Departamento</label>
+                                <input type="text" class="form-control" id="" @bind-value="userModel.Department" disabled readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth" disabled readonly>
+                            </div>
                         </div>
                     }
-                </div>
-                <div class="col">
 
                 </div>
             </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        @if(!editingEnable)
+                        {
+                            <div class="d-grid mb-10">
+                                <button id="kt_sign_in_submit" class="btn btn-primary" @onclick="() => editing(true)">Editar</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-grid mb-10">
+                                <button id="kt_sign_in_submit" class="btn btn-success" type="submit">Guardar</button>
+                            </div>
+                            <div class="d-grid mb-10">
+                                <button id="kt_sign_in_submit" class="btn btn-danger" @onclick="() => editing(false)">Cancelar</button>
+                            </div>
+                        }
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </EditForm>
 </div>
 <hr />
 
