@@ -1,5 +1,7 @@
-﻿@inject ILocalStorageService LocalStorage
+﻿@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject HttpClient Http
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
@@ -29,6 +31,7 @@
 </div>
 
 @code {
+    private UserModel userModel = null;
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -40,7 +43,20 @@
 
     private async void logout()
     {
-        await LocalStorage.RemoveItemAsync("logedUser");
-        NavigationManager.NavigateTo("login", true);
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+
+            if (userModel != null)
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new { Uuid = userModel.Uuid });
+
+                await LocalStorage.RemoveItemAsync("logedUser");
+                NavigationManager.NavigateTo("login", true);
+            }
+        }
+        
     }
+
 }
