@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Release\net8.0\browser-wasm\publish\</_PublishTargetUrl>
-    <History>True|2024-02-28T17:47:52.7158350Z;True|2024-02-28T11:46:44.7376027-06:00;True|2024-02-26T00:55:40.4664124-06:00;True|2024-02-19T15:18:57.2773411-06:00;</History>
+    <History>True|2024-02-29T06:49:18.3627739Z;True|2024-02-28T11:47:52.7158350-06:00;True|2024-02-28T11:46:44.7376027-06:00;True|2024-02-26T00:55:40.4664124-06:00;True|2024-02-19T15:18:57.2773411-06:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

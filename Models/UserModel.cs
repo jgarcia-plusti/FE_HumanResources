@@ -7,14 +7,19 @@ namespace FE_HumanResources.Models
         public string Uuid { get; set; }
         public string UuidRole { get; set; }
 
-        [DataType(DataType.Text, ErrorMessage = "Ingresa Solo texto")]
+        [RegularExpression("(^[a-zA-Z/]+( [a-zA-Z/]+)*)$", ErrorMessage = "Solo se permiten letras y un solo espacio entre palabras")]
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public string UserName { get; set; }
-        
-        [DataType(DataType.Text, ErrorMessage = "Ingresa Solo texto")]
+
+        [RegularExpression("(^[a-zA-Z/]+( [a-zA-Z/]+)*)$", ErrorMessage = "Solo se permiten letras y un solo espacio entre palabras")]
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public string LastName { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        [DataType(DataType.Text, ErrorMessage = "Solo se permiten letras")]
         public string Gender { get; set; }
 
-        [DataType(DataType.PhoneNumber, ErrorMessage = "Ingresa Solo Numeros")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Solo se permiten numeros")]
         public int Phone { get; set; }
 
         [DataType(DataType.Date, ErrorMessage = "Ingresa Fecha Valida")]
@@ -22,7 +27,7 @@ namespace FE_HumanResources.Models
 
         [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo es obligatorio")]
-        [StringLength(13, ErrorMessage = "El número es demasiado largo")]
+        [StringLength(13, ErrorMessage = "El número es demasiado largo solo 13 numeros")]
         public string Identification { get; set; }
 
         public string Adress { get; set; }
@@ -33,13 +38,16 @@ namespace FE_HumanResources.Models
         public bool Active { get; set; }
         public string Picture { get; set; }
 
-        [DataType(DataType.Text, ErrorMessage = "Ingresa Solo texto")]
+        [RegularExpression("(^[a-zA-Z/]+( [a-zA-Z/]+)*)$", ErrorMessage = "Solo se permiten letras y un solo espacio entre palabras")]
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public string Country { get; set; }
 
-        [DataType(DataType.Text, ErrorMessage = "Ingresa Solo texto")]
+        [RegularExpression("(^[a-zA-Z/]+( [a-zA-Z/]+)*)$", ErrorMessage = "Solo se permiten letras y un solo espacio entre palabras")]
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public string Department { get; set; }
 
-        [DataType(DataType.Text, ErrorMessage = "Ingresa Solo texto")]
+        [RegularExpression("(^[a-zA-Z/]+( [a-zA-Z/]+)*)$", ErrorMessage = "Solo se permiten letras y un solo espacio entre palabras")]
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public string JobTitle { get; set; }
         public string JsonWebToken { get; set; } = "";
 

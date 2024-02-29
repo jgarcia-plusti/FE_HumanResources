@@ -17,53 +17,53 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label">Nombres</label>
-                                <input oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" type="text" class="form-control" id="" @bind-value="userModel.UserName" />
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.UserName" />
                                 <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Genero</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly />
+                                <InputText  class="form-control bg-transparent"  @bind-Value="userModel.Gender" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label type="number" class="form-label">Documento de identificacion</label>
-                                <input oninput="this.value = this.value.replace(/[^0-9]/g,'')" type="text" class="form-control" id="" @bind-value="userModel.Identification" />
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Identification" />
                                 <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Pais</label>
-                                <input oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" type="text" class="form-control" id="" @bind-value="userModel.Country" />
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Country" />
                                 <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Titulo</label>
-                                <input oninput="this.value = this.value.replace(/[^a-zA-Z /]/g, '')" type="text" class="form-control" id="" @bind-value="userModel.JobTitle" />
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.JobTitle" />
                                 <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label">Apellidos</label>
-                                <input oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" type="text" class="form-control" id="" @bind-value="userModel.LastName" />
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.LastName" />
                                 <ValidationMessage For="(()=> userModel.LastName)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Telefono</label>
-                                <input type="number" oninput="this.value = this.value.replace(/[^0-9]/g,'')" class="form-control" id="" @bind-value="userModel.Phone" />
+                                <InputNumber class="form-control bg-transparent"  @bind-Value="userModel.Phone" />
                                 <ValidationMessage For="(()=> userModel.Phone)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Correo</label>
-                                <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly />
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Email" disabled readonly />
                                 <ValidationMessage For="(()=> userModel.Email)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Departamento</label>
-                                <input oninput="this.value = this.value.replace(/[^a-zA-Z ]/g, '')" type="text" class="form-control" id="" @bind-value="userModel.Department" />
+                                <InputText   class="form-control bg-transparent"  @bind-Value="userModel.Department" />
                                 <ValidationMessage For="(()=> userModel.Department)"></ValidationMessage>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth" />
+                                <InputDate class="form-control bg-transparent" @bind-Value="userModel.DateOfBirth" />
                                 <ValidationMessage For="(()=> userModel.DateOfBirth)"></ValidationMessage>
                             </div>
                         </div>
@@ -73,45 +73,45 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label">Nombres</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.UserName" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.UserName" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Genero</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.Gender" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Gender" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Documento de identificacion</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.Identification" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Identification" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Pais</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.Country" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Country" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Titulo</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.JobTitle" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.JobTitle" disabled readonly />
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
                                 <label for="" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.LastName" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.LastName" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Telefono</label>
-                                <input type="number" class="form-control" id="" @bind-value="userModel.Phone" disabled readonly>
+                                <InputNumber class="form-control bg-transparent"  @bind-Value="userModel.Phone" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Correo</label>
-                                <input type="email" class="form-control" id="" @bind-value="userModel.Email" disabled readonly>
+                                <InputText class="form-control bg-transparent"  @bind-Value="userModel.Email" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Departamento</label>
-                                <input type="text" class="form-control" id="" @bind-value="userModel.Department" disabled readonly>
+                                <InputText  class="form-control bg-transparent"  @bind-Value="userModel.Department" disabled readonly />
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" id="" @bind-value="userModel.DateOfBirth" disabled readonly>
+                                <InputDate class="form-control bg-transparent"  @bind-Value="userModel.DateOfBirth" disabled readonly />
                             </div>
                         </div>
                     }
@@ -154,7 +154,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        userModel = null;
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 
         if (!string.IsNullOrEmpty(usr))
