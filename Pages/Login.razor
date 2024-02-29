@@ -5,6 +5,7 @@
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
 @inject AuthenticationStateProvider AuthStateProvider
+@using Blazored.Toast.Configuration
 
 <PageTitle>PRODISA RH</PageTitle>
 
@@ -120,6 +121,13 @@
 
     </div>
 </div>
+
+<BlazoredToasts Position="ToastPosition.TopRight"
+                Timeout="10"
+                IconType="IconType.FontAwesome"
+                SuccessClass="success-toast-override"
+                SuccessIcon="fa fa-thumbs-up"
+                ErrorIcon="fa fa-bug" />
 
 @code {
     private LoginModel loginModel = new LoginModel();
