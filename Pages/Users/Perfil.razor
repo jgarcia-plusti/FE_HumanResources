@@ -1,5 +1,6 @@
 ﻿@page "/perfil"
 @using FE_HumanResources.Models
+@using System.Net.Http.Headers
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
@@ -155,12 +156,14 @@
     protected override async Task OnInitializedAsync()
     {
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
 
-        if (!string.IsNullOrEmpty(usr))
+        if (!string.IsNullOrEmpty(usr) && !string.IsNullOrEmpty(jwt))
         {
             UserModel? logedUser = JsonConvert.DeserializeObject<UserModel>(usr);
             if (logedUser != null)
             {
+                Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
                 HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/GetUser", new { Uuid = logedUser.Uuid });
                 if (response.IsSuccessStatusCode)
                 {
@@ -179,8 +182,10 @@
 
     private async void UpdateUser()
     {
-        if (userModel != null)
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (userModel != null && !string.IsNullOrEmpty(jwt))
         {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
             HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/UpdateUser", userModel);
             if (response.IsSuccessStatusCode)
             {

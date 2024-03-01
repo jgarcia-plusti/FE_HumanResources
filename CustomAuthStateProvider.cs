@@ -18,24 +18,33 @@ namespace FE_HumanResources
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             var state = new AuthenticationState(new ClaimsPrincipal());
-
-            string user = await _localStorage.GetItemAsStringAsync("logedUser");
-            if (!string.IsNullOrEmpty(user))
+            try
             {
-                UserModel userModel = JsonConvert.DeserializeObject<UserModel>(user);
-                var identity = new ClaimsIdentity(new[]
+
+                string userStorage = await _localStorage.GetItemAsStringAsync("logedUser");
+                if (!string.IsNullOrEmpty(userStorage))
                 {
-                    new Claim(ClaimTypes.Name, userModel.UserName)
+                    UserModel user = JsonConvert.DeserializeObject<UserModel>(userStorage);
+                    var identity = new ClaimsIdentity(new[]
+                    {
+                    new Claim("UuidUser", user.Uuid),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, user.UuidRole)
 
-                }, "test authentication type");
+                }, "authentication type");
 
-                state = new AuthenticationState(new ClaimsPrincipal(identity));
+                    return new AuthenticationState(new ClaimsPrincipal(identity));
+                }
 
+                NotifyAuthenticationStateChanged(Task.FromResult(state));
+                return state;
             }
-
-            NotifyAuthenticationStateChanged(Task.FromResult(state));
-
-            return state;
+            catch (Exception ex)
+            {
+                NotifyAuthenticationStateChanged(Task.FromResult(state));
+                return state;
+            }
         }
     }
 }

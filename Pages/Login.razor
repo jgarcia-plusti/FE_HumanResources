@@ -6,6 +6,7 @@
 @inject IToastService toastService
 @inject AuthenticationStateProvider AuthStateProvider
 @using Blazored.Toast.Configuration
+@using System.Net.Http.Headers
 
 <PageTitle>PRODISA RH</PageTitle>
 
@@ -149,30 +150,42 @@
                 if (response.IsSuccessStatusCode)
                 {
                     string content = response.Content.ReadAsStringAsync().Result;
-                    UserModel? user = JsonConvert.DeserializeObject<UserModel>(content);
-                    if (user != null)
-                    {
-                        if (user.Active)
-                        {
-                            string? logenUser = await LocalStorage.GetItemAsync<string>("logedUser");
-                            if (string.IsNullOrEmpty(logenUser))
-                            {
-                                await LocalStorage.SetItemAsStringAsync("logedUser", content);
-                                await LocalStorage.SetItemAsStringAsync("uuidUser", user.Uuid);
-                                //await LocalStorage.SetItemAsStringAsync("jwt", user.JsonWebToken);
+                    JWTModel JWT = JsonConvert.DeserializeObject<JWTModel>(content);
 
-                                await AuthStateProvider.GetAuthenticationStateAsync();
-                                NavigationManager.NavigateTo("dashboard", true);
-                            }
-                            else
-                            {
-                                NavigationManager.NavigateTo("dashboard", true);
-                            }
-                        }
-                        else
+                    if (!string.IsNullOrEmpty(JWT.Jwt))
+                    {
+                        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWT.Jwt);
+                        HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/user/GetUser", new { Uuid = JWT.uuidUser });
+
+                        if (userRest.IsSuccessStatusCode)
                         {
-                            messageInfo = $"Usuario inactivo!";
-                            toastService.ShowError(messageInfo);
+                            string contentUser = userRest.Content.ReadAsStringAsync().Result;
+                            UserModel? user = JsonConvert.DeserializeObject<UserModel>(contentUser);
+                            if (user != null)
+                            {
+                                if (user.Active)
+                                {
+                                    string? logenUser = await LocalStorage.GetItemAsync<string>("logedUser");
+                                    if (string.IsNullOrEmpty(logenUser))
+                                    {
+                                        await LocalStorage.SetItemAsStringAsync("logedUser", contentUser);
+                                        await LocalStorage.SetItemAsStringAsync("uuidUser", user.Uuid);
+                                        await LocalStorage.SetItemAsStringAsync("jwt", JWT.Jwt);
+
+                                        await AuthStateProvider.GetAuthenticationStateAsync();
+                                        NavigationManager.NavigateTo("dashboard", true);
+                                    }
+                                    else
+                                    {
+                                        NavigationManager.NavigateTo("dashboard", true);
+                                    }
+                                }
+                                else
+                                {
+                                    messageInfo = $"Usuario inactivo!";
+                                    toastService.ShowError(messageInfo);
+                                }
+                            }
                         }
                     }
                 }
@@ -188,9 +201,11 @@
                 }
             }
         }
-        catch (Exception e)
+        catch
         {
-            throw e;
+            messageInfo = $"Error al intentar ingresar.";
+            toastService.ShowError(messageInfo);
+            await LocalStorage.ClearAsync();
         }
     }
 }

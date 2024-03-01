@@ -1,6 +1,7 @@
 ﻿@using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject IToastService toastService
 @inject HttpClient Http
 
 <div class="top-row ps-3 navbar navbar-dark">
@@ -52,8 +53,15 @@
             {
                 HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new { Uuid = userModel.Uuid });
 
-                await LocalStorage.RemoveItemAsync("logedUser");
-                NavigationManager.NavigateTo("login", true);
+                if (response.IsSuccessStatusCode)
+                {
+                    await LocalStorage.ClearAsync();
+                    NavigationManager.NavigateTo("login", true);
+                }
+                else
+                {
+                    toastService.ShowError("No se pude finalizar la sesion!");
+                }
             }
         }
         
