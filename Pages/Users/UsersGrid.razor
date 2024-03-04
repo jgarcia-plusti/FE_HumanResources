@@ -1,5 +1,98 @@
 ﻿@page "/usersgrid"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject HttpClient Http
+
+<div class="row">
+    <div class="d-grid mb-10">
+        <button class="btn btn-primary">Crear</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (userModel != null)
+                {
+                    @foreach (var user in userModel)
+                    {
+                        <tr>
+                            <td>
+                                @Count
+                            </td>
+                            <td>
+                                @user.UserName
+                            </td>
+                            <td>
+                                @user.LastName
+                            </td>
+                            <td>
+                                @user.JobTitle
+                            </td>
+                            <td>
+                                @user.Phone
+                            </td>
+                            <td>
+                                <button id="kt_sign_in_submit" class="btn btn-primary" @onclick="(() => ViewUser(user.Uuid))">Ver</button>
+                                <button id="kt_sign_in_submit" class="btn btn-danger" @onclick="(() => DeleteUser(user.Uuid))">Eliminar</button>
+                            </td>
+                        </tr>
+
+                        Count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
 @code {
+
+    private int Count = 1;
+    private List<UserModel> userModel = new List<UserModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (userModel != null && !string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/User/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                userModel = JsonConvert.DeserializeObject<List<UserModel>>(content);
+                if (userModel == null)
+                {
+                    toastService.ShowWarning("Error al obtenerla lista de Usuarios");
+                }
+            }
+        }
+
+    }
+
+    private void DeleteUser(string uuid)
+    {
+        toastService.ShowInfo("Esta opcion pronto estara disponible, solo para usuarios Administradores");
+    }
+
+    private void ViewUser(string uuid)
+    {
+        NavigationManager.NavigateTo($"user/{uuid}", true);
+    }
 
 }

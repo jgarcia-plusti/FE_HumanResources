@@ -23,7 +23,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Genero</label>
-                                <InputText  class="form-control bg-transparent"  @bind-Value="userModel.Gender" disabled readonly />
+                                <InputSelect class="form-control bg-transparent" @bind-Value="userModel.Gender">
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Masculino">Masculino</option>
+                                </InputSelect>
+                                @* <InputText  class="form-control bg-transparent"  @bind-Value="userModel.Gender" disabled readonly /> *@
                             </div>
                             <div class="mb-3">
                                 <label type="number" class="form-label">Documento de identificacion</label>
@@ -127,6 +131,9 @@
                             <div class="d-grid mb-10">
                                 <button id="kt_sign_in_submit" class="btn btn-primary" @onclick="() => editing(true)">Editar</button>
                             </div>
+                            <div class="d-grid mb-10">
+                                <button class="btn btn-secondary" @onclick="() => ReturnMenu()">Regresar</button>
+                            </div>
                         }
                         else
                         {
@@ -152,7 +159,7 @@
     private UserModel? userModel = new UserModel();
     string username = "";
     bool editingEnable = false;
-
+    private void editing(bool edit) => editingEnable = edit;
     protected override async Task OnInitializedAsync()
     {
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
@@ -177,9 +184,6 @@
             NavigationManager.NavigateTo("login", true);
         }
     }
-
-    private void editing(bool edit) => editingEnable = edit;
-
     private async void UpdateUser()
     {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
@@ -196,9 +200,18 @@
                     userModel = updatedUser;
                     string messageInfo = $"Se actualizao la información con exito";
                     toastService.ShowSuccess(messageInfo);
+
+                    editing(false);
                 }
             }
+            editing(false);
         }
+    }
+
+    private void ReturnMenu()
+    {
+        editing(false);
+        NavigationManager.NavigateTo($"dashboard", true);
     }
 
 }
