@@ -269,7 +269,7 @@
       "url": "js\/scripts.bundle.js"
     },
     {
-      "hash": "sha256-JU5b6AAEEIPVQ8jDAxNUezbf00s4+4XOamZbeDGchdE=",
+      "hash": "sha256-iqR9L60hpNrqtTEuMErLmPxA0Wwl5B52W4cg54z5jQ8=",
       "url": "js\/scripts.js"
     },
     {
@@ -1133,5 +1133,5 @@
       "url": "_content\/Blazored.Toast\/Blazored.Toast.bundle.scp.css"
     }
   ],
-  "version": "7gPeOTVw"
+  "version": "9CjpWmYG"
 };

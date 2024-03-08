@@ -11,17 +11,23 @@
 else
 {
     <div class="page">
-
+        @* TOP NavBar *@
         <TopNav />
-        <NavMenu />
-
-        <main>
+        @* End TOP NavBar *@
+        <div id="layoutSidenav">
+            @* SIDE NavBar *@
+            <NavMenu />
+            @* End Side NavBar *@
+            @* Main *@
             <article class="content px-4">
                 @Body
                 <BlazoredToasts Position="ToastPosition.TopRight" Timeout="10" IconType="IconType.FontAwesome"
                     SuccessClass="success-toast-override" SuccessIcon="fa fa-thumbs-up" ErrorIcon="fa fa-bug" />
             </article>
-        </main>
+        </div>
+        @* End Main *@
+
+
     </div>
 
 }
