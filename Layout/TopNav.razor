@@ -60,7 +60,7 @@
                 <h6 class="dropdown-header d-flex align-items-center">
                     <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
                     <div class="dropdown-user-details">
-                        <div class="dropdown-user-details-name"><span>Usuario</span></div>
+                        <div class="dropdown-user-details-name">@username</div>
                         <div class="dropdown-user-details-email">
                             <span>Profesión</span>
                         </div>
@@ -68,13 +68,13 @@
                 </h6>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">
-                    <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                    Cuenta
+                    <div class="dropdown-item-icon"><i class="bi bi-sliders2"></i></div> Cuenta
                 </a>
-                <a class="dropdown-item" href="#">
-                    <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                    Cerrar sesión
-                </a>
+                <div class="dropdown-item">
+                    <button class="dropdown-item-icon" @onclick="logout"
+                        style="border: none; background: transparent;"><i class="bi bi-box-arrow-right"></i>Cerrar
+                        sesión</button>
+                </div>
             </div>
         </li>
     </ul>
@@ -83,12 +83,15 @@
 
 @code {
     private UserModel userModel = null;
+    string username = "";
     private async void logout()
     {
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
         if (!string.IsNullOrEmpty(usr))
         {
             userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            username = userModel.UserName + " " + userModel.LastName;
+
 
             if (userModel != null)
             {
@@ -98,6 +101,7 @@
                 {
                     await LocalStorage.ClearAsync();
                     NavigationManager.NavigateTo("login", true);
+
                 }
                 else
                 {
