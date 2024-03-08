@@ -17,30 +17,6 @@
       "url": "css\/login-style\/style.bundle.css"
     },
     {
-      "hash": "sha256-SDXNbj1Gqu4+ibcFnGPIjth3omRf8pjCrGooeAMVAM8=",
-      "url": "img\/bg-aut.png"
-    },
-    {
-      "hash": "sha256-Ynja8jC2oCDNNFVh+\/xxm0v7jsmkDeVd1+QxCVfRY8A=",
-      "url": "img\/bg1.jpg"
-    },
-    {
-      "hash": "sha256-SyYESCuh+J66hWpbs0HzhgYKYBgLrXYdBZaGQelCOE8=",
-      "url": "img\/firt-bg.jpg"
-    },
-    {
-      "hash": "sha256-dJVllnBdyVt4Mlr92jcL1WGC7dnvjEqdoEznH29\/npU=",
-      "url": "img\/Logo-512x512.png"
-    },
-    {
-      "hash": "sha256-OYYL\/OtFGegy9CFuy3\/5vi9XrCMZ0GY\/5ioyCnekQfg=",
-      "url": "img\/Logotipo.png"
-    },
-    {
-      "hash": "sha256-ZtpCz9shpCWLdhlRpsEk\/ZTrL\/ma6TDQYWe4kj4oGjE=",
-      "url": "img\/opcion1.jpeg"
-    },
-    {
       "hash": "sha256-WBjYs4LWRi1WNOiV7WvGhcotlfE8hAMtK3h76auAzXY=",
       "url": "index.html"
     },
@@ -51,6 +27,18 @@
     {
       "hash": "sha256-TMprETqNvOWRfNuOUAKObWHd+7UxIZYx7NuXtrl6ft0=",
       "url": "manifest.webmanifest"
+    },
+    {
+      "hash": "sha256-Ynja8jC2oCDNNFVh+\/xxm0v7jsmkDeVd1+QxCVfRY8A=",
+      "url": "source\/branding-institucional\/background-login.jpg"
+    },
+    {
+      "hash": "sha256-dJVllnBdyVt4Mlr92jcL1WGC7dnvjEqdoEznH29\/npU=",
+      "url": "source\/branding-institucional\/logo-prodisa.png"
+    },
+    {
+      "hash": "sha256-OYYL\/OtFGegy9CFuy3\/5vi9XrCMZ0GY\/5ioyCnekQfg=",
+      "url": "source\/branding-institucional\/prodisa.png"
     },
     {
       "hash": "sha256-rcIWTVNnYus6VWf2Z2U1g\/JzlC07Ym02cFjHtI59Xsc=",
@@ -877,15 +865,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-QWluE\/JMoQ4O7tVOtLnNxHx4yBJPdk1kUFObHxYY0gg=",
+      "hash": "sha256-IV+xJbGWaIhlDln6sDDBhrBJlkK5wi1yZPrCsYXltg8=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-AN\/dS6w0JOrO1q\/N5rrCTnnnySVeNJb498Njek6szI8=",
+      "hash": "sha256-\/iIQ4ORVUAbo8zv7kCCDunODQMKyr+ib53oPq0Zs7fY=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-kD72F\/mjOIkUGDs7OPcm\/TvBaodpWcedhNP1wTQBfR8=",
+      "hash": "sha256-hrMP3AUx+oUvRIOLvicl4TC+RAQWpUivbgXLGUYBFJs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -893,5 +881,5 @@
       "url": "_content\/Blazored.Toast\/Blazored.Toast.bundle.scp.css"
     }
   ],
-  "version": "DxnPffqZ"
+  "version": "WxTb3LUj"
 };

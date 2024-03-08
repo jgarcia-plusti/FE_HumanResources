@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6KSAgBxzKbfu77P0g/mt/tHkpNmydvQLXRWCIMf98IxKR4Z7JxVCWM15V7y08sqbE2XjuybbU2Wat/KOPorq8A==",
+  "dgSpecHash": "iyygACo9qxCGuz42WyqUec74HWRzq7JpFapUcANo5dG5dOuzHeqzLP3Z3QrtI0+cCzJbK89t7hZyU0mQVVf7Zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\FE_HumanResources\\FE_HumanResources.csproj",
+  "projectFilePath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Conf_Inicial\\FE_HumanResources\\FE_HumanResources.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oscar León\\.nuget\\packages\\blazored.localstorage\\4.5.0\\blazored.localstorage.4.5.0.nupkg.sha512",
     "C:\\Users\\Oscar León\\.nuget\\packages\\blazored.toast\\4.1.0\\blazored.toast.4.1.0.nupkg.sha512",

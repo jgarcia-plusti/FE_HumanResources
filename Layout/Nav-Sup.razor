@@ -1,0 +1,38 @@
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject HttpClient Http
+
+
+
+
+
+@code {
+    private UserModel userModel = null;
+    private async void logout()
+    {
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+
+            if (userModel != null)
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new { Uuid = userModel.Uuid });
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await LocalStorage.ClearAsync();
+                    NavigationManager.NavigateTo("login", true);
+                }
+                else
+                {
+                    toastService.ShowError("No se pude finalizar la sesion!");
+                }
+            }
+        }
+
+    }
+
+}

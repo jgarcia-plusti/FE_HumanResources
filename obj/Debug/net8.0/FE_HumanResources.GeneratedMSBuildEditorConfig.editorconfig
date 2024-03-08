@@ -13,51 +13,55 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = FE_HumanResources
 build_property.RootNamespace = FE_HumanResources
-build_property.ProjectDir = C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\CORREGIDO\FE_HumanResources\
+build_property.ProjectDir = C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\CORREGIDO\Conf_Inicial\FE_HumanResources\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\CORREGIDO\FE_HumanResources
+build_property.MSBuildProjectDirectory = C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\CORREGIDO\Conf_Inicial\FE_HumanResources
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/App.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Pages/Dashboard.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Layout/Nav-Sup.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdi1TdXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Pages/Home.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Pages/Login.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Pages/Users/Perfil.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Pages/Users/Perfil.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcUGVyZmlsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Pages/Users/User.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Pages/Users/User.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Pages/Users/UsersGrid.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Pages/Users/UsersGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcVXNlcnNHcmlkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/_Imports.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Layout/Menu.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Layout/Menu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-4iufw0m6u9
 
-[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/FE_HumanResources/Layout/NavMenu.razor]
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/CORREGIDO/Conf_Inicial/FE_HumanResources/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-973xbgyf1a
