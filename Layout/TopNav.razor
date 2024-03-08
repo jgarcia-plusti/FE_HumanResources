@@ -4,32 +4,30 @@
 @inject IToastService toastService
 @inject HttpClient Http
 
+@* INICIA TOPNAV *@
 <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
     id="sidenavAccordion">
-    <!-- Sidenav Toggle Button-->
+    @* Botón para mostrar menu lateral *@
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
-            data-feather="menu"></i></button>
-    <!-- Navbar Brand-->
-    <!-- * * Tip * * You can use text or an image for your navbar brand.-->
-    <!-- * * * * * * When using an image, we recommend the SVG format.-->
-    <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
-    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
-    <!-- Navbar Search Input-->
-    <!-- * * Note: * * Visible only on and above the lg breakpoint-->
-    <form class="form-inline me-auto d-none d-lg-block me-3">
-        <div class="input-group input-group-joined input-group-solid">
-            <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
-            <div class="input-group-text"><i data-feather="search"></i></div>
-        </div>
-    </form>
+            class="bi bi-menu-button-wide-fill"></i></button>
+    @* END Botón *@
+    @* Branding Institucional *@
+    @* LOGO *@
+    <img src="source/branding-institucional/logo-prodisa.png" alt="Logo Prodisa" width="32">
+    @* End Logo *@
+    @* Nombre *@
+    <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">Recursos Humanos</a>
+    @* End Nombre *@
+    @* END Branding Institucional *@
+
     <!-- Navbar Items-->
     <ul class="navbar-nav align-items-center ms-auto">
         <!-- Documentation Dropdown-->
         <li class="nav-item dropdown no-caret d-none d-md-block me-3">
             <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="fw-500">Documentation</div>
-                <i class="fas fa-chevron-right dropdown-arrow"></i>
+                <div class="fw-500">Documentación</div>
+                <i class="bi bi-arrow-right-short dropdown-arrow"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end py-0 me-sm-n15 me-lg-0 o-hidden animated--fade-in-up"
                 aria-labelledby="navbarDropdownDocs">
@@ -229,8 +227,7 @@
         </li>
     </ul>
 </nav>
-
-
+@* Finaliza TOPNAV *@
 
 @code {
     private UserModel userModel = null;
