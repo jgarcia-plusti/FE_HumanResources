@@ -229,14 +229,6 @@
       "url": "assets\/img\/illustrations\/windows.svg"
     },
     {
-      "hash": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7\/p4nS6D\/0=",
-      "url": "css\/bootstrap\/bootstrap.min.css"
-    },
-    {
-      "hash": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=",
-      "url": "css\/bootstrap\/bootstrap.min.css.map"
-    },
-    {
       "hash": "sha256-tux4bhLy6fE03Mntqn255qOoKvKMcL1Qw4HhHFMvdrM=",
       "url": "css\/global-style\/styles.css"
     },
@@ -1121,15 +1113,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-iRxkD0h7Cp7ozk7b3epwpfuOnGEm1JZRfCFHlUG+8hw=",
+      "hash": "sha256-c5eVfvQ9IBZM8Xqwhfz1th0z9BZiJ2R2cnCGk6jfVy4=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-nfUTvfmtXNsTZriu9C\/azeISgHfwccr+gBYs2K4\/JLg=",
+      "hash": "sha256-y12bIL9+Sg0Fag+E58y48BnChihNGS2V0fz3xrTIUKA=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-KnR7k09KJzRdhfuRzKUy+zw9coSPaXMAIeR9yQxbFZY=",
+      "hash": "sha256-BVW7+L+7o+vKGvuytElOHD0vn0WNCgGEVqfu18MzLe4=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1137,5 +1129,5 @@
       "url": "_content\/Blazored.Toast\/Blazored.Toast.bundle.scp.css"
     }
   ],
-  "version": "EaIra1wv"
+  "version": "16gQTqvE"
 };
