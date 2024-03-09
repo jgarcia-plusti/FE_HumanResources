@@ -301,7 +301,7 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-tNJbClhGcwkP0FXslVit7Oh9FZJILa+JmM\/TIAHNWtc=",
+      "hash": "sha256-AzmzxGg6TzPRYcBTt\/pQIxVuLzgH7kg+Ns0pODV6p+8=",
       "url": "FE_HumanResources.styles.css"
     },
     {
@@ -1121,15 +1121,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-DArYMOAHwGXmCiv0zqV7sSeaCpXvhuCa9ZF0TPrJ0gs=",
+      "hash": "sha256-iRxkD0h7Cp7ozk7b3epwpfuOnGEm1JZRfCFHlUG+8hw=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-nzp5dt\/PXxaLI3W95dty\/GO0+UdAcVAS1IMzQa6E\/Nc=",
+      "hash": "sha256-nfUTvfmtXNsTZriu9C\/azeISgHfwccr+gBYs2K4\/JLg=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-50D8bW2gmL+mILFxB1KDH\/Ak0NMIYuO5J0R3GhxAjSg=",
+      "hash": "sha256-KnR7k09KJzRdhfuRzKUy+zw9coSPaXMAIeR9yQxbFZY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1137,5 +1137,5 @@
       "url": "_content\/Blazored.Toast\/Blazored.Toast.bundle.scp.css"
     }
   ],
-  "version": "CevtloGo"
+  "version": "EaIra1wv"
 };
