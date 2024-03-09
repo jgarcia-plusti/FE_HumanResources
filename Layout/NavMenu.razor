@@ -4,7 +4,44 @@
 @inject IToastService toastService
 @inject HttpClient Http
 
+<div id="layoutSidenav_nav">
+    <nav class="sidenav shadow-right sidenav-light">
+        <div class="sidenav-menu">
+            <div class="nav accordion" id="accordionSidenav">
+                <!-- Sidenav Menu Heading (Core)-->
+                <div class="sidenav-menu-heading">Sistema</div>
+                <!-- Sidenav Accordion (Dashboard)-->
+                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                    data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                    <div class="nav-link-icon"><i class="bi bi-activity"></i></div>
+                    Usuario
+                    <div class="sidenav-collapse-arrow"><i class="bi bi-chevron-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseDashboards" data-bs-parent="#accordionSidenav">
+                    <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
+                        <a class="nav-link" href="perfil">
+                            Perfil
+                            <span class="badge bg-primary-soft text-primary ms-auto">Editar</span>
+                        </a>
+                        <a class="nav-link" href="usersgrid">
+                            Listado de usuarios
+                            @* <span class="badge bg-primary-soft text-primary ms-auto">Editar</span> *@
+                        </a>
 
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+        <!-- Sidenav Footer-->
+        <div class="sidenav-footer">
+            <div class="sidenav-footer-content">
+                <div class="sidenav-footer-subtitle">Sesión iniciada como:</div>
+                <div class="sidenav-footer-title">@username</div>
+            </div>
+        </div>
+    </nav>
+</div>
 
 @* <div class="top-row ps-3 navbar navbar-dark">
 <div class="container-fluid">
@@ -41,6 +78,7 @@
 @code {
     private UserModel userModel = null;
     private bool collapseNavMenu = true;
+    string username = "";
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -55,6 +93,7 @@
         if (!string.IsNullOrEmpty(usr))
         {
             userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            username = userModel.UserName + " " + userModel.LastName;
 
             if (userModel != null)
             {
