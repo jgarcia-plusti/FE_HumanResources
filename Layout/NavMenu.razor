@@ -87,34 +87,21 @@
         collapseNavMenu = !collapseNavMenu;
     }
 
-    private async void logout()
+    protected override async Task OnInitializedAsync()
     {
+
+        userModel = null;
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+
         if (!string.IsNullOrEmpty(usr))
         {
             userModel = JsonConvert.DeserializeObject<UserModel>(usr);
             username = userModel.UserName + " " + userModel.LastName;
-
-            if (userModel != null)
-            {
-                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new PayloadGeneric()
-                {
-                    Uuid = userModel.Uuid,
-                    payload = new { }
-                });
-
-                if (response.IsSuccessStatusCode)
-                {
-                    await LocalStorage.ClearAsync();
-                    NavigationManager.NavigateTo("login", true);
-                }
-                else
-                {
-                    toastService.ShowError("No se pude finalizar la sesion!");
-                }
-            }
         }
-
+        else
+        {
+            NavigationManager.NavigateTo("login", true);
+        }
     }
 
 }
