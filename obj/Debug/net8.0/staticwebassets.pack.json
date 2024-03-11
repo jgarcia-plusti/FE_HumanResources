@@ -1,311 +1,311 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\8z2v3abqov.gz",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\12rf5m64h9.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FE_HumanResources.styles.css",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\scopedcss\\bundle\\FE_HumanResources.styles.css",
       "PackagePath": "staticwebassets\\FE_HumanResources.styles.css"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\obj\\Debug\\net8.0\\service-worker-assets.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\service-worker-assets.js",
       "PackagePath": "staticwebassets\\service-worker-assets.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\obj\\Debug\\net8.0\\service-worker\\service-worker.published.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\service-worker\\service-worker.published.js",
       "PackagePath": "staticwebassets\\service-worker.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-area-demo.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-area-demo.js",
       "PackagePath": "staticwebassets\\assets\\demo\\chart-area-demo.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-bar-demo.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-bar-demo.js",
       "PackagePath": "staticwebassets\\assets\\demo\\chart-bar-demo.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-pie-demo.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-pie-demo.js",
       "PackagePath": "staticwebassets\\assets\\demo\\chart-pie-demo.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Black.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Black.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Black.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-BlackItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-BlackItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-BlackItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Bold.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Bold.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Bold.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-BoldItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-BoldItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-BoldItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraBold.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraBold.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-ExtraBold.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraBoldItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraBoldItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-ExtraBoldItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraLight.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraLight.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-ExtraLight.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraLightItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ExtraLightItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-ExtraLightItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Light.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Light.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Light.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-LightItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-LightItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-LightItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Medium.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Medium.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Medium.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-MediumItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-MediumItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-MediumItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Regular.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Regular.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Regular.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-RegularItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-RegularItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-RegularItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-SemiBold.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-SemiBold.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-SemiBold.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-SemiBoldItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-SemiBoldItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-SemiBoldItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Thin.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-Thin.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-Thin.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ThinItalic.otf",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\fonts\\metropolis\\Metropolis-ThinItalic.otf",
       "PackagePath": "staticwebassets\\assets\\fonts\\metropolis\\Metropolis-ThinItalic.otf"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\backgrounds\\bg-angles.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\backgrounds\\bg-angles.svg",
       "PackagePath": "staticwebassets\\assets\\img\\backgrounds\\bg-angles.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\backgrounds\\bg-pattern-shapes.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\backgrounds\\bg-pattern-shapes.png",
       "PackagePath": "staticwebassets\\assets\\img\\backgrounds\\bg-pattern-shapes.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\backgrounds\\bg-waves.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\backgrounds\\bg-waves.svg",
       "PackagePath": "staticwebassets\\assets\\img\\backgrounds\\bg-waves.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-bottom.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-bottom.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\cards\\card-img-bottom.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-left.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-left.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\cards\\card-img-left.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-overlay.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-overlay.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\cards\\card-img-overlay.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-right.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-right.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\cards\\card-img-right.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-top.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\cards\\card-img-top.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\cards\\card-img-top.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\demo-logo.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\demo-logo.svg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\demo-logo.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\demo-ocean-lg.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\demo-ocean-lg.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\demo-ocean-lg.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\demo-ocean-sm.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\demo-ocean-sm.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\demo-ocean-sm.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\pug.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\pug.svg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\pug.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\user-placeholder.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\demo\\user-placeholder.svg",
       "PackagePath": "staticwebassets\\assets\\img\\demo\\user-placeholder.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\favicon.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\favicon.png",
       "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\400-error-bad-request.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\400-error-bad-request.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\400-error-bad-request.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\401-error-unauthorized.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\401-error-unauthorized.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\401-error-unauthorized.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\403-error-forbidden.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\403-error-forbidden.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\403-error-forbidden.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\404-error.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\500-internal-server-error.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\500-internal-server-error.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\500-internal-server-error.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\503-error-service-unavailable.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\503-error-service-unavailable.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\503-error-service-unavailable.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\504-error-gateway-timeout.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\504-error-gateway-timeout.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\504-error-gateway-timeout.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\at-work.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\at-work.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\at-work.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\browser-stats.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\browser-stats.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\browser-stats.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\data-report.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\data-report.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\data-report.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\problem-solving.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\problem-solving.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\problem-solving.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\processing.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\processing.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\processing.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-1.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-1.png",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\profiles\\profile-1.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-2.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-2.png",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\profiles\\profile-2.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-3.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-3.png",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\profiles\\profile-3.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-4.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-4.png",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\profiles\\profile-4.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-5.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-5.png",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\profiles\\profile-5.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-6.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\profiles\\profile-6.png",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\profiles\\profile-6.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\statistics.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\statistics.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\statistics.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\team-spirit.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\team-spirit.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\team-spirit.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\windows.svg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\windows.svg",
       "PackagePath": "staticwebassets\\assets\\img\\illustrations\\windows.svg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\css\\global-style\\styles.css",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\css\\global-style\\styles.css",
       "PackagePath": "staticwebassets\\css\\global-style\\styles.css"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\css\\login-style\\app.css",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\css\\login-style\\app.css",
       "PackagePath": "staticwebassets\\css\\login-style\\app.css"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\css\\login-style\\style.bundle.css",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\css\\login-style\\style.bundle.css",
       "PackagePath": "staticwebassets\\css\\login-style\\style.bundle.css"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\index.html",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\datatables\\datatables-simple-demo.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\datatables\\datatables-simple-demo.js",
       "PackagePath": "staticwebassets\\js\\datatables\\datatables-simple-demo.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\litepicker.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\litepicker.js",
       "PackagePath": "staticwebassets\\js\\litepicker.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\markdown.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\markdown.js",
       "PackagePath": "staticwebassets\\js\\markdown.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\scripts.bundle.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\scripts.bundle.js",
       "PackagePath": "staticwebassets\\js\\scripts.bundle.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\scripts.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\scripts.js",
       "PackagePath": "staticwebassets\\js\\scripts.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\sidemenu.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\sidemenu.js",
       "PackagePath": "staticwebassets\\js\\sidemenu.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\js\\toasts.js",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\js\\toasts.js",
       "PackagePath": "staticwebassets\\js\\toasts.js"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\manifest.webmanifest",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\manifest.webmanifest",
       "PackagePath": "staticwebassets\\manifest.webmanifest"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\background-login.jpg",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\background-login.jpg",
       "PackagePath": "staticwebassets\\source\\branding-institucional\\background-login.jpg"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\logo-prodisa.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\logo-prodisa.png",
       "PackagePath": "staticwebassets\\source\\branding-institucional\\logo-prodisa.png"
     },
     {
-      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\CORREGIDO\\Trabajando\\SafeBranch\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\prodisa.png",
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\prodisa.png",
       "PackagePath": "staticwebassets\\source\\branding-institucional\\prodisa.png"
     },
     {
