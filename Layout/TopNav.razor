@@ -1,0 +1,115 @@
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject HttpClient Http
+
+@* INICIA TOPNAV *@
+<nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
+    id="sidenavAccordion">
+    @* Botón para mostrar menu lateral *@
+    <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
+            class="bi bi-grid-fill" style="font-size: 1.5rem;"></i></button>
+    @* END Botón *@
+    @* Branding Institucional *@
+    @* LOGO *@
+    <img src="source/branding-institucional/logo-prodisa.png" alt="Logo Prodisa" width="32">
+    @* End Logo *@
+    @* Nombre *@
+    <a class=" navbar-brand pe-3 ps-4 ps-lg-2" href="dashboard">Recursos Humanos</a>
+    @* End Nombre *@
+    @* END Branding Institucional *@
+
+    <!-- Navbar Items-->
+    <ul class="navbar-nav align-items-center ms-auto">
+        <!-- Documentation Dropdown-->
+        <li class="nav-item dropdown no-caret d-none d-md-block me-3">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="fw-500">Documentación</div>
+                <i class="bi bi-arrow-right-short dropdown-arrow"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end py-0 me-sm-n15 me-lg-0 o-hidden animated--fade-in-up"
+                aria-labelledby="navbarDropdownDocs">
+                <a class="dropdown-item py-3" href="#">
+                    <div class="icon-stack bg-primary-soft text-primary me-4"><i class="bi bi-book-half"></i></div>
+                    <div>
+                        <div class="small text-gray-500">Sistema</div>
+                        Manual de uso
+                    </div>
+                </a>
+                <div class="dropdown-divider m-0"></div>
+                <a class="dropdown-item py-3" href="#" target="_blank">
+                    <div class="icon-stack bg-primary-soft text-primary me-4"><i class="bi bi-rocket"></i></div>
+                    <div>
+                        <div class="small text-gray-500">Changelog</div>
+                        Actualizaciones y cambios
+                    </div>
+                </a>
+            </div>
+        </li>
+
+        <!-- User Dropdown-->
+        <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
+            <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
+                href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><img class="img-fluid"
+                    src="assets/img/illustrations/profiles/profile-1.png" /></a>
+            <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
+                aria-labelledby="navbarDropdownUserImage">
+                <h6 class="dropdown-header d-flex align-items-center">
+                    <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
+                    <div class="dropdown-user-details">
+                        <div class="dropdown-user-details-name">@username</div>
+                        <div class="dropdown-user-details-email">
+                            <span>Profesión</span>
+                        </div>
+                    </div>
+                </h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                    <div class="dropdown-item-icon"><i class="bi bi-sliders2"></i></div> Cuenta
+                </a>
+                <div class="dropdown-item">
+                    <button class="dropdown-item-icon" @onclick="logout"
+                        style="border: none; background: transparent;"><i class="bi bi-box-arrow-right"></i>Cerrar
+                        sesión</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+@* Finaliza TOPNAV *@
+
+@code {
+    private UserModel userModel = null;
+    string username = "";
+    private async void logout()
+    {
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            username = userModel.UserName + " " + userModel.LastName;
+
+
+            if (userModel != null)
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new { Uuid = userModel.Uuid });
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await LocalStorage.ClearAsync();
+                    NavigationManager.NavigateTo("login", true);
+
+                }
+                else
+                {
+                    toastService.ShowError("No se pude finalizar la sesion!");
+                }
+            }
+        }
+
+    }
+
+}

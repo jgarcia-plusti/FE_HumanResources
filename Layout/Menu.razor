@@ -11,29 +11,28 @@
 else
 {
     <div class="page">
-        <div class="sidebar">
+        @* TOP NavBar *@
+        <TopNav />
+        @* End TOP NavBar *@
+        <div id="layoutSidenav">
+            @* SIDE NavBar *@
             <NavMenu />
-        </div>
-        <main>
-            @* <div class="top-row px-4">
-                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-            </div> *@
-
+            @* End Side NavBar *@
+            @* Main *@
             <article class="content px-4">
                 @Body
-                <BlazoredToasts Position="ToastPosition.TopRight"
-                                Timeout="10"
-                                IconType="IconType.FontAwesome"
-                                SuccessClass="success-toast-override"
-                                SuccessIcon="fa fa-thumbs-up"
-                                ErrorIcon="fa fa-bug" />
+                <BlazoredToasts Position="ToastPosition.TopRight" Timeout="10" IconType="IconType.FontAwesome"
+                    SuccessClass="success-toast-override" SuccessIcon="fa fa-thumbs-up" ErrorIcon="fa fa-bug" />
             </article>
-        </main>
+        </div>
+        @* End Main *@
+
+
     </div>
-    
+
 }
 
-@code{
+@code {
     private UserModel? userModel = new UserModel();
 
     protected override async Task OnInitializedAsync()
