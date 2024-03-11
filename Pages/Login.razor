@@ -155,7 +155,10 @@
                     if (!string.IsNullOrEmpty(JWT.Jwt))
                     {
                         Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWT.Jwt);
-                        HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/user/GetUser", new { Uuid = JWT.uuidUser });
+                        HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/user/GetProfile", new PayloadGeneric()
+                        {
+                            Uuid = JWT.uuidUser
+                        });
 
                         if (userRest.IsSuccessStatusCode)
                         {

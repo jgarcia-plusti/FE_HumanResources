@@ -202,10 +202,16 @@
     protected override async Task OnInitializedAsync()
     {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
         if (userModel != null && !string.IsNullOrEmpty(jwt))
         {
+
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/GetUser", new { Uuid = uuid });
+            userModel.Uuid = uuid;
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/GetUser", new PayloadGeneric(){
+                Uuid = uuidUserLoged!,
+                payload = userModel
+            });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -222,9 +228,35 @@
         }
     }
 
-    private void UpdateUser()
+    private async void UpdateUser()
     {
-        Console.Write("Creando user " + JsonConvert.SerializeObject(userModel));
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+        if (userModel != null && !string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/UpdateUser", new PayloadGeneric(){
+                Uuid = uuidUserLoged!,
+                payload = userModel
+            });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                UserModel? updatedUser = JsonConvert.DeserializeObject<UserModel>(content);
+                if (updatedUser != null)
+                {
+                    userModel = updatedUser;
+                    string messageInfo = $"Se actualizao la información con exito";
+                    editing(false);
+                    toastService.ShowSuccess(messageInfo);
+
+                }
+            }
+            editing(false);
+        }
+        
+        editing(false);
+
     }
 
     private void ReturnMenu()

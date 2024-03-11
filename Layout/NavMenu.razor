@@ -56,7 +56,11 @@
 
             if (userModel != null)
             {
-                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new { Uuid = userModel.Uuid });
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new PayloadGeneric()
+                {
+                    Uuid = userModel.Uuid,
+                    payload = new { }
+                });
 
                 if (response.IsSuccessStatusCode)
                 {

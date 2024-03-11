@@ -25,9 +25,9 @@ namespace FE_HumanResources.Models
         [DataType(DataType.Date, ErrorMessage = "Ingresa Fecha Valida")]
         public DateOnly DateOfBirth { get; set; }
 
-        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
+        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten nï¿½meros")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El campo es obligatorio")]
-        [StringLength(13, ErrorMessage = "El número es demasiado largo solo 13 numeros")]
+        [StringLength(13, ErrorMessage = "El nï¿½mero es demasiado largo solo 13 numeros")]
         public string Identification { get; set; }
 
         public string Adress { get; set; }
@@ -49,7 +49,6 @@ namespace FE_HumanResources.Models
         [RegularExpression("(^[a-zA-Z/]+( [a-zA-Z/]+)*)$", ErrorMessage = "Solo se permiten letras y un solo espacio entre palabras")]
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string JobTitle { get; set; }
-        public string JsonWebToken { get; set; } = "";
 
     }
 }

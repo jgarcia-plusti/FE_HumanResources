@@ -7,8 +7,11 @@
 @inject HttpClient Http
 
 <div class="row">
-    <div class="d-grid mb-10">
-        <button class="btn btn-primary">Crear</button>
+    <div class="col">
+        <button class="btn btn-primary" @onclick="(() => CreateUser())">Crear</button>
+    </div>
+    <div class="col">
+        <button class="btn btn-primary" @onclick="(() => GoToHistoricUsers())">Historico</button>
     </div>
 </div>
 <hr>
@@ -68,6 +71,7 @@
     protected override async Task OnInitializedAsync()
     {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("jwt");
         if (userModel != null && !string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
@@ -94,5 +98,17 @@
     {
         NavigationManager.NavigateTo($"user/{uuid}", true);
     }
+
+    private void CreateUser()
+    {
+        NavigationManager.NavigateTo($"CreateUser", true);
+    }
+
+    private void GoToHistoricUsers()
+    {
+        NavigationManager.NavigateTo($"historicusergrid", true);
+    }
+
+
 
 }

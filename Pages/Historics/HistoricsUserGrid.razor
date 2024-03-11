@@ -1,0 +1,93 @@
+﻿@page "/historicusergrid"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject HttpClient Http
+
+<div class="row">
+    <div class="d-grid mb-10">
+        <button class="btn btn-primary" @onclick="(() => GoToUsers())">Regresar</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Accion</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Registro</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (historicModel != null)
+                {
+                    @foreach (var historic in historicModel)
+                    {
+                        <tr>
+                            <td>
+                                @Count
+                            </td>
+                            <td>
+                                @historic.ActionType
+                            </td>
+                            <td>
+                                @historic.Module
+                            </td>
+                            <td>
+                                @historic.Register
+                            </td>
+                            <td>
+                                @historic.Date.Date
+                            </td>
+                            <td>
+                                @historic.UserName
+                            </td>
+                            <td>
+                                <button id="kt_sign_in_submit" class="btn btn-primary" >Ver</button>
+                            </td>
+                        </tr>
+
+                        Count++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private int Count = 1;
+    private List<HistoricByUser> historicModel = new List<HistoricByUser>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (historicModel != null && !string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Historic/GetHitoricUser");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                historicModel = JsonConvert.DeserializeObject<List<HistoricByUser>>(content);
+                if (historicModel == null)
+                {
+                    toastService.ShowWarning("Error al obtenerla lista de Historico");
+                }
+            }
+        }
+
+    }
+
+    private void GoToUsers()
+    {
+        NavigationManager.NavigateTo("usersgrid");
+    }
+}
