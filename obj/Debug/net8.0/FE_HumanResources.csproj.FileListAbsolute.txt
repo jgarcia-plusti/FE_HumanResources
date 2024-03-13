@@ -6328,3 +6328,13 @@ C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Deb
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\refint\FE_HumanResources.dll
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\FE_HumanResources.pdb
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\ref\FE_HumanResources.dll
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\Radzen.Blazor.wasm
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Linq.Dynamic.Core.wasm
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\Radzen.Blazor.wasm.gz
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Linq.Dynamic.Core.wasm.gz
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\Radzen.Blazor.dll
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\System.Linq.Dynamic.Core.dll
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\webcil\Radzen.Blazor.wasm
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\webcil\System.Linq.Dynamic.Core.wasm
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\compressed\afyd66oqs7.gz
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\compressed\fd6fc4nqmu.gz

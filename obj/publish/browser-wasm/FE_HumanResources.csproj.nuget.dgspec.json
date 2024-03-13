@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\FE_HumanResources\\FE_HumanResources.csproj": {}
+    "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\FE_HumanResources.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\FE_HumanResources\\FE_HumanResources.csproj": {
+    "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\FE_HumanResources.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\FE_HumanResources\\FE_HumanResources.csproj",
+        "projectUniqueName": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\FE_HumanResources.csproj",
         "projectName": "FE_HumanResources",
-        "projectPath": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\FE_HumanResources\\FE_HumanResources.csproj",
+        "projectPath": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\FE_HumanResources.csproj",
         "packagesPath": "C:\\Users\\jeman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\FE_HumanResources\\obj\\publish\\browser-wasm\\",
+        "outputPath": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\publish\\browser-wasm\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,6 +51,10 @@
             "Blazored.Toast": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",

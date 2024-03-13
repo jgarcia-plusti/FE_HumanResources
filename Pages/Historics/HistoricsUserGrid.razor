@@ -5,64 +5,25 @@
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
 @inject HttpClient Http
+
 <div class="nav-fixed">
     <div id="layoutSidenav">
         <div id="layoutSidenav_content">
             <main>
-                <div class="row">
-                    <div class="d-grid mb-10">
-                        <button class="btn btn-primary" @onclick="(() => GoToUsers())">Regresar</button>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col">
-                        <table class="table table-hover table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Accion</th>
-                                    <th scope="col">Detalle</th>
-                                    <th scope="col">Dato Modificado</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col">Usuario que Modifico</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (historicModel != null)
-                                {
-                                    @foreach (var historic in historicModel)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Count
-                                            </td>
-                                            <td>
-                                                @historic.ActionType
-                                            </td>
-                                            <td>
-                                                @historic.Module
-                                            </td>
-                                            <td>
-                                                @historic.Register
-                                            </td>
-                                            <td>
-                                                @historic.Date
-                                            </td>
-                                            <td>
-                                                @historic.UserName
-                                            </td>
-                                            <td>
-                                                <button id="kt_sign_in_submit" class="btn btn-primary" >Ver</button>
-                                            </td>
-                                        </tr>
-
-                                        Count++;
-                                    }
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+                <div>
+                    <br />
+                    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
+                    AllowSorting="true" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                                    Data="@historicModel" TItem="HistoricByUser" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" 
+                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics>
+                        <Columns>
+                            <RadzenDataGridColumn TItem="HistoricByUser" Property="ActionType" Filterable="false" Title="Tipo de Accion" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
+                            <RadzenDataGridColumn TItem="HistoricByUser" Property="Module" Title="Modulo" Frozen="true" Width="160px" />
+                            <RadzenDataGridColumn TItem="HistoricByUser" Property="Register" Title="Registro" Width="160px" />
+                            <RadzenDataGridColumn TItem="HistoricByUser" Property="Date" Title="Fecha" FormatString="{0:d}" Width="200px" />
+                            <RadzenDataGridColumn TItem="HistoricByUser" Property="UserName" Title="Usuario" Width="300px" />
+                        </Columns>
+                    </RadzenDataGrid>
                 </div>
             </main>
         </div>
@@ -70,25 +31,38 @@
 </div>
 @code {
     private int Count = 1;
-    private List<HistoricByUser> historicModel = new List<HistoricByUser>();
+    private HistoricByUser historic = new HistoricByUser();
+    private IEnumerable<HistoricByUser> historicModel;
+    private IList<HistoricByUser> selectedHistorics;
 
     protected override async Task OnInitializedAsync()
-    {
+    {   
+        await base.OnInitializedAsync();
+
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
-        if (historicModel != null && !string.IsNullOrEmpty(jwt))
+        if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
             HttpResponseMessage response = await Http.GetAsync("api/Historic/GetHitoricUser");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
-                historicModel = JsonConvert.DeserializeObject<List<HistoricByUser>>(content);
+                historicModel = JsonConvert.DeserializeObject<IEnumerable<HistoricByUser>>(content);
                 if (historicModel == null)
                 {
                     toastService.ShowWarning("Error al obtenerla lista de Historico");
                 }
+                selectedHistorics = new List<HistoricByUser>() { historicModel.FirstOrDefault() };
             }
+
         }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+        
+
 
     }
 
