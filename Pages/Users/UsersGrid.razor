@@ -1,10 +1,13 @@
 ﻿@page "/usersgrid"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
+@using Radzen
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
 @inject HttpClient Http
+@inject ContextMenuService contextMenuService
+
 <div class="nav-fixed">
     <div id="layoutSidenav">
         <div id="layoutSidenav_content">
@@ -14,30 +17,21 @@
                     <div class="col">
                         <button class="btn btn-primary" @onclick="(() => CreateUser())">Crear</button>
                     </div>
-                    <div class="col">
-                        <button class="btn btn-primary" @onclick="(() => GoToHistoricUsers())">Historico</button>
-                    </div>
                 </div>
-                <hr>
                 <div>
                     <br />
+                    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced"
                                     AllowSorting="true" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                                     Data="@userModel" TItem="UserModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
-                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser>
+                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser CellContextMenu="@OnCellContextMenu"
+                                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
                         <Columns>
                             <RadzenDataGridColumn TItem="UserModel" Property="UserName" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
                             <RadzenDataGridColumn TItem="UserModel" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
                             <RadzenDataGridColumn TItem="UserModel" Property="JobTitle" Title="Titulo" Width="160px" />
                             <RadzenDataGridColumn TItem="UserModel" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
                             <RadzenDataGridColumn TItem="UserModel" Property="Email" Title="Correo" Width="300px" />
-                            <RadzenDataGridColumn TItem="UserModel" Context="employee" Filterable="false" Sortable="false" TextAlign="TextAlign.Right" Width="156px">
-                                <Template Context="employee">
-                                    <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
-                                                  Click="@(args => ViewUser(employee.Uuid))" @onclick:stopPropagation="true">
-                                    </RadzenButton>
-                                </Template>
-                            </RadzenDataGridColumn>
                         </Columns>
                     </RadzenDataGrid>
                 </div>
@@ -54,7 +48,11 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        await Reset();
+    }
 
+    private async Task Reset()
+    {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
         if (!string.IsNullOrEmpty(jwt))
         {
@@ -68,7 +66,12 @@
                 {
                     toastService.ShowWarning("Error al obtenerla lista de Usuarios");
                 }
-                selectedUser = new List<UserModel>() { userModel.FirstOrDefault() };
+                selectedUser = userModel.Take(1).ToList();
+            }
+            else
+            {
+                await LocalStorage.ClearAsync();
+                NavigationManager.NavigateTo("login", true);
             }
         }
         else
@@ -76,8 +79,6 @@
             await LocalStorage.ClearAsync();
             NavigationManager.NavigateTo("login", true);
         }
-
-
     }
 
     private void DeleteUser(string uuid)
@@ -100,6 +101,32 @@
         NavigationManager.NavigateTo($"historicusergrid", true);
     }
 
+    private void OnCellContextMenu(DataGridCellMouseEventArgs<UserModel> args)
+    {
+        try
+        {
+            selectedUser = new List<UserModel>() { args.Data };
+            if (contextMenuService == null)
+            {
+                contextMenuService.Open(args,
+                    new List<ContextMenuItem> {
+                        new ContextMenuItem(){ Text = "Ver", Value = 1 },
+                        new ContextMenuItem(){ Text = "Editar", Value = 2 },
+                        new ContextMenuItem(){ Text = "Historico del registro", Value = 3 },
+                        new ContextMenuItem(){ Text = "Eliminar", Value = 4 },
+                    }, OnMenuItemClick
+                 );
+            }
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+    }
 
+    void OnMenuItemClick(MenuItemEventArgs args)
+    {
+        Console.WriteLine($"Menu item with Value={args.Value} clicked {args.Text}");
+    }
 
 }

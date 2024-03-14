@@ -212,6 +212,7 @@
                 Uuid = uuidUserLoged!,
                 payload = userModel
             });
+
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -221,9 +222,15 @@
                     toastService.ShowWarning("Error al obtenerla lista de Usuarios");
                 }
             }
+            else
+            {
+                await LocalStorage.ClearAsync();
+                NavigationManager.NavigateTo("login", true);
+            }
         }
         else
         {
+            await LocalStorage.ClearAsync();
             NavigationManager.NavigateTo("login", true);
         }
     }

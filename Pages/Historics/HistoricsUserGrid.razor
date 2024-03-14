@@ -54,6 +54,11 @@
                 }
                 selectedHistorics = new List<HistoricByUser>() { historicModel.FirstOrDefault() };
             }
+            else
+            {
+                await LocalStorage.ClearAsync();
+                NavigationManager.NavigateTo("login", true);
+            }
 
         }
         else
