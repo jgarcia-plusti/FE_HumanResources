@@ -12,6 +12,7 @@
             <main>
                 <div>
                     <br />
+                    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
                     AllowSorting="true" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                                     Data="@historicModel" TItem="HistoricByUser" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" 
@@ -30,15 +31,17 @@
     </div>
 </div>
 @code {
-    private int Count = 1;
-    private HistoricByUser historic = new HistoricByUser();
     private IEnumerable<HistoricByUser> historicModel;
     private IList<HistoricByUser> selectedHistorics;
 
     protected override async Task OnInitializedAsync()
     {   
         await base.OnInitializedAsync();
+        await Reset();
+    }
 
+    private async Task Reset()
+    {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
         if (!string.IsNullOrEmpty(jwt))
         {
@@ -66,9 +69,6 @@
             await LocalStorage.ClearAsync();
             NavigationManager.NavigateTo("login", true);
         }
-        
-
-
     }
 
     private void GoToUsers()
