@@ -5,6 +5,7 @@
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
 @inject HttpClient Http
+@inject ContextMenuService ContextMenuService
 
 <div class="nav-fixed">
     <div id="layoutSidenav">
@@ -16,7 +17,7 @@
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
                     AllowSorting="true" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                                     Data="@historicModel" TItem="HistoricByUser" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" 
-                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics>
+                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics CellContextMenu="@OnCellContextMenu">
                         <Columns>
                             <RadzenDataGridColumn TItem="HistoricByUser" Property="ActionType" Filterable="false" Title="Tipo de Accion" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
                             <RadzenDataGridColumn TItem="HistoricByUser" Property="Module" Title="Modulo" Frozen="true" Width="160px" />
@@ -75,5 +76,22 @@
     private void GoToUsers()
     {
         NavigationManager.NavigateTo("usersgrid");
+    }
+
+    void OnCellContextMenu(DataGridCellMouseEventArgs<HistoricByUser> args)
+    {
+        selectedHistorics = new List<HistoricByUser>() { args.Data };
+
+        ContextMenuService.Open(args,
+            new List<ContextMenuItem> {
+                new ContextMenuItem(){ Text = "Context menu item 1", Value = 1, Icon = "home" },
+                new ContextMenuItem(){ Text = "Context menu item 2", Value = 2, Icon = "search" },
+                new ContextMenuItem(){ Text = "Context menu item 3", Value = 3, Icon = "info" },
+                },
+            (e) =>
+            {
+                Console.WriteLine($"Menu item with Value={e.Value} clicked. Column: {args.Column.Property}, EmployeeID: {args.Data.Uuid}");
+            }
+         );
     }
 }

@@ -6,7 +6,7 @@
 @inject NavigationManager NavigationManager
 @inject IToastService toastService
 @inject HttpClient Http
-@inject ContextMenuService contextMenuService
+@inject ContextMenuService ContextMenuService
 
 <div class="nav-fixed">
     <div id="layoutSidenav">
@@ -24,7 +24,7 @@
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
                                     AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                                     Data="@userModel" TItem="UserModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
-                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser
+                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser CellContextMenu="@OnCellContextMenu"
                                     FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
                         <Columns>
                             <RadzenDataGridColumn TItem="UserModel" Property="UserName" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
@@ -32,20 +32,6 @@
                             <RadzenDataGridColumn TItem="UserModel" Property="JobTitle" Title="Titulo" Width="160px" />
                             <RadzenDataGridColumn TItem="UserModel" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
                             <RadzenDataGridColumn TItem="UserModel" Property="Email" Title="Correo" Width="300px" />
-                            <RadzenDataGridColumn TItem="UserModel" Context="user" Filterable="false" Sortable="false" TextAlign="TextAlign.Right" Width="156px">
-                                <Template Context="user">
-                                    <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
-                                                  Click="@(args => ViewUser(user.Uuid))" @onclick:stopPropagation="true">
-                                    </RadzenButton>
-                                </Template>                                
-                            </RadzenDataGridColumn>
-                            <RadzenDataGridColumn TItem="UserModel" Context="user" Filterable="false" Sortable="false" TextAlign="TextAlign.Right" Width="156px">
-                                <Template Context="user">
-                                    <RadzenButton Icon="list" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
-                                                  Click="@(args => GoToHistoricUsers())" @onclick:stopPropagation="true">
-                                    </RadzenButton>
-                                </Template>
-                            </RadzenDataGridColumn>
                         </Columns>
                     </RadzenDataGrid>
                 </div>
@@ -61,7 +47,6 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        contextMenuService = new ContextMenuService(NavigationManager);
         await Reset();
     }
 
@@ -113,5 +98,22 @@
     private void GoToHistoricUsers()
     {
         NavigationManager.NavigateTo($"historicusergrid", true);
+    }
+
+    void OnCellContextMenu(DataGridCellMouseEventArgs<UserModel> args)
+    {
+        selectedUser = new List<UserModel>() { args.Data };
+
+        ContextMenuService.Open(args,
+            new List<ContextMenuItem> {
+                new ContextMenuItem(){ Text = "Context menu item 1", Value = 1, Icon = "home" },
+                new ContextMenuItem(){ Text = "Context menu item 2", Value = 2, Icon = "search" },
+                new ContextMenuItem(){ Text = "Context menu item 3", Value = 3, Icon = "info" },
+                    },
+            (e) =>
+            {
+                Console.WriteLine($"Menu item with Value={e.Value} clicked. Column: {args.Column.Property}, EmployeeID: {args.Data.Uuid}");
+            }
+         );
     }
 }
