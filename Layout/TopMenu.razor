@@ -1,0 +1,112 @@
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject HttpClient Http
+
+
+@* <div class="rz-p-sm-12"> *@
+<RadzenMenu>
+    @* ESPACIO *@
+    <RadzenMenuItem Text="" Icon="" style="margin-left: 50%;">
+    </RadzenMenuItem>
+    <RadzenMenuItem Text="" Icon="" style="margin-left: 50%;">
+    </RadzenMenuItem>
+    <RadzenMenuItem Text="" Icon="" style="margin-left: 50%;">
+    </RadzenMenuItem>
+    @* ESPACIO *@
+    <RadzenMenuItem Text="General" Icon="home">
+        <RadzenMenuItem Text="Buttons" Path="user/{uuid}" Icon="account_circle"></RadzenMenuItem>
+        <RadzenMenuItem Text="Menu" Path="menu" Icon="line_weight" Disabled="true"></RadzenMenuItem>
+        <RadzenMenuItem Text="ChildClick" Icon="attach_file" Disabled="true">
+        </RadzenMenuItem>
+        <RadzenMenuItem Text="Dialog" Path="dialog" Icon="perm_media"></RadzenMenuItem>
+        <RadzenMenuItem Text="Notification" Path="notification" Icon="announcement"></RadzenMenuItem>
+    </RadzenMenuItem>
+    <RadzenMenuItem Text="Inputs" Icon="payment" Disabled="true">
+        <RadzenMenuItem Text="CheckBox" Path="checkbox" Icon="check_circle"></RadzenMenuItem>
+        <RadzenMenuItem Text="TextBox" Path="textbox" Icon="input"></RadzenMenuItem>
+        <RadzenMenuItem Text="TextArea" Path="textarea" Icon="description"></RadzenMenuItem>
+        <RadzenMenuItem Text="Password" Path="password" Icon="payment"></RadzenMenuItem>
+        <RadzenMenuItem Text="Numeric" Path="numeric" Icon="aspect_ratio"></RadzenMenuItem>
+        <RadzenMenuItem Text="DatePicker" Path="datepicker" Icon="date_range"></RadzenMenuItem>
+    </RadzenMenuItem>
+    <RadzenMenuItem Text="Data" Icon="save">
+        <RadzenMenuItem Text="DataGrid" Path="datagrid" Icon="grid_on"></RadzenMenuItem>
+        <RadzenMenuItem Text="DataList" Path="datalist" Icon="list"></RadzenMenuItem>
+        <RadzenMenuItem Text="DropDown" Path="dropdown" Icon="dns"></RadzenMenuItem>
+        <RadzenMenuItem Text="DropDownDataGrid" Path="dropdown-datagrid" Icon="receipt"></RadzenMenuItem>
+        <RadzenMenuItem Text="ListBox" Path="listbox" Icon="view_list"></RadzenMenuItem>
+        <RadzenMenuItem Text="TemplateForm" Path="templateform" Icon="line_style"></RadzenMenuItem>
+    </RadzenMenuItem>
+    <RadzenMenuItem Text="Containers" Icon="account_box">
+        <RadzenMenuItem Text="Tabs" Path="tabs" Icon="tab"></RadzenMenuItem>
+        <RadzenMenuItem Text="Panel" Path="panel" Icon="content_paste"></RadzenMenuItem>
+        <RadzenMenuItem Text="Fieldset" Path="fieldset" Icon="account_balance_wallet"></RadzenMenuItem>
+        <RadzenMenuItem Text="Card" Path="card" Icon="line_style"></RadzenMenuItem>
+    </RadzenMenuItem>
+    <RadzenMenuItem Text="More">
+        <RadzenMenuItem Text="Item1"></RadzenMenuItem>
+        <RadzenMenuItem Text="Item2"></RadzenMenuItem>
+        <RadzenMenuItem Text="More items">
+            <RadzenMenuItem Text="More sub items">
+                <RadzenMenuItem Text="Item1"></RadzenMenuItem>
+                <RadzenMenuItem Text="Item2"></RadzenMenuItem>
+            </RadzenMenuItem>
+        </RadzenMenuItem>
+    </RadzenMenuItem>
+</RadzenMenu>
+@* </div> *@
+
+
+@code {
+    private UserModel userModel = null;
+    string username = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        userModel = null;
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            username = userModel.UserName + " " + userModel.LastName;
+        }
+        else
+        {
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    private async void logout()
+    {
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            if (userModel != null)
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new PayloadGeneric()
+                    {
+                        Uuid = userModel.Uuid,
+                        payload = new { }
+                    });
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await LocalStorage.ClearAsync();
+                    NavigationManager.NavigateTo("login", true);
+
+                }
+                else
+                {
+                    toastService.ShowError("No se pude finalizar la sesion!");
+                }
+            }
+        }
+
+    }
+
+}

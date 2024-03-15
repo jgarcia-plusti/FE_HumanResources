@@ -6,190 +6,206 @@
 @inject IToastService toastService
 @inject HttpClient Http
 
-<div>
-    <EditForm Model="userModel" OnValidSubmit="UpdateUser" class="form w-100" id="kt_sign_in_form">
-        <DataAnnotationsValidator />
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    @if(editingEnable)
-                    {
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Nombres</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.UserName" />
-                                <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Genero</label>
-                                @* //<InputText class="form-control bg-transparent" @bind-Value="userModel.Gender" /> *@
-                                <InputSelect class="form-control bg-transparent" @bind-Value="userModel.Gender">
+<RadzenBody>
+    <div class="rz-p-12">
+        <EditForm Model="userModel" OnValidSubmit="UpdateUser" class="form w-100" id="kt_sign_in_form">
+            <DataAnnotationsValidator />
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        @if (editingEnable)
+                        {
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Nombres</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.UserName" />
+                                    <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Genero</label>
+                                    @* //<InputText class="form-control bg-transparent" @bind-Value="userModel.Gender" /> *@
+                                    <InputSelect class="form-control bg-transparent" @bind-Value="userModel.Gender">
                                         <option value="Femenino">Femenino</option>
                                         <option value="Masculino">Masculino</option>
-                                </InputSelect>
+                                    </InputSelect>
+                                </div>
+                                <div class="mb-3">
+                                    <label type="number" class="form-label">Documento de identificacion</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Identification" />
+                                    <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Pais</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Country" />
+                                    <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Titulo</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.JobTitle" />
+                                    <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Direccion</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Adress" />
+                                    <ValidationMessage For="(()=> userModel.Adress)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Contraseña</label>
+                                    <InputText type="password" class="form-control bg-transparent"
+                                        @bind-Value="userModel.Password" disabled readonly />
+                                    <ValidationMessage For="(()=> userModel.Password)"></ValidationMessage>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label type="number" class="form-label">Documento de identificacion</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Identification" />
-                                <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Apellidos</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.LastName" />
+                                    <ValidationMessage For="(()=> userModel.LastName)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Telefono</label>
+                                    <InputNumber class="form-control bg-transparent" @bind-Value="userModel.Phone" />
+                                    <ValidationMessage For="(()=> userModel.Phone)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Correo</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Email" />
+                                    <ValidationMessage For="(()=> userModel.Email)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Departamento</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Department" />
+                                    <ValidationMessage For="(()=> userModel.Department)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Fecha de nacimiento</label>
+                                    <InputDate class="form-control bg-transparent" @bind-Value="userModel.DateOfBirth" />
+                                    <ValidationMessage For="(()=> userModel.DateOfBirth)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Fotografia</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Picture" />
+                                    <ValidationMessage For="(()=> userModel.Picture)"></ValidationMessage>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Pais</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Country" />
-                                <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Titulo</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.JobTitle" />
-                                <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Direccion</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Adress" />
-                                <ValidationMessage For="(()=> userModel.Adress)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Contraseña</label>
-                                <InputText type="password" class="form-control bg-transparent" @bind-Value="userModel.Password" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Password)"></ValidationMessage>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Apellidos</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.LastName" />
-                                <ValidationMessage For="(()=> userModel.LastName)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Telefono</label>
-                                <InputNumber class="form-control bg-transparent" @bind-Value="userModel.Phone" />
-                                <ValidationMessage For="(()=> userModel.Phone)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Correo</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Email" />
-                                <ValidationMessage For="(()=> userModel.Email)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Departamento</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Department" />
-                                <ValidationMessage For="(()=> userModel.Department)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Fecha de nacimiento</label>
-                                <InputDate class="form-control bg-transparent" @bind-Value="userModel.DateOfBirth" />
-                                <ValidationMessage For="(()=> userModel.DateOfBirth)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Fotografia</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Picture" />
-                                <ValidationMessage For="(()=> userModel.Picture)"></ValidationMessage>
-                            </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Nombres</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.UserName"  disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Genero</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Gender" disabled readonly/>
-                            </div>
-                            <div class="mb-3">
-                                <label type="number" class="form-label">Documento de identificacion</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Identification" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Pais</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Country" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Titulo</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.JobTitle" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Direccion</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Adress" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Adress)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Contraseña</label>
-                                <InputText type="password" class="form-control bg-transparent" @bind-Value="userModel.Password" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Password)"></ValidationMessage>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Apellidos</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.LastName" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.LastName)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Telefono</label>
-                                <InputNumber class="form-control bg-transparent" @bind-Value="userModel.Phone" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Phone)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Correo</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Email" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Email)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Departamento</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Department" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Department)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Fecha de nacimiento</label>
-                                <InputDate class="form-control bg-transparent" @bind-Value="userModel.DateOfBirth" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.DateOfBirth)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Fotografia</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Picture" disabled readonly/>
-                                <ValidationMessage For="(()=> userModel.Picture)"></ValidationMessage>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        @if(!editingEnable)
-                        {
-                        <div class="d-grid mb-10">
-                            <button class="btn btn-primary" @onclick="() => editing(true)">Editar</button>
-                        </div>
-                        <div class="d-grid mb-10">
-                            <button class="btn btn-secondary" @onclick="() => ReturnMenu()">Regresar</button>
-                        </div>
                         }
                         else
                         {
-                        <div class="d-grid mb-10">
-                            <button id="kt_sign_in_submit" class="btn btn-success" type="submit">Guardar</button>
-                        </div>
-                        <div class="d-grid mb-10">
-                            <button class="btn btn-danger" @onclick="() => editing(false)">Cancelar</button>
-                        </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Nombres</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.UserName" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Genero</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Gender" disabled
+                                        readonly />
+                                </div>
+                                <div class="mb-3">
+                                    <label type="number" class="form-label">Documento de identificacion</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Identification"
+                                        disabled readonly />
+                                    <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Pais</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Country" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Titulo</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.JobTitle" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Direccion</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Adress" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.Adress)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Contraseña</label>
+                                    <InputText type="password" class="form-control bg-transparent"
+                                        @bind-Value="userModel.Password" disabled readonly />
+                                    <ValidationMessage For="(()=> userModel.Password)"></ValidationMessage>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Apellidos</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.LastName" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.LastName)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Telefono</label>
+                                    <InputNumber class="form-control bg-transparent" @bind-Value="userModel.Phone" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.Phone)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Correo</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Email" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.Email)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Departamento</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Department"
+                                        disabled readonly />
+                                    <ValidationMessage For="(()=> userModel.Department)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Fecha de nacimiento</label>
+                                    <InputDate class="form-control bg-transparent" @bind-Value="userModel.DateOfBirth"
+                                        disabled readonly />
+                                    <ValidationMessage For="(()=> userModel.DateOfBirth)"></ValidationMessage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Fotografia</label>
+                                    <InputText class="form-control bg-transparent" @bind-Value="userModel.Picture" disabled
+                                        readonly />
+                                    <ValidationMessage For="(()=> userModel.Picture)"></ValidationMessage>
+                                </div>
+                            </div>
                         }
                     </div>
-                    <div class="col">
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            @if (!editingEnable)
+                            {
+                                <div class="d-grid mb-10">
+                                    <button class="btn btn-primary" @onclick="() => editing(true)">Editar</button>
+                                </div>
+                                <div class="d-grid mb-10">
+                                    <button class="btn btn-secondary" @onclick="() => ReturnMenu()">Regresar</button>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="d-grid mb-10">
+                                    <button id="kt_sign_in_submit" class="btn btn-success" type="submit">Guardar</button>
+                                </div>
+                                <div class="d-grid mb-10">
+                                    <button class="btn btn-danger" @onclick="() => editing(false)">Cancelar</button>
+                                </div>
+                            }
+                        </div>
+                        <div class="col">
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </EditForm>
-</div>
+        </EditForm>
+    </div>
+</RadzenBody>
 <hr />
 
 @code {
@@ -208,10 +224,11 @@
 
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
             userModel.Uuid = uuid;
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/GetUser", new PayloadGeneric(){
-                Uuid = uuidUserLoged!,
-                payload = userModel
-            });
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/GetUser", new PayloadGeneric()
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = userModel
+                });
 
             if (response.IsSuccessStatusCode)
             {
@@ -242,10 +259,11 @@
         if (userModel != null && !string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/UpdateUser", new PayloadGeneric(){
-                Uuid = uuidUserLoged!,
-                payload = userModel
-            });
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/UpdateUser", new PayloadGeneric()
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = userModel
+                });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -261,7 +279,7 @@
             }
             editing(false);
         }
-        
+
         editing(false);
 
     }
