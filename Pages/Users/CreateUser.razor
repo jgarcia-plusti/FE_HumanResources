@@ -6,51 +6,52 @@
 @inject IToastService toastService
 @inject HttpClient Http
 
-<div>
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
     <EditForm Model="userModel" OnValidSubmit="CreateNewUser" class="form w-100" id="kt_sign_in_form">
         <DataAnnotationsValidator />
         <div class="row">
             <div class="col">
                 <div class="row">
-                   <div class="col">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Nombres</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.UserName" />
-                                <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Genero</label>
-                                @* //<InputText class="form-control bg-transparent" @bind-Value="userModel.Gender" /> *@
-                                <InputSelect class="form-control bg-transparent" @bind-Value="userModel.Gender">
-                                        <option value="Femenino">Femenino</option>
-                                        <option value="Masculino">Masculino</option>
-                                </InputSelect>
-                            </div>
-                            <div class="mb-3">
-                                <label type="number" class="form-label">Documento de identificacion</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Identification" />
-                                <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Pais</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Country" />
-                                <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Titulo</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.JobTitle" />
-                                <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Direccion</label>
-                                <InputText class="form-control bg-transparent" @bind-Value="userModel.Adress" />
-                                <ValidationMessage For="(()=> userModel.Adress)"></ValidationMessage>
-                            </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Contraseña</label>
-                                <InputText type="password" class="form-control bg-transparent" @bind-Value="userModel.Password"/>
-                                <ValidationMessage For="(()=> userModel.Password)"></ValidationMessage>
-                            </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Nombres</label>
+                            <InputText class="form-control bg-transparent" @bind-Value="userModel.UserName" />
+                            <ValidationMessage For="(()=> userModel.UserName)"></ValidationMessage>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Genero</label>
+                            @* //<InputText class="form-control bg-transparent" @bind-Value="userModel.Gender" /> *@
+                            <InputSelect class="form-control bg-transparent" @bind-Value="userModel.Gender">
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                            </InputSelect>
+                        </div>
+                        <div class="mb-3">
+                            <label type="number" class="form-label">Documento de identificacion</label>
+                            <InputText class="form-control bg-transparent" @bind-Value="userModel.Identification" />
+                            <ValidationMessage For="(()=> userModel.Identification)"></ValidationMessage>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Pais</label>
+                            <InputText class="form-control bg-transparent" @bind-Value="userModel.Country" />
+                            <ValidationMessage For="(()=> userModel.Country)"></ValidationMessage>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Titulo</label>
+                            <InputText class="form-control bg-transparent" @bind-Value="userModel.JobTitle" />
+                            <ValidationMessage For="(()=> userModel.JobTitle)"></ValidationMessage>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Direccion</label>
+                            <InputText class="form-control bg-transparent" @bind-Value="userModel.Adress" />
+                            <ValidationMessage For="(()=> userModel.Adress)"></ValidationMessage>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Contraseña</label>
+                            <InputText type="password" class="form-control bg-transparent"
+                                @bind-Value="userModel.Password" />
+                            <ValidationMessage For="(()=> userModel.Password)"></ValidationMessage>
+                        </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
@@ -103,8 +104,8 @@
             </div>
         </div>
     </EditForm>
-</div>
-<hr />
+</RadzenBody>
+
 
 @code {
     [Parameter]
@@ -148,10 +149,11 @@
         if (userModel != null && !string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric(){
-                Uuid = uuidUserLoged!,
-                payload = userModel
-            });
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric()
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = userModel
+                });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
