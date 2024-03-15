@@ -261,6 +261,14 @@
       "PackagePath": "staticwebassets\\css\\login-style\\style.bundle.css"
     },
     {
+      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\REPO\\FE_HumanResources\\wwwroot\\css\\mod.css",
+      "PackagePath": "staticwebassets\\css\\mod.css"
+    },
+    {
+      "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\REPO\\FE_HumanResources\\wwwroot\\css\\original-blazored.css",
+      "PackagePath": "staticwebassets\\css\\original-blazored.css"
+    },
+    {
       "Id": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\REPO\\FE_HumanResources\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

@@ -13,26 +13,22 @@
 @using Microsoft.AspNetCore.Components.Web;
 @using Microsoft.JSInterop;
 
-<RadzenPanelMenu>
+<RadzenPanelMenu DisplayStyle="@DisplayStyle" ShowArrow="@isShowArrow" Multiple=false
+    @onmouseover="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.IconAndText; } })"
+    @onmouseout="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.Icon; } })">
+    @* HOME *@
+    <RadzenPanelMenuItem Text="Inicio" Icon="home">
+        <RadzenPanelMenuItem Text="Dashboard" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    @* SETTINGS *@
+    <RadzenPanelMenuItem Text="Configuración" Icon="settings">
+        <RadzenPanelMenuItem Text="Perfil" Path="perfil" Icon="assignment_ind"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Usuarios" Path="usersgrid" Icon="people_alt"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Crear usuario" Path="CreateUser" Icon="person_add"></RadzenPanelMenuItem>
 
-    <RadzenPanelMenu DisplayStyle="@DisplayStyle" ShowArrow="@isShowArrow" Multiple=false
-        @onmouseover="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.IconAndText; } })"
-        @onmouseout="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.Icon; } })">
-        @* HOME *@
-        <RadzenPanelMenuItem Text="Inicio" Icon="home">
-            <RadzenPanelMenuItem Text="Dashboard" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
-        </RadzenPanelMenuItem>
-        @* SETTINGS *@
-        <RadzenPanelMenuItem Text="Configuración" Icon="settings">
-            <RadzenPanelMenuItem Text="Perfil" Path="perfil" Icon="assignment_ind"></RadzenPanelMenuItem>
-            <RadzenPanelMenuItem Text="Usuarios" Path="usersgrid" Icon="people_alt"></RadzenPanelMenuItem>
-            <RadzenPanelMenuItem Text="Crear usuario" Path="CreateUser" Icon="person_add"></RadzenPanelMenuItem>
-
-        </RadzenPanelMenuItem>
-    </RadzenPanelMenu>
-
-
+    </RadzenPanelMenuItem>
 </RadzenPanelMenu>
+
 
 @code {
     private UserModel userModel = null;
