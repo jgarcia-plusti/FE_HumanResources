@@ -1121,15 +1121,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-32OcrhKPjaxbOyMTNHviURetahQM50iGChcv0dzGlwY=",
+      "hash": "sha256-c5SvXqxNJk73dilSN\/\/nJtP6DMinVBMDIUSszdTutK0=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-zNKxyiZ8QpfwiyvWJ4DJtPG\/\/T85NzsXL4sHESk8LgQ=",
+      "hash": "sha256-MyAzs8jC9qT8tikSPb5BW80YDIuk7JNQAfeYy7ckn2E=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-Dh6\/COxnStGX6ZPrjMkqnrfDCHClwf3xnFVsTZiAPZk=",
+      "hash": "sha256-tNUgbXt3\/jAee\/Plr2V7LWqvFI+xSBf92uzgLr3Ba4I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1333,5 +1333,5 @@
       "url": "_content\/Blazored.Toast\/Blazored.Toast.bundle.scp.css"
     }
   ],
-  "version": "5ig8Ae\/O"
+  "version": "4YAceVuR"
 };
