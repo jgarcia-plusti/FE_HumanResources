@@ -3,9 +3,8 @@
 @inject HttpClient Http
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject AuthenticationStateProvider AuthStateProvider
-@using Blazored.Toast.Configuration
+@inject NotificationService NotificationService
 @using System.Net.Http.Headers
 
 <PageTitle>RH</PageTitle>
@@ -124,8 +123,6 @@
     </div>
 </div>
 
-<BlazoredToasts Position="ToastPosition.TopRight" Timeout="10" IconType="IconType.FontAwesome"
-    SuccessClass="success-toast-override" SuccessIcon="fa fa-thumbs-up" ErrorIcon="fa fa-bug" />
 
 @code {
     private LoginModel loginModel = new LoginModel();
@@ -138,7 +135,11 @@
             if (string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
                 messageInfo = $"No se admite un campo vacio!";
-                toastService.ShowError(messageInfo);
+
+                NotificationService.Notify(new NotificationMessage { 
+                    Severity = NotificationSeverity.Error, 
+                    Summary = messageInfo, 
+                    Duration = 4000 });
             }
             else
             {
@@ -182,7 +183,12 @@
                                 else
                                 {
                                     messageInfo = $"Usuario inactivo!";
-                                    toastService.ShowError(messageInfo);
+                                    NotificationService.Notify(new NotificationMessage
+                                        {
+                                            Severity = NotificationSeverity.Warning,
+                                            Summary = messageInfo,
+                                            Duration = 4000
+                                        });
                                 }
                             }
                         }
@@ -191,20 +197,35 @@
                 else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
                     messageInfo = $"Usted no esta autorizado, Contraseña o Correo erroneo";
-                    toastService.ShowError(messageInfo);
+                    NotificationService.Notify(new NotificationMessage
+                        {
+                            Severity = NotificationSeverity.Error,
+                            Summary = messageInfo,
+                            Duration = 4000
+                        });
                 }
                 else
                 {
                     messageInfo = $"Error al intentar ingresar.";
-                    toastService.ShowError(messageInfo);
+                    NotificationService.Notify(new NotificationMessage
+                        {
+                            Severity = NotificationSeverity.Error,
+                            Summary = messageInfo,
+                            Duration = 4000
+                        });
                 }
             }
         }
         catch
         {
             messageInfo = $"Error al intentar ingresar.";
-            toastService.ShowError(messageInfo);
             await LocalStorage.ClearAsync();
+            NotificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = messageInfo,
+                    Duration = 4000
+                });
         }
     }
 }

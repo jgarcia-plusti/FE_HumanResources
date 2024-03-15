@@ -4,7 +4,6 @@
 @using Radzen
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 
@@ -50,9 +49,10 @@
                 userModel = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(content);
                 if (userModel == null)
                 {
-                    toastService.ShowWarning("Error al obtenerla lista de Usuarios");
+                    
                 }
-                selectedUser = userModel.Take(1).ToList();
+                else
+                    selectedUser = userModel.Take(1).ToList();
             }
             else
             {
@@ -69,7 +69,7 @@
 
     private void DeleteUser(string uuid)
     {
-        toastService.ShowInfo("Esta opcion pronto estara disponible, solo para usuarios Administradores");
+        
     }
 
     private void ViewUser(string uuid)

@@ -3,7 +3,6 @@
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
@@ -49,9 +48,10 @@
                 historicModel = JsonConvert.DeserializeObject<IEnumerable<HistoricByUser>>(content);
                 if (historicModel == null)
                 {
-                    toastService.ShowWarning("Error al obtenerla lista de Historico");
+                    
                 }
-                selectedHistorics = new List<HistoricByUser>() { historicModel.FirstOrDefault() };
+                else
+                    selectedHistorics = new List<HistoricByUser>() { historicModel.FirstOrDefault() };
             }
             else
             {

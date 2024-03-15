@@ -4,7 +4,6 @@
 @using FE_HumanResources.Entities
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 
 <div class="nav-fixed">
@@ -74,14 +73,12 @@
                 UserEntity? createdUser = JsonConvert.DeserializeObject<UserEntity>(content);
                 if (createdUser != null)
                 {
-                    string messageInfo = $"Se agrego la información con exito";
-                    toastService.ShowSuccess(messageInfo);
+                    string messageInfo = $"Se agrego la información con exito";                    
                 }
             }
             else
             {
                 string messageInfo = $"Perdon algo salio mal";
-                toastService.ShowError(messageInfo);
             }
         }
     }

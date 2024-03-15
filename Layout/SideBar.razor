@@ -1,7 +1,6 @@
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 
 @using Microsoft.AspNetCore.Components;
@@ -80,7 +79,7 @@
                 }
                 else
                 {
-                    toastService.ShowError("No se pude finalizar la sesion!");
+                    
                 }
             }
         }

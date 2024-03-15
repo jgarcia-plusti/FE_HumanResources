@@ -1,7 +1,6 @@
 ﻿@using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 
 <div id="layoutSidenav_nav">
@@ -42,38 +41,6 @@
         </div>
     </nav>
 </div>
-
-@* <div class="top-row ps-3 navbar navbar-dark">
-<div class="container-fluid">
-<a class="navbar-brand" href="">Human Resources</a>
-<button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-<span class="navbar-toggler-icon"></span>
-</button>
-</div>
-</div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-<nav class="flex-column">
-<div class="nav-item px-3">
-<NavLink class="nav-link" href="dashboard">
-<span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Dashboard
-</NavLink>
-</div>
-<div class="nav-item px-3">
-<NavLink class="nav-link" href="perfil">
-<span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Mi Perfil
-</NavLink>
-</div>
-<div class="nav-item px-3">
-<NavLink class="nav-link" href="usersgrid">
-<span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Usuarios
-</NavLink>
-</div>
-<div class="nav-item px-3">
-<button id="kt_sign_in_submit" class="btn btn-primary" @onclick="logout">cerrar sesión</button>
-</div>
-</nav>
-</div> *@
 
 @code {
     private UserModel userModel = null;

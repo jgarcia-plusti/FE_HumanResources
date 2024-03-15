@@ -2,7 +2,6 @@
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@using Blazored.Toast.Configuration
 
 @if (userModel == null)
 {
@@ -29,8 +28,6 @@ else
         </RadzenFooter>
         <article class="content px-4">
             @Body
-            <BlazoredToasts Position="ToastPosition.TopRight" Timeout="10" IconType="IconType.FontAwesome"
-                SuccessClass="success-toast-override" SuccessIcon="fa fa-thumbs-up" ErrorIcon="fa fa-bug" />
             <RadzenContextMenu />
             <RadzenNotification />
             <RadzenDialog />

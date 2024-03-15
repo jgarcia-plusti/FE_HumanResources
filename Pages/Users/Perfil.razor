@@ -3,7 +3,6 @@
 @using System.Net.Http.Headers
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
@@ -243,8 +242,6 @@
     </div>
 </RadzenBody>
 
-
-
 @code {
     private UserModel? userModel = new UserModel();
     string username = "";
@@ -310,7 +307,6 @@
                 {
                     userModel = updatedUser;
                     string messageInfo = $"Se actualizao la información con exito";
-                    toastService.ShowSuccess(messageInfo);
 
                     editing(false);
                 }

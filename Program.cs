@@ -1,5 +1,4 @@
 using Blazored.LocalStorage;
-using Blazored.Toast;
 using FE_HumanResources;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -16,7 +15,6 @@ builder.Services.AddScoped(sp =>
         BaseAddress = new Uri("https://prodisarh.com:444")
     });
 builder.Services.AddBlazoredLocalStorage();
-builder.Services.AddBlazoredToast();
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();

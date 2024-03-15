@@ -3,7 +3,6 @@
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
@@ -233,7 +232,7 @@
                 userModel = JsonConvert.DeserializeObject<UserModel>(content);
                 if (userModel == null)
                 {
-                    toastService.ShowWarning("Error al obtenerla lista de Usuarios");
+                    
                 }
             }
             else
@@ -268,9 +267,8 @@
                 if (updatedUser != null)
                 {
                     userModel = updatedUser;
-                    string messageInfo = $"Se actualizao la información con exito";
+                    string messageInfo = $"Se actualizo la información con exito";
                     editing(false);
-                    toastService.ShowSuccess(messageInfo);
 
                 }
             }

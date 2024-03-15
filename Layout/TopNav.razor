@@ -1,7 +1,6 @@
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-@inject IToastService toastService
 @inject HttpClient Http
 
 @* INICIA TOPNAV *@
@@ -124,7 +123,7 @@
                 }
                 else
                 {
-                    toastService.ShowError("No se pude finalizar la sesion!");
+                    
                 }
             }
         }
