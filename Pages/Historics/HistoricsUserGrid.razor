@@ -6,14 +6,8 @@
 @inject IToastService toastService
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
-
-<div class="nav-fixed">
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_content">
-            <main>
-                <div>
-                    <br />
-                    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+<RadzenBody>
+        <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
                     AllowSorting="true" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                                     Data="@historicModel" TItem="HistoricByUser" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" 
@@ -27,11 +21,11 @@
                         </Columns>
                     </RadzenDataGrid>
                     <RadzenButton Text="Regresar" Click="@GoToUsers" Style="margin-bottom: 20px;" />
-                </div>
-            </main>
-        </div>
-    </div>
-</div>
+</RadzenBody>
+
+               
+
+           
 @code {
     private IEnumerable<HistoricByUser> historicModel;
     private IList<HistoricByUser> selectedHistorics;
