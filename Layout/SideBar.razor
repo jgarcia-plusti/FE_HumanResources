@@ -1,0 +1,96 @@
+@using FE_HumanResources.Models
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject IToastService toastService
+@inject HttpClient Http
+
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Routing;
+@using System;
+@using System.Linq;
+@using System.Collections.Generic;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Components.Web;
+@using Microsoft.JSInterop;
+
+<RadzenPanelMenu>
+
+    <RadzenPanelMenu DisplayStyle="@DisplayStyle" ShowArrow="@isShowArrow" Multiple=false
+        @onmouseover="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.IconAndText; } })"
+        @onmouseout="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.Icon; } })">
+        @* HOME *@
+        <RadzenPanelMenuItem Text="Inicio" Icon="home">
+            <RadzenPanelMenuItem Text="Dashboard" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
+        </RadzenPanelMenuItem>
+        @* SETTINGS *@
+        <RadzenPanelMenuItem Text="Configuración" Icon="settings">
+            <RadzenPanelMenuItem Text="Perfil" Path="perfil" Icon="assignment_ind"></RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Usuarios" Path="usersgrid" Icon="people_alt"></RadzenPanelMenuItem>
+            <RadzenPanelMenuItem Text="Crear usuario" Path="CreateUser" Icon="person_add"></RadzenPanelMenuItem>
+
+        </RadzenPanelMenuItem>
+    </RadzenPanelMenu>
+
+
+</RadzenPanelMenu>
+
+@code {
+    private UserModel userModel = null;
+    string username = "";
+
+    bool multiple = true;
+
+    MenuItemDisplayStyle DisplayStyle = MenuItemDisplayStyle.IconAndText;
+
+    bool isShowArrow = true;
+    bool changeOnOver;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        userModel = null;
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            username = userModel.UserName + " " + userModel.LastName;
+        }
+        else
+        {
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    private async void logout()
+    {
+        string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
+        if (!string.IsNullOrEmpty(usr))
+        {
+            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            if (userModel != null)
+            {
+                HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new PayloadGeneric()
+                    {
+                        Uuid = userModel.Uuid,
+                        payload = new { }
+                    });
+
+                if (response.IsSuccessStatusCode)
+                {
+                    await LocalStorage.ClearAsync();
+                    NavigationManager.NavigateTo("login", true);
+
+                }
+                else
+                {
+                    toastService.ShowError("No se pude finalizar la sesion!");
+                }
+            }
+        }
+
+    }
+
+
+
+}

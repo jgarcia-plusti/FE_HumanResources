@@ -10,35 +10,39 @@
 }
 else
 {
-    <div class="page">
-        @* TOP NavBar *@
-        <TopNav />
-        @* End TOP NavBar *@
-        <div id="layoutSidenav">
-            @* SIDE NavBar *@
-            <NavMenu />
-            @* End Side NavBar *@
-            @* Main *@
-            <article class="content px-4">
-                @Body
-                <BlazoredToasts Position="ToastPosition.TopRight" Timeout="10" IconType="IconType.FontAwesome"
-                    SuccessClass="success-toast-override" SuccessIcon="fa fa-thumbs-up" ErrorIcon="fa fa-bug" />
-                <RadzenContextMenu />
-                <RadzenNotification />
-                <RadzenDialog />
-                <RadzenTooltip />
-            </article>
-        </div>
-        @* End Main *@
-
-
-    </div>
+    <RadzenLayout style="position: relative" class="page">
+        <RadzenHeader>
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
+                <RadzenSidebarToggle Click="@(() => sidebarExpanded = !sidebarExpanded)" />
+                <img src="source/branding-institucional/logo-prodisa.png" alt="" width="32px">
+                <RadzenLabel Text="Industrias Francelli RH" />
+                <TopMenu />
+            </RadzenStack>
+        </RadzenHeader>
+        <RadzenSidebar Responsive="false" @bind-Expanded="@sidebarExpanded" style="position: absolute">
+            <div class="rz-p-4">
+                <SideBar />
+            </div>
+        </RadzenSidebar>
+        <RadzenFooter>
+            Industrias Francelli Todos los Derechos Reservados 2024
+        </RadzenFooter>
+        <article class="content px-4">
+            @Body
+            <BlazoredToasts Position="ToastPosition.TopRight" Timeout="10" IconType="IconType.FontAwesome"
+                SuccessClass="success-toast-override" SuccessIcon="fa fa-thumbs-up" ErrorIcon="fa fa-bug" />
+            <RadzenContextMenu />
+            <RadzenNotification />
+            <RadzenDialog />
+            <RadzenTooltip />
+        </article>
+    </RadzenLayout>
 
 }
 
 @code {
+    bool sidebarExpanded = false;
     private UserModel? userModel = new UserModel();
-
     protected override async Task OnInitializedAsync()
     {
         userModel = null;
