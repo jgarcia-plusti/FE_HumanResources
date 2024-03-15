@@ -15,7 +15,7 @@
                     <br />
                     <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
-                    AllowSorting="true" PageSize="5" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                                     Data="@historicModel" TItem="HistoricByUser" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" 
                                     SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics CellContextMenu="@OnCellContextMenu">
                         <Columns>
