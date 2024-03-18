@@ -1,3 +1,4 @@
+@using FE_HumanResources.Entities
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
@@ -81,19 +82,19 @@
 @* Finaliza TOPNAV *@
 
 @code {
-    private UserModel userModel = null;
+    private UserEntity UserEntity = null;
     string username = "";
 
     protected override async Task OnInitializedAsync()
     {
 
-        userModel = null;
+        UserEntity = null;
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 
         if (!string.IsNullOrEmpty(usr))
         {
-            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
-            username = userModel.UserName + " " + userModel.LastName;
+            UserEntity = JsonConvert.DeserializeObject<UserEntity>(usr);
+            username = UserEntity.UserName + " " + UserEntity.LastName;
         }
         else
         {
@@ -106,12 +107,12 @@
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
         if (!string.IsNullOrEmpty(usr))
         {
-            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
-            if (userModel != null)
+            UserEntity = JsonConvert.DeserializeObject<UserEntity>(usr);
+            if (UserEntity != null)
             {
                 HttpResponseMessage response = await Http.PostAsJsonAsync("api/login/Out", new PayloadGeneric()
                 {
-                    Uuid = userModel.Uuid,
+                    Uuid = UserEntity.Uuid,
                     payload = new { }
                 });
 

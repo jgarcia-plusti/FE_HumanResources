@@ -1,4 +1,5 @@
 ﻿using Blazored.LocalStorage;
+using FE_HumanResources.Entities;
 using FE_HumanResources.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Newtonsoft.Json;
@@ -24,7 +25,7 @@ namespace FE_HumanResources
                 string userStorage = await _localStorage.GetItemAsStringAsync("logedUser");
                 if (!string.IsNullOrEmpty(userStorage))
                 {
-                    UserModel user = JsonConvert.DeserializeObject<UserModel>(userStorage);
+                    UserEntity user = JsonConvert.DeserializeObject<UserEntity>(userStorage);
                     var identity = new ClaimsIdentity(new[]
                     {
                     new Claim("UuidUser", user.Uuid),

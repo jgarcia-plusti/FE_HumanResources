@@ -1,34 +1,34 @@
 ﻿@page "/usersgrid"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
-@using Radzen
+@using FE_HumanResources.Entities
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12" >
-  <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
-                    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
-                                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                                    Data="@userModel" TItem="UserModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
-                                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser CellContextMenu="@OnCellContextMenu"
-                                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
-                        <Columns>
-                            <RadzenDataGridColumn TItem="UserModel" Property="UserName" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
-                            <RadzenDataGridColumn TItem="UserModel" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
-                            <RadzenDataGridColumn TItem="UserModel" Property="JobTitle" Title="Titulo" Width="160px" />
-                            <RadzenDataGridColumn TItem="UserModel" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
-                            <RadzenDataGridColumn TItem="UserModel" Property="Email" Title="Correo" Width="300px" />
-                        </Columns>
-                    </RadzenDataGrid>
+    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
+            AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+            Data="@UserEntity" TItem="UserEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+            SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser CellContextMenu="@OnCellContextMenu"
+            FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+        <Columns>
+            <RadzenDataGridColumn TItem="UserEntity" Property="UserName" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="Identification" Title="Identificacion" Width="160px" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="Email" Title="Correo" Width="300px" />
+        </Columns>
+    </RadzenDataGrid>
 </RadzenBody>
                   
                 
 @code {
-    private UserModel user = new UserModel();
-    private IEnumerable<UserModel> userModel;
-    private IList<UserModel> selectedUser;
+    private UserEntity user = new UserEntity();
+    private IEnumerable<UserEntity> UserEntity;
+    private IList<UserEntity> selectedUser;
 
     protected override async Task OnInitializedAsync()
     {
@@ -46,13 +46,13 @@
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
-                userModel = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(content);
-                if (userModel == null)
+                UserEntity = JsonConvert.DeserializeObject<IEnumerable<UserEntity>>(content);
+                if (UserEntity == null)
                 {
-                    
+
                 }
                 else
-                    selectedUser = userModel.Take(1).ToList();
+                    selectedUser = UserEntity.Take(1).ToList();
             }
             else
             {
@@ -67,39 +67,22 @@
         }
     }
 
-    private void DeleteUser(string uuid)
+    void OnCellContextMenu(DataGridCellMouseEventArgs<UserEntity> args)
     {
-        
-    }
-
-    private void ViewUser(string uuid)
-    {
-        NavigationManager.NavigateTo($"user/{uuid}", true);
-    }
-
-    private void CreateUser()
-    {
-        NavigationManager.NavigateTo($"CreateUser", true);
-    }
-
-    private void GoToHistoricUsers()
-    {
-        NavigationManager.NavigateTo($"historicusergrid", true);
-    }
-
-    void OnCellContextMenu(DataGridCellMouseEventArgs<UserModel> args)
-    {
-        selectedUser = new List<UserModel>() { args.Data };
+        selectedUser = new List<UserEntity>() { args.Data };
 
         ContextMenuService.Open(args,
             new List<ContextMenuItem> {
-                new ContextMenuItem(){ Text = "Context menu item 1", Value = 1, Icon = "home" },
-                new ContextMenuItem(){ Text = "Context menu item 2", Value = 2, Icon = "search" },
-                new ContextMenuItem(){ Text = "Context menu item 3", Value = 3, Icon = "info" },
+                new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
+                new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 1, Icon = "home" },
+                new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
                     },
             (e) =>
             {
-                Console.WriteLine($"Menu item with Value={e.Value} clicked. Column: {args.Column.Property}, EmployeeID: {args.Data.Uuid}");
+                if (e.Value.ToString() == "2")
+                {
+                    NavigationManager.NavigateTo($"user/{args.Data.Uuid}", true);
+                }
             }
          );
     }

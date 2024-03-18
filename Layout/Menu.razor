@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@using FE_HumanResources.Entities
 @using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
@@ -41,7 +42,7 @@ else
 
 @code {
     bool sidebarExpanded = false;
-    private UserModel? userModel = new UserModel();
+    private UserEntity? userModel = new UserEntity();
     protected override async Task OnInitializedAsync()
     {
         userModel = null;
@@ -49,7 +50,7 @@ else
 
         if (!string.IsNullOrEmpty(usr))
         {
-            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
+            userModel = JsonConvert.DeserializeObject<UserEntity>(usr);
         }
     }
 }

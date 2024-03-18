@@ -1,4 +1,5 @@
-﻿@using FE_HumanResources.Models
+﻿@using FE_HumanResources.Entities
+@using FE_HumanResources.Models
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
@@ -47,7 +48,7 @@
 </div>
 
 @code {
-    private UserModel userModel = null;
+    private UserEntity UserEntity = null;
     private bool collapseNavMenu = true;
     string username = "";
 
@@ -61,13 +62,13 @@
     protected override async Task OnInitializedAsync()
     {
 
-        userModel = null;
+        UserEntity = null;
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 
         if (!string.IsNullOrEmpty(usr))
         {
-            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
-            username = userModel.UserName + " " + userModel.LastName;
+            UserEntity = JsonConvert.DeserializeObject<UserEntity>(usr);
+            username = UserEntity.UserName + " " + UserEntity.LastName;
         }
         else
         {

@@ -1,14 +1,13 @@
-@page "/CreateUser"
+﻿@page "/user/{uuid}"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
 @inject ILocalStorageService LocalStorage
-@inject NavigationManager NavigationManager
 @inject NotificationService NotificationService
+@inject NavigationManager NavigationManager
 @inject HttpClient Http
 
-
-<RadzenTemplateForm Data="@userEntity" Submit="@((UserEntity args) => { CreateNewUser(args); })">
+<RadzenTemplateForm Data="@userEntity" Submit="@((UserEntity args) => { Update(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
         <RadzenColumn Size="12" SizeMD="6">
             <RadzenStack>
@@ -132,8 +131,7 @@
          <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
          <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel" Text="Cancel" Click="@ReturnMenu" />
      </RadzenStack>
-</RadzenTemplateForm>
-
+ </RadzenTemplateForm>
 
  @code {
     [Parameter]
@@ -152,6 +150,7 @@
         await base.OnInitializedAsync();
 
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
@@ -160,6 +159,22 @@
             {
                 string content = response.Content.ReadAsStringAsync().Result;
                 roles = JsonConvert.DeserializeObject<ICollection<RoleEntity>>(content);
+                if (roles == null)
+                    showError();
+            }
+
+            response = await Http.PostAsJsonAsync("api/User/GetUser", new PayloadGeneric()
+            {
+                Uuid = uuidUserLoged!,
+                payload = new
+                {
+                    Uuid = this.uuid
+                }
+            });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                userEntity = JsonConvert.DeserializeObject<UserEntity>(content);
                 if (roles == null)
                     showError();
             }
@@ -173,11 +188,11 @@
             messageInfo = $"Error al intentar obtener datos del servidor!";
 
         NotificationService.Notify(new NotificationMessage()
-        {
-            Severity = NotificationSeverity.Error,
-            Summary = messageInfo,
-            Duration = 4000
-        });
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
     }
 
     private void showInfo(string msg)
@@ -191,7 +206,7 @@
             });
     }
 
-    private async void CreateNewUser(UserEntity user)
+    private async void Update(UserEntity user)
     {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
         string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
@@ -200,10 +215,11 @@
         {
             user.Picture = "...";
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric(){
-                Uuid = uuidUserLoged!,
-                payload = user
-            });
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/UpdateUser", new PayloadGeneric()
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = user
+                });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -225,6 +241,4 @@
         uuid = "";
         NavigationManager.NavigateTo($"usersgrid", true);
     }
-
-
 }

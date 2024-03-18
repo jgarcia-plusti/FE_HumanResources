@@ -1,8 +1,7 @@
 ﻿@page "/dashboard"
-@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
-
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
     <p>Hola <strong>@username</strong></p>
@@ -10,18 +9,18 @@
 </RadzenBody>
 
 @code {
-    private UserModel? userModel = new UserModel();
+    private UserEntity? UserEntity = new UserEntity();
     string username = "";
     protected override async Task OnInitializedAsync()
     {
 
-        userModel = null;
+        UserEntity = null;
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 
         if (!string.IsNullOrEmpty(usr))
         {
-            userModel = JsonConvert.DeserializeObject<UserModel>(usr);
-            username = userModel.UserName + " " + userModel.LastName;
+            UserEntity = JsonConvert.DeserializeObject<UserEntity>(usr);
+            username = UserEntity.UserName + " " + UserEntity.LastName;
         }
         else
         {
