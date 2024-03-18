@@ -12969,7 +12969,7 @@ input::placeholder {
 }
 
 .rz-body:only-child {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: white;
 }
 
 .rz-layout .rz-body {
