@@ -8,144 +8,156 @@
 @inject HttpClient Http
 
 
-<RadzenTemplateForm Data="@userEntity" Submit="@((UserEntity args) => { CreateNewUser(args); })">
-    <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
-        <RadzenColumn Size="12" SizeMD="6">
-            <RadzenStack>
-                <RadzenFieldset Text="Informacion de Usuario">
-                    <RadzenStack Gap="1rem">
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenTemplateForm Data="@userEntity" Submit="@((UserEntity args) => { CreateNewUser(args); })">
+        <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+            <RadzenColumn Size="12" SizeMD="6">
+                <RadzenStack>
+                    <RadzenFieldset Text="Informacion de Usuario">
+                        <RadzenStack Gap="1rem">
 
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Nombres" Component="Name" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="userEntity.UserName" />
-                            </RadzenColumn>
-                        </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Apellidos" Component="LastName" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="LastName" @bind-Value="userEntity.LastName" />
-                            </RadzenColumn>
-                        </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="DPI" Component="Identification" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="Identification" @bind-Value="userEntity.Identification" />
-                            </RadzenColumn>
-                        </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Dirección" Component="Adress" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="Adress" @bind-Value="userEntity.Adress" />
-                            </RadzenColumn>
-                        </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Genero" Component="Gender" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDropDown @bind-Value="userEntity.Gender" Placeholder="Femenino" Data="@genders" Style="width: 100%;"
-                                                TextProperty="GenderName" ValueProperty="GenderName" Name="Gender">
-                                </RadzenDropDown>
-                            </RadzenColumn>
-                        </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Telefono" Component="Phone" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenNumeric Style="width: 100%;" Name="Phone" @bind-Value="userEntity.Phone" />
-                            </RadzenColumn>
-                        </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Fecha de Nacimiento" Component="DateOfBirth" Style="margin-right: 8px; vertical-align: middle;" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDatePicker @bind-Value="userEntity.DateOfBirth" Name="DateOfBirth" ShowCalendarWeek />
-                             </RadzenColumn>
-                         </RadzenRow>
-                         <RadzenRow AlignItems="AlignItems.Center">
-                             <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Pais" Component="Country" />
-                             </RadzenColumn>
-                             <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenTextBox Style="width: 100%;" Name="Country" @bind-Value="userEntity.Country" />
-                             </RadzenColumn>
-                         </RadzenRow>
-                     </RadzenStack>
-                 </RadzenFieldset>
-             </RadzenStack>
-         </RadzenColumn>
-         <RadzenColumn Size="12" SizeMD="6">
-             <RadzenStack>
-                 <RadzenFieldset Text="Informacion para la Empresa">
-                     <RadzenStack Gap="1rem">
-                         <RadzenRow AlignItems="AlignItems.Center">
-                             <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Correo" Component="Email" />
-                             </RadzenColumn>
-                             <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="userEntity.Email" />
-                             </RadzenColumn>
-                         </RadzenRow>
-                         <RadzenRow AlignItems="AlignItems.Center">
-                             <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Titulo" Component="Role" />
-                             </RadzenColumn>
-                             <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenDropDown @bind-Value="userEntity.UuidRole" Data="@roles" Style="width: 100%;"
-                                                 TextProperty="Name" ValueProperty="Uuid" Name="Role">
-                                 </RadzenDropDown>
-                             </RadzenColumn>
-                         </RadzenRow>
-                         <RadzenRow>
-                             <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Usuario Activo" Component="Active" />
-                             </RadzenColumn>
-                             <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenSwitch Name="Active" @bind-Value="userEntity.Active" InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
-                             </RadzenColumn>
-                         </RadzenRow>
-                         <RadzenRow AlignItems="AlignItems.Center">
-                             <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Contraseña" Component="Password" />
-                             </RadzenColumn>
-                             <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenPassword Name="Password" @bind-Value="userEntity.Password" aria-label="enter password" />
-                             </RadzenColumn>
-                         </RadzenRow>
-                     </RadzenStack>
-                 </RadzenFieldset>
-             </RadzenStack>
-         </RadzenColumn>
-     </RadzenRow>
-     <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem" Class="rz-mt-8 rz-mb-4">
-         <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
-         <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel" Text="Cancel" Click="@ReturnMenu" />
-     </RadzenStack>
-</RadzenTemplateForm>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Nombres" Component="Name" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="userEntity.UserName" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Apellidos" Component="LastName" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="LastName"
+                                        @bind-Value="userEntity.LastName" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="DPI" Component="Identification" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="Identification"
+                                        @bind-Value="userEntity.Identification" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Dirección" Component="Adress" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="Adress" @bind-Value="userEntity.Adress" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Genero" Component="Gender" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDropDown @bind-Value="userEntity.Gender" Placeholder="Femenino"
+                                        Data="@genders" Style="width: 100%;" TextProperty="GenderName"
+                                        ValueProperty="GenderName" Name="Gender">
+                                    </RadzenDropDown>
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Telefono" Component="Phone" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenNumeric Style="width: 100%;" Name="Phone" @bind-Value="userEntity.Phone" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Fecha de Nacimiento" Component="DateOfBirth"
+                                        Style="margin-right: 8px; vertical-align: middle;" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDatePicker @bind-Value="userEntity.DateOfBirth" Name="DateOfBirth"
+                                        ShowCalendarWeek />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Pais" Component="Country" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="Country"
+                                        @bind-Value="userEntity.Country" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="6">
+                <RadzenStack>
+                    <RadzenFieldset Text="Informacion para la Empresa">
+                        <RadzenStack Gap="1rem">
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Correo" Component="Email" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="userEntity.Email" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Titulo" Component="Role" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDropDown @bind-Value="userEntity.UuidRole" Data="@roles" Style="width: 100%;"
+                                        TextProperty="Name" ValueProperty="Uuid" Name="Role">
+                                    </RadzenDropDown>
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Usuario Activo" Component="Active" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenSwitch Name="Active" @bind-Value="userEntity.Active"
+                                        InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Contraseña" Component="Password" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenPassword Name="Password" @bind-Value="userEntity.Password"
+                                        aria-label="enter password" />
+                                </RadzenColumn>
+                            </RadzenRow>
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+            Class="rz-mt-8 rz-mb-4">
+            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
+            <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel"
+                Text="Cancel" Click="@ReturnMenu" />
+        </RadzenStack>
+    </RadzenTemplateForm>
+</RadzenBody>
 
 
- @code {
+@code {
     [Parameter]
     public string uuid { get; set; }
     private UserEntity userEntity = new UserEntity();
     private ICollection<RoleEntity> roles;
 
     List<dynamic> genders = new List<dynamic>()
-    {
-        new { GenderName = "Masculino" },
-        new { GenderName = "Femenino" }
-    };
+{
+new { GenderName = "Masculino" },
+new { GenderName = "Femenino" }
+};
 
     protected override async Task OnInitializedAsync()
     {
@@ -173,11 +185,11 @@
             messageInfo = $"Error al intentar obtener datos del servidor!";
 
         NotificationService.Notify(new NotificationMessage()
-        {
-            Severity = NotificationSeverity.Error,
-            Summary = messageInfo,
-            Duration = 4000
-        });
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
     }
 
     private void showInfo(string msg)
@@ -200,10 +212,11 @@
         {
             user.Picture = "...";
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric(){
-                Uuid = uuidUserLoged!,
-                payload = user
-            });
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric()
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = user
+                });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;

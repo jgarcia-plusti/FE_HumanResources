@@ -5,6 +5,9 @@
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
+
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" >
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
         <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
                     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
@@ -20,6 +23,7 @@
                         </Columns>
                     </RadzenDataGrid>
                     <RadzenButton Text="Regresar" Click="@GoToUsers" Style="margin-bottom: 20px;" />
+</RadzenBody>
 </RadzenBody>
 
                
