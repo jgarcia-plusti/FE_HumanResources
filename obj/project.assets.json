@@ -14,26 +14,6 @@
           "lib/net8.0/Blazored.LocalStorage.dll": {}
         }
       },
-      "Blazored.Toast/4.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "7.0.1",
-          "Microsoft.AspNetCore.Components.Web": "7.0.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
-        },
-        "compile": {
-          "lib/net7.0/Blazored.Toast.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/Blazored.Toast.dll": {}
-        },
-        "build": {
-          "buildTransitive/Blazored.Toast.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Blazored.Toast.props": {}
-        }
-      },
       "DartSassBuilder/1.0.0": {
         "type": "package",
         "build": {
@@ -477,13 +457,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.3": {
+      "Microsoft.NET.ILLink.Tasks/8.0.0": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.3": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.0": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -612,26 +592,6 @@
           "lib/net8.0/Blazored.LocalStorage.dll": {}
         }
       },
-      "Blazored.Toast/4.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "7.0.1",
-          "Microsoft.AspNetCore.Components.Web": "7.0.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
-        },
-        "compile": {
-          "lib/net7.0/Blazored.Toast.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/Blazored.Toast.dll": {}
-        },
-        "build": {
-          "buildTransitive/Blazored.Toast.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Blazored.Toast.props": {}
-        }
-      },
       "DartSassBuilder/1.0.0": {
         "type": "package",
         "build": {
@@ -1075,13 +1035,13 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.3": {
+      "Microsoft.NET.ILLink.Tasks/8.0.0": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
-      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.3": {
+      "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.0": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.Sdk.WebAssembly.Pack.props": {},
@@ -1207,25 +1167,6 @@
         "lib/net6.0/Blazored.LocalStorage.dll",
         "lib/net7.0/Blazored.LocalStorage.dll",
         "lib/net8.0/Blazored.LocalStorage.dll"
-      ]
-    },
-    "Blazored.Toast/4.1.0": {
-      "sha512": "k12tFBnMMU67bPoBKLTuR2POcYOz02UtT8Lzyeu8fMv587nO8VaWqFfRMJ8Hxkb1SbxL8lY2WiK9tWAZ934khQ==",
-      "type": "package",
-      "path": "blazored.toast/4.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "blazored.toast.4.1.0.nupkg.sha512",
-        "blazored.toast.nuspec",
-        "build/Blazored.Toast.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/Blazored.Toast.props",
-        "buildTransitive/Blazored.Toast.props",
-        "icon.png",
-        "lib/net6.0/Blazored.Toast.dll",
-        "lib/net7.0/Blazored.Toast.dll",
-        "staticwebassets/Blazored.Toast.bundle.scp.css"
       ]
     },
     "DartSassBuilder/1.0.0": {
@@ -2092,10 +2033,10 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.3": {
-      "sha512": "0kwNg0LBIvVTx9A2mo9Mnw4wLGtaeQgjSz5P13bOOwdWPPLe9HzI+XTkwiMhS7iQCM6X4LAbFR76xScaMw0MrA==",
+    "Microsoft.NET.ILLink.Tasks/8.0.0": {
+      "sha512": "B3etT5XQ2nlWkZGO2m/ytDYrOmSsQG1XNBaM6ZYlX5Ch/tDrMFadr0/mK6gjZwaQc55g+5+WZMw4Cz3m8VEF7g==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/8.0.3",
+      "path": "microsoft.net.illink.tasks/8.0.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2109,7 +2050,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.8.0.3.nupkg.sha512",
+        "microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -2143,10 +2084,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.3": {
-      "sha512": "n4TvjyvxuumcFKarFlUworNlgpelbE/RgUgh0A2v9hHd9uYbIhVm3DXFrs1C8J+q4iLQ1vj2RNBkOl5pBK7zFw==",
+    "Microsoft.NET.Sdk.WebAssembly.Pack/8.0.0": {
+      "sha512": "zIP/2rXQN1Q7xkqxJmDU31BvoISdhM6tH0o206ShlTCWgcmMKuGapPYIDcDcUmIZjZGHrLKM4z/MsgfLGi0VUw==",
       "type": "package",
-      "path": "microsoft.net.sdk.webassembly.pack/8.0.3",
+      "path": "microsoft.net.sdk.webassembly.pack/8.0.0",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -2174,7 +2115,7 @@
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.props",
         "build/Microsoft.NET.Sdk.WebAssembly.Pack.targets",
         "build/Wasm.web.config",
-        "microsoft.net.sdk.webassembly.pack.8.0.3.nupkg.sha512",
+        "microsoft.net.sdk.webassembly.pack.8.0.0.nupkg.sha512",
         "microsoft.net.sdk.webassembly.pack.nuspec",
         "tools/net472/Microsoft.Bcl.AsyncInterfaces.dll",
         "tools/net472/Microsoft.Build.dll",
@@ -2518,30 +2459,34 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Blazored.LocalStorage >= 4.5.0",
-      "Blazored.Toast >= 4.1.0",
       "Microsoft.AspNetCore.Components.Authorization >= 8.0.2",
       "Microsoft.AspNetCore.Components.WebAssembly >= 8.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 8.0.0",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.3",
-      "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.3",
+      "Microsoft.NET.ILLink.Tasks >= 8.0.0",
+      "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.0",
       "Newtonsoft.Json >= 13.0.3",
       "Radzen.Blazor >= 4.27.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oscar León\\.nuget\\packages\\": {}
+    "C:\\Users\\jeman\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\REPO\\FE_HumanResources\\FE_HumanResources.csproj",
+      "projectUniqueName": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\FE_HumanResources.csproj",
       "projectName": "FE_HumanResources",
-      "projectPath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\REPO\\FE_HumanResources\\FE_HumanResources.csproj",
-      "packagesPath": "C:\\Users\\Oscar León\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oscar León\\Documents\\0SCARLEON\\Clientes\\19 PRODISA\\REPO\\FE_HumanResources\\obj\\",
+      "projectPath": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\FE_HumanResources.csproj",
+      "packagesPath": "C:\\Users\\jeman\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Oscar León\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jeman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2561,11 +2506,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2575,10 +2515,6 @@
           "Blazored.LocalStorage": {
             "target": "Package",
             "version": "[4.5.0, )"
-          },
-          "Blazored.Toast": {
-            "target": "Package",
-            "version": "[4.1.0, )"
           },
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
@@ -2596,13 +2532,13 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.3, )",
+            "version": "[8.0.0, )",
             "autoReferenced": true
           },
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.3, )",
+            "version": "[8.0.0, )",
             "autoReferenced": true
           },
           "Newtonsoft.Json": {
@@ -2625,18 +2561,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[8.0.3, 8.0.3]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
