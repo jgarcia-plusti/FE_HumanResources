@@ -7,24 +7,37 @@
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12" >
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Configuración" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Usuarios" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <br>
     <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
-    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
-            AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-            Data="@UserEntity" TItem="UserEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
-            SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser CellContextMenu="@OnCellContextMenu"
-            FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false"
+        FilterMode="FilterMode.Simple" AllowSorting="true" PageSize="10" AllowPaging="true"
+        PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true" Data="@UserEntity" TItem="UserEntity"
+        ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+        SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedUser CellContextMenu="@OnCellContextMenu"
+        FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
         <Columns>
-            <RadzenDataGridColumn TItem="UserEntity" Property="UserName" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="UserName" Title="Nombre" Frozen="true" Width="80px"
+                TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn TItem="UserEntity" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
             <RadzenDataGridColumn TItem="UserEntity" Property="Identification" Title="Identificacion" Width="160px" />
-            <RadzenDataGridColumn TItem="UserEntity" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="Phone" Title="Telefono" FormatString="{0:d}"
+                Width="200px" />
             <RadzenDataGridColumn TItem="UserEntity" Property="Email" Title="Correo" Width="300px" />
         </Columns>
     </RadzenDataGrid>
 </RadzenBody>
-                  
-                
+
+
 @code {
     private UserEntity user = new UserEntity();
     private IEnumerable<UserEntity> UserEntity;
@@ -72,18 +85,18 @@
         selectedUser = new List<UserEntity>() { args.Data };
 
         ContextMenuService.Open(args,
-            new List<ContextMenuItem> {
-                new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
-                new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 1, Icon = "home" },
-                new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
-                    },
-            (e) =>
+        new List<ContextMenuItem> {
+new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
+new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 1, Icon = "home" },
+new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
+            },
+        (e) =>
+        {
+            if (e.Value.ToString() == "2")
             {
-                if (e.Value.ToString() == "2")
-                {
-                    NavigationManager.NavigateTo($"user/{args.Data.Uuid}", true);
-                }
+                NavigationManager.NavigateTo($"user/{args.Data.Uuid}", true);
             }
-         );
+        }
+        );
     }
 }
