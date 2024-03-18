@@ -8,7 +8,7 @@
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
-    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeEntity args) => { CreateEmploye(args); })">
+    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { CreateEmploye(args); })">
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">
                 <RadzenStack>
@@ -149,7 +149,7 @@
     </RadzenTemplateForm>
 </RadzenBody>
 @code {
-    EmployeEntity Employee = new EmployeEntity();
+    EmployeeEntity Employee = new EmployeeEntity();
     private ICollection<DepartmentEntity> departments;
     private ICollection<JobTitleEntity> jobTitles;
     string? jwt = null;
