@@ -6340,7 +6340,6 @@ C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Deb
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\obj\Debug\net8.0\compressed\fd6fc4nqmu.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\blazor.webassembly.js
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\Blazored.LocalStorage.wasm
-C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\Blazored.Toast.wasm
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\dotnet.js
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\dotnet.js.map
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\dotnet.native.wasm
@@ -6668,7 +6667,6 @@ C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResour
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Runtime.InteropServices.JavaScript.wasm.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Runtime.Numerics.wasm.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Runtime.Extensions.wasm.gz
-C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\Blazored.Toast.wasm.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\dotnet.js.map.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Net.wasm.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Runtime.InteropServices.wasm.gz
@@ -6760,7 +6758,6 @@ C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResour
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\FE_HumanResources.dll
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\FE_HumanResources.pdb
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\Blazored.LocalStorage.dll
-C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\Blazored.Toast.dll
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll
@@ -6973,7 +6970,6 @@ C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResour
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\FE_HumanResources.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\FE_HumanResources.sourcelink.json
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\webcil\Blazored.LocalStorage.wasm
-C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\webcil\Blazored.Toast.wasm
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Authorization.wasm
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.wasm
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Authorization.wasm
@@ -7185,7 +7181,6 @@ C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResour
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\scopedcss\projectbundle\FE_HumanResources.bundle.scp.css
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\compressed\8z2v3abqov.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\compressed\2f7crctsz1.gz
-C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\compressed\lrrhlx0lxa.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\compressed\0j27cjye3v.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\compressed\fik7yxv1fz.gz
 C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\obj\Debug\net8.0\compressed\35i7n1rwml.gz
