@@ -3,8 +3,26 @@
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12">
-    <p>Hola <strong>@username</strong></p>
+<RadzenBody>
+
+    @* BREADCRUM *@
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Inicio" />
+            <RadzenBreadCrumbItem Path="/dashboard" Text="Dashboard" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <br>
+    @* BREADCRUM *@
+    <RadzenRow class="rz-text-align-center rz-border-info-light" Gap="1rem">
+        <RadzenColumn Size="12" SizeXS="11" SizeSM="10" SizeMD="9" SizeLG="8" SizeXL="7" SizeXX="6"
+            class="rz-background-color-info-lighter rz-color-on-info-lighter rz-p-5">
+            <p>Hola <strong>@username</strong></p>
+        </RadzenColumn>
+    </RadzenRow>
 
 </RadzenBody>
 
