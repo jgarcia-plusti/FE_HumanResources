@@ -1,26 +1,22 @@
-
-using System.Runtime.Serialization;
-
 namespace FE_HumanResources.Entities
 {
-    [DataContract]
     public partial class EmployeEntity
     {
-        [DataMember] public string Uuid { get; set; }
-        [DataMember] public string UuidDepartment { get; set; }
-        [DataMember] public string UuidJobTitle { get; set; }
-        [DataMember] public string Name { get; set; }
-        [DataMember] public string LastName { get; set; }
-        [DataMember] public string Identification { get; set; }
-        [DataMember] public DateOnly DateOfBirth { get; set; }
-        [DataMember] public DateOnly InitDate { get; set; }
-        [DataMember] public string Adress { get; set; }
-        [DataMember] public string Email { get; set; }
-        [DataMember] public string Gender { get; set; }
-        [DataMember] public string Picture { get; set; }
-        [DataMember] public bool IsUSer { get; set; }
-        [DataMember] public int Phone { get; set; }
-        [DataMember] public bool IsDeleted { get; set; }
-        [DataMember] public DateTime DateModify { get; set; }
+        public string Uuid { get; set; }
+        public string UuidDepartment { get; set; }
+        public string UuidJobTitle { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Identification { get; set; }
+        public DateOnly DateOfBirth { get; set; }
+        public DateOnly InitDate { get; set; }
+        public string Adress { get; set; }
+        public string Email { get; set; }
+        public string Gender { get; set; }
+        public string Picture { get; set; }
+        public bool IsUSer { get; set; }
+        public int Phone { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime DateModify { get; set; }
     }
 }

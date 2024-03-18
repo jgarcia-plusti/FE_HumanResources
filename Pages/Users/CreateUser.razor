@@ -42,14 +42,10 @@
     </div>
 </div>
 
-
-
 @code {
     [Parameter]
     public string uuid { get; set; }
     private UserEntity userEntity = new UserEntity();
-    private ICollection<RoleEntity> roles;
-
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
