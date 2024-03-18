@@ -1,6 +1,6 @@
 namespace FE_HumanResources.Entities
 {
-    public partial class EmployeEntity
+    public partial class EmployeeEntity
     {
         public string Uuid { get; set; }
         public string UuidDepartment { get; set; }

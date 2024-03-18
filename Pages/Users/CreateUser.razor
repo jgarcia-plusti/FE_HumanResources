@@ -136,8 +136,7 @@
 
 
  @code {
-    [Parameter]
-    public string uuid { get; set; }
+
     private UserEntity userEntity = new UserEntity();
     private ICollection<RoleEntity> roles;
 
@@ -222,7 +221,6 @@
 
     private void ReturnMenu()
     {
-        uuid = "";
         NavigationManager.NavigateTo($"usersgrid", true);
     }
 

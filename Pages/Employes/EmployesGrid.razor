@@ -3,9 +3,87 @@
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
 @inject ILocalStorageService LocalStorage
+@inject ContextMenuService ContextMenuService
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 
-@code {
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
+                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@EmployeeEntity" TItem="EmployeeEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu"
+                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+        <Columns>
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Name" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Identification" Title="Identificacion" Width="160px" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Email" Title="Correo" Width="300px" />
+        </Columns>
+    </RadzenDataGrid>
+</RadzenBody>
 
+
+@code {
+    private EmployeeEntity user = new EmployeeEntity();
+    private IEnumerable<EmployeeEntity> EmployeeEntity;
+    private IList<EmployeeEntity> selectedEmployee;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Reset();
+    }
+
+    private async Task Reset()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                EmployeeEntity = JsonConvert.DeserializeObject<IEnumerable<EmployeeEntity>>(content);
+                if (EmployeeEntity == null)
+                {
+
+                }
+                else
+                    selectedEmployee = EmployeeEntity.Take(1).ToList();
+            }
+            else
+            {
+                await LocalStorage.ClearAsync();
+                NavigationManager.NavigateTo("login", true);
+            }
+        }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    void OnCellContextMenu(DataGridCellMouseEventArgs<EmployeeEntity> args)
+    {
+        selectedEmployee = new List<EmployeeEntity>() { args.Data };
+
+        ContextMenuService.Open(args,
+            new List<ContextMenuItem> {
+                new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
+                new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 1, Icon = "home" },
+                new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
+                        },
+            (e) =>
+            {
+                if (e.Value.ToString() == "2")
+                {
+                    NavigationManager.NavigateTo($"Employee/{args.Data.Uuid}", true);
+                }
+            }
+         );
+    }
 }

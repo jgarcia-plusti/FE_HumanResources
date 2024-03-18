@@ -7,7 +7,7 @@
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 
-<RadzenTemplateForm Data="@Employee" Submit="@((EmployeEntity args) => { CreateEmploye(args); })">
+<RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { CreateEmploye(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
         <RadzenColumn Size="12" SizeMD="6">
             <RadzenStack>
@@ -137,7 +137,7 @@
     </RadzenStack>
 </RadzenTemplateForm>
  @code {
-    EmployeEntity Employee = new EmployeEntity();
+    EmployeeEntity Employee = new EmployeeEntity();
     private ICollection<DepartmentEntity> departments;
     private ICollection<JobTitleEntity> jobTitles;
     string? jwt = null;
@@ -191,13 +191,62 @@
         });
     }
 
-    private void CreateEmploye(EmployeEntity employee)
+    private async Task CreateEmploye(EmployeeEntity employee)
     {
-        Console.WriteLine(JsonConvert.SerializeObject(employee));
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+
+        if (employee != null && !string.IsNullOrEmpty(jwt))
+        {
+            employee.Picture = "...";
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/Create", new PayloadGeneric()
+            {
+                Uuid = uuidUserLoged!,
+                payload = employee
+            });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                UserEntity? createdUser = JsonConvert.DeserializeObject<UserEntity>(content);
+                if (createdUser != null)
+                {
+                    showInfo("Se agrego la información con exito");
+                }
+            }
+            else
+            {
+                showError("Perdon algo salio mal");
+            }
+        }
     }
 
     private void ReturnMenu()
     {
-        
+        NavigationManager.NavigateTo($"employesgrid", true);
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
     }
 }
