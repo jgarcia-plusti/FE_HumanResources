@@ -43,11 +43,11 @@
                         @* Encabezado del formulario / Logos *@
                         <div class="text-center mb-11">
                             <a href="#" class="mb-0 mb-lg-12">
-                                <img alt="Logo" src="source/branding-institucional/logo-prodisa.png" width="110px" />
+                                <img alt="Logo" src="source/branding-institucional/logo.png" width="110px" />
                             </a>
                             <br>
                             <a href="#" class="mb-0 mb-lg-12">
-                                <img alt="Logo" src="source/branding-institucional/prodisa.png"
+                                <img alt="Logo" src="source/branding-institucional/Slogan-francelli.png"
                                     class="h-50px h-lg-75px" />
                             </a>
 
@@ -138,11 +138,11 @@
                 messageInfo = $"No se admite un campo vacio!";
 
                 NotificationService.Notify(new NotificationMessage()
-                { 
-                    Severity = NotificationSeverity.Error, 
-                    Summary = messageInfo, 
-                    Duration = 4000 
-                });
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = messageInfo,
+                        Duration = 4000
+                    });
             }
             else
             {
@@ -156,9 +156,9 @@
                     {
                         Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWT.Jwt);
                         HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/user/GetProfile", new PayloadGeneric()
-                        {
-                            Uuid = JWT.uuidUser
-                        });
+                            {
+                                Uuid = JWT.uuidUser
+                            });
 
                         if (userRest.IsSuccessStatusCode)
                         {
@@ -187,11 +187,11 @@
                                 {
                                     messageInfo = $"Usuario inactivo!";
                                     NotificationService.Notify(new NotificationMessage()
-                                    {
-                                        Severity = NotificationSeverity.Warning,
-                                        Summary = messageInfo,
-                                        Duration = 4000
-                                    });
+                                        {
+                                            Severity = NotificationSeverity.Warning,
+                                            Summary = messageInfo,
+                                            Duration = 4000
+                                        });
                                 }
                             }
                         }
@@ -201,21 +201,21 @@
                 {
                     messageInfo = $"Usted no esta autorizado, Contraseña o Correo erroneo";
                     NotificationService.Notify(new NotificationMessage()
-                    {
-                        Severity = NotificationSeverity.Error,
-                        Summary = messageInfo,
-                        Duration = 4000
-                    });
+                        {
+                            Severity = NotificationSeverity.Error,
+                            Summary = messageInfo,
+                            Duration = 4000
+                        });
                 }
                 else
                 {
                     messageInfo = $"Error al intentar ingresar.";
                     NotificationService.Notify(new NotificationMessage()
-                    {
-                        Severity = NotificationSeverity.Error,
-                        Summary = messageInfo,
-                        Duration = 4000
-                    });
+                        {
+                            Severity = NotificationSeverity.Error,
+                            Summary = messageInfo,
+                            Duration = 4000
+                        });
                 }
             }
         }
@@ -224,11 +224,11 @@
             messageInfo = $"Error al intentar ingresar.";
             await LocalStorage.ClearAsync();
             NotificationService.Notify(new NotificationMessage()
-            {
-                Severity = NotificationSeverity.Error,
-                Summary = messageInfo,
-                Duration = 4000
-            });
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = messageInfo,
+                    Duration = 4000
+                });
         }
     }
 }
