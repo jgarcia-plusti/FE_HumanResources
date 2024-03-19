@@ -1,8 +1,4 @@
 is_global = true
-build_property.EnableAotAnalyzer = 
-build_property.EnableSingleFileAnalyzer = 
-build_property.EnableTrimAnalyzer = false
-build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -10,12 +6,12 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = false
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
-build_property._SupportedPlatformList = browser
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FE_HumanResources
 build_property.RootNamespace = FE_HumanResources
 build_property.ProjectDir = C:\Users\Oscar León\Documents\0SCARLEON\Clientes\19 PRODISA\REPO\FE_HumanResources\
 build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
@@ -48,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/REPO/FE_HumanResources/Pages/Employes/EmployesGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcRW1wbG95ZXNHcmlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/REPO/FE_HumanResources/Pages/Employes/UpdateEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcVXBkYXRlRW1wbG95ZWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Oscar León/Documents/0SCARLEON/Clientes/19 PRODISA/REPO/FE_HumanResources/Pages/Historics/HistoricsUserGrid.razor]
