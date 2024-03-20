@@ -2,7 +2,7 @@
 {
     public class JWTModel
     {
-        public string uuidUser { get;set; }
-        public string Jwt { get;set; }
+        public string uuidUser { get; set; }
+        public string Jwt { get; set; }
     }
 }

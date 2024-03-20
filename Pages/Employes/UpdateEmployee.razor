@@ -7,6 +7,15 @@
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Empelados" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Editar Empleado" />
+        </ChildContent>
+    </RadzenBreadCrumb>
     <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { Update(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
         <RadzenColumn Size="12" SizeMD="6">
@@ -94,17 +103,17 @@
                                  <RadzenLabel Text="Departamento" Component="Department" />
                              </RadzenColumn>
                              <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenDropDown @bind-Value="Employee.UuidDepartment" Data="@departments" Style="width: 100%;"
+                                     <RadzenDropDown Disabled="true" @bind-Value="Employee.UuidDepartment" Data="@departments" Style="width: 100%;"
                                                  TextProperty="Name" ValueProperty="Uuid" Name="Department">
                                  </RadzenDropDown>
                              </RadzenColumn>
                          </RadzenRow>
                          <RadzenRow AlignItems="AlignItems.Center">
                              <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Titulo" Component="JobTitles" />
+                                 <RadzenLabel Text="Cargo" Component="JobTitles" />
                              </RadzenColumn>
                              <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenDropDown @bind-Value="Employee.UuidJobTitle" Data="@jobTitles" Style="width: 100%;"
+                                 <RadzenDropDown Disabled="true" @bind-Value="Employee.UuidJobTitle" Data="@jobTitles" Style="width: 100%;"
                                                  TextProperty="Name" ValueProperty="Uuid" Name="JobTitles">
                                  </RadzenDropDown>
                              </RadzenColumn>
@@ -133,7 +142,7 @@
      </RadzenRow>
      <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem" Class="rz-mt-8 rz-mb-4">
          <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
-         <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel" Text="Cancel" Click="@ReturnMenu" />
+             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back" Text="Regresar" Click="@ReturnMenu" />
      </RadzenStack>
  </RadzenTemplateForm>
 </RadzenBody>

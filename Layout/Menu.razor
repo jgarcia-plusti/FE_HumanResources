@@ -10,7 +10,7 @@
 }
 else
 {
-    <RadzenLayout style="position: relative;" class="page">
+    <RadzenLayout class="page">
         <RadzenHeader>
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0">
                 <RadzenSidebarToggle Click="@(() => sidebarExpanded = !sidebarExpanded)" />
@@ -19,17 +19,17 @@ else
                 <TopMenu />
             </RadzenStack>
         </RadzenHeader>
-        <RadzenSidebar Responsive="false" @bind-Expanded="@sidebarExpanded" style="position: absolute">
+        <RadzenSidebar Responsive="false" @bind-Expanded="@sidebarExpanded">
             <div class="rz-p-4">
                 <SideBar />
             </div>
         </RadzenSidebar>
-        <RadzenFooter class="rz-text-align-center">
-            Industrias Francelli Todos los Derechos Reservados 2024
-        </RadzenFooter>
         <article class="content px-4">
             @Body
         </article>
+        <RadzenFooter class="rz-text-align-center">
+            Industrias Francelli Todos los Derechos Reservados 2024
+        </RadzenFooter>
     </RadzenLayout>
 
 }
@@ -41,7 +41,7 @@ else
 <RadzenTooltip />
 
 @code {
-    bool sidebarExpanded = false;
+    bool sidebarExpanded = true;
     private UserEntity? userModel = new UserEntity();
     protected override async Task OnInitializedAsync()
     {

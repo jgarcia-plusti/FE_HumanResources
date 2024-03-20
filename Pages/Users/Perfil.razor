@@ -7,6 +7,15 @@
 @inject NotificationService NotificationService
 @inject HttpClient Http
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Usuarios" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Mi Perfil" />
+        </ChildContent>
+    </RadzenBreadCrumb>
     <RadzenTemplateForm Data="@userEntity" Submit="@((UserEntity args) => { UpdateUser(args); })">
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">
@@ -33,11 +42,10 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="DPI" Component="Identification" />
+                                    <RadzenLabel Text="Doc. Identificación" Component="Identification" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="Identification"
-                                        @bind-Value="userEntity.Identification" />
+                                    <RadzenTextBox Disabled="true" Style="width: 100%;" Name="Identification" @bind-Value="userEntity.Identification" />
                                 </RadzenColumn>
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
@@ -99,7 +107,7 @@
                                     <RadzenLabel Text="Correo" Component="Email" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="userEntity.Email" />
+                                     <RadzenTextBox Disabled="true" Style="width: 100%;" Name="Email" @bind-Value="userEntity.Email" />
                                 </RadzenColumn>
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
@@ -107,7 +115,7 @@
                                     <RadzenLabel Text="Tipo de Usuario (Rol)" Component="Role" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="userEntity.UuidRole" Data="@roles" Style="width: 100%;"
+                                     <RadzenDropDown Disabled="true" @bind-Value="userEntity.UuidRole" Data="@roles" Style="width: 100%;"
                                         TextProperty="Name" ValueProperty="Uuid" Name="Role">
                                     </RadzenDropDown>
                                 </RadzenColumn>
@@ -117,7 +125,7 @@
                                     <RadzenLabel Text="Usuario Activo" Component="Active" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenSwitch Name="Active" @bind-Value="userEntity.Active"
+                                     <RadzenSwitch Disabled="true" Name="Active" @bind-Value="userEntity.Active"
                                         InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
                                 </RadzenColumn>
                             </RadzenRow>
@@ -138,8 +146,8 @@
         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
             Class="rz-mt-8 rz-mb-4">
             <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
-            <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel"
-                Text="Cancel" Click="@ReturnMenu" />
+             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                Text="Regresar" Click="@ReturnMenu" />
         </RadzenStack>
     </RadzenTemplateForm>
 </RadzenBody>

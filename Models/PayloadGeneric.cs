@@ -6,6 +6,6 @@ namespace FE_HumanResources.Models
     public class PayloadGeneric
     {
         [DataMember] public string Uuid { get; set; }
-        [DataMember] public dynamic payload { get; set; } = new {};
+        [DataMember] public dynamic payload { get; set; } = new { };
     }
 }

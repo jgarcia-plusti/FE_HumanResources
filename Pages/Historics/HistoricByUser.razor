@@ -1,4 +1,4 @@
-﻿@page "/historicusergrid"
+﻿@page "/historicusergrid/{uuid}-{name}"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
@@ -13,35 +13,41 @@
             <RadzenBadge Text="@item.Text" IsPill="true" />
         </Template>
         <ChildContent>
-            <RadzenBreadCrumbItem Path="/" Text="Historico" />
-            <RadzenBreadCrumbItem Path="/usersgrid" Text="Historico de Usuarios" />
+            <RadzenBreadCrumbItem Path="/" Text="Usuario" />
+            <RadzenBreadCrumbItem Path="/" Text="@name" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Historico del Usuario" />
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
-        <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
-        <br />
-        <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple" 
-        AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                        Data="@historicModel" TItem="HistoricByUserEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" 
-                        SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics >
-            <Columns>
+    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <br />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
+                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@historicModel" TItem="HistoricByUserEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics>
+        <Columns>
             <RadzenDataGridColumn TItem="HistoricByUserEntity" Property="ActionType" Title="Tipo de Accion" Frozen="true" Width="80px" />
             <RadzenDataGridColumn TItem="HistoricByUserEntity" Property="Module" Title="Modulo" Frozen="true" Width="160px" />
             <RadzenDataGridColumn TItem="HistoricByUserEntity" Property="Register" Title="Registro" Width="160px" />
             <RadzenDataGridColumn TItem="HistoricByUserEntity" Property="Date" Title="Fecha" FormatString="{0:d}" Width="200px" />
             <RadzenDataGridColumn TItem="HistoricByUserEntity" Property="UserName" Title="Usuario" Width="300px" />
-            </Columns>
-        </RadzenDataGrid>
-         <br />
-        <RadzenButton Text="Regresar" Click="@GoBack" Style="margin-bottom: 20px;" />
+        </Columns>
+    </RadzenDataGrid>
+    <br />
+    <RadzenButton Text="Regresar" Click="@GoBack" Style="margin-bottom: 20px;" />
 </RadzenBody>
-           
+
 @code {
+    [Parameter]
+    public string uuid { get; set; }
+    [Parameter]
+    public string name { get; set; }
+
     private IEnumerable<HistoricByUserEntity> historicModel;
     private IList<HistoricByUserEntity> selectedHistorics;
 
     protected override async Task OnInitializedAsync()
-    {   
+    {
         await base.OnInitializedAsync();
         await Reset();
     }
@@ -52,14 +58,18 @@
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.GetAsync("api/Historic/GetHitoricUser");
-            if (response.IsSuccessStatusCode)
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Historic/GetHitoricByUser", new PayloadGeneric()
             {
+                Uuid = this.uuid,
+                payload = new { uuid = this.uuid }
+            });
+            if (response.IsSuccessStatusCode)
+            { 
                 string content = response.Content.ReadAsStringAsync().Result;
                 historicModel = JsonConvert.DeserializeObject<IEnumerable<HistoricByUserEntity>>(content);
                 if (historicModel == null)
                 {
-                    
+
                 }
                 else
                     selectedHistorics = new List<HistoricByUserEntity>() { historicModel.FirstOrDefault() };
@@ -80,23 +90,7 @@
 
     private void GoBack()
     {
-        NavigationManager.NavigateTo("/dashboard");
+        NavigationManager.NavigateTo("/usersgrid");
     }
 
-    // void OnCellContextMenu(DataGridCellMouseEventArgs<HistoricByUser> args)
-    // {
-    //     selectedHistorics = new List<HistoricByUser>() { args.Data };
-
-    //     ContextMenuService.Open(args,
-    //         new List<ContextMenuItem> {
-    //             new ContextMenuItem(){ Text = "Context menu item 1", Value = 1, Icon = "home" },
-    //             new ContextMenuItem(){ Text = "Context menu item 2", Value = 2, Icon = "search" },
-    //             new ContextMenuItem(){ Text = "Context menu item 3", Value = 3, Icon = "info" },
-    //             },
-    //         (e) =>
-    //         {
-    //             Console.WriteLine($"Menu item with Value={e.Value} clicked. Column: {args.Column.Property}, EmployeeID: {args.Data.Uuid}");
-    //         }
-    //      );
-    // }
 }

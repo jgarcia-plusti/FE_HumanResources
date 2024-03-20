@@ -13,8 +13,8 @@
             <RadzenBadge Text="@item.Text" IsPill="true" />
         </Template>
         <ChildContent>
-            <RadzenBreadCrumbItem Path="/" Text="Configuración" />
-            <RadzenBreadCrumbItem Path="/usersgrid" Text="Usuarios" />
+            <RadzenBreadCrumbItem Path="/" Text="Usuarios" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Lista de Usuarios" />
         </ChildContent>
     </RadzenBreadCrumb>
     <br>
@@ -86,15 +86,19 @@
 
         ContextMenuService.Open(args,
         new List<ContextMenuItem> {
-new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
-new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 1, Icon = "home" },
-new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
-            },
+            new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
+            new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 2, Icon = "home" },
+            new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
+        },
         (e) =>
         {
-            if (e.Value.ToString() == "2")
+            if (e.Value.ToString() == "1")
             {
-                NavigationManager.NavigateTo($"User/{args.Data.Uuid}");
+                NavigationManager.NavigateTo($"/User/{args.Data.Uuid}");
+            }
+            else if (e.Value.ToString() == "2")
+            {
+                NavigationManager.NavigateTo($"/historicusergrid/{args.Data.Uuid}-{args.Data.UserName}");
             }
         }
         );

@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
-namespace FE_HumanResources.Models
+namespace FE_HumanResources.Entities
 {
     [DataContract]
-    public class HistoricByUser
+    public class HistoricByUserEntity
     {
         [DataMember] public string Uuid { get; set; }
         [DataMember] public string UuidUser { get; set; }

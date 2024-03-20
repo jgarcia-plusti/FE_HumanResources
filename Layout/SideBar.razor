@@ -21,15 +21,19 @@
         <RadzenPanelMenuItem Text="Dashboard" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     @* SETTINGS *@
-    <RadzenPanelMenuItem Text="Configuración" Icon="settings">
+    <RadzenPanelMenuItem Text="Usuarios" Icon="settings">
         <RadzenPanelMenuItem Text="Perfil" Path="/perfil" Icon="assignment_ind"></RadzenPanelMenuItem>
-        <RadzenPanelMenuItem Text="Usuarios" Path="/usersgrid" Icon="people_alt"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Crear usuario" Path="/CreateUser" Icon="person_add"></RadzenPanelMenuItem>
-        <RadzenPanelMenuItem Text="Crear empleado" Path="/CreateEmployes" Icon="person_add"></RadzenPanelMenuItem>
-        <RadzenPanelMenuItem Text="Empleados" Path="/employesgrid" Icon="person_add"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Lista de Usuarios" Path="/usersgrid" Icon="people_alt"></RadzenPanelMenuItem>        
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Empelados" Icon="settings">
+        <RadzenPanelMenuItem Text="Crear empleado" Path="/CreateEmployes" Icon="engineering"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Lista de Empleados" Path="/employesgrid" Icon="groups"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Historico General" Icon="manage_search">
+        <RadzenPanelMenuItem Text="Mantenimiento de Usuarios" Path="/historicusergrid" Icon="person_search"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
 </RadzenPanelMenu>
-
 
 @code {
     private UserEntity UserEntity = null;

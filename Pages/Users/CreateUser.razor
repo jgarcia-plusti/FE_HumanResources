@@ -9,6 +9,15 @@
 
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Usuarios" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Crear Usuario" />
+        </ChildContent>
+    </RadzenBreadCrumb>
     <RadzenTemplateForm Data="@userEntity" Submit="@((UserEntity args) => { CreateNewUser(args); })">
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">
@@ -140,8 +149,8 @@
         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
             Class="rz-mt-8 rz-mb-4">
             <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
-            <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel"
-                Text="Cancel" Click="@ReturnMenu" />
+             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                Text="Regresar" Click="@ReturnMenu" />
         </RadzenStack>
     </RadzenTemplateForm>
 </RadzenBody>
@@ -234,7 +243,7 @@
 
     private void ReturnMenu()
     {
-        NavigationManager.NavigateTo($"usersgrid", true);
+        NavigationManager.NavigateTo($"/usersgrid");
     }
 
 

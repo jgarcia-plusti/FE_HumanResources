@@ -1,6 +1,5 @@
 ﻿using Blazored.LocalStorage;
 using FE_HumanResources.Entities;
-using FE_HumanResources.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Newtonsoft.Json;
 using System.Security.Claims;
