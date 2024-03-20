@@ -6,7 +6,6 @@
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 
-
 <RadzenBody Gap="1rem" Class="rz-p-sm-12" >
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
         <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
@@ -25,9 +24,6 @@
                     <RadzenButton Text="Regresar" Click="@GoToUsers" Style="margin-bottom: 20px;" />
 </RadzenBody>
 </RadzenBody>
-
-               
-
            
 @code {
     private IEnumerable<HistoricByUser> historicModel;

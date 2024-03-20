@@ -155,8 +155,8 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
-        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
 
         if (!string.IsNullOrEmpty(jwt))
         {
@@ -181,13 +181,13 @@
             }
 
             response = await Http.PostAsJsonAsync("api/Employee/Get", new PayloadGeneric()
-            {
-                Uuid = uuidUserLoged!,
-                payload = new
                 {
-                    Uuid = this.uuid
-                }
-            });
+                    Uuid = uuidUserLoged!,
+                    payload = new
+                    {
+                        Uuid = this.uuid
+                    }
+                });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -218,12 +218,14 @@
         if (employee != null && !string.IsNullOrEmpty(jwt))
         {
             employee.Picture = "...";
+            employee.IsDeleted = false;
+            employee.DateModify = DateTime.Now.Date;
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
             HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/Update", new PayloadGeneric()
-            {
-                Uuid = uuidUserLoged!,
-                payload = employee
-            });
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = employee
+                });
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -242,7 +244,7 @@
 
     private void ReturnMenu()
     {
-        NavigationManager.NavigateTo($"employesgrid", true);
+        NavigationManager.NavigateTo($"/employesgrid", true);
     }
 
     private void showError(string messageInfo = null)

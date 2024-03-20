@@ -148,6 +148,7 @@
         </RadzenStack>
     </RadzenTemplateForm>
 </RadzenBody>
+
 @code {
     EmployeeEntity Employee = new EmployeeEntity();
     private ICollection<DepartmentEntity> departments;
@@ -156,10 +157,10 @@
     string? uuidUserLoged = null;
 
     List<dynamic> genders = new List<dynamic>()
-{
-new { GenderName = "Masculino" },
-new { GenderName = "Femenino" }
-};
+    {
+        new { GenderName = "Masculino" },
+        new { GenderName = "Femenino" }
+    };
 
     protected override async Task OnInitializedAsync()
     {

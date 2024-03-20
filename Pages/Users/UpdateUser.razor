@@ -1,4 +1,4 @@
-﻿@page "/user/{uuid}"
+﻿@page "/User/{uuid}"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
@@ -250,6 +250,6 @@ new { GenderName = "Femenino" }
     private void ReturnMenu()
     {
         uuid = "";
-        NavigationManager.NavigateTo($"usersgrid", true);
+        NavigationManager.NavigateTo($"/usersgrid", true);
     }
 }

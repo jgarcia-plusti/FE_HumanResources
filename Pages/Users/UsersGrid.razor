@@ -94,7 +94,7 @@ new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
         {
             if (e.Value.ToString() == "2")
             {
-                NavigationManager.NavigateTo($"user/{args.Data.Uuid}", true);
+                NavigationManager.NavigateTo($"User/{args.Data.Uuid}");
             }
         }
         );
