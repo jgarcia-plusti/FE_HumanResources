@@ -5,10 +5,11 @@
 @inject ILocalStorageService LocalStorage
 @inject NotificationService NotificationService
 @inject NavigationManager NavigationManager
+@inject DialogService DialogService
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
-    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { CreateEmploye(args); })">
+    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { ValidateIsUser(); })">
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">
                 <RadzenStack>
@@ -142,17 +143,20 @@
         </RadzenRow>
         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
             Class="rz-mt-8 rz-mb-4">
-            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
-            <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel"
-                Text="Cancel" Click="@ReturnMenu" />
+            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="Cancel"
+                Text="Regresar" Click="@ReturnMenu" />
         </RadzenStack>
     </RadzenTemplateForm>
 </RadzenBody>
 
-@code {
+ @code {
     EmployeeEntity Employee = new EmployeeEntity();
     private ICollection<DepartmentEntity> departments;
     private ICollection<JobTitleEntity> jobTitles;
+    private ICollection<RoleEntity> roles;
+    private string selectedUuidRole;
+    private string selectedCountry;
     string? jwt = null;
     string? uuidUserLoged = null;
 
@@ -172,7 +176,7 @@
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
 
-            HttpResponseMessage response = await Http.GetAsync("api/Catalogs/Departments");
+            HttpResponseMessage response = await Http.GetAsync("api/Catalogs/JobTitles");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -181,7 +185,7 @@
                     showError();
             }
 
-            response = await Http.GetAsync("api/Catalogs/JobTitles");
+            response = await Http.GetAsync("api/Catalogs/Departments");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -190,20 +194,61 @@
                     showError();
             }
 
+            response = await Http.GetAsync("api/Catalogs/Roles");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                roles = JsonConvert.DeserializeObject<ICollection<RoleEntity>>(content);
+                if (roles == null)
+                    showError();
+            }
+
         }
     }
 
-    private void showError()
+    private async Task ShowInlineDialog()
     {
-        string messageInfo = $"Error al intentar obtener datos del servidor!";
-        NotificationService.Notify(new NotificationMessage()
-            {
-                Severity = NotificationSeverity.Error,
-                Summary = messageInfo,
-                Duration = 4000
-            });
+        var result = await DialogService.OpenAsync("Información de Usuario", ds =>
+        @<RadzenStack Gap="1.5rem">
+            <RadzenRow AlignItems="AlignItems.Center">
+                <RadzenColumn Size="12" SizeMD="4">
+                    <RadzenLabel Text="Titulo" Component="Role" />
+                </RadzenColumn>
+                <RadzenColumn Size="12" SizeMD="8">
+                    <RadzenDropDown @bind-Value="@selectedUuidRole" Data="@roles" Style="width: 100%;"
+                                    TextProperty="Name" ValueProperty="Uuid" Name="Role">
+                    </RadzenDropDown>
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenRow AlignItems="AlignItems.Center">
+                <RadzenColumn Size="12" SizeMD="4">
+                    <RadzenLabel Text="Pais" Component="selectedCountry" />
+                </RadzenColumn>
+                <RadzenColumn Size="12" SizeMD="8">
+                <RadzenTextBox Style="width: 100%;" Name="selectedCountry" @bind-Value="selectedCountry" />
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                <RadzenStack Orientation="Orientation.Horizontal">
+                <RadzenButton Text="Ok" Click="@(async () => {  CreateEmploye(this.Employee); ds.Close(true); })" Style="width: 80px;" />
+                    <RadzenButton Text="Cancel" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Light" />
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenStack>
+    );
     }
 
+    private void ValidateIsUser()
+    {
+        if (this.Employee.IsUSer)
+        {
+            ShowInlineDialog();
+        }
+        else
+        {
+            CreateEmploye(this.Employee);
+        }
+    }
     private async Task CreateEmploye(EmployeeEntity employee)
     {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
@@ -212,6 +257,10 @@
         if (employee != null && !string.IsNullOrEmpty(jwt))
         {
             employee.Picture = "...";
+            employee.IsDeleted = false;
+            employee.DateModify = DateTime.Now.Date;
+            employee.Uuid = "";
+
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
             HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/Create", new PayloadGeneric()
             {
@@ -221,10 +270,44 @@
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
-                UserEntity? createdUser = JsonConvert.DeserializeObject<UserEntity>(content);
-                if (createdUser != null)
+                EmployeeEntity? createdEmployee = JsonConvert.DeserializeObject<EmployeeEntity>(content);
+                if (createdEmployee != null)
                 {
-                    showInfo("Se agrego la información con exito");
+                    if (employee.IsUSer)
+                    {
+                        response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric()
+                        {
+                            Uuid = uuidUserLoged!,
+                            payload = new UserEntity()
+                            {
+                                Uuid = "",
+                                UuidRole = selectedUuidRole,
+                                UserName = createdEmployee.Name,
+                                LastName = createdEmployee.LastName,
+                                Identification = createdEmployee.Identification,
+                                Adress = createdEmployee.Adress,
+                                Gender = createdEmployee.Gender,
+                                Phone = createdEmployee.Phone,
+                                DateOfBirth = createdEmployee.DateOfBirth,
+                                Email = createdEmployee.Email,
+                                Password = "Pr0DiSa24*",
+                                Active = true,
+                                Picture = "...",
+                                Country = selectedCountry,
+                                DateModify = DateTime.Now.Date,
+                                IsDeleted = false
+                            }
+                        });
+                    }
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        this.Employee = new EmployeeEntity();
+                        showInfo("Se creo Empleado con Exito!");
+                    }
+                    else
+                        showError("Perdon algo salio mal");
+
                 }
             }
             else

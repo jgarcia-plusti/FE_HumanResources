@@ -6,8 +6,8 @@
 @inject NotificationService NotificationService
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
-
-<RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { Update(args); })">
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { Update(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
         <RadzenColumn Size="12" SizeMD="6">
             <RadzenStack>
@@ -136,6 +136,7 @@
          <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="cancel" Text="Cancel" Click="@ReturnMenu" />
      </RadzenStack>
  </RadzenTemplateForm>
+</RadzenBody>
  @code {
     [Parameter]
     public string uuid { get; set; }
@@ -162,7 +163,7 @@
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
 
-            HttpResponseMessage response = await Http.GetAsync("api/Catalogs/Departments");
+            HttpResponseMessage response = await Http.GetAsync("api/Catalogs/JobTitles");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -171,7 +172,7 @@
                     showError();
             }
 
-            response = await Http.GetAsync("api/Catalogs/JobTitles");
+            response = await Http.GetAsync("api/Catalogs/Departments");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
