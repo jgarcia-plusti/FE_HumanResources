@@ -14,8 +14,8 @@
             <RadzenBadge Text="@item.Text" IsPill="true" />
         </Template>
         <ChildContent>
-            <RadzenBreadCrumbItem Path="/" Text="Empleados" />
-            <RadzenBreadCrumbItem Path="/usersgrid" Text="Crear Empleado" />
+            <RadzenBreadCrumbItem Path="/employesgrid" Text="Empleados" />
+            <RadzenBreadCrumbItem Path="/CreateEmployes" Text="Crear Empleado" />
         </ChildContent>
     </RadzenBreadCrumb>
     <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { ValidateIsUser(); })">

@@ -82,15 +82,19 @@
 
         ContextMenuService.Open(args,
             new List<ContextMenuItem> {
-                new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
-                new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 1, Icon = "home" },
+                new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
+                new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 2, Icon = "home" },
                 new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
-                        },
+            },
             (e) =>
             {
-                if (e.Value.ToString() == "2")
+                if (e.Value.ToString() == "1")
                 {
                     NavigationManager.NavigateTo($"employee/{args.Data.Uuid}");
+                }
+                else if (e.Value.ToString() == "2")
+                {
+                    NavigationManager.NavigateTo($"historicEmployee/{args.Data.Uuid}-{args.Data.Name}");
                 }
             }
          );

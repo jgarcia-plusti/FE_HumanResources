@@ -1,0 +1,115 @@
+﻿@page "/historicEmployee/{uuid}-{name}"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@inject ContextMenuService ContextMenuService
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Employee" />
+            <RadzenBreadCrumbItem Path="/" Text="@name" />
+            <RadzenBreadCrumbItem Path="/employesgrid" Text="Historico del Empleado" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <br />
+    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <br />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
+                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@historicModel" TItem="HistoricEmployeEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics CellContextMenu="@OnCellContextMenu">
+        <Columns>
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="ActionType" Title="Tipo de Accion" Frozen="true" Width="80px" />
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="Module" Title="Modulo" Frozen="true" Width="160px" />
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="NameEmployee" Title="Empleado Modificado" Width="160px" />
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="Date" Title="Fecha" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="UserName" Title="Usuario" Width="300px" />
+        </Columns>
+    </RadzenDataGrid>
+    <br />
+    <RadzenButton Text="Regresar" Click="@GoBack" Style="margin-bottom: 20px;" />
+</RadzenBody>
+
+@code {
+    [Parameter]
+    public string uuid { get; set; }
+    [Parameter]
+    public string name { get; set; }
+
+    private IEnumerable<HistoricEmployeEntity> historicModel;
+    private IList<HistoricEmployeEntity> selectedHistorics;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Reset();
+    }
+
+    private async Task Reset()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/GetHistoricByEmployee", new PayloadGeneric()
+                {
+                    Uuid = this.uuid,
+                    payload = new { uuid = this.uuid }
+                });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                historicModel = JsonConvert.DeserializeObject<IEnumerable<HistoricEmployeEntity>>(content);
+                if (historicModel == null)
+                {
+
+                }
+                else
+                    selectedHistorics = new List<HistoricEmployeEntity>() { historicModel.FirstOrDefault() };
+            }
+            else
+            {
+                await LocalStorage.ClearAsync();
+                NavigationManager.NavigateTo("login", true);
+            }
+
+        }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/employesgrid");
+    }
+
+    void OnCellContextMenu(DataGridCellMouseEventArgs<HistoricEmployeEntity> args)
+    {
+        selectedHistorics = new List<HistoricEmployeEntity>() { args.Data };
+
+        ContextMenuService.Open(args,
+            new List<ContextMenuItem> {
+                new ContextMenuItem(){ Text = "Ver", Value = 1, Icon = "search" }
+                },
+            (e) =>
+            {
+                if (e.Value.ToString() == "1")
+                {
+                    NavigationManager.NavigateTo($"");
+                }
+            }
+         );
+    }
+
+}
+
