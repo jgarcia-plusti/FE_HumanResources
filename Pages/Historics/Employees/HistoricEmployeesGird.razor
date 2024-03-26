@@ -1,4 +1,4 @@
-﻿@page "/historicEmployee/{uuid}-{name}"
+﻿@page "/historicEmployees"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
@@ -13,9 +13,8 @@
             <RadzenBadge Text="@item.Text" IsPill="true" />
         </Template>
         <ChildContent>
-            <RadzenBreadCrumbItem Path="/" Text="Employee" />
-            <RadzenBreadCrumbItem Path="/" Text="@name" />
-            <RadzenBreadCrumbItem Path="/employesgrid" Text="Historico del Empleado" />
+            <RadzenBreadCrumbItem Path="/" Text="Historico" />
+            <RadzenBreadCrumbItem Path="/historicEmployees" Text="Historico de Empleados" />
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
@@ -58,11 +57,7 @@
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/GetHistoricByEmployee", new PayloadGeneric()
-                {
-                    Uuid = this.uuid,
-                    payload = new { uuid = this.uuid }
-                });
+            HttpResponseMessage response = await Http.GetAsync("api/Employee/GetHistoricEmployees");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
@@ -100,7 +95,7 @@
         ContextMenuService.Open(args,
             new List<ContextMenuItem> {
                 new ContextMenuItem(){ Text = "Ver", Value = 1, Icon = "search" }
-                },
+                    },
             (e) =>
             {
                 if (e.Value.ToString() == "1")

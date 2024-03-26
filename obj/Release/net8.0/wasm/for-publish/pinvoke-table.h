@@ -31,12 +31,14 @@ int GlobalizationNative_NormalizeString (int,int,int,int,int);
 int GlobalizationNative_StartsWith (int,int,int,int,int,int,int);
 int GlobalizationNative_ToAscii (int,int,int,int,int);
 int GlobalizationNative_ToUnicode (int,int,int,int,int);
+int SystemNative_CanGetHiddenFlag ();
 int SystemNative_Close (int);
 int SystemNative_CloseDir (int);
 int SystemNative_ConvertErrorPalToPlatform (int);
 int SystemNative_ConvertErrorPlatformToPal (int);
 int SystemNative_Dup (int);
 int SystemNative_FAllocate (int,int64_t,int64_t);
+int SystemNative_FcntlSetFD (int,int);
 int SystemNative_FLock (int,int);
 void SystemNative_Free (int);
 int SystemNative_FStat (int,int);
@@ -52,6 +54,7 @@ int SystemNative_GetReadDirRBufferSize ();
 int64_t SystemNative_GetSystemTimeAsTicks ();
 uint64_t SystemNative_GetTimestamp ();
 int SystemNative_GetTimeZoneData (int,int);
+int SystemNative_LChflagsCanSetHiddenFlag ();
 void SystemNative_LowLevelMonitor_Acquire (int);
 int SystemNative_LowLevelMonitor_Create ();
 void SystemNative_LowLevelMonitor_Destroy (int);
@@ -61,7 +64,11 @@ int SystemNative_LowLevelMonitor_TimedWait (int,int);
 void SystemNative_LowLevelMonitor_Wait (int);
 int64_t SystemNative_LSeek (int,int64_t,int);
 int SystemNative_LStat (int,int);
+int SystemNative_MAdvise (int,uint64_t,int);
 int SystemNative_Malloc (int);
+int SystemNative_MMap (int,uint64_t,int,int,int,int64_t);
+int SystemNative_MSync (int,uint64_t,int);
+int SystemNative_MUnmap (int,uint64_t);
 int SystemNative_Open (int,int,int);
 int SystemNative_OpenDir (int);
 int SystemNative_PosixFAdvise (int,int64_t,int64_t,int);
@@ -74,23 +81,28 @@ int SystemNative_ReadDirR (int,int,int,int);
 int SystemNative_ReadLink (int,int,int);
 int SystemNative_SchedGetCpu ();
 void SystemNative_SetErrNo (int);
+int SystemNative_ShmOpen (int,int,int);
+int SystemNative_ShmUnlink (int);
 int SystemNative_Stat (int,int);
 int SystemNative_StrErrorR (int,int,int);
+int64_t SystemNative_SysConf (int);
 void SystemNative_SysLog (int,int,int);
 int SystemNative_Unlink (int);
 int SystemNative_Write (int,int,int);
 static PinvokeImport libSystem_Native_imports [] = {
+{"SystemNative_CanGetHiddenFlag", SystemNative_CanGetHiddenFlag}, // System.Private.CoreLib
 {"SystemNative_Close", SystemNative_Close}, // System.Private.CoreLib
 {"SystemNative_CloseDir", SystemNative_CloseDir}, // System.Private.CoreLib
-{"SystemNative_ConvertErrorPalToPlatform", SystemNative_ConvertErrorPalToPlatform}, // System.Console, System.Private.CoreLib
-{"SystemNative_ConvertErrorPlatformToPal", SystemNative_ConvertErrorPlatformToPal}, // System.Console, System.Private.CoreLib
+{"SystemNative_ConvertErrorPalToPlatform", SystemNative_ConvertErrorPalToPlatform}, // System.Console, System.IO.MemoryMappedFiles, System.Private.CoreLib
+{"SystemNative_ConvertErrorPlatformToPal", SystemNative_ConvertErrorPlatformToPal}, // System.Console, System.IO.MemoryMappedFiles, System.Private.CoreLib
 {"SystemNative_Dup", SystemNative_Dup}, // System.Console
 {"SystemNative_FAllocate", SystemNative_FAllocate}, // System.Private.CoreLib
+{"SystemNative_FcntlSetFD", SystemNative_FcntlSetFD}, // System.IO.MemoryMappedFiles
 {"SystemNative_FLock", SystemNative_FLock}, // System.Private.CoreLib
 {"SystemNative_Free", SystemNative_Free}, // System.Private.CoreLib
-{"SystemNative_FStat", SystemNative_FStat}, // System.Private.CoreLib
+{"SystemNative_FStat", SystemNative_FStat}, // System.IO.MemoryMappedFiles, System.Private.CoreLib
 {"SystemNative_FSync", SystemNative_FSync}, // System.Private.CoreLib
-{"SystemNative_FTruncate", SystemNative_FTruncate}, // System.Private.CoreLib
+{"SystemNative_FTruncate", SystemNative_FTruncate}, // System.IO.MemoryMappedFiles, System.Private.CoreLib
 {"SystemNative_GetCryptographicallySecureRandomBytes", SystemNative_GetCryptographicallySecureRandomBytes}, // System.Private.CoreLib
 {"SystemNative_GetCwd", SystemNative_GetCwd}, // System.Private.CoreLib
 {"SystemNative_GetEnv", SystemNative_GetEnv}, // System.Private.CoreLib
@@ -101,6 +113,7 @@ static PinvokeImport libSystem_Native_imports [] = {
 {"SystemNative_GetSystemTimeAsTicks", SystemNative_GetSystemTimeAsTicks}, // System.Private.CoreLib
 {"SystemNative_GetTimestamp", SystemNative_GetTimestamp}, // System.Private.CoreLib
 {"SystemNative_GetTimeZoneData", SystemNative_GetTimeZoneData}, // System.Private.CoreLib
+{"SystemNative_LChflagsCanSetHiddenFlag", SystemNative_LChflagsCanSetHiddenFlag}, // System.Private.CoreLib
 {"SystemNative_LowLevelMonitor_Acquire", SystemNative_LowLevelMonitor_Acquire}, // System.Private.CoreLib
 {"SystemNative_LowLevelMonitor_Create", SystemNative_LowLevelMonitor_Create}, // System.Private.CoreLib
 {"SystemNative_LowLevelMonitor_Destroy", SystemNative_LowLevelMonitor_Destroy}, // System.Private.CoreLib
@@ -110,7 +123,11 @@ static PinvokeImport libSystem_Native_imports [] = {
 {"SystemNative_LowLevelMonitor_Wait", SystemNative_LowLevelMonitor_Wait}, // System.Private.CoreLib
 {"SystemNative_LSeek", SystemNative_LSeek}, // System.Private.CoreLib
 {"SystemNative_LStat", SystemNative_LStat}, // System.Private.CoreLib
+{"SystemNative_MAdvise", SystemNative_MAdvise}, // System.IO.MemoryMappedFiles
 {"SystemNative_Malloc", SystemNative_Malloc}, // System.Private.CoreLib
+{"SystemNative_MMap", SystemNative_MMap}, // System.IO.MemoryMappedFiles
+{"SystemNative_MSync", SystemNative_MSync}, // System.IO.MemoryMappedFiles
+{"SystemNative_MUnmap", SystemNative_MUnmap}, // System.IO.MemoryMappedFiles
 {"SystemNative_Open", SystemNative_Open}, // System.Private.CoreLib
 {"SystemNative_OpenDir", SystemNative_OpenDir}, // System.Private.CoreLib
 {"SystemNative_PosixFAdvise", SystemNative_PosixFAdvise}, // System.Private.CoreLib
@@ -123,10 +140,13 @@ static PinvokeImport libSystem_Native_imports [] = {
 {"SystemNative_ReadLink", SystemNative_ReadLink}, // System.Private.CoreLib
 {"SystemNative_SchedGetCpu", SystemNative_SchedGetCpu}, // System.Private.CoreLib
 {"SystemNative_SetErrNo", SystemNative_SetErrNo}, // System.Private.CoreLib
+{"SystemNative_ShmOpen", SystemNative_ShmOpen}, // System.IO.MemoryMappedFiles
+{"SystemNative_ShmUnlink", SystemNative_ShmUnlink}, // System.IO.MemoryMappedFiles
 {"SystemNative_Stat", SystemNative_Stat}, // System.Private.CoreLib
-{"SystemNative_StrErrorR", SystemNative_StrErrorR}, // System.Console, System.Private.CoreLib
+{"SystemNative_StrErrorR", SystemNative_StrErrorR}, // System.Console, System.IO.MemoryMappedFiles, System.Private.CoreLib
+{"SystemNative_SysConf", SystemNative_SysConf}, // System.IO.MemoryMappedFiles
 {"SystemNative_SysLog", SystemNative_SysLog}, // System.Private.CoreLib
-{"SystemNative_Unlink", SystemNative_Unlink}, // System.Private.CoreLib
+{"SystemNative_Unlink", SystemNative_Unlink}, // System.IO.MemoryMappedFiles, System.Private.CoreLib
 {"SystemNative_Write", SystemNative_Write}, // System.Console, System.Private.CoreLib
 {NULL, NULL}
 };

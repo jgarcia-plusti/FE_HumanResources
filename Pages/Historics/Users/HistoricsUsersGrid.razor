@@ -14,7 +14,7 @@
         </Template>
         <ChildContent>
             <RadzenBreadCrumbItem Path="/" Text="Historico" />
-            <RadzenBreadCrumbItem Path="/usersgrid" Text="Historico de Usuarios" />
+            <RadzenBreadCrumbItem Path="/historicusergrid" Text="Historico de Usuarios" />
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
@@ -83,20 +83,21 @@
         NavigationManager.NavigateTo("/dashboard");
     }
 
-    // void OnCellContextMenu(DataGridCellMouseEventArgs<HistoricByUser> args)
-    // {
-    //     selectedHistorics = new List<HistoricByUser>() { args.Data };
+    void OnCellContextMenu(DataGridCellMouseEventArgs<HistoricByUserEntity> args)
+    {
+        selectedHistorics = new List<HistoricByUserEntity>() { args.Data };
 
-    //     ContextMenuService.Open(args,
-    //         new List<ContextMenuItem> {
-    //             new ContextMenuItem(){ Text = "Context menu item 1", Value = 1, Icon = "home" },
-    //             new ContextMenuItem(){ Text = "Context menu item 2", Value = 2, Icon = "search" },
-    //             new ContextMenuItem(){ Text = "Context menu item 3", Value = 3, Icon = "info" },
-    //             },
-    //         (e) =>
-    //         {
-    //             Console.WriteLine($"Menu item with Value={e.Value} clicked. Column: {args.Column.Property}, EmployeeID: {args.Data.Uuid}");
-    //         }
-    //      );
-    // }
+        ContextMenuService.Open(args,
+            new List<ContextMenuItem> {
+                new ContextMenuItem(){ Text = "Ver", Value = 1, Icon = "search" }
+                        },
+            (e) =>
+            {
+                if (e.Value.ToString() == "1")
+                {
+                    NavigationManager.NavigateTo($"");
+                }
+            }
+         );
+    }
 }

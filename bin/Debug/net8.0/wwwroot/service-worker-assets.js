@@ -249,7 +249,7 @@
       "url": "css\/original-blazored.css"
     },
     {
-      "hash": "sha256-ZOsVXMDsA8aqvuN74an9j0CinpNoZZhs8mQjL0S37pE=",
+      "hash": "sha256-M7V4d\/iLDGYVzv4AGU7L9wa0hJf8pITG3rki1QqfWJA=",
       "url": "index.html"
     },
     {
@@ -281,7 +281,7 @@
       "url": "js\/toasts.js"
     },
     {
-      "hash": "sha256-TMprETqNvOWRfNuOUAKObWHd+7UxIZYx7NuXtrl6ft0=",
+      "hash": "sha256-dchZ0OBjZjX3P2lYXjTcYmC0EdT7dfmjUwxjiojCKzQ=",
       "url": "manifest.webmanifest"
     },
     {
@@ -289,12 +289,24 @@
       "url": "source\/branding-institucional\/background-login.jpg"
     },
     {
+      "hash": "sha256-TVafaVubLrpHfboF7gHTrTHmDh3mm14vQzOdKnLB1Uo=",
+      "url": "source\/branding-institucional\/Logo-francelli.png"
+    },
+    {
       "hash": "sha256-dJVllnBdyVt4Mlr92jcL1WGC7dnvjEqdoEznH29\/npU=",
       "url": "source\/branding-institucional\/logo-prodisa.png"
     },
     {
+      "hash": "sha256-txRMryBNW3EAatBKcbamoSJvModdjT7yuHH5Wwsso9g=",
+      "url": "source\/branding-institucional\/Logo.png"
+    },
+    {
       "hash": "sha256-OYYL\/OtFGegy9CFuy3\/5vi9XrCMZ0GY\/5ioyCnekQfg=",
       "url": "source\/branding-institucional\/prodisa.png"
+    },
+    {
+      "hash": "sha256-n\/ecjgPCS0PvP2C4Dl1iKXM2Bv1V7tUW1Dt1pZ0w6BY=",
+      "url": "source\/branding-institucional\/Slogan-francelli.png"
     },
     {
       "hash": "sha256-rcIWTVNnYus6VWf2Z2U1g\/JzlC07Ym02cFjHtI59Xsc=",
@@ -1089,7 +1101,7 @@
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
-      "hash": "sha256-poakCeJYzF3a3fAWsdu9oVUk2TvUW523ItgUMgPb5gw=",
+      "hash": "sha256-GhUDBeylTPHdJKKlfWVTLPy0keFtUZvPAYva+5GOiD4=",
       "url": "_framework\/dotnet.js"
     },
     {
@@ -1097,16 +1109,16 @@
       "url": "_framework\/dotnet.js.map"
     },
     {
-      "hash": "sha256-D4sYBYmDfH\/YekgYRgX959\/2RG6k28sJSHmcsn+iikk=",
-      "url": "_framework\/dotnet.native.8.0.3.m500chgu27.js"
+      "hash": "sha256-LjLDIz9+J7uuiwMlQ4HbNx2BnSpphOtO2MwkoI28vdI=",
+      "url": "_framework\/dotnet.native.8.0.0.cx60pm2snx.js"
     },
     {
       "hash": "sha256-Vr6ZXKoP77zgabrMIxQ1GbOkrxfx5XGqHO0odLhUIMY=",
       "url": "_framework\/dotnet.native.wasm"
     },
     {
-      "hash": "sha256-eQgtmRxLcbxYmADDa49CHs\/GuJ7nM6d\/UFWo4EVhuIw=",
-      "url": "_framework\/dotnet.runtime.8.0.3.og2musixnl.js"
+      "hash": "sha256-WdSX3HQvnBYF0KJLZoOyHvTzMHetaob6PV0Kn2K+QXw=",
+      "url": "_framework\/dotnet.runtime.8.0.0.14kkjimq5k.js"
     },
     {
       "hash": "sha256-nrQOPUqGOUp4H+hxg3zCwjSAa5h6ATED3lf8Xsh4r8I=",
@@ -1125,15 +1137,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-Qq56kdXmC8mUz8BdOsKXb13IR\/PNh8Wu1vZK\/UOMpj0=",
+      "hash": "sha256-H42RY0vE0Qd4V8qKvlzlhiPQzsd+WdwLdw4zx8TFaDo=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-qeyY86GbPmg9\/P0oyysjfma2LEDRvEENqfL96MduAww=",
+      "hash": "sha256-WaFnrZ4RJyh+bFRCrcpCl4fD2wmemr+\/kscdA56rTfA=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-qOmOpLLpokqOea55\/MrS+ObHutRRJZzDZhhZmc7rrfI=",
+      "hash": "sha256-IuOrwySpkWz6YWfS5b5cYmUxaP1z99C4uZGNJj74IKQ=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1333,5 +1345,5 @@
       "url": "_content\/Radzen.Blazor\/Radzen.Blazor.js"
     }
   ],
-  "version": "G\/J8rYhe"
+  "version": "8ubULLgr"
 };

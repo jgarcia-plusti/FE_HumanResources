@@ -48,10 +48,6 @@
               "target": "Package",
               "version": "[4.5.0, )"
             },
-            "Blazored.Toast": {
-              "target": "Package",
-              "version": "[4.1.0, )"
-            },
             "Microsoft.AspNetCore.Components.Authorization": {
               "target": "Package",
               "version": "[8.0.2, )"
@@ -80,6 +76,10 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.27.1, )"
             }
           },
           "imports": [

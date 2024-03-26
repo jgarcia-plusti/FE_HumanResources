@@ -26,12 +26,36 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Layout/SideBar.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFNpZGVCYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Layout/TopMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFRvcE1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Layout/TopNav.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFRvcE5hdi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/CreateEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcQ3JlYXRlRW1wbG95ZWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/EmployesGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcRW1wbG95ZXNHcmlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/UpdateEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcVXBkYXRlRW1wbG95ZWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Historics/HistoricByUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGlzdG9yaWNzXEhpc3RvcmljQnlVc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Historics/HistoricsUserGrid.razor]
@@ -54,8 +78,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcUGVyZmlsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Users/User.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcVXNlci5yYXpvcg==
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Users/UpdateUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcVXBkYXRlVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Users/UsersGrid.razor]

@@ -261,6 +261,14 @@
       "PackagePath": "staticwebassets\\css\\login-style\\style.bundle.css"
     },
     {
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\css\\mod.css",
+      "PackagePath": "staticwebassets\\css\\mod.css"
+    },
+    {
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\css\\original-blazored.css",
+      "PackagePath": "staticwebassets\\css\\original-blazored.css"
+    },
+    {
       "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
@@ -295,6 +303,18 @@
     {
       "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\manifest.webmanifest",
       "PackagePath": "staticwebassets\\manifest.webmanifest"
+    },
+    {
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\Logo-francelli.png",
+      "PackagePath": "staticwebassets\\source\\branding-institucional\\Logo-francelli.png"
+    },
+    {
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\Logo.png",
+      "PackagePath": "staticwebassets\\source\\branding-institucional\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\Slogan-francelli.png",
+      "PackagePath": "staticwebassets\\source\\branding-institucional\\Slogan-francelli.png"
     },
     {
       "Id": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\background-login.jpg",

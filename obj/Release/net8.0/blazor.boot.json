@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "FE_HumanResources",
   "resources": {
-    "hash": "sha256-MVMHgIoo6ked3yLNIOi172pGlIEocuP01TqRS5G3Xow=",
+    "hash": "sha256-79Eujaryv9Lrt4NaAsSyqG7WmFqWYAearfmf6yLpTZo=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.cx60pm2snx.js": "sha256-LjLDIz9+J7uuiwMlQ4HbNx2BnSpphOtO2MwkoI28vdI="
     },
@@ -18,7 +18,6 @@
     },
     "assembly": {
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
-      "Blazored.Toast.wasm": "sha256-rct5tMc2ZxFhr35Adawli4MHBEMAF/uJC2QW8RvdQ0M=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-j29bzsbGr0GXbz3saSOBqDtWxNOK08Or3b1HgnZ+pvA=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-0SRqG4hZOVUUFxERmD93PJWBJR6d4gCf5UB9vF6jB9A=",
       "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-6MDdENGTdTWJseJV5hw5HVBCQ72SQP7+dvif8g5nta8=",
@@ -43,7 +42,9 @@
       "Microsoft.JSInterop.wasm": "sha256-sm2HpM+aEsdu8kPTluhkGijieh9Fr/JLihBU0ZZvtVI=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-3wQR1/VN+SB8r7Gkqf93l8O4F1aSbaghQWV2PoaJByI=",
       "Newtonsoft.Json.wasm": "sha256-GlXMWKvDs45M2pACoR3Y4Qh8mcrOZGljqmvJY+6JZ5s=",
+      "Radzen.Blazor.wasm": "sha256-nKn9zdZwWTrUUZh1iWnGrHLUxWOft/Se/JT/7BuTPto=",
       "System.IO.Pipelines.wasm": "sha256-JqVBy6SV+3qk+IK3VJiyIDt9CsVk6b1/ytTXmrI4mTM=",
+      "System.Linq.Dynamic.Core.wasm": "sha256-zY4O55eQ9gC1F0jl4MFsfpX6oCP3eabUwmK1PIrgx3Q=",
       "Microsoft.CSharp.wasm": "sha256-ZpkICZtm/DHNuGrRDRfVyuTokNnwnPl7dxJGrPk6z5g=",
       "Microsoft.VisualBasic.Core.wasm": "sha256-coGIpdzImgRuQzGOx9iJkE/euOSMnY1mLy59OHmdq7k=",
       "Microsoft.VisualBasic.wasm": "sha256-d1X73aGMelv2vCpA+t8HkSgb03NW1BC6Pl6413kfYv8=",
@@ -212,10 +213,10 @@
       "mscorlib.wasm": "sha256-cDuLeL3OCtVtiid/dyex1MVgbuzDSRwZxKzuP2Dp4mg=",
       "netstandard.wasm": "sha256-A0h86SDieTMoU/wU2JTszWCsUmMuguDcbap0b0BzsmI=",
       "System.Private.CoreLib.wasm": "sha256-/0DNIm/T0C07X7Tuz5uR8JvVCoAfEE2MnfPUSjyS9xc=",
-      "FE_HumanResources.wasm": "sha256-KNFUZ9Yh81NfPvvQbmP7+Gs07LDJ54CY9a39LyKe5QQ="
+      "FE_HumanResources.wasm": "sha256-XAO4whi1SH5AfDx5ge0Q/OQQSMoIpWlni3NZYSjwXlU="
     },
     "pdb": {
-      "FE_HumanResources.pdb": "sha256-zUiplf5MigpBl2L7DkXIkFjBH0TUSPrZ2TbL4Rc/+ME="
+      "FE_HumanResources.pdb": "sha256-m1LX8IY525hbYK3B9DFRTRZAfJ3hMvrOYu3L7ectEOg="
     }
   },
   "cacheBootResources": true,
