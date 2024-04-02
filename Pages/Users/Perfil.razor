@@ -154,18 +154,20 @@
 
 
 
-@code {
+ @code {
     private UserEntity userEntity = new UserEntity();
     private ICollection<RoleEntity> roles;
 
     List<dynamic> genders = new List<dynamic>()
-{
-new { GenderName = "Masculino" },
-new { GenderName = "Femenino" }
-};
+    {
+        new { GenderName = "Masculino" },
+        new { GenderName = "Femenino" },
+        new { GenderName = "Otro" }
+    };
 
     protected override async Task OnInitializedAsync()
     {
+
         await base.OnInitializedAsync();
         string? uuidUserLogged = await LocalStorage.GetItemAsync<string>("uuidUser");
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
@@ -183,9 +185,9 @@ new { GenderName = "Femenino" }
             }
 
             response = await Http.PostAsJsonAsync("api/User/GetProfile", new PayloadGeneric()
-                {
-                    Uuid = uuidUserLogged
-                });
+            {
+                Uuid = uuidUserLogged
+            });
 
             if (response.IsSuccessStatusCode)
             {

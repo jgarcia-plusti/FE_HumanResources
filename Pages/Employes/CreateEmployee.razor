@@ -110,8 +110,9 @@
                                     <RadzenLabel Text="Departamento" Component="Department" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.UuidDepartment" Data="@departments"
-                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Department">
+                                     <RadzenDropDown @bind-Value="Employee.UuidDepartment" Data="@departments" 
+                                        Change="@(args => OnDepartmentChanged(Employee.UuidDepartment))"
+                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Department" >
                                     </RadzenDropDown>
                                 </RadzenColumn>
                             </RadzenRow>
@@ -120,7 +121,7 @@
                                     <RadzenLabel Text="Cargo" Component="JobTitles" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.UuidJobTitle" Data="@jobTitles"
+                                     <RadzenDropDown @bind-Value="Employee.UuidJobTitle" Data="@filteredJobTitles"
                                         Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="JobTitles">
                                     </RadzenDropDown>
                                 </RadzenColumn>
@@ -163,6 +164,7 @@
     EmployeeEntity Employee = new EmployeeEntity();
     private ICollection<DepartmentEntity> departments;
     private ICollection<JobTitleEntity> jobTitles;
+    private ICollection<JobTitleEntity> filteredJobTitles;
     private ICollection<RoleEntity> roles;
     private string selectedUuidRole;
     private string selectedCountry;
@@ -212,6 +214,15 @@
                     showError();
             }
 
+        }
+    }
+
+    void OnDepartmentChanged(string selectedDepartmentId)
+    {
+        if (!string.IsNullOrEmpty(selectedDepartmentId))
+        {
+            filteredJobTitles = jobTitles.Where(jt => jt.UuidDepartment == selectedDepartmentId).ToList();
+            StateHasChanged();
         }
     }
 
