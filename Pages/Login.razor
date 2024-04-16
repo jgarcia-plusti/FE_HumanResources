@@ -6,6 +6,7 @@
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthStateProvider
 @inject NotificationService NotificationService
+@inject DialogService DialogService
 @using System.Net.Http.Headers
 
 <PageTitle>RH</PageTitle>
@@ -76,11 +77,12 @@
                             <ValidationMessage For="(() => loginModel.Password)"></ValidationMessage>
                         </div>
                         @* END *@
-                        @* <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
-                        <div></div>
-                        <a href="" class="link-primary">¿Olvitaste
-                        tu contraseña?</a>
-                        </div> *@
+                        <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
+                        <div>
+
+                        </div>
+                                                    
+                        </div>
 
                         @* Iniciar sesión btn *@
                         <div class="d-grid mb-10">
@@ -96,6 +98,9 @@
                                 </span>
                                 <!--end::Indicator progress-->
                             </button>
+                        </div>
+                        <div class="rz-p-12 rz-text-align-center">
+                            <RadzenButton Text="¿Olvidaste tu contraseña?" ButtonStyle="ButtonStyle.Secondary" Click=@ShowInlineDialog />
                         </div>
                         @* END *@
 
@@ -128,6 +133,13 @@
 @code {
     private LoginModel loginModel = new LoginModel();
     private string messageInfo;
+    class Model
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string RepeatPassword { get; set; }
+    }
+    Model model = new Model();
 
     private async void login()
     {
@@ -152,46 +164,53 @@
                     string content = response.Content.ReadAsStringAsync().Result;
                     JWTModel JWT = JsonConvert.DeserializeObject<JWTModel>(content);
 
-                    if (!string.IsNullOrEmpty(JWT.Jwt))
+                    if (JWT.RestoreUser)
                     {
-                        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWT.Jwt);
-                        HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/user/GetProfile", new PayloadGeneric()
-                            {
-                                Uuid = JWT.uuidUser
-                            });
-
-                        if (userRest.IsSuccessStatusCode)
+                        ShowDialogResetPassword();
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(JWT.Jwt))
                         {
-                            string contentUser = userRest.Content.ReadAsStringAsync().Result;
-                            UserEntity? user = JsonConvert.DeserializeObject<UserEntity>(contentUser);
-                            if (user != null)
-                            {
-                                if (user.Active)
+                            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", JWT.Jwt);
+                            HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/user/GetProfile", new PayloadGeneric()
                                 {
-                                    string? logenUser = await LocalStorage.GetItemAsync<string>("logedUser");
-                                    if (string.IsNullOrEmpty(logenUser))
-                                    {
-                                        await LocalStorage.SetItemAsStringAsync("logedUser", contentUser);
-                                        await LocalStorage.SetItemAsStringAsync("uuidUser", user.Uuid);
-                                        await LocalStorage.SetItemAsStringAsync("jwt", JWT.Jwt);
+                                    Uuid = JWT.uuidUser
+                                });
 
-                                        await AuthStateProvider.GetAuthenticationStateAsync();
-                                        NavigationManager.NavigateTo("dashboard", true);
+                            if (userRest.IsSuccessStatusCode)
+                            {
+                                string contentUser = userRest.Content.ReadAsStringAsync().Result;
+                                UserEntity? user = JsonConvert.DeserializeObject<UserEntity>(contentUser);
+                                if (user != null)
+                                {
+                                    if (user.Active)
+                                    {
+                                        string? logenUser = await LocalStorage.GetItemAsync<string>("logedUser");
+                                        if (string.IsNullOrEmpty(logenUser))
+                                        {
+                                            await LocalStorage.SetItemAsStringAsync("logedUser", contentUser);
+                                            await LocalStorage.SetItemAsStringAsync("uuidUser", user.Uuid);
+                                            await LocalStorage.SetItemAsStringAsync("jwt", JWT.Jwt);
+
+                                            await AuthStateProvider.GetAuthenticationStateAsync();
+                                            NavigationManager.NavigateTo("dashboard", true);
+                                        }
+                                        else
+                                        {
+                                            NavigationManager.NavigateTo("dashboard", true);
+                                        }
                                     }
                                     else
                                     {
-                                        NavigationManager.NavigateTo("dashboard", true);
-                                    }
-                                }
-                                else
-                                {
-                                    messageInfo = $"Usuario inactivo!";
-                                    NotificationService.Notify(new NotificationMessage()
+                                        messageInfo = $"Usuario inactivo!";
+                                        NotificationService.Notify(new NotificationMessage()
                                         {
                                             Severity = NotificationSeverity.Warning,
                                             Summary = messageInfo,
                                             Duration = 4000
                                         });
+                                    }
                                 }
                             }
                         }
@@ -230,5 +249,121 @@
                     Duration = 4000
                 });
         }
+    }
+
+    async Task ShowInlineDialog()
+    {
+        var result = await DialogService.OpenAsync("Restaurar Contraseña", ds =>
+            @<RadzenStack>
+                <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">                    
+                    <RadzenTemplateForm TItem="Model" Data=@model Submit=@OnSubmit>
+                        <RadzenFieldset Text="ingresa tu correo">
+                            <div class="row">
+                                <div>
+                                    <RadzenLabel Text="Correo" Component="Email" />
+                                </div>
+                                <div>
+                                    <RadzenTextBox style="display: block" Name="Email" @bind-Value=@model.Email />
+                                    <RadzenRequiredValidator Component="Email" Text="Ingresa tu correo" Popup=false Style="position: absolute" />
+                                    <RadzenEmailValidator Component="Email" Text="Ingresa un correo valido" Popup=false Style="position: absolute" />
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <br>
+                            <RadzenButton Text="Eviar" ButtonType="ButtonType.Submit" />
+                            <RadzenButton Text="Cancelar" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Light" />
+                        </RadzenFieldset>
+                    </RadzenTemplateForm>
+                </RadzenStack>                
+            </RadzenStack>
+    );
+    }
+
+    private async void OnSubmit(Model model)
+    {
+        HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/User/ResetPasword", new PayloadGeneric()
+        {
+            Uuid = "",
+            payload = new { Email = model.Email }
+        });
+
+        if (userRest.IsSuccessStatusCode)
+        {
+            var result = await DialogService.OpenAsync("Correo enviado", ds =>
+            @<RadzenStack Gap="1.5rem">
+                <p>Se envio un correo a @model.Email</p>
+                <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenStack Orientation="Orientation.Horizontal">
+                        <RadzenButton Text="Ok" Click="() => ds.Close(true)" Style="width: 80px;" />
+                    </RadzenStack>
+                </RadzenStack>
+            </RadzenStack>);
+        }
+    }
+
+    async Task ShowDialogResetPassword()
+    {
+        var result = await DialogService.OpenAsync("Cambiar Contraseña", ds =>
+        @<RadzenStack>
+            <RadzenTemplateForm TItem="Model" Data=@model Submit=@resertPassword>
+                <RadzenFieldset Text="Contraseña">
+                    <RadzenStack Gap="2rem" Class="rz-p-4 rz-p-md-12">
+                        <RadzenRow AlignItems="AlignItems.Center" RowGap="0.25rem">
+                            <RadzenColumn Size="12" SizeMD="4" Class="rz-text-align-start rz-text-align-md-end">
+                                <RadzenLabel Text="Contraseña" Component="Password" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="8">
+                                <RadzenPassword Name="Password" @bind-Value=@model.Password Style="display: block; width: 100%" />
+                                <RadzenRequiredValidator Component="Password" Text="Enter password" Popup=false Style="position: absolute" />
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow AlignItems="AlignItems.Center" RowGap="0.25rem">
+                            <RadzenColumn Size="12" SizeMD="4" Class="rz-text-align-start rz-text-align-md-end">
+                                <RadzenLabel Text="Repita la contraseña" Component="RepeatPassword" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="8">
+                                <RadzenPassword Name="RepeatPassword" @bind-Value=@model.RepeatPassword Style="display: block; width: 100%" />
+                                <RadzenRequiredValidator Component="RepeatPassword" Text="Repeat your password" Popup=false Style="position: absolute" />
+                                <RadzenCompareValidator Visible=@(!string.IsNullOrEmpty(model.RepeatPassword)) Value=@model.Password Component="RepeatPassword" Text="Passwords should be the same" Popup=false Style="position: absolute" />
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow AlignItems="AlignItems.Center" Class="rz-mt-4">
+                            <RadzenColumn Size="12" Offset="0" SizeMD="8" OffsetMD="4">
+                                <RadzenButton ButtonType="ButtonType.Submit" Text="Enviar"></RadzenButton>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenStack>
+                </RadzenFieldset>
+            </RadzenTemplateForm>
+        </RadzenStack>
+    );
+    }
+
+    private async void resertPassword(Model model)
+    {
+        HttpResponseMessage userRest = await Http.PostAsJsonAsync("api/User/ChangePassword", new PayloadGeneric()
+        {
+            Uuid = "",
+            payload = new { Email = loginModel.Email, newPassword = model.RepeatPassword }
+        });
+
+        if (userRest.IsSuccessStatusCode)
+        {
+            var result = await DialogService.OpenAsync("Contraseña cambiada", ds =>
+            @<RadzenStack Gap="1.5rem">
+                <p>Se actualizo la contraseña a @model.Email</p>
+                <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenStack Orientation="Orientation.Horizontal">
+                        <RadzenButton Text="Ok" Click="() => ds.Close(true)" Style="width: 80px;" />
+                    </RadzenStack>
+                </RadzenStack>
+            </RadzenStack>);
+        }
+    }
+    
+    void ShowNotification(NotificationMessage message)
+    {
+        NotificationService.Notify(message);
     }
 }
