@@ -18,7 +18,7 @@
     @onmouseout="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.Icon; } })">
     @* HOME *@
     <RadzenPanelMenuItem Text="Inicio" Icon="home">
-        <RadzenPanelMenuItem Text="Dashboard" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Panel de Información" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     @* SETTINGS *@
     <RadzenPanelMenuItem Text="Usuarios" Icon="settings">
@@ -30,9 +30,33 @@
         <RadzenPanelMenuItem Text="Crear empleado" Path="/CreateEmployes" Icon="engineering"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Lista de Empleados" Path="/employesgrid" Icon="groups"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
-    <RadzenPanelMenuItem Text="Historico General" Icon="manage_search">
+    <RadzenPanelMenuItem Text="Pagos / Planilla" Icon="account_balance_wallet">
+        <RadzenPanelMenuItem Text="Generar nómina" Path="/GeneratePayment" Icon="payments"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Pago / Descuento" Path="/Payment" Icon="payments"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Lista de Pagos" Path="/PaymentsGrid" Icon="request_quote"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Vacaciones" Icon="flight_takeoff">
+        <RadzenPanelMenuItem Text="Solicitar vacaciones" Path="/RequestVacations" Icon="surfing"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Autorizar vacaciones" Path="/AuthorizeVacations" Icon="how_to_reg"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Histórico General" Icon="manage_search">
         <RadzenPanelMenuItem Text="Mantenimiento de Usuarios" Path="/historicusergrid" Icon="person_search"></RadzenPanelMenuItem>
-        <RadzenPanelMenuItem Text="Mantenimiento de Empelados" Path="/historicEmployees" Icon="person_search"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Mantenimiento de Empleados" Path="/historicEmployees" Icon="person_search"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Evaluación de desempeño" Icon="troubleshoot">
+        <RadzenPanelMenuItem Text="Evaluar" Icon="troubleshoot"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Administración" Icon="auto_stories">
+        <RadzenPanelMenuItem Text="Administración" Icon="auto_stories"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Panel de control" Icon="screenshot_monitor">
+        <RadzenPanelMenuItem Text="Panel de control" Icon="screenshot_monitor"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Reclutamiento" Icon="content_paste_search">
+        <RadzenPanelMenuItem Text="Reclutamiento" Icon="content_paste_search"></RadzenPanelMenuItem>
+    </RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Chat" Icon="forum">
+        <RadzenPanelMenuItem Text="Chat" Icon="forum"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
 </RadzenPanelMenu>
 

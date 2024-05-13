@@ -7,26 +7,26 @@
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
         </Template>
         <ChildContent>
-            <RadzenBreadCrumbItem Path="/" Text="Historico" />
-            <RadzenBreadCrumbItem Path="/historicEmployees" Text="Historico de Empleados" />
+            <RadzenBreadCrumbItem Path="/" Text="Histórico" />
+            <RadzenBreadCrumbItem Path="/historicEmployees" Text="Histórico de Empleados" />
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
-    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
     <br />
     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
                     AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                     Data="@historicModel" TItem="HistoricEmployeEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
                     SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedHistorics CellContextMenu="@OnCellContextMenu">
         <Columns>
-            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="ActionType" Title="Tipo de Accion" Frozen="true" Width="80px" />
-            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="Module" Title="Modulo" Frozen="true" Width="160px" />
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="ActionType" Title="Tipo de Accion" Frozen="true" Width="160px" />
+            <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="Module" Title="Descripción" Frozen="true" Width="160px" />
             <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="NameEmployee" Title="Empleado Modificado" Width="160px" />
             <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="Date" Title="Fecha" FormatString="{0:d}" Width="200px" />
             <RadzenDataGridColumn TItem="HistoricEmployeEntity" Property="UserName" Title="Usuario" Width="300px" />
@@ -47,6 +47,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        StateHasChanged();
         await base.OnInitializedAsync();
         await Reset();
     }

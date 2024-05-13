@@ -1,0 +1,283 @@
+﻿@page "/Payment/{Uuid}"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NotificationService NotificationService
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/Payment" Text="Pagos / Planilla" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <br />
+    <RadzenTemplateForm Data="@Payment" Submit="@((PaymentEntity args) => { UpdateNewPayment(); })">
+        <RadzenRow Gap="1rem">
+            <RadzenColumn Size="12" SizeSM="6">
+                <RadzenStack>
+                    <RadzenFormField Text="Seleccionar Empleado" Variant="Variant.Outlined">
+                        <RadzenDropDown @bind-Value="Payment.UuidEmploye" Data="@Employee"
+                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Employee">
+                        </RadzenDropDown>
+                    </RadzenFormField>
+                    <RadzenFormField Text="Fecha" Variant="Variant.Outlined">
+                        <RadzenDatePicker @bind-Value="Payment.PaymentDate" Name="DateOfBirth"
+                                                ShowCalendarWeek />
+                     </RadzenFormField>
+                 </RadzenStack>
+             </RadzenColumn>
+             <RadzenColumn Size="12" SizeSM="6">
+                 <RadzenStack>
+                     <RadzenFormField Text="Total Pago" Variant="Variant.Outlined">
+                         <RadzenNumeric @bind-Value="Payment.Amount" />
+                     </RadzenFormField>
+                     <RadzenFormField Text="Descripción" Variant="Variant.Outlined">
+                         <RadzenTextBox @bind-Value="Payment.PaymentDescription" />
+                     </RadzenFormField>
+                 </RadzenStack>
+             </RadzenColumn>
+         </RadzenRow>
+
+         <RadzenRow AlignItems="AlignItems.End" Wrap="FlexWrap.Wrap" Gap="1rem" Class="rz-p-sm-12">
+             <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+                 <RadzenDropDown @bind-Value="@paymentDetailAdd.DetailsType" Placeholder="Seleccionar" Data="@DetailsTypes"
+                                 Style="width: 100%;" TextProperty="DetailsType" ValueProperty="DetailsType"
+                                 Name="Gender">
+                 </RadzenDropDown>
+             </RadzenColumn>
+             <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+                 <RadzenFormField Text="Descripción" Variant="Variant.Outlined" Style="width: 100%;">
+                     <RadzenTextBox @bind-Value="@paymentDetailAdd.Description" Style="width: 100%;" />
+                 </RadzenFormField>
+             </RadzenColumn>
+             <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+                 <RadzenFormField Text="Monto" Variant="Variant.Outlined" Style="width: 100%;">
+                     <RadzenNumeric Placeholder="0.0" @bind-Value="@paymentDetailAdd.Amount" Style="width: 100%;" />
+                 </RadzenFormField>
+             </RadzenColumn>
+             <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+                 <RadzenButton Size="ButtonSize.Large" Icon="add_circle" Text="Agregar" Click="() => AddDetail()" />
+             </RadzenColumn>
+         </RadzenRow>
+
+         <RadzenDataList AllowVirtualization=true Style="@(allowVirtualization ? "overflow:auto;" : "")"
+                         WrapItems="@(false)" AllowPaging="@(false)"
+                         Data="@paymentDetail" TItem="PaymentDetailEntity" PageSize="5" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
+             <Template Context="paymentDetail">
+                 <RadzenCard Style="width: 100%; padding: 0;">
+                     <RadzenRow Gap="0">
+                         <RadzenColumn Size="12" SizeLG="3" Class="rz-p-4 product-title">
+                             <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H5" class="rz-color-secondary">@(paymentDetail.DetailsType)</RadzenText>
+                         </RadzenColumn>
+                         <RadzenColumn Size="12" SizeLG="7" Class="rz-p-4">
+                             <RadzenRow Gap="0">
+                                 <RadzenColumn Size="12" SizeMD="6" SizeLG="2">
+                                     <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H5" Class="rz-mb-0">Descripción</RadzenText>
+                                     <RadzenText TextStyle="TextStyle.Body2">@(paymentDetail.Description)</RadzenText>
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="6" SizeLG="2">
+                                     <RadzenText TextStyle="TextStyle.H6" TagName="TagName.H5" Class="rz-mb-0">Monto</RadzenText>
+                                     <RadzenText TextStyle="TextStyle.Body2">@(paymentDetail.Amount.ToString())</RadzenText>
+                                 </RadzenColumn>
+                             </RadzenRow>
+                         </RadzenColumn>
+                         <RadzenColumn Size="12" SizeLG="2" Class="rz-p-4">
+                             <RadzenButton Shade="Shade.Light" Click=@(()=> EditDetail(paymentDetail) ) Text="Eliminar" ButtonStyle="ButtonStyle.Danger" />
+                         </RadzenColumn>
+                     </RadzenRow>
+                 </RadzenCard>
+             </Template>
+         </RadzenDataList>
+         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                      Class="rz-mt-8 rz-mb-4">
+             <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Actualizar" />
+             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                           Text="Cancelar" Click="@ReturnMenu" />
+         </RadzenStack>
+     </RadzenTemplateForm>
+ </RadzenBody>
+
+ <style>
+     .product-title {
+         min-height: 72px;
+         background-color: var(--rz-secondary-lighter);
+     }
+
+     .price-badge {
+         font-size: 16px;
+         font-weight: bold;
+         line-height: 20px;
+         padding: 8px;
+     }
+ </style>
+
+ @code {
+    [Parameter]
+    public string Uuid { get; set; }
+
+    private PaymentEntity Payment = new PaymentEntity();
+    private List<PaymentDetailEntity> paymentDetail = new List<PaymentDetailEntity>();
+    private PaymentDetailEntity paymentDetailAdd = new PaymentDetailEntity();
+    private ICollection<EmployeeEntity> Employee;
+    bool allowVirtualization;
+    string? jwt;
+    string? uuidUserLoged;
+
+    List<dynamic> DetailsTypes = new List<dynamic>()
+    {
+        new { DetailsType = "Quincena" },
+        new { DetailsType = "Mes" },
+        new { DetailsType = "Descuento" },
+        new { DetailsType = "Bono 14" },
+        new { DetailsType = "Aguinaldo" },
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            if (Employee == null)
+            {
+                Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+                HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = response.Content.ReadAsStringAsync().Result;
+                    Employee = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+                    if (Employee == null)
+                    {
+                        showError("Error al obtener empleados!");
+                    }
+                    else
+                    {
+                        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+                        response = await Http.PostAsJsonAsync("api/Payments/Get", new PayloadGeneric()
+                        {
+                            Uuid = this.Uuid,
+                            payload = { }
+                        });
+                        if (response.IsSuccessStatusCode)
+                        {
+                            content = await response.Content.ReadAsStringAsync();
+                            Payment = null;
+                            Payment = JsonConvert.DeserializeObject<PaymentEntity>(content);
+                            paymentDetail = null;
+                            paymentDetail = Payment.PaymentRegistrationDetails.ToList();
+                                                                                         
+                            StateHasChanged();
+                            showInfo("Información cargada con éxito!");
+                        }
+                    }
+                }
+                else
+                {
+                    showError("Error al intentar obtener empleados!");
+                }
+            }
+        }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    public async Task UpdateNewPayment()
+    {
+        List<PaymentDetailEntity> detail = new List<PaymentDetailEntity>();
+        foreach (PaymentDetailEntity det in paymentDetail)
+        {
+            detail.Add(new PaymentDetailEntity()
+                {
+                    Uuid = det.Uuid,
+                    UuidPaymentRegistration = det.UuidPaymentRegistration,
+                    Description = det.Description,
+                    Amount = Convert.ToDouble(det.Amount),
+                    DetailsType = det.DetailsType,
+                    IsDeleted = false,
+                    DateModify = DateTime.Now,
+                });
+        }
+
+        PaymentEntity pay = new PaymentEntity()
+        {
+            Uuid = this.Payment.Uuid,
+            UuidEmploye = this.Payment.UuidEmploye,
+            PaymentDate = this.Payment.PaymentDate,
+            Amount = Convert.ToDouble(this.Payment.Amount),
+            PaymentDescription = this.Payment.PaymentDescription,
+            IsDeleted = false,
+            DateModify = DateTime.Now,
+            PaymentRegistrationDetails = detail,
+        };
+
+        HttpResponseMessage response = await Http.PostAsJsonAsync("api/Payments/Update", new PayloadGeneric()
+        {
+            Uuid = uuidUserLoged!,
+            payload = pay,
+        });
+
+        if (response.IsSuccessStatusCode)
+        {
+            showInfo("Pago generado con éxito!");
+            paymentDetail = new List<PaymentDetailEntity>();
+            Payment = new PaymentEntity();
+            paymentDetailAdd = new PaymentDetailEntity();
+            Payment.Amount = 0;
+            Payment.PaymentDescription = string.Empty;
+            StateHasChanged();
+        }
+        else
+            showError("Error al intentar generar pago!");
+    }
+
+    public void AddDetail()
+    {
+        paymentDetail.Add(this.paymentDetailAdd);
+        paymentDetailAdd = new PaymentDetailEntity();
+    }
+
+    public void EditDetail(PaymentDetailEntity detail)
+    {
+        this.paymentDetail.Remove(detail);
+    }
+
+    public void ReturnMenu()
+    {
+        NavigationManager.NavigateTo($"PaymentsGrid", true);
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+}

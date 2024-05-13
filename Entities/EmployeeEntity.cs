@@ -14,9 +14,14 @@ namespace FE_HumanResources.Entities
         public string Email { get; set; }
         public string Gender { get; set; }
         public string Picture { get; set; }
-        public bool IsUSer { get; set; }
+        public bool IsUser { get; set; }
         public int Phone { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateModify { get; set; }
+        public DateOnly? EndDate { get; set; }
+        public double EmployeeSalary { get; set; }
+        public double EmployeeBonus { get; set; }
+        public bool appliesToISR { get; set; }
+        public string PaymentFrequency { get; set; }
     }
 }

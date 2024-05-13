@@ -8,7 +8,7 @@
 @inject DialogService DialogService
 @inject HttpClient Http
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
@@ -22,7 +22,7 @@
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">
                 <RadzenStack>
-                    <RadzenFieldset Text="Informacion de Empleado">
+                    <RadzenFieldset Text="Información de Empleado">
                         <RadzenStack Gap="1rem">
 
                             <RadzenRow AlignItems="AlignItems.Center">
@@ -44,7 +44,7 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="DPI" Component="Identification" />
+                                    <RadzenLabel Text="Doc. Identificación" Component="Identification" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenTextBox Style="width: 100%;" Name="Identification"
@@ -53,7 +53,7 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Direcci�n" Component="Adress" />
+                                    <RadzenLabel Text="Dirección" Component="Adress" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenTextBox Style="width: 100%;" Name="Adress" @bind-Value="Employee.Adress" />
@@ -61,10 +61,10 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Genero" Component="Gender" />
+                                    <RadzenLabel Text="Género" Component="Gender" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.Gender" Placeholder="Femenino" Data="@genders"
+                                    <RadzenDropDown @bind-Value="Employee.Gender" Data="@genders"
                                         Style="width: 100%;" TextProperty="GenderName" ValueProperty="GenderName"
                                         Name="Gender">
                                     </RadzenDropDown>
@@ -72,7 +72,7 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Telefono" Component="Phone" />
+                                    <RadzenLabel Text="Teléfono" Component="Phone" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenNumeric Style="width: 100%;" Name="Phone" @bind-Value="Employee.Phone" />
@@ -126,12 +126,48 @@
                                     </RadzenDropDown>
                                 </RadzenColumn>
                             </RadzenRow>
+                         <RadzenRow AlignItems="AlignItems.Center">
+                             <RadzenColumn Size="12" SizeMD="4">
+                                 <RadzenLabel Text="Salario" Component="Salary" />
+                             </RadzenColumn>
+                             <RadzenColumn Size="12" SizeMD="8">
+                                 <RadzenNumeric Style="width: 100%;" Name="Salary" @bind-Value="Employee.EmployeeSalary" />
+                             </RadzenColumn>
+                         </RadzenRow>
+                             <RadzenRow AlignItems="AlignItems.Center">
+                                 <RadzenColumn Size="12" SizeMD="4">
+                                     <RadzenLabel Text="Bono" Component="Bonus" />
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="8">
+                                     <RadzenNumeric Style="width: 100%;" Name="Bonus" @bind-Value="Employee.EmployeeBonus" />
+                                 </RadzenColumn>
+                             </RadzenRow>
+                             <RadzenRow>
+                                 <RadzenColumn Size="12" SizeMD="4">
+                                     <RadzenLabel Text="Aplica ISR" Component="ApliessToISR" />
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="8">
+                                     <RadzenSwitch Name="ApliessToISR" @bind-Value="Employee.appliesToISR"
+                                                   InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
+                                 </RadzenColumn>
+                             </RadzenRow>
+                             <RadzenRow AlignItems="AlignItems.Center">
+                                 <RadzenColumn Size="12" SizeMD="4">
+                                     <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="8">
+                                     <RadzenDropDown @bind-Value="Employee.PaymentFrequency" Data="@PaymentFrequencyTypes"
+                                                     Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency"
+                                                     Name="PaymentFrequency">
+                                     </RadzenDropDown>
+                                 </RadzenColumn>
+                             </RadzenRow>
                             <RadzenRow>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Es Usuario" Component="IsUser" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenSwitch Name="IsUser" @bind-Value="Employee.IsUSer"
+                                    <RadzenSwitch Name="IsUser" @bind-Value="Employee.IsUser"
                                         InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
                                 </RadzenColumn>
                             </RadzenRow>
@@ -177,6 +213,12 @@
         new { GenderName = "Femenino" }
     };
 
+    List<dynamic> PaymentFrequencyTypes = new List<dynamic>()
+    {
+        new { PaymentFrequency = "Quincenal" },
+        new { PaymentFrequency = "Mensual" }
+    };
+
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
@@ -214,6 +256,7 @@
                     showError();
             }
 
+
         }
     }
 
@@ -232,7 +275,7 @@
         @<RadzenStack Gap="1.5rem">
             <RadzenRow AlignItems="AlignItems.Center">
                 <RadzenColumn Size="12" SizeMD="4">
-                    <RadzenLabel Text="Titulo" Component="Role" />
+                <RadzenLabel Text="Tipo de Usuario (Rol)" Component="Role" />
                 </RadzenColumn>
                 <RadzenColumn Size="12" SizeMD="8">
                     <RadzenDropDown @bind-Value="@selectedUuidRole" Data="@roles" Style="width: 100%;"
@@ -260,7 +303,7 @@
 
     private void ValidateIsUser()
     {
-        if (this.Employee.IsUSer)
+        if (this.Employee.IsUser)
         {
             ShowInlineDialog();
         }
@@ -293,7 +336,7 @@
                 EmployeeEntity? createdEmployee = JsonConvert.DeserializeObject<EmployeeEntity>(content);
                 if (createdEmployee != null)
                 {
-                    if (employee.IsUSer)
+                    if (employee.IsUser)
                     {
                         response = await Http.PostAsJsonAsync("api/User/CreateUser", new PayloadGeneric()
                         {
@@ -302,6 +345,7 @@
                             {
                                 Uuid = "",
                                 UuidRole = selectedUuidRole,
+                                UuidEmployee = createdEmployee.Uuid,
                                 UserName = createdEmployee.Name,
                                 LastName = createdEmployee.LastName,
                                 Identification = createdEmployee.Identification,
@@ -310,7 +354,7 @@
                                 Phone = createdEmployee.Phone,
                                 DateOfBirth = createdEmployee.DateOfBirth,
                                 Email = createdEmployee.Email,
-                                Password = "Pr0DiSa24*",
+                                Password = "Fr4NCeLL#24",
                                 Active = true,
                                 Picture = "...",
                                 Country = selectedCountry,
@@ -323,7 +367,8 @@
                     if (response.IsSuccessStatusCode)
                     {
                         this.Employee = new EmployeeEntity();
-                        showInfo("Se creo Empleado con Exito!");
+                        showInfo("Se creo Empleado con éxito!");
+                        StateHasChanged();
                     }
                     else
                         showError("Perdon algo salio mal");

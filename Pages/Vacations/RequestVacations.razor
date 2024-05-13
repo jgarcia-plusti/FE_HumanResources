@@ -1,0 +1,217 @@
+﻿@page "/RequestVacations"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NotificationService NotificationService
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject HttpClient Http
+
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Vacaciones" />
+            <RadzenBreadCrumbItem Path="/RequestVacations" Text="Solicitar Vacaciones" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+
+    <RadzenTemplateForm Data="@vacationsEntity" Submit="@((VacationsEntity args) => { CreateVacationsSolisiting(args); })">
+        <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+            <RadzenColumn Size="12" SizeMD="12">
+                <RadzenStack>
+                    <RadzenFieldset Text="Información de Usuario">
+                        <RadzenStack Gap="1rem">
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Solicitante" Component="Soliciting" />
+                                    <RadzenColumn Size="12" SizeMD="8">
+                                        <RadzenDropDown @bind-Value="vacationsEntity.UuidEmployeeSoliciting" Data="@EmployeeVacationApplicant" Style="width: 100%;"
+                                                        TextProperty="Name" ValueProperty="Uuid" Name="Soliciting">
+                                        </RadzenDropDown>
+                                    </RadzenColumn>
+                                </RadzenColumn>
+                            </RadzenRow>
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Autoriza" Component="Authorizing" />
+                                    <RadzenColumn Size="12" SizeMD="8">
+                                        <RadzenDropDown @bind-Value="vacationsEntity.UuidEmployeeAuthorizing" Data="@employeeEntities" Style="width: 100%;"
+                                                        TextProperty="Name" ValueProperty="Uuid" Name="Authorizing">
+                                        </RadzenDropDown>
+                                    </RadzenColumn>
+                                </RadzenColumn>
+                            </RadzenRow>
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Tipo" Component="Type" />
+                                    <RadzenColumn Size="12" SizeMD="8">
+                                        <RadzenDropDown @bind-Value="vacationsEntity.Type" Data="@Types" Style="width: 100%;"
+                                                        TextProperty="TypeName" ValueProperty="TypeName" Name="Type">
+                                        </RadzenDropDown>
+                                    </RadzenColumn>
+                                </RadzenColumn>
+                            </RadzenRow>
+                            
+
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="12">
+                <RadzenStack>
+                    <RadzenFieldset Text="Información de Usuario">
+                        <RadzenStack Gap="1rem">
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Fecha de Inicio" Component="InitDate" Style="margin-right: 8px; vertical-align: middle;" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDatePicker @bind-Value="vacationsEntity.InitDate" Name="InitDate" ShowCalendarWeek />
+                                 </RadzenColumn>
+                             </RadzenRow>
+
+                             <RadzenRow AlignItems="AlignItems.Center">
+                                 <RadzenColumn Size="12" SizeMD="4">
+                                     <RadzenLabel Text="Fecha de Finalización" Component="EndDate" Style="margin-right: 8px; vertical-align: middle;" />
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="8">
+                                     <RadzenDatePicker @bind-Value="vacationsEntity.EndDate" Name="EndDate" ShowCalendarWeek />
+                                 </RadzenColumn>
+                             </RadzenRow>
+
+                             <RadzenRow AlignItems="AlignItems.Center">
+                                 <RadzenColumn Size="12" SizeMD="4">
+                                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Descripción</RadzenText>
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="8">
+                                     <RadzenTextArea @bind-Value="vacationsEntity.Description" class="w-100" aria-label="Descripción" />
+                                 </RadzenColumn>
+                             </RadzenRow>
+
+
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                     Class="rz-mt-8 rz-mb-4">
+            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+            <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                          Text="Regresar" Click="@ReturnMenu" />
+        </RadzenStack>
+    </RadzenTemplateForm>
+
+</RadzenBody>
+
+ @code {
+    private VacationsEntity vacationsEntity = new VacationsEntity();
+    private ICollection<EmployeeEntity> employeeEntities;
+    private ICollection<EmployeeEntity> EmployeeVacationApplicant;
+
+    List<dynamic> Types = new List<dynamic>()
+    {
+        new { TypeName = "Anual" },
+        new { TypeName = "Medica" },
+        new { TypeName = "Administrativa" },
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string loggedUser = await LocalStorage.GetItemAsync<string>("logedUser");
+        UserEntity user = JsonConvert.DeserializeObject<UserEntity>(loggedUser);
+
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                employeeEntities = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+                if (employeeEntities == null)
+                    showError();
+                else
+                {
+                    EmployeeVacationApplicant = employeeEntities.Where(w => w.Uuid == user.UuidEmployee).ToList();
+                }
+            }
+
+        }
+    }
+
+    private async void CreateVacationsSolisiting(VacationsEntity vacation)
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+        string loggedUser = await LocalStorage.GetItemAsync<string>("logedUser");
+        UserEntity user = JsonConvert.DeserializeObject<UserEntity>(loggedUser);
+
+        if (vacation != null && !string.IsNullOrEmpty(jwt))
+        {
+
+            vacation.DateModify = DateTime.Now;
+            vacation.State = "En Proceso";
+            vacation.IsDeleted = false;
+
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Vacation/CreateVacation", new PayloadGeneric()
+            {
+                Uuid = uuidUserLoged!,
+                payload = vacation,
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                vacationsEntity = new VacationsEntity();
+                showInfo("Se agrego la información con éxito");
+                StateHasChanged();
+            }
+            else
+            {
+                showError("Perdon algo salio mal");
+            }
+        }
+    }
+
+    private void ReturnMenu()
+    {
+        NavigationManager.NavigateTo($"/dashboard");
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+}

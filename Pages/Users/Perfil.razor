@@ -20,7 +20,7 @@
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">
                 <RadzenStack>
-                    <RadzenFieldset Text="Informacion de Usuario">
+                    <RadzenFieldset Text="Información de Usuario">
                         <RadzenStack Gap="1rem">
 
                             <RadzenRow AlignItems="AlignItems.Center">
@@ -58,7 +58,7 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Genero" Component="Gender" />
+                                    <RadzenLabel Text="Género" Component="Gender" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenDropDown @bind-Value="userEntity.Gender" Placeholder="Femenino"
@@ -69,7 +69,7 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Telefono" Component="Phone" />
+                                    <RadzenLabel Text="Teléfono" Component="Phone" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenNumeric Style="width: 100%;" Name="Phone" @bind-Value="userEntity.Phone" />
@@ -87,7 +87,7 @@
                             </RadzenRow>
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Pais" Component="Country" />
+                                    <RadzenLabel Text="País" Component="Country" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenTextBox Style="width: 100%;" Name="Country"
@@ -100,7 +100,7 @@
             </RadzenColumn>
             <RadzenColumn Size="12" SizeMD="6">
                 <RadzenStack>
-                    <RadzenFieldset Text="Informacion para la Empresa">
+                    <RadzenFieldset Text="Información para la Empresa">
                         <RadzenStack Gap="1rem">
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
@@ -145,7 +145,7 @@
         </RadzenRow>
         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
             Class="rz-mt-8 rz-mb-4">
-            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Save" />
+            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
              <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
                 Text="Regresar" Click="@ReturnMenu" />
         </RadzenStack>
@@ -193,6 +193,7 @@
             {
                 string content = response.Content.ReadAsStringAsync().Result;
                 userEntity = JsonConvert.DeserializeObject<UserEntity>(content);
+                showInfo("Datos cargados!");
             }
             else
             {
@@ -228,7 +229,7 @@
                 if (updatedUser != null)
                 {
                     UserEntity = updatedUser;
-                    showInfo("Se actualiza la información con exito");
+                    showInfo("Se actualiza la información con éxito");
                 }
             }
         }

@@ -1,0 +1,153 @@
+﻿@page "/AuthorizeVacations"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NotificationService NotificationService
+@inject ContextMenuService ContextMenuService
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject HttpClient Http
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Vacaciones" />
+            <RadzenBreadCrumbItem Path="/AuthorizeVacations" Text="Autorizar Vacaciones" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <br />
+    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
+                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@vacataionsEntities" TItem="VacationsEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@SelectedVacation CellContextMenu="@OnCellContextMenu"
+                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+        <Columns>
+            <RadzenDataGridColumn TItem="VacationsEntity" Property="NameEmployeeSoliciting" Title="Solicitante" Frozen="true" Width="200px" />
+            <RadzenDataGridColumn TItem="VacationsEntity" Property="NameEmployeeAuthorizing" Title="Autorizante" Frozen="true" Width="200px" />
+            <RadzenDataGridColumn TItem="VacationsEntity" Property="InitDate" Title="Fecha Inicial" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="VacationsEntity" Property="EndDate" Title="Fecha Final" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="VacationsEntity" Property="State" Title="Estado" Width="200px" />
+            <RadzenDataGridColumn TItem="VacationsEntity" Property="Description" Title="Descripcón" Width="300px" />
+        </Columns>
+    </RadzenDataGrid>
+</RadzenBody>
+
+
+@code {
+    private ICollection<VacationsEntity> vacataionsEntities;
+    private ICollection<EmployeeEntity> employeeEntities;
+    private IList<VacationsEntity> SelectedVacation;
+    private EmployeeEntity employeeSoliciting;
+    string? jwt;
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        await Reset();
+    }
+
+    private async Task Reset()
+    {
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Vacation/GetAllVacations");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                vacataionsEntities = JsonConvert.DeserializeObject<ICollection<VacationsEntity>>(content);
+                if (vacataionsEntities == null)
+                    showError();
+            }
+            else
+                showError();
+
+        }
+    }
+
+    private async void AuthorizeThisVacations(VacationsEntity vacation)
+    {
+        string loggedUser = await LocalStorage.GetItemAsync<string>("logedUser");
+        UserEntity user = JsonConvert.DeserializeObject<UserEntity>(loggedUser);
+
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            vacation.UuidEmployeeAuthorizing = user.UuidEmployee;
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Vacation/UpdateVacation", new PayloadGeneric()
+            {
+                Uuid = " ",
+                payload = vacation,
+            });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                vacataionsEntities = JsonConvert.DeserializeObject<ICollection<VacationsEntity>>(content);
+                if (vacataionsEntities == null)
+                    showError();
+            }
+            else
+                showError();
+
+            await Reset();
+        }
+    }
+
+    void OnCellContextMenu(DataGridCellMouseEventArgs<VacationsEntity> args)
+    {
+        SelectedVacation = new List<VacationsEntity>() { args.Data };
+
+        ContextMenuService.Open(args,
+            new List<ContextMenuItem> {
+                new ContextMenuItem(){ Text = "Autorizar", Value = 1, Icon = "done_all" },
+                new ContextMenuItem(){ Text = "Rechazar", Value = 2, Icon = "cancel" }
+            },
+            (e) =>
+            {
+                if (e.Value.ToString() == "1")
+                {
+                    args.Data.State = "Autorizado";
+                    AuthorizeThisVacations(args.Data);
+                    showInfo("Autorizado!");
+                }
+                else if (e.Value.ToString() == "2")
+                {
+                    args.Data.State = "Rechazado";
+                    AuthorizeThisVacations(args.Data);
+                    showInfo("Rechazado!");
+                }
+            }
+         );
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+}
+

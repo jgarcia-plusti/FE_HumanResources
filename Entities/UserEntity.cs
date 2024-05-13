@@ -4,6 +4,7 @@
     {
         public string Uuid { get; set; }
         public string UuidRole { get; set; }
+        public string UuidEmployee { get; set; }
         public string UserName { get; set; }
         public string LastName { get; set; }
         public string Identification { get; set; }

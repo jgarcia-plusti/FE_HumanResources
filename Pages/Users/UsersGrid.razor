@@ -7,7 +7,7 @@
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
@@ -18,7 +18,7 @@
         </ChildContent>
     </RadzenBreadCrumb>
     <br>
-    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false"
         FilterMode="FilterMode.Simple" AllowSorting="true" PageSize="10" AllowPaging="true"
         PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true" Data="@UserEntity" TItem="UserEntity"
@@ -29,8 +29,8 @@
             <RadzenDataGridColumn TItem="UserEntity" Property="UserName" Title="Nombre" Frozen="true" Width="80px"
                 TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn TItem="UserEntity" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
-            <RadzenDataGridColumn TItem="UserEntity" Property="Identification" Title="Identificacion" Width="160px" />
-            <RadzenDataGridColumn TItem="UserEntity" Property="Phone" Title="Telefono" FormatString="{0:d}"
+            <RadzenDataGridColumn TItem="UserEntity" Property="Identification" Title="Identificación" Width="160px" />
+            <RadzenDataGridColumn TItem="UserEntity" Property="Phone" Title="Teléfono" FormatString="{0:d}"
                 Width="200px" />
             <RadzenDataGridColumn TItem="UserEntity" Property="Email" Title="Correo" Width="300px" />
         </Columns>
@@ -87,7 +87,7 @@
         ContextMenuService.Open(args,
         new List<ContextMenuItem> {
             new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
-            new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 2, Icon = "home" },
+            new ContextMenuItem(){ Text = "Ver Histórico del Registro", Value = 2, Icon = "home" },
             new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
         },
         (e) =>

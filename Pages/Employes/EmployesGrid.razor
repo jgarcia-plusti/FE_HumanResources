@@ -5,6 +5,7 @@
 @inject ILocalStorageService LocalStorage
 @inject ContextMenuService ContextMenuService
 @inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
@@ -17,7 +18,8 @@
             <RadzenBreadCrumbItem Path="/usersgrid" Text="Lista de Empleados" />
         </ChildContent>
     </RadzenBreadCrumb>
-    <RadzenButton Text="Reset" Click="@Reset" Style="margin-bottom: 20px;" />
+    <br />
+    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
                     AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                     Data="@EmployeeEntity" TItem="EmployeeEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
@@ -26,8 +28,8 @@
         <Columns>
             <RadzenDataGridColumn TItem="EmployeeEntity" Property="Name" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn TItem="EmployeeEntity" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Identification" Title="Identificacion" Width="160px" />
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Phone" Title="Telefono" FormatString="{0:d}" Width="200px" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Identification" Title="Identificación" Width="160px" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Phone" Title="teléfono" FormatString="{0:d}" Width="200px" />
             <RadzenDataGridColumn TItem="EmployeeEntity" Property="Email" Title="Correo" Width="300px" />
         </Columns>
     </RadzenDataGrid>
@@ -58,10 +60,14 @@
                 EmployeeEntity = JsonConvert.DeserializeObject<IEnumerable<EmployeeEntity>>(content);
                 if (EmployeeEntity == null)
                 {
+                    showError("Error al cargar Empleados");
 
                 }
                 else
+                {
                     selectedEmployee = EmployeeEntity.Take(1).ToList();
+                    showInfo("datos cargados");
+                }
             }
             else
             {
@@ -83,8 +89,9 @@
         ContextMenuService.Open(args,
             new List<ContextMenuItem> {
                 new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
-                new ContextMenuItem(){ Text = "Ver Historico del Registro", Value = 2, Icon = "home" },
-                new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
+                new ContextMenuItem(){ Text = "Ver Histórico del Registro", Value = 2, Icon = "home" },
+                new ContextMenuItem(){ Text = "Ver Pagos", Value = 3, Icon = "account_balance_wallet" },
+                new ContextMenuItem(){ Text = "Eliminar", Value = 4, Icon = "info" },
             },
             (e) =>
             {
@@ -98,5 +105,29 @@
                 }
             }
          );
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
     }
 }
