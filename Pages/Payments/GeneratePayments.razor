@@ -17,9 +17,22 @@
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
-    <RadzenDropDown @bind-Value="@SelectedPaymentFrequencyType" Data="@PaymentFrequencyTypes"
-                    Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency" />
-    <RadzenButton Variant="Variant.Flat" Click=@(args => GetGeneratedPayments()) Text="Generar" ButtonStyle="ButtonStyle.Primary" />
+
+    <RadzenRow AlignItems="AlignItems.End" Wrap="FlexWrap.Wrap" Gap="1rem" Class="rz-p-sm-12">
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenDropDown @bind-Value="@SelectedPaymentFrequencyType" Data="@PaymentFrequencyTypes"
+                            Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+           
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenButton Variant="Variant.Flat" Click=@(args => GetGeneratedPayments()) Text="Generar" ButtonStyle="ButtonStyle.Primary" />
+        </RadzenColumn>
+    </RadzenRow>
 
     <br />
     @if (Payments != null)
@@ -142,6 +155,7 @@
         new { DetailsType = "Descuento" },
         new { DetailsType = "Bono" },
         new { DetailsType = "Salario" },
+        new { DetailsType = "IGSS" },
     };
 
     List<dynamic> PaymentFrequencyTypes = new List<dynamic>()
@@ -164,7 +178,7 @@
             HttpResponseMessage response = await Http.PostAsJsonAsync("api/Payments/GeneratePayments", new PayloadGeneric()
             {
                 Uuid = "",
-                payload = { PaymentFrequency = SelectedPaymentFrequencyType }
+                payload = new { PaymentFrequency = SelectedPaymentFrequencyType }
             });
 
             if (response.IsSuccessStatusCode)
@@ -195,7 +209,7 @@
 
     public void AddDetail(PaymentDetailEntity detail, List<PaymentDetailEntity> det, PaymentEntity payment)
     {
-        if (detail.DetailsType == "Descuento")
+        if (detail.DetailsType == "Descuento" || detail.DetailsType == "IGSS")
             payment.Amount -= detail.Amount;
         else
             payment.Amount += detail.Amount;
@@ -206,7 +220,7 @@
 
     public void EditDetail(PaymentDetailEntity detail, List<PaymentDetailEntity> det, PaymentEntity payment)
     {
-        if (detail.DetailsType == "Descuento")
+        if (detail.DetailsType == "Descuento" || detail.DetailsType == "IGSS")
             payment.Amount += detail.Amount;
         else
             payment.Amount -= detail.Amount;

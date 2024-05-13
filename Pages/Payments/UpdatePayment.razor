@@ -17,15 +17,27 @@
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
+
+    <RadzenRow AlignItems="AlignItems.End" Wrap="FlexWrap.Wrap" Gap="1rem" Class="rz-p-sm-12">
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenLabel Text="Frecuencia de pago" Component="Frecuencia de pago" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenLabel Text="@Employee.PaymentFrequency" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenLabel Text="Empleado" Component="Empleado" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenLabel Text="@Employee.Name" />
+        </RadzenColumn>
+    </RadzenRow>
+
+    <br />
     <RadzenTemplateForm Data="@Payment" Submit="@((PaymentEntity args) => { UpdateNewPayment(); })">
         <RadzenRow Gap="1rem">
             <RadzenColumn Size="12" SizeSM="6">
                 <RadzenStack>
-                    <RadzenFormField Text="Seleccionar Empleado" Variant="Variant.Outlined">
-                        <RadzenDropDown @bind-Value="Payment.UuidEmploye" Data="@Employee"
-                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Employee">
-                        </RadzenDropDown>
-                    </RadzenFormField>
                     <RadzenFormField Text="Fecha" Variant="Variant.Outlined">
                         <RadzenDatePicker @bind-Value="Payment.PaymentDate" Name="DateOfBirth"
                                                 ShowCalendarWeek />
@@ -37,6 +49,12 @@
                      <RadzenFormField Text="Total Pago" Variant="Variant.Outlined">
                          <RadzenNumeric @bind-Value="Payment.Amount" />
                      </RadzenFormField>
+                 </RadzenStack>
+             </RadzenColumn>
+         </RadzenRow>
+         <RadzenRow>
+             <RadzenColumn>
+                 <RadzenStack>
                      <RadzenFormField Text="Descripción" Variant="Variant.Outlined">
                          <RadzenTextBox @bind-Value="Payment.PaymentDescription" />
                      </RadzenFormField>
@@ -124,18 +142,23 @@
     private PaymentEntity Payment = new PaymentEntity();
     private List<PaymentDetailEntity> paymentDetail = new List<PaymentDetailEntity>();
     private PaymentDetailEntity paymentDetailAdd = new PaymentDetailEntity();
-    private ICollection<EmployeeEntity> Employee;
+    private EmployeeEntity Employee;
     bool allowVirtualization;
     string? jwt;
     string? uuidUserLoged;
-
+    string SelectedPaymentFrequencyType;
     List<dynamic> DetailsTypes = new List<dynamic>()
     {
-        new { DetailsType = "Quincena" },
-        new { DetailsType = "Mes" },
         new { DetailsType = "Descuento" },
         new { DetailsType = "Bono 14" },
         new { DetailsType = "Aguinaldo" },
+        new { DetailsType = "IGSS" },
+    };
+
+    List<dynamic> PaymentFrequencyTypes = new List<dynamic>()
+    {
+        new { PaymentFrequency = "Quincenal" },
+        new { PaymentFrequency = "Mensual" }
     };
 
     protected override async Task OnInitializedAsync()
@@ -143,47 +166,49 @@
         await base.OnInitializedAsync();
         jwt = await LocalStorage.GetItemAsync<string>("jwt");
         uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+        GetEmployees();
+    }
 
+    private async Task GetEmployees()
+    {
         if (!string.IsNullOrEmpty(jwt))
         {
-            if (Employee == null)
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Payments/Get", new PayloadGeneric()
             {
+                Uuid = this.Uuid,
+                payload = { }
+            });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                Payment = null;
+                Payment = JsonConvert.DeserializeObject<PaymentEntity>(content);
+                paymentDetail = null;
+                paymentDetail = Payment.PaymentRegistrationDetails.ToList();
+
+                StateHasChanged();
+
                 Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-                HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+                response = await Http.PostAsJsonAsync("api/Employee/Get", new PayloadGeneric()
+                {
+                    Uuid = "",
+                    payload = new { Uuid = Payment.UuidEmploye }
+                });
                 if (response.IsSuccessStatusCode)
                 {
-                    string content = response.Content.ReadAsStringAsync().Result;
-                    Employee = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+                    content = response.Content.ReadAsStringAsync().Result;
+                    Employee = JsonConvert.DeserializeObject<EmployeeEntity>(content);
                     if (Employee == null)
-                    {
                         showError("Error al obtener empleados!");
-                    }
-                    else
-                    {
-                        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-                        response = await Http.PostAsJsonAsync("api/Payments/Get", new PayloadGeneric()
-                        {
-                            Uuid = this.Uuid,
-                            payload = { }
-                        });
-                        if (response.IsSuccessStatusCode)
-                        {
-                            content = await response.Content.ReadAsStringAsync();
-                            Payment = null;
-                            Payment = JsonConvert.DeserializeObject<PaymentEntity>(content);
-                            paymentDetail = null;
-                            paymentDetail = Payment.PaymentRegistrationDetails.ToList();
-                                                                                         
-                            StateHasChanged();
-                            showInfo("Información cargada con éxito!");
-                        }
-                    }
                 }
                 else
                 {
                     showError("Error al intentar obtener empleados!");
                 }
+                
             }
+                        
         }
         else
         {
@@ -243,12 +268,22 @@
 
     public void AddDetail()
     {
+        if (paymentDetailAdd.DetailsType == "Descuento" || paymentDetailAdd.DetailsType == "IGSS")
+            Payment.Amount -= paymentDetailAdd.Amount;
+        else
+            Payment.Amount += paymentDetailAdd.Amount;
+
         paymentDetail.Add(this.paymentDetailAdd);
         paymentDetailAdd = new PaymentDetailEntity();
     }
 
     public void EditDetail(PaymentDetailEntity detail)
     {
+        if (detail.DetailsType == "Descuento" || detail.DetailsType == "IGSS")
+            Payment.Amount += detail.Amount;
+        else
+            Payment.Amount -= detail.Amount;
+
         this.paymentDetail.Remove(detail);
     }
 

@@ -17,15 +17,34 @@
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
+
+    <RadzenRow AlignItems="AlignItems.End" Wrap="FlexWrap.Wrap" Gap="1rem" Class="rz-p-sm-12">
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenDropDown @bind-Value="@SelectedPaymentFrequencyType" Data="@PaymentFrequencyTypes" 
+                            Change="@(args => GetEmployees())"
+                            Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency" />
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            <RadzenFormField Text="Seleccionar Empleado" Variant="Variant.Outlined">
+                <RadzenDropDown @bind-Value="Payment.UuidEmploye" Data="@Employee"
+                                Change="@(args => GeneratePaymentByEmployee(Payment.UuidEmploye))"
+                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Employee">
+                </RadzenDropDown>
+            </RadzenFormField>
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
+            
+        </RadzenColumn>
+    </RadzenRow>
+
+    <br />
     <RadzenTemplateForm Data="@Payment" Submit="@((PaymentEntity args) => { CreateNewPayment(); })">
         <RadzenRow Gap="1rem">
             <RadzenColumn Size="12" SizeSM="6">
                 <RadzenStack>
-                    <RadzenFormField Text="Seleccionar Empleado" Variant="Variant.Outlined">
-                        <RadzenDropDown @bind-Value="Payment.UuidEmploye" Data="@Employee"
-                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Employee">
-                        </RadzenDropDown> 
-                    </RadzenFormField>
                     <RadzenFormField Text="Fecha" Variant="Variant.Outlined">
                         <RadzenDatePicker @bind-Value="Payment.PaymentDate" Name="DateOfBirth"
                                                 ShowCalendarWeek />
@@ -37,13 +56,18 @@
                     <RadzenFormField Text="Total Pago" Variant="Variant.Outlined">
                         <RadzenNumeric @bind-Value="Payment.Amount" />
                     </RadzenFormField>
-                     <RadzenFormField Text="Descripción" Variant="Variant.Outlined">
-                         <RadzenTextBox @bind-Value="Payment.PaymentDescription" />
-                     </RadzenFormField>
                 </RadzenStack>
             </RadzenColumn>
         </RadzenRow>
-
+        <RadzenRow>
+            <RadzenColumn>
+                 <RadzenStack>
+                     <RadzenFormField Text="Descripción" Variant="Variant.Outlined">
+                         <RadzenTextBox @bind-Value="Payment.PaymentDescription" />
+                     </RadzenFormField>
+                 </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
          <RadzenRow AlignItems="AlignItems.End" Wrap="FlexWrap.Wrap" Gap="1rem" Class="rz-p-sm-12">
              <RadzenColumn Size="12" SizeMD="6" SizeLG="3">
                  <RadzenDropDown @bind-Value="@paymentDetailAdd.DetailsType" Data="@DetailsTypes"
@@ -125,14 +149,20 @@
     bool allowVirtualization;
     string? jwt;
     string? uuidUserLoged;
+    string SelectedPaymentFrequencyType;
 
     List<dynamic> DetailsTypes = new List<dynamic>()
     {
-        new { DetailsType = "Quincena" },
-        new { DetailsType = "Mes" },
         new { DetailsType = "Descuento" },
         new { DetailsType = "Bono 14" },
         new { DetailsType = "Aguinaldo" },
+        new { DetailsType = "IGSS" },
+    };
+
+    List<dynamic> PaymentFrequencyTypes = new List<dynamic>()
+    {
+        new { PaymentFrequency = "Quincenal" },
+        new { PaymentFrequency = "Mensual" }
     };
 
     protected override async Task OnInitializedAsync()
@@ -141,27 +171,32 @@
         jwt = await LocalStorage.GetItemAsync<string>("jwt");
         uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
 
+    }
+
+    public async Task GetEmployees()
+    {
         if (!string.IsNullOrEmpty(jwt))
         {
-            if (Employee == null)
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/GetByFrequencyPayment", new PayloadGeneric()
             {
-                Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-                HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
-                if (response.IsSuccessStatusCode)
+                Uuid = "",
+                payload = new { PaymentFrequency = SelectedPaymentFrequencyType }
+            });
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                Employee = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+                if (Employee == null)
                 {
-                    string content = response.Content.ReadAsStringAsync().Result;
-                    Employee = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
-                    if (Employee == null)
-                    {
-                        showError("Error al obtener empleados!");
-                    }
-                    else
-                        showInfo("empleados Cargados con éxito!");
+                    showError("Error al obtener empleados!");
                 }
                 else
-                {
-                    showError("Error al intentar obtener empleados!");
-                }
+                    showInfo("empleados Cargados con éxito!");
+            }
+            else
+            {
+                showError("Error al intentar obtener empleados!");
             }
         }
         else
@@ -171,6 +206,39 @@
         }
     }
 
+    public async Task GeneratePaymentByEmployee(string uuidEmployee)
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Payments/GeneratePaymentsByEmployee", new PayloadGeneric()
+            {
+                Uuid = "",
+                payload = new { Uuid = uuidEmployee }
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                Payment = JsonConvert.DeserializeObject<PaymentEntity>(content);
+                if (Payment == null)
+                    showError("Error al intentar cargar los datos!");
+                else
+                    paymentDetail = Payment.PaymentRegistrationDetails;
+            }
+            else
+            {
+                showError("Error al intentar cargar los datos!");
+            }
+        }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+    
     public async Task CreateNewPayment()
     {
         List<PaymentDetailEntity> detail = new List<PaymentDetailEntity>();
@@ -222,12 +290,23 @@
 
     public void AddDetail()
     {
+
+        if (paymentDetailAdd.DetailsType == "Descuento" || paymentDetailAdd.DetailsType == "IGSS")
+            Payment.Amount -= paymentDetailAdd.Amount;
+        else
+            Payment.Amount += paymentDetailAdd.Amount;
+
         paymentDetail.Add(this.paymentDetailAdd);
         paymentDetailAdd = new PaymentDetailEntity();
     }
 
     public void EditDetail(PaymentDetailEntity detail)
     {
+        if (detail.DetailsType == "Descuento" || detail.DetailsType == "IGSS")
+            Payment.Amount += detail.Amount;
+        else
+            Payment.Amount -= detail.Amount;
+
         this.paymentDetail.Remove(detail);
     }
 
