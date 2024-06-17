@@ -46,12 +46,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcQ3JlYXRlRW1wbG95ZWUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/EmployeePanel.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcRW1wbG95ZWVQYW5lbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/EmployesGrid.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcRW1wbG95ZXNHcmlkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/TerminationServices.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcVGVybWluYXRpb25TZXJ2aWNlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Employes/UpdateEmployee.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbG95ZXNcVXBkYXRlRW1wbG95ZWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Evaluations/EmployeeEvaluations.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZhbHVhdGlvbnNcRW1wbG95ZWVFdmFsdWF0aW9ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Evaluations/EmployeeEvaluationsGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZhbHVhdGlvbnNcRW1wbG95ZWVFdmFsdWF0aW9uc0dyaWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Evaluations/UpdateEvaluationEmployee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZhbHVhdGlvbnNcVXBkYXRlRXZhbHVhdGlvbkVtcGxveWVlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Historics/Employees/HistoricByEmployeeGrid.razor]
@@ -120,6 +140,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Vacations/AuthorizeVacations.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmFjYXRpb25zXEF1dGhvcml6ZVZhY2F0aW9ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Vacations/RequestPermisions.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmFjYXRpb25zXFJlcXVlc3RQZXJtaXNpb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Vacations/RequestVacations.razor]

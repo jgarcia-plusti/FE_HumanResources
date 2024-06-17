@@ -1,0 +1,556 @@
+@page "/Evaluations"
+@using System.Net.Http.Headers
+@using System.Globalization
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject ContextMenuService ContextMenuService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Forms
+
+<h3>Evaluación de Desempeño</h3>
+
+ <RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Evaluación de Empleados" />
+            <RadzenBreadCrumbItem Path="/Evaluations" Text="Evalución" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="Evaluaciones">
+                <EmployeeEvaluationsGrid></EmployeeEvaluationsGrid>
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="Evaluar">
+                <br>
+                <RadzenRow>
+                    <RadzenColumn Size="12" SizeMD="4">
+                        <RadzenLabel Text="Fecha" Component="DateOfEvaluation"
+                                     Style="margin-right: 8px; vertical-align: middle;" />
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="8">
+
+                        <RadzenDatePicker @bind-Value="@EmployeeEvaluation.DateOfEvaluation" Name="DateOfEvaluation"
+                                          ShowCalendarWeek />
+                    </RadzenColumn>
+                    <RadzenRequiredValidator Component="DateOfEvaluation" Text="La Fecha es requerida" Popup=true Style="position: absolute" />
+                </RadzenRow>
+                <br>
+                <RadzenRow>
+                    <RadzenColumn Size="12" SizeMD="3">
+                        <RadzenLabel Text="Empleado: " Component="empls1" />
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="9">
+                        <RadzenDropDown @bind-Value="@EmployeeEvaluation.UuidEmployee" Data="@Employees"
+                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="empls1">
+                        </RadzenDropDown>
+                    </RadzenColumn>
+                </RadzenRow>
+                <br>
+                <RadzenRow>
+                    <RadzenColumn Size="12" SizeMD="7">
+                        <RadzenRow>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Proactividad" Component="Proactivity" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.Proactivity.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.Proactivity />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Trabajo en equipo" Component="Teamwork" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.Teamwork.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.Teamwork />
+                            </RadzenColumn>
+
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Liderazgo" Component="Leadership" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.Leadership.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.Leadership />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Precisión en trabajo " Component="PrecisionInWork" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.PrecisionInWork.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.PrecisionInWork />
+                            </RadzenColumn>
+
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Buena Comunicación" Component="GoodCommunication" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.GoodCommunication.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.GoodCommunication />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Habilidades Técnicas" Component="SkillsTechnical" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.SkillsTechnical.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.SkillsTechnical />
+                            </RadzenColumn>
+
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="Compromiso" Component="Compromise" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="3">
+                                <RadzenLabel Text="@EmployeeEvaluation.compromise.ToString()" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenSlider TValue="int" Step="10" @bind-Value=@EmployeeEvaluation.compromise />
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="5">
+                        <RadzenRow>
+                            <RadzenColumn Size="12">
+                                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Valores:</RadzenText>
+                                <RadzenTextArea Name="EthicalValues" @bind-Value="@EmployeeEvaluation.EthicalValues" Placeholder="Respeto, Puntualidad, Responsabilidad..." />
+                                <RadzenLengthValidator Component="EthicalValues" Max="500" Text="El campo debe tener como máximo 500 caracteres." Popup=true Style="position: absolute" />
+                            </RadzenColumn>                            
+                        </RadzenRow>
+                        <RadzenRow>
+                            <RadzenColumn Size="12">
+                                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Fortalezas:</RadzenText>
+                                <RadzenTextArea Name="PersonalStrengths" @bind-Value="@EmployeeEvaluation.PersonalStrengths" />
+                                <RadzenLengthValidator Component="PersonalStrengths" Max="500" Text="El campo debe tener como máximo 500 caracteres." Popup=true Style="position: absolute" />
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow>
+                            <RadzenColumn Size="12">
+                                <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Observaciones :</RadzenText>
+                                <RadzenTextArea Name="Remarks" @bind-Value="@EmployeeEvaluation.Remarks" />
+                                <RadzenLengthValidator Component="Remarks" Max="1000" Text="El campo debe tener como máximo 1000 caracteres." Popup=true Style="position: absolute" />
+                            </RadzenColumn>
+                        </RadzenRow>                        
+                    </RadzenColumn>
+                </RadzenRow>
+                <br>
+                <RadzenRow>
+                    <RadzenColumn Size="5">
+
+                    </RadzenColumn>
+                    <RadzenColumn Size="4">
+                        <RadzenButton Click=@(args => CreateEvaluation()) Text="Guardar" ButtonStyle="ButtonStyle.Primary" />
+                        <RadzenButton Click="@ReturnMenu" Text="Cancelar" ButtonStyle="ButtonStyle.Danger" />
+                    </RadzenColumn>
+                    <RadzenColumn Size="3"></RadzenColumn>
+                </RadzenRow>
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="Métricas">
+                <br>
+                <RadzenRow>
+                    <RadzenColumn Size="12" SizeMD="1">
+                        <RadzenLabel Text="Desde" Component="initDateOfEvaluation"
+                                     Style="margin-right: 8px; vertical-align: middle;" />
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="2">
+
+                        <RadzenDatePicker @bind-Value="@EmployeeEvaluation.initDate" Name="initDateOfEvaluation"
+                                          ShowCalendarWeek />
+                    </RadzenColumn>
+                    <RadzenRequiredValidator Component="initDateOfEvaluation" Text="La Fecha es requerida" Popup=true Style="position: absolute" />
+
+                    <RadzenColumn Size="12" SizeMD="1">
+                        <RadzenLabel Text="Hasta" Component="endDateOfEvaluation"
+                                     Style="margin-right: 8px; vertical-align: middle;" />
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="2">
+
+                        <RadzenDatePicker @bind-Value="@EmployeeEvaluation.endDate" Name="endDateOfEvaluation"
+                                          ShowCalendarWeek />
+                    </RadzenColumn>
+                    <RadzenRequiredValidator Component="endDateOfEvaluation" Text="La Fecha es requerida" Popup=true Style="position: absolute" />
+                    <RadzenColumn Size="12" SizeMD="1">
+                        <RadzenLabel Text="Empleado: " Component="empls2" />
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="4">
+                        <RadzenDropDown @bind-Value="UuidEmployee" Data="@Employees" Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="empls2">
+                        </RadzenDropDown>
+                    </RadzenColumn>
+                    <RadzenColumn Size="12" SizeMD="1">
+                        <RadzenButton Click=@(args => getEvalutionsByEmployee()) Text="Generar" ButtonStyle="ButtonStyle.Primary" />
+                    </RadzenColumn>
+                </RadzenRow>
+                <br>
+                <br>
+                @if (list != null && list.Count > 0)
+                {
+                    <RadzenRow>
+
+                        <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" Class="rz-p-4 rz-mb-6 rz-border-radius-1" Style="border: var(--rz-grid-cell-border);">
+                            <RadzenSwitch @bind-Value=@IsBarChart />
+                            @if (!IsBarChart)
+                            {
+                                <RadzenLabel Text="Grafica de ondas" />
+                            }
+                            else
+                            {
+                                <RadzenLabel Text="Grafica de barras" />
+                            }
+                            @if (!IsBarChart)
+                            {
+                                <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox>
+                                <RadzenLabel Text="Suave" Component="smooth" Style="margin-right: 1rem;" />
+
+                                <RadzenCheckBox @bind-Value="@showMarkers" Name="markers"></RadzenCheckBox>
+                                <RadzenLabel Text="Mostrar Marcadores" Component="markers" />
+                            }
+
+                            <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
+                            <RadzenLabel Text="Mostrar Datos" Component="dataLabels" Style="margin-right: 1rem;" />
+
+                        </RadzenStack>
+
+                        @if (!IsBarChart)
+                        {
+                            <RadzenChart class="w-100 mb-4">
+                                @foreach (var (key, value) in list)
+                                {
+                                    <RadzenLineSeries Smooth="@smooth" Data="value" CategoryProperty="Name" Title="@key" ValueProperty="Rate">
+                                        <RadzenMarkers Visible="@showMarkers" MarkerType="MarkerType.Circle" />
+                                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                                    </RadzenLineSeries>
+                                }
+                                <RadzenCategoryAxis Padding="20" />
+                                <RadzenValueAxis>
+                                    <RadzenGridLines Visible="true" />
+                                    <RadzenAxisTitle Text="Ponderación" />
+                                </RadzenValueAxis>
+                            </RadzenChart>
+                            <br />
+                            <RadzenColumn Size="12" SizeMD="12">
+                                <RadzenLabel Text="Promedios: " />
+                            </RadzenColumn>
+                            @if (dataAverages != null && dataAverages.Count() > 0)
+                            {
+                                <RadzenChart class="w-100 mb-4">
+                                    <RadzenLineSeries Smooth="@smooth" Data="dataAverages" CategoryProperty="Month" Title="Promedios" ValueProperty="Average">
+                                        <RadzenMarkers Visible="@showMarkers" MarkerType="MarkerType.Circle" />
+                                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                                    </RadzenLineSeries>
+                                    <RadzenCategoryAxis Padding="20" />
+                                    <RadzenValueAxis>
+                                        <RadzenGridLines Visible="true" />
+                                        <RadzenAxisTitle Text="Promedio" />
+                                    </RadzenValueAxis>
+                                </RadzenChart>
+                            }
+                        }
+                        else
+                        {
+                            <RadzenChart class="w-100 mb-4">
+                                @foreach (var (key, value) in list)
+                                {
+                                    <RadzenBarSeries Data="value" CategoryProperty="Name" Title="@key" LineType="LineType.Dashed" ValueProperty="Rate">
+                                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                                    </RadzenBarSeries>
+                                }
+                                <RadzenValueAxis>
+                                    <RadzenGridLines Visible="true" />
+                                    <RadzenAxisTitle Text="Ponderación" />
+                                </RadzenValueAxis>
+                                <RadzenBarOptions Radius="5" />
+                            </RadzenChart>
+                            <br />
+                            <RadzenColumn Size="12" SizeMD="12">
+                                <RadzenLabel Text="Promedios: " />
+                            </RadzenColumn>
+                            <br />
+                            @if (dataAverages != null && dataAverages.Count() > 0)
+                            {
+                                <RadzenChart class="w-100 mb-4">
+                                    <RadzenBarSeries Data="dataAverages" CategoryProperty="Month" Title="Promedios" LineType="LineType.Dashed" ValueProperty="Average">
+                                            <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                                    </RadzenBarSeries>
+                                    <RadzenValueAxis>
+                                        <RadzenGridLines Visible="true" />
+                                            <RadzenAxisTitle Text="Promedio" />
+                                    </RadzenValueAxis>
+                                    <RadzenBarOptions Radius="5" />
+                                </RadzenChart>
+                            }
+                        }
+
+                    </RadzenRow>
+                }
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+
+    
+    
+</RadzenBody>
+
+@code{
+    private IEnumerable<EmployeeEntity> Employees;
+    private IEnumerable<EmployeeEvaluationEntity> EmployeeEvaluationList;
+    private EmployeeEvaluationEntity EmployeeEvaluation = new EmployeeEvaluationEntity();
+    private string UuidEmployee;
+    private string jwt = "";
+    bool smooth = true;
+    bool showDataLabels = true;
+    bool showMarkers = false;
+    bool IsBarChart = true;
+
+    class DataItem
+    {
+        public string Name { get; set; }
+        public double Rate { get; set; }
+    }
+    Dictionary<string, DataItem[]> list = new Dictionary<string, DataItem[]>();
+    class Data
+    {
+        public string Value;
+    }
+
+    List<Data> ListData = new List<Data>()
+    {
+        new Data { Value = "Respeto" },
+        new Data { Value = "Conpañerismo" },
+        new Data { Value = "Puntualidad" },
+        new Data { Value = "Amor" },
+    };
+    List<Data> target = new List<Data>();
+    List<Data> source = new List<Data>();
+
+    class DataAverage
+    {
+        public string Month { get; set; }
+        public decimal Average { get; set; }
+    };
+    List<DataAverage> dataAverages = new List<DataAverage>();
+
+    Dictionary<string, int> monthOrder = new Dictionary<string, int>
+    {
+        { "enero", 1 },
+        { "febrero", 2 },
+        { "marzo", 3 },
+        { "abril", 4 },
+        { "mayo", 5 },
+        { "junio", 6 },
+        { "julio", 7 },
+        { "agosto", 8 },
+        { "septiembre", 9 },
+        { "octubre", 10 },
+        { "noviembre", 11 },
+        { "diciembre", 12 }
+    };
+
+    JustifyContent justifyContent = JustifyContent.Center;
+    Variant variant = Variant.Outlined;
+    ButtonStyle style = ButtonStyle.Secondary;
+    Shade shade = Shade.Default;
+    ButtonSize size = ButtonSize.Medium;
+    Orientation orientation = Orientation.Horizontal;
+
+    string gap = "12px";
+    bool allowFilter = false;
+    bool multiple = false;
+    bool showHeader = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await base.OnInitializedAsync();
+
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+
+        HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+        if (response.IsSuccessStatusCode)
+        {
+            string content = response.Content.ReadAsStringAsync().Result;
+            Employees = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+            if (Employees == null)
+                showError();
+            else
+            {
+                source = ListData;
+                InvokeAsync(StateHasChanged);
+            }
+        }
+
+    }
+
+    private async Task getEvalutionsByEmployee()
+    {
+        EmployeeEvaluationList = null;
+        dataAverages.Clear();
+        list.Clear();
+        HttpResponseMessage response = await Http.PostAsJsonAsync("api/Evaluations/GetByEmployee", new PayloadGeneric(){
+                Uuid = UuidEmployee,
+                payload = EmployeeEvaluation,
+        });
+
+        if (response.IsSuccessStatusCode)
+        {
+            string content = response.Content.ReadAsStringAsync().Result;
+            EmployeeEvaluationEntityList EvaluationList = JsonConvert.DeserializeObject<EmployeeEvaluationEntityList>(content);
+            if (EvaluationList == null)
+                showError();
+            else
+            {
+                if (!EvaluationList.success)
+                {
+                    showError(EvaluationList.message);
+                }
+                else
+                {
+                    EmployeeEvaluationList = EvaluationList.responseEmployeeEvaluations;
+                    if (EmployeeEvaluationList.Count() == 0)
+                        showInfo(EvaluationList.message);
+                    else
+                    {
+                        foreach (EmployeeEvaluationEntity item in EmployeeEvaluationList)
+                        {
+                            string MonthName = item.DateOfEvaluation.ToString("MMMM", new CultureInfo("es-ES"));
+
+                            list.Add(MonthName,
+                            new DataItem[]
+                            {
+                        new DataItem
+                        {
+                            Name = "Compromiso",
+                            Rate = item.compromise
+                        },
+                        new DataItem
+                        {
+                            Name = "Proactividad",
+                            Rate = item.Proactivity
+                        },
+                        new DataItem
+                        {
+                            Name = "Liderazgo",
+                            Rate = item.Leadership
+                        },
+                        new DataItem
+                        {
+                            Name = "Comunicación",
+                            Rate = item.GoodCommunication
+                        },
+                        new DataItem
+                        {
+                            Name = "Trabajo en Equipo",
+                            Rate = item.Teamwork
+                        },
+                        new DataItem
+                        {
+                            Name = "Precisión",
+                            Rate = item.PrecisionInWork
+                        },
+                        new DataItem
+                        {
+                            Name = "Habilidades Técnicas",
+                            Rate = item.SkillsTechnical
+                        }
+                            });
+
+                            dataAverages.Add(new DataAverage
+                                {
+                                    Month = MonthName,
+                                    Average = Math.Round(Convert.ToDecimal((item.compromise + item.Proactivity + item.Leadership + item.GoodCommunication + item.Teamwork + item.PrecisionInWork + item.SkillsTechnical) / 7), 2),
+                                });
+                        }
+
+                        list = list.OrderBy(da => monthOrder[da.Key]).ToDictionary(kv => kv.Key, kv => kv.Value); ;
+                        dataAverages = dataAverages.OrderBy(da => monthOrder[da.Month]).ToList();
+                        await InvokeAsync(StateHasChanged);
+                    }
+                }
+            }
+        }
+        else
+        {
+            EmployeeEvaluationList = null;
+            dataAverages.Clear();
+            list.Clear();
+        }
+
+
+    }
+
+    private async void CreateEvaluation()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+
+        if (EmployeeEvaluation != null && !string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Evaluations/CreateEvaluation", new PayloadGeneric()
+            {
+                Uuid = uuidUserLoged!,
+                payload = EmployeeEvaluation
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                ResponseGeneric Evaluation = JsonConvert.DeserializeObject<ResponseGeneric>(content);
+
+                if (!Evaluation.success)
+                    showError(Evaluation.message);
+                else{
+
+                    this.EmployeeEvaluation = new EmployeeEvaluationEntity();
+                    showInfo(Evaluation.message);
+                    StateHasChanged();
+                }
+            }
+            else
+                showError("Perdon algo salio mal");
+        }
+    }
+
+    private void ReturnMenu()
+    {
+        NavigationManager.NavigateTo($"/dashboard", true);
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+        {
+            Severity = NotificationSeverity.Error,
+            Summary = messageInfo,
+            Duration = 4000
+        });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+        {
+            Severity = NotificationSeverity.Info,
+            Summary = messageInfo,
+            Duration = 4000
+        });
+    }
+}

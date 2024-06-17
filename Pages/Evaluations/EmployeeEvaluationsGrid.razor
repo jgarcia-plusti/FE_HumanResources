@@ -1,0 +1,125 @@
+﻿@page "/EvaluationsGrid"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@inject ContextMenuService ContextMenuService
+@inject NotificationService NotificationService
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <br>
+    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false"
+                    FilterMode="FilterMode.Simple" AllowSorting="true" PageSize="10" AllowPaging="true"
+                    PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true" Data="@EmployeeEvaluationEntities" TItem="EmployeeEvaluationEntity"
+                    ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEvaluation CellContextMenu="@OnCellContextMenu"
+                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+        <Columns>
+            <RadzenDataGridColumn TItem="EmployeeEvaluationEntity" Property="NameEmployee" Title="Empleado" Frozen="true" Width="160px" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="EmployeeEvaluationEntity" Property="TitleEmployee" Title="Titulo" Frozen="true" Width="160px" />
+            <RadzenDataGridColumn TItem="EmployeeEvaluationEntity" Property="DateOfEvaluation" Title="Fecha" Width="160px" />
+        </Columns>
+    </RadzenDataGrid>
+</RadzenBody>
+
+@code {
+    private EmployeeEvaluationEntity EmployeeEvaluationEntity = new EmployeeEvaluationEntity();
+    private IEnumerable<EmployeeEvaluationEntity> EmployeeEvaluationEntities;
+    private IList<EmployeeEvaluationEntity> selectedEvaluation;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Reset();
+    }
+
+    private async Task Reset()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Evaluations/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                EmployeeEvaluationEntityList responseList = JsonConvert.DeserializeObject<EmployeeEvaluationEntityList>(content);
+                if (responseList == null)
+                {
+                    showError("Perdón algo salio mal");
+                }
+                else
+                {
+                    if (!responseList.success)
+                        showError(responseList.message);
+                    else
+                    {                        
+                        EmployeeEvaluationEntities = responseList.responseEmployeeEvaluations;
+                        selectedEvaluation = EmployeeEvaluationEntities.Take(1).ToList();
+                    }
+                }
+            }
+            else
+            {
+                await LocalStorage.ClearAsync();
+                NavigationManager.NavigateTo("login", true);
+            }
+        }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+
+    void OnCellContextMenu(DataGridCellMouseEventArgs<EmployeeEvaluationEntity> args)
+    {
+        selectedEvaluation = new List<EmployeeEvaluationEntity>() { args.Data };
+
+        ContextMenuService.Open(args,
+        new List<ContextMenuItem> {
+            new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
+            new ContextMenuItem(){ Text = "Eliminar", Value = 2, Icon = "info" },
+            },
+        (e) =>
+            {
+                if (e.Value.ToString() == "1")
+                {
+                    NavigationManager.NavigateTo($"/UpdateEvaluations/{args.Data.Uuid}");
+                }
+            }
+        );
+    }
+
+    void GoToEvaluation()
+    {
+        NavigationManager.NavigateTo($"/Evaluations", true);
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Perdon algo salio mal!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+}

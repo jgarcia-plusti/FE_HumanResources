@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CZ3+1klF+2t2At+xtmfF4SjAZlo/IcNG17TXxApp1Gc=",
+  "Hash": "gneqLyGPbMaf20l0yEJpjKZjGOGujs0RMQWDK7UR/P4=",
   "Source": "FE_HumanResources",
   "BasePath": "/",
   "Mode": "Root",
@@ -1021,7 +1021,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
@@ -1040,15 +1040,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.js.map"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.js.map"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.0.cx60pm2snx.js",
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.ew1vqrwwsw.js",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.0.cx60pm2snx.js",
+      "RelativePath": "_framework/dotnet.native.8.0.5.ew1vqrwwsw.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1059,7 +1059,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.native.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.native.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
@@ -1078,15 +1078,15 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.0.14kkjimq5k.js",
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.gongq8hbow.js",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.0.14kkjimq5k.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.5.gongq8hbow.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1097,7 +1097,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
@@ -1116,7 +1116,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\FE_HumanResources.pdb",
@@ -1173,7 +1173,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
@@ -1192,7 +1192,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
@@ -1211,7 +1211,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.wasm",
@@ -5071,25 +5071,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Xml.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\14kkjimq5k.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.0.14kkjimq5k.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.0.14kkjimq5k.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.0.14kkjimq5k.js"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\1hb88ely8o.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -5565,6 +5546,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Newtonsoft.Json.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\641whrt3d5.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\6hduw8s073.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -5639,6 +5639,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.FileSystem.DriveInfo.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\7hm6s93b13.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\7kpxaqlzse.gz",
@@ -5886,25 +5905,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Diagnostics.StackTrace.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\a1kopbnbpa.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\a3ucdh8gzk.gz",
@@ -6192,25 +6192,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.FileSystem.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\cx60pm2snx.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.0.cx60pm2snx.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.0.cx60pm2snx.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.0.cx60pm2snx.js"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\cyiv2ly5pc.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -6268,25 +6249,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Net.Http.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\d9w2qreyfa.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.wasm.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\dfa11fj421.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -6342,25 +6304,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Primitives.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\ds6xula2r2.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\dycfky93mt.gz",
@@ -6475,6 +6418,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Cng.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\ew1vqrwwsw.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.5.ew1vqrwwsw.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.ew1vqrwwsw.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.ew1vqrwwsw.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\f02616aai9.gz",
@@ -6781,6 +6743,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.VisualBasic.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\gongq8hbow.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.8.0.5.gongq8hbow.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.gongq8hbow.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.gongq8hbow.js"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\h2tnyzi8ud.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -6950,6 +6931,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Csp.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\ibgvc3mbbn.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\im7onvh55l.gz",
@@ -7465,25 +7465,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Security.Principal.Windows.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\mjpqzpv3p0.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\mw37jfphr7.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -7598,25 +7579,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Threading.Tasks.Dataflow.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\nu759xh11b.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\ny6dt8xln0.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -7653,6 +7615,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Windows.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\nzvv05lacr.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\o1copan26l.gz",
@@ -7786,6 +7767,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\q2rv227kvb.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\q3iue224f9.gz",
@@ -8282,6 +8282,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Reflection.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\uwh8dnsva1.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\v7ez957c1s.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -8358,25 +8377,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Core.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\w0j52lx1dm.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\w0l1tvz9yo.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -8434,6 +8434,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.IO.FileSystem.Watcher.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\wj55uthord.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\wojchebjr0.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -8451,25 +8470,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\Microsoft.CSharp.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\ws78lhkh21.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Debug\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Debug\\net8.0\\compressed\\ww4gx0l70r.gz",

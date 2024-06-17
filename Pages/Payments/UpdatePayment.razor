@@ -115,7 +115,7 @@
          <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
                       Class="rz-mt-8 rz-mb-4">
              <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Actualizar" />
-             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+             <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
                            Text="Cancelar" Click="@ReturnMenu" />
          </RadzenStack>
      </RadzenTemplateForm>
@@ -153,6 +153,7 @@
         new { DetailsType = "Bono 14" },
         new { DetailsType = "Aguinaldo" },
         new { DetailsType = "IGSS" },
+        new { DetailsType = "ISR" }
     };
 
     List<dynamic> PaymentFrequencyTypes = new List<dynamic>()

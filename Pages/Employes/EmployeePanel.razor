@@ -1,0 +1,28 @@
+﻿@page "/EmployeePanel"
+@using System.Net.Http.Headers
+@using System.Globalization
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject ContextMenuService ContextMenuService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Forms
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="Empleados">
+                <EmployesGrid></EmployesGrid>
+            </RadzenTabsItem>
+            <RadzenTabsItem Text="Crear">
+                <CreateEmployee></CreateEmployee>
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+</RadzenBody>
+
+@code {
+
+}

@@ -18,36 +18,36 @@
     @onmouseout="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.Icon; } })">
     @* HOME *@
     <RadzenPanelMenuItem Text="Inicio" Icon="home">
-        <RadzenPanelMenuItem Text="Panel de Informaci髇" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Panel de Informaci贸n" Path="dashboard" Icon="dashboard"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     @* SETTINGS *@
     <RadzenPanelMenuItem Text="Usuarios" Icon="settings">
         <RadzenPanelMenuItem Text="Perfil" Path="/perfil" Icon="assignment_ind"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Crear usuario" Path="/CreateUser" Icon="person_add"></RadzenPanelMenuItem>
-        <RadzenPanelMenuItem Text="Lista de Usuarios" Path="/usersgrid" Icon="people_alt"></RadzenPanelMenuItem>        
+        <RadzenPanelMenuItem Text="Lista de Usuarios" Path="/usersgrid" Icon="people_alt"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     <RadzenPanelMenuItem Text="Empleados" Icon="settings">
         <RadzenPanelMenuItem Text="Crear empleado" Path="/CreateEmployes" Icon="engineering"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Lista de Empleados" Path="/employesgrid" Icon="groups"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Finalizar Servicios" Path="/TerminationServices" Icon="person_remove"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     <RadzenPanelMenuItem Text="Pagos / Planilla" Icon="account_balance_wallet">
-        <RadzenPanelMenuItem Text="Generar n髆ina" Path="/GeneratePayment" Icon="payments"></RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Generar n贸mina" Path="/GeneratePayment" Icon="payments"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Pago / Descuento" Path="/Payment" Icon="payments"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Lista de Pagos" Path="/PaymentsGrid" Icon="request_quote"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     <RadzenPanelMenuItem Text="Vacaciones" Icon="flight_takeoff">
+        <RadzenPanelMenuItem Text="Solicitar Permisos" Path="/RequestPermisions" Icon="emoji_people"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Solicitar vacaciones" Path="/RequestVacations" Icon="surfing"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Autorizar vacaciones" Path="/AuthorizeVacations" Icon="how_to_reg"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
-    <RadzenPanelMenuItem Text="Hist髍ico General" Icon="manage_search">
+    <RadzenPanelMenuItem Text="Hist贸rico general" Icon="manage_search">
         <RadzenPanelMenuItem Text="Mantenimiento de Usuarios" Path="/historicusergrid" Icon="person_search"></RadzenPanelMenuItem>
         <RadzenPanelMenuItem Text="Mantenimiento de Empleados" Path="/historicEmployees" Icon="person_search"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
-    <RadzenPanelMenuItem Text="Evaluaci髇 de desempe駉" Icon="troubleshoot">
-        <RadzenPanelMenuItem Text="Evaluar" Icon="troubleshoot"></RadzenPanelMenuItem>
-    </RadzenPanelMenuItem>
-    <RadzenPanelMenuItem Text="Administraci髇" Icon="auto_stories">
-        <RadzenPanelMenuItem Text="Administraci髇" Icon="auto_stories"></RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Evaluacion de desempe帽o" Path="/Evaluations" Icon="troubleshoot"></RadzenPanelMenuItem>
+    <RadzenPanelMenuItem Text="Administraci贸n" Icon="auto_stories">
+        <RadzenPanelMenuItem Text="Administraci贸n" Icon="auto_stories"></RadzenPanelMenuItem>
     </RadzenPanelMenuItem>
     <RadzenPanelMenuItem Text="Panel de control" Icon="screenshot_monitor">
         <RadzenPanelMenuItem Text="Panel de control" Icon="screenshot_monitor"></RadzenPanelMenuItem>

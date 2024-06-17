@@ -29,6 +29,10 @@
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
                                 <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="Employee.Name" />
+                                    <RadzenLengthValidator Component="Name" Min="5" Text="El nombre debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
+                                    <RadzenLengthValidator Component="Name" Max="100" Text="El nombre debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
+                                    <RadzenRequiredValidator Component="Name" Text="El Nombre es requerido" Popup=true Style="position: absolute" />
+                                    <RadzenCustomValidator Component="Name" Validator="@(() => ValidateOnlyText(Employee.Name))" Text="El campo solo acepta texto" Popup=true />
                             </RadzenColumn>
                         </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
@@ -36,6 +40,7 @@
                                 <RadzenLabel Text="Apellidos" Component="LastName" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
+                                
                                 <RadzenTextBox Style="width: 100%;" Name="LastName" @bind-Value="Employee.LastName" />
                             </RadzenColumn>
                         </RadzenRow>
@@ -65,6 +70,28 @@
                                 </RadzenDropDown>
                             </RadzenColumn>
                         </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Estado Civil" Component="MaritalStatusEmployee" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDropDown @bind-Value="Employee.MaritalStatus" Data="@MaritalStatus"
+                                                    Style="width: 100%;" TextProperty="Status" ValueProperty="Status"
+                                                    Name="MaritalStatusEmployee">
+                                    </RadzenDropDown>
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Tipo de empleado" Component="TypeEmployee" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDropDown @bind-Value="Employee.TypeEmployee" Data="@EmployeeType"
+                                                    Style="width: 100%;" TextProperty="Type" ValueProperty="Type"
+                                                    Name="TypeEmployee">
+                                    </RadzenDropDown>
+                                </RadzenColumn>
+                            </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
                             <RadzenColumn Size="12" SizeMD="4">
                                 <RadzenLabel Text="Teléfono" Component="Phone" />
@@ -135,42 +162,51 @@
                                 <RadzenNumeric Style="width: 100%;" Name="Salary" @bind-Value="Employee.EmployeeSalary" />
                             </RadzenColumn>
                         </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Bono" Component="Bonus" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenNumeric Style="width: 100%;" Name="Bonus" @bind-Value="Employee.EmployeeBonus" />
-                                 </RadzenColumn>
-                             </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenDropDown @bind-Value="Employee.PaymentFrequency" Placeholder="Mensual" Data="@PaymentFrequencyTypes"
-                                                     Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency"
-                                                     Name="PaymentFrequency">
-                                     </RadzenDropDown>
-                                 </RadzenColumn>
-                             </RadzenRow>
-                         <RadzenRow AlignItems="AlignItems.Center">
-                             <RadzenColumn Size="12" SizeMD="4">
-                                 <RadzenLabel Text="Fecha de Ingreso" Component="InitDate" Style="margin-right: 8px; vertical-align: middle;" />
-                             </RadzenColumn>
-                             <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenDatePicker @bind-Value="Employee.InitDate" Name="InitDate" ShowCalendarWeek />
-                             </RadzenColumn>
-                         </RadzenRow>
-                        <RadzenRow AlignItems="AlignItems.Center">
+                            <RadzenRow AlignItems="AlignItems.Center">
                             <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Fecha de Finalización" Component="EndDate"
-                                            Style="margin-right: 8px; vertical-align: middle;" />
+                                <RadzenLabel Text="Bono" Component="Bonus" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-
-                                     <RadzenDatePicker @bind-Value="Employee.EndDate" Name="EndDate"
-                                                    ShowCalendarWeek />
+                                <RadzenNumeric Style="width: 100%;" Name="Bonus" @bind-Value="Employee.EmployeeBonus" />
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow AlignItems="AlignItems.Center">
+                            <RadzenColumn Size="12" SizeMD="4">
+                                <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="8">
+                                <RadzenDropDown @bind-Value="Employee.PaymentFrequency" Placeholder="Mensual" Data="@PaymentFrequencyTypes"
+                                                Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency"
+                                                Name="PaymentFrequency">
+                                </RadzenDropDown>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow AlignItems="AlignItems.Center">
+                            <RadzenColumn Size="12" SizeMD="4">
+                                <RadzenLabel Text="Gerente" Component="Manager" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="8">
+                                <RadzenDropDown @bind-Value="Employee.UuidManager" Data="@ListEmployees"
+                                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Manager">
+                                </RadzenDropDown>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow AlignItems="AlignItems.Center">
+                            <RadzenColumn Size="12" SizeMD="4">
+                                <RadzenLabel Text="Supervisor" Component="Supervisor" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="8">
+                                <RadzenDropDown @bind-Value="Employee.UuidSupervisor" Data="@ListEmployees"
+                                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Supervisor">
+                                </RadzenDropDown>
+                            </RadzenColumn>
+                        </RadzenRow>
+                        <RadzenRow AlignItems="AlignItems.Center">
+                            <RadzenColumn Size="12" SizeMD="4">
+                                <RadzenLabel Text="Fecha de Ingreso" Component="InitDate" Style="margin-right: 8px; vertical-align: middle;" />
+                            </RadzenColumn>
+                            <RadzenColumn Size="12" SizeMD="8">
+                                <RadzenDatePicker @bind-Value="Employee.InitDate" Name="InitDate" ShowCalendarWeek />
                             </RadzenColumn>
                         </RadzenRow>
                      </RadzenStack>
@@ -180,7 +216,7 @@
      </RadzenRow>
      <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem" Class="rz-mt-8 rz-mb-4">
          <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
-             <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back" Text="Regresar" Click="@ReturnMenu" />
+             <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back" Text="Regresar" Click="@ReturnMenu" />
      </RadzenStack>
  </RadzenTemplateForm>
 </RadzenBody>
@@ -189,6 +225,7 @@
     public string uuid { get; set; }
 
     EmployeeEntity Employee = new EmployeeEntity();
+    ICollection<EmployeeEntity> ListEmployees;
     private ICollection<DepartmentEntity> departments;
     private ICollection<JobTitleEntity> jobTitles;
     string? jwt = null;
@@ -206,6 +243,28 @@
         new { PaymentFrequency = "Quincenal" },
         new { PaymentFrequency = "Mensual" }
     };
+
+    List<dynamic> EmployeeType = new List<dynamic>()
+    {
+        new { Type = "Empleado/a" },
+        new { Type = "Estudiante" },
+        new { Type = "Aprendiz" },
+        new { Type = "Contratista" },
+        new { Type = "Independiente" },
+    };
+
+    List<dynamic> MaritalStatus = new List<dynamic>()
+    {
+        new { Status = "Casado/a" },
+        new { Status = "Soltero/a" },
+        new { Status = "Divorciado/a" },
+        new { Status = "Unido/a" },
+    };
+
+    bool ValidateOnlyText(string value)
+    {
+        return value.All(char.IsLetter);
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -234,8 +293,7 @@
                 departments = JsonConvert.DeserializeObject<ICollection<DepartmentEntity>>(content);
                 if (departments == null)
                     showError();
-                else
-                    showInfo("datos cargados");
+                
             }
 
             response = await Http.PostAsJsonAsync("api/Employee/Get", new PayloadGeneric()
@@ -251,6 +309,15 @@
                 string content = response.Content.ReadAsStringAsync().Result;
                 Employee = JsonConvert.DeserializeObject<EmployeeEntity>(content);
                 if (Employee == null)
+                    showError();
+            }
+
+            response = await Http.GetAsync("api/Employee/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                ListEmployees = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+                if (ListEmployees == null)
                     showError();
             }
 

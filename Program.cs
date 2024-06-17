@@ -14,6 +14,7 @@ builder.Services.AddScoped(sp =>
     {
         //BaseAddress = new Uri("https://ifrancelli.com:444") // production Api
         BaseAddress = new Uri("https://localhost:7097") // developer Api
+        //BaseAddress = new Uri("https://localhost:5082") // developer Api
 
     });
 builder.Services.AddBlazoredLocalStorage();

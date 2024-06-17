@@ -1,0 +1,191 @@
+﻿@page "/TerminationServices"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject ContextMenuService ContextMenuService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+@inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Forms
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/employesgrid" Text="Empleados" />
+            <RadzenBreadCrumbItem Path="/TerminationServices" Text="Terminar Servicios" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <RadzenTemplateForm Data="@TerminationServicesEntity" Submit="@((TerminationServicesEntity args) => { TerminateServices(); })">
+        <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+            <RadzenColumn Size="12" SizeMD="6">
+                <RadzenStack>
+                    <RadzenFieldset Text="Finalización de servicios">
+                        <RadzenStack Gap="1rem">
+                            <RadzenLabel Text="Select Value" Component="DropDownFilteringLoadData" />
+                            <RadzenDropDown @bind-Value="TerminationServicesEntity.UuidEmployee" Data=@ListEmployees
+                                            TextProperty="Name" ValueProperty="Uuid"
+                                            Style="width: 100%; max-width: 400px;" Name="DropDownFilteringLoadData" >
+                            </RadzenDropDown>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Descripción" Component="Description" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="Description" @bind-Value="TerminationServicesEntity.Description" />
+                                </RadzenColumn>
+                            </RadzenRow>
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Tipo" Component="Type" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDropDown @bind-Value="TerminationServicesEntity.Type" Data="@Types"
+                                                    Style="width: 100%;" TextProperty="Type" ValueProperty="Type" Name="Type">
+                                    </RadzenDropDown>
+                                </RadzenColumn>
+                            </RadzenRow>
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Fecha" Component="Date" Style="margin-right: 8px; vertical-align: middle;" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDatePicker @bind-Value="TerminationServicesEntity.Date" Name="Date" ShowCalendarWeek />
+                                 </RadzenColumn>
+                             </RadzenRow>
+
+                             <RadzenRow AlignItems="AlignItems.Center">
+                                 <RadzenColumn>
+                                     <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Subir Archivo:</RadzenText>
+                                 </RadzenColumn>
+                                 <RadzenColumn>
+                                     <InputFile OnChange="OnInputFileChange" />
+                                 </RadzenColumn>
+                             </RadzenRow>
+                         </RadzenStack>
+                     </RadzenFieldset>
+                 </RadzenStack>
+             </RadzenColumn>
+         </RadzenRow>
+         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                      Class="rz-mt-8 rz-mb-4">
+             <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+             <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                           Text="Regresar" Click="@ReturnMenu" />
+         </RadzenStack>
+     </RadzenTemplateForm>
+ </RadzenBody>
+
+ @code {
+    TerminationServicesEntity TerminationServicesEntity = new TerminationServicesEntity();
+    ICollection<EmployeeEntity> ListEmployees;
+    string UuidSelectedEmployee = "";
+    List<dynamic> Types = new List<dynamic>()
+    {
+        new { Type = "Renuncia" },
+        new { Type = "Despido" },
+        new { Type = "Fin de Contrato" },
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        base.OnInitializedAsync();
+
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+        HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+        if (response.IsSuccessStatusCode)
+        {
+            string content = response.Content.ReadAsStringAsync().Result;
+            ListEmployees = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+            if (ListEmployees == null)
+                showError();
+            else
+                InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task TerminateServices()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+        HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/CreateTerminationService", new PayloadGeneric()
+        {
+            Uuid = "",
+            payload = TerminationServicesEntity,
+        });
+
+        if (response.IsSuccessStatusCode)
+        {
+            showInfo("Se creó el Archivo!");
+            TerminationServicesEntity = new TerminationServicesEntity();
+        }
+        else
+        {
+            showError("Error al intentar guardar datos!");
+        }
+    }
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        foreach (var file in e.GetMultipleFiles())
+        {
+            var base64String = await ConvertToBase64(file);
+            Console.WriteLine(base64String);
+            TerminationServicesEntity.Document = base64String;
+        }
+    }
+
+    private async Task<string> ConvertToBase64(IBrowserFile file)
+    {
+        using var memoryStream = new MemoryStream();
+        await file.OpenReadStream().CopyToAsync(memoryStream);
+        byte[] fileBytes = memoryStream.ToArray();
+        return Convert.ToBase64String(fileBytes);
+    }
+
+    void LoadData(LoadDataArgs args)
+    {
+        var query = ListEmployees.AsQueryable();
+        if (!string.IsNullOrEmpty(args.Filter))
+        {
+            query = query.Where(c => c.Name.ToLower().Contains(args.Filter.ToLower()));
+        }
+
+        ListEmployees = query.ToList();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void ReturnMenu()
+    {
+        NavigationManager.NavigateTo($"dashboard", true);
+    }
+}

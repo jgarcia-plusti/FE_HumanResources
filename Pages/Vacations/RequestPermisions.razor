@@ -1,0 +1,287 @@
+﻿@page "/RequestPermisions"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NotificationService NotificationService
+@inject NavigationManager NavigationManager
+@inject DialogService DialogService
+@inject HttpClient Http
+
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Vacaciones" />
+            <RadzenBreadCrumbItem Path="/RequestVacations" Text="Solicitar Permiso" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+
+    <RadzenTemplateForm Data="@vacationsEntity" Submit="@((VacationsEntity args) => { CreateVacationsSolisiting(args); })">
+        <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+            <RadzenColumn Size="12" SizeMD="12">
+                <RadzenStack>
+                    <RadzenFieldset Text="*">
+                        <RadzenStack Gap="1rem">
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Tipo de permiso:" Component="Type" />
+                                    <RadzenColumn Size="12" SizeMD="8">
+                                        <RadzenDropDown @bind-Value="vacationsEntity.Type" Data="@Types" Style="width: 100%;"
+                                                        Change="@(args => OnVacationsTypeChanged(vacationsEntity.Type))"
+                                                        TextProperty="TypeName" ValueProperty="TypeName" Name="Type">
+                                        </RadzenDropDown>
+                                    </RadzenColumn>
+                                </RadzenColumn>
+                            </RadzenRow>  
+
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="12">
+                <RadzenStack>
+                    <RadzenFieldset Text="*">
+                        <RadzenStack Gap="1rem">
+
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Fecha de Inicio" Component="InitDate" Style="margin-right: 8px; vertical-align: middle;" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDatePicker @bind-Value="vacationsEntity.InitDate" Name="InitDate" ShowCalendarWeek />
+                                 </RadzenColumn>
+                             </RadzenRow>
+
+                             <RadzenRow AlignItems="AlignItems.Center">
+                                 <RadzenColumn Size="12" SizeMD="4">
+                                     <RadzenLabel Text="Fecha de Finalización" Component="EndDate" Style="margin-right: 8px; vertical-align: middle;" />
+                                 </RadzenColumn>
+                                 <RadzenColumn Size="12" SizeMD="8">
+                                     <RadzenDatePicker @bind-Value="vacationsEntity.EndDate" Name="EndDate" ShowCalendarWeek />
+                                 </RadzenColumn>
+                             </RadzenRow>
+
+                             <RadzenHtmlEditor @bind-Value="vacationsEntity.Description" style="height: 300px;" Input=@OnInput Change=@OnChange Paste=@OnPaste Execute=@OnExecute UploadUrl="upload/image" />
+
+                         </RadzenStack>
+                     </RadzenFieldset>
+                 </RadzenStack>
+             </RadzenColumn>
+         </RadzenRow>
+         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                      Class="rz-mt-8 rz-mb-4">
+             <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+             <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                           Text="Regresar" Click="@ReturnMenu" />
+         </RadzenStack>
+     </RadzenTemplateForm>
+
+ </RadzenBody>
+
+ @code {
+    private VacationsEntity vacationsEntity = new VacationsEntity();
+    private ICollection<EmployeeEntity> employeeEntities;
+    private ICollection<EmployeeEntity> EmployeeVacationApplicant;
+
+    List<dynamic> Types = new List<dynamic>()
+    {
+        new { TypeName = "Medico" },
+        new { TypeName = "Administrativo" },
+        new { TypeName = "Personal" },
+        new { TypeName = "Académico" },
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string loggedUser = await LocalStorage.GetItemAsync<string>("logedUser");
+        UserEntity user = JsonConvert.DeserializeObject<UserEntity>(loggedUser);
+
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Employee/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                employeeEntities = JsonConvert.DeserializeObject<ICollection<EmployeeEntity>>(content);
+                if (employeeEntities == null)
+                    showError();
+                else
+                {
+                    EmployeeVacationApplicant = employeeEntities.Where(w => w.Uuid == user.UuidEmployee).ToList();
+                }
+            }
+
+        }
+    }
+
+    private async void CreateVacationsSolisiting(VacationsEntity vacation)
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+        string loggedUser = await LocalStorage.GetItemAsync<string>("logedUser");
+        UserEntity user = JsonConvert.DeserializeObject<UserEntity>(loggedUser);
+
+        if (vacation != null && !string.IsNullOrEmpty(jwt))
+        {
+
+            vacation.DateModify = DateTime.Now;
+            vacation.State = "En Proceso";
+            vacation.IsDeleted = false;
+
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Vacation/CreateVacation", new PayloadGeneric()
+                {
+                    Uuid = uuidUserLoged!,
+                    payload = vacation,
+                });
+
+            if (response.IsSuccessStatusCode)
+            {
+                vacationsEntity = new VacationsEntity();
+                showInfo("Se agrego la información con éxito");
+                StateHasChanged();
+            }
+            else
+            {
+                showError("Perdon algo salio mal");
+            }
+        }
+    }
+
+    void OnVacationsTypeChanged(string type)
+    {
+        switch(type){
+            case "Medico":
+                vacationsEntity.Description = MedicTemplate;
+            break;
+            case "Administrativo":
+                vacationsEntity.Description = AdministrativeTemplate;
+            break;
+            case "Personal":
+                vacationsEntity.Description = PersonalTemplate;
+            break;
+            case "Académico":
+                vacationsEntity.Description = AcademicTemplate;
+            break;
+        };
+
+    }
+
+    void OnPaste(HtmlEditorPasteEventArgs args)
+    {
+
+    }
+
+    void OnChange(string html)
+    {
+
+    }
+
+    void OnInput(string html)
+    {
+
+    }
+
+    void OnExecute(HtmlEditorExecuteEventArgs args)
+    {
+
+    }
+
+    private void ReturnMenu()
+    {
+        NavigationManager.NavigateTo($"/dashboard");
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private string MedicTemplate = "<p>[Tu Nombre] </p>" +
+        "<p> &nbsp; [Tu Correo Electrónico]   </p>" +
+        "<p> &nbsp; [Fecha] </p>" +
+        "<p> &nbsp; [Nombre de la Empresa]   </p>" +
+        "<p> &nbsp; [Dirección de la Empresa]   </p>" +
+        "<p> &nbsp; Estimado/a [Nombre del Destinatario]: </p>" +
+        "<p> &nbsp; Por medio de la presente, me permito solicitar un permiso médico debido a [breve descripción de la condición médica o el motivo de la solicitud, por ejemplo, una cirugía  </p>" +
+        "<p> &nbsp; programada, una enfermedad, etc.].  </p>" +
+        "<p> &nbsp; El permiso solicitado comprende desde el día [fecha de inicio del permiso] hasta el día [fecha de finalización del permiso], inclusive. Adjunto a esta carta, encontrará el certificado médico correspondiente, emitido por el Dr./Dra. [Nombre del Médico], que detalla mi condición y la recomendación de reposo o tratamiento. </p>" +
+        "<p> &nbsp; Durante mi ausencia, me aseguraré de dejar todos mis pendientes en orden y de brindar la información necesaria a mi equipo para garantizar la continuidad de las actividades. Estoy disponible para cualquier consulta o emergencia a través de mi correo electrónico o mi número de teléfono. </p>" +
+        "<p> &nbsp; Agradezco su comprensión y apoyo en este asunto. Espero poder reincorporarme a mis labores lo antes posible y seguir contribuyendo al desarrollo de la empresa. </p>" +
+        "<p> &nbsp; Sin otro particular, quedo a sus órdenes. </p>" +
+        "<p> &nbsp; Atentamente, </p>" +
+        "<p> &nbsp; [Tu Nombre] </p>";
+
+    private string AcademicTemplate = "<p>[Tu Nombre] </p>" +
+        "<p> &nbsp; [Tu Correo Electrónico]   </p>" +
+        "<p> &nbsp; [Fecha] </p>" +
+        "<p> &nbsp; [Nombre de la Institución Académica]   </p>" +
+        "<p> &nbsp; [Dirección de la Institución]   </p>" +
+        "<p> &nbsp; Estimado/a [Nombre del Director/Decano/Profesor]: </p>" +
+        "<p> &nbsp; Por medio de la presente, me permito solicitar un permiso médico debido a [breve descripción de la condición médica o el motivo de la solicitud, por ejemplo, una cirugía  </p>" +
+        "<p> &nbsp; programada, una enfermedad, etc.].  </p>" +
+        "<p> &nbsp; El permiso solicitado comprende desde el día [fecha de inicio del permiso] hasta el día [fecha de finalización del permiso], inclusive. Adjunto a esta carta, encontrará el certificado médico correspondiente, emitido por el Dr./Dra. [Nombre del Médico], que detalla mi condición y la recomendación de reposo o tratamiento. </p>" +
+        "<p> &nbsp; Soy consciente de la importancia de mantenerme al día con mis estudios y cumplir con mis responsabilidades académicas. Durante mi ausencia, me comprometo a ponerme al corriente con todas las actividades y tareas pendientes tan pronto como me sea posible. Estoy dispuesto/a a coordinar con mis profesores para obtener el material necesario y cumplir con las evaluaciones correspondientes. </p>" +
+        "<p> &nbsp; Agradezco su comprensión y apoyo en este asunto. Espero poder reincorporarme a mis estudios lo antes posible y continuar con mi formación académica. </p>" +
+        "<p> &nbsp; Sin otro particular, quedo a sus órdenes. </p>" +
+        "<p> &nbsp; Atentamente, </p>";
+
+
+    private string AdministrativeTemplate = "<p>[Tu Nombre] </p>" +
+        "<p> &nbsp; [Tu Correo Electrónico]   </p>" +
+        "<p> &nbsp; [Fecha] </p>" +
+        "<p> &nbsp; [Nombre de la Empresa]   </p>" +
+        "<p> &nbsp; [Dirección de la Empresa]   </p>" +
+        "<p> &nbsp; Estimado/a [Nombre del Destinatario]: </p>" +
+        "<p> &nbsp; Por medio de la presente, me permito solicitar un permiso médico debido a [breve descripción de la condición médica o el motivo de la solicitud, por ejemplo, una cirugía  </p>" +
+        "<p> &nbsp; programada, una enfermedad, etc.].  </p>" +
+        "<p> &nbsp; El permiso solicitado comprende desde el día [fecha de inicio del permiso] hasta el día [fecha de finalización del permiso], inclusive. Adjunto a esta carta, encontrará el certificado médico correspondiente, emitido por el Dr./Dra. [Nombre del Médico], que detalla mi condición y la recomendación de reposo o tratamiento. </p>" +
+        "<p> &nbsp; Durante mi ausencia, me aseguraré de dejar todos mis pendientes en orden y de brindar la información necesaria a mi equipo para garantizar la continuidad de las actividades. Estoy disponible para cualquier consulta o emergencia a través de mi correo electrónico o mi número de teléfono. </p>" +
+        "<p> &nbsp; Agradezco su comprensión y apoyo en este asunto. Espero poder reincorporarme a mis labores lo antes posible y seguir contribuyendo al desarrollo de la empresa. </p>" +
+        "<p> &nbsp; Sin otro particular, quedo a sus órdenes. </p>" +
+        "<p> &nbsp; Atentamente, </p>";
+
+
+    private string PersonalTemplate = "<p>[Tu Nombre] </p>" +
+        "<p> &nbsp; [Tu Correo Electrónico]   </p>" +
+        "<p> &nbsp; [Fecha] </p>" +
+        "<p> &nbsp; [Nombre de la Empresa]   </p>" +
+        "<p> &nbsp; [Dirección de la Empresa]   </p>" +
+        "<p> &nbsp; Estimado/a [Nombre del Destinatario]: </p>" +
+        "<p> &nbsp; Por medio de la presente, me permito solicitar un permiso personal debido a [breve descripción del motivo del permiso personal, por ejemplo, asuntos familiares, viaje, etc.].  </p>" +
+        "<p> &nbsp; El permiso solicitado comprende desde el día [fecha de inicio del permiso] hasta el día [fecha de finalización del permiso], inclusive. </p>" +
+        "<p> &nbsp; Durante mi ausencia, me aseguraré de dejar todos mis pendientes en orden y de brindar la información necesaria a mi equipo para garantizar la continuidad de las actividades. Estoy disponible para cualquier consulta o emergencia a través de mi correo electrónico o mi número de teléfono. </p>" +
+        "<p> &nbsp; Agradezco su comprensión y apoyo en este asunto. Espero poder reincorporarme a mis labores lo antes posible y seguir contribuyendo al desarrollo de la empresa. </p>" +
+        "<p> &nbsp; Sin otro particular, quedo a sus órdenes. </p>" +
+        "<p> &nbsp; Atentamente, </p>";
+
+
+}
