@@ -24,17 +24,20 @@ namespace FE_HumanResources
                 string userStorage = await _localStorage.GetItemAsStringAsync("logedUser");
                 if (!string.IsNullOrEmpty(userStorage))
                 {
-                    UserEntity user = JsonConvert.DeserializeObject<UserEntity>(userStorage);
-                    var identity = new ClaimsIdentity(new[]
+                    UserEntity? user = JsonConvert.DeserializeObject<UserEntity>(userStorage);
+                    if (user != null)
                     {
-                    new Claim("UuidUser", user.Uuid),
-                    new Claim(ClaimTypes.NameIdentifier, user.UserName),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, user.UuidRole)
+                        var identity = new ClaimsIdentity(new[]
+                        {
+                            new Claim("UuidUser", user.Uuid),
+                            new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                            new Claim(ClaimTypes.Email, user.Email),
+                            new Claim(ClaimTypes.Role, user.UuidRole)
+                        }, "authentication type");
 
-                }, "authentication type");
-
-                    return new AuthenticationState(new ClaimsPrincipal(identity));
+                        state = new AuthenticationState(new ClaimsPrincipal(identity));
+                        return state;
+                    }
                 }
 
                 NotifyAuthenticationStateChanged(Task.FromResult(state));

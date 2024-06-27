@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q3PFcmuZdwPqRf78u/zzW29MhKiIY+MJdm9JQGvwwyw=",
+  "Hash": "13Y/iCtBHVUEYN8aYEyYQMdDViUN/R9ppGFAzjrKewk=",
   "Source": "FE_HumanResources",
   "BasePath": "/",
   "Mode": "Root",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\dark.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/dark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\dark.css"
+    },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\dark-base.css",
       "SourceId": "Radzen.Blazor",
@@ -55,12 +74,12 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\dark-wcag.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\dark.css",
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\default.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
       "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/dark.css",
+      "RelativePath": "css/default.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -71,7 +90,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\dark.css"
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\default.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\default-base.css",
@@ -112,12 +131,12 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\default-wcag.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\default.css",
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
       "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/default.css",
+      "RelativePath": "css/fluent.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,7 +147,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\default.css"
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-base.css",
@@ -150,25 +169,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-base.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-dark-base.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/fluent-dark-base.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-dark-base.css"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-dark.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
@@ -188,12 +188,12 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-dark.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent.css",
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-dark-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
       "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/fluent.css",
+      "RelativePath": "css/fluent-dark-base.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -204,7 +204,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent.css"
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\fluent-dark-base.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\humanistic.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/humanistic.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\humanistic.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\humanistic-base.css",
@@ -245,101 +264,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\humanistic-wcag.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\humanistic.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/humanistic.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\humanistic.css"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-base.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/material-base.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-base.css"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark-base.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/material-dark-base.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark-base.css"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/material-dark.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark.css"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-wcag.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/material-wcag.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-wcag.css"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
@@ -357,6 +281,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/material3.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-base.css",
@@ -378,25 +321,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-base.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-dark-base.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/material3-dark-base.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-dark-base.css"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-dark.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
@@ -416,12 +340,12 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-dark.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3.css",
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-dark-base.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
       "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/material3.css",
+      "RelativePath": "css/material3-dark-base.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -432,7 +356,102 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3.css"
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material3-dark-base.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-base.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/material-base.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-base.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/material-dark.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark-base.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/material-dark-base.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-dark-base.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-wcag.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/material-wcag.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\material-wcag.css"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\software.css",
+      "SourceId": "Radzen.Blazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
+      "BasePath": "_content/Radzen.Blazor",
+      "RelativePath": "css/software.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\software.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\software-base.css",
@@ -473,12 +492,12 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\software-wcag.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\software.css",
+      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\standard.css",
       "SourceId": "Radzen.Blazor",
       "SourceType": "Package",
       "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
       "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/software.css",
+      "RelativePath": "css/standard.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -489,7 +508,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\software.css"
+      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\standard.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\standard-base.css",
@@ -528,25 +547,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\standard-wcag.css"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\standard.css",
-      "SourceId": "Radzen.Blazor",
-      "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\",
-      "BasePath": "_content/Radzen.Blazor",
-      "RelativePath": "css/standard.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\css\\standard.css"
     },
     {
       "Identity": "C:\\Users\\jeman\\.nuget\\packages\\radzen.blazor\\4.27.1\\staticwebassets\\fonts\\MaterialIcons-Regular.woff",
@@ -1021,7 +1021,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
@@ -1040,15 +1040,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.js.map"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.js.map"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.0.cx60pm2snx.js",
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.ew1vqrwwsw.js",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.0.cx60pm2snx.js",
+      "RelativePath": "_framework/dotnet.native.8.0.5.ew1vqrwwsw.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1059,7 +1059,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.native.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.native.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
@@ -1078,15 +1078,15 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.native.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.0.14kkjimq5k.js",
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.gongq8hbow.js",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.0.14kkjimq5k.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.5.gongq8hbow.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1097,7 +1097,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.runtime.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
@@ -1116,7 +1116,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\dotnet.runtime.js.map"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\FE_HumanResources.pdb",
@@ -1173,7 +1173,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
@@ -1192,7 +1192,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_no_CJK.dat",
@@ -1211,7 +1211,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.0\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
+      "OriginalItemSpec": "C:\\Program Files\\dotnet\\packs\\Microsoft.NETCore.App.Runtime.Mono.browser-wasm\\8.0.5\\runtimes\\browser-wasm\\native\\icudt_no_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.wasm",
@@ -5014,25 +5014,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\14kkjimq5k.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.0.14kkjimq5k.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.0.14kkjimq5k.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.0.14kkjimq5k.js"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\1it6h9p1el.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -5508,6 +5489,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\FE_HumanResources.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\641whrt3d5.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\6l7qma24ua.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -5639,6 +5639,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Xml.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\7hm6s93b13.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\7nyp06x4w8.gz",
@@ -6059,25 +6078,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Primitives.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\a1kopbnbpa.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\a4a67lxcn1.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -6420,25 +6420,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Resources.Writer.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\cx60pm2snx.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.0.cx60pm2snx.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.0.cx60pm2snx.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.0.cx60pm2snx.js"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\d4yk61xh87.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -6456,25 +6437,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.Configuration.Abstractions.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\d9w2qreyfa.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.wasm.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\dd489phuto.gz",
@@ -6570,25 +6532,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Text.Encoding.CodePages.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\ds6xula2r2.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\dx8n3xho1h.gz",
@@ -6798,6 +6741,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Numerics.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\ew1vqrwwsw.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.5.ew1vqrwwsw.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.ew1vqrwwsw.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.8.0.5.ew1vqrwwsw.js"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\eydb0ns3v1.gz",
@@ -7085,6 +7047,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\Microsoft.Extensions.Primitives.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\gongq8hbow.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.8.0.5.gongq8hbow.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.gongq8hbow.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.8.0.5.gongq8hbow.js"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\h1vdq20ur6.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -7235,6 +7216,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Security.Cryptography.Encoding.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\ibgvc3mbbn.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.native.wasm"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\iu7p3huk7m.gz",
@@ -7522,25 +7522,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Net.Ping.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\mjpqzpv3p0.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\mlo0oy0uyp.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -7655,7 +7636,7 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Diagnostics.Debug.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\nu759xh11b.gz",
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\nzvv05lacr.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
@@ -7862,6 +7843,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Runtime.InteropServices.JavaScript.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\q2rv227kvb.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_CJK.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\qbrd170d94.gz",
@@ -8415,6 +8415,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Dynamic.Runtime.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\uwh8dnsva1.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\v9atk0kgcf.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -8510,25 +8529,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\Microsoft.JSInterop.WebAssembly.wasm"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\w0j52lx1dm.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.js.map"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\w0u8he7cop.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -8605,6 +8605,25 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Xml.ReaderWriter.wasm"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\wj55uthord.gz",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\wr69h1ksok.gz",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -8622,25 +8641,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\System.Reflection.Emit.Lightweight.wasm"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\ws78lhkh21.gz",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\compressed\\x98a81hh0x.gz",
@@ -8928,44 +8928,6 @@
       "OriginalItemSpec": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\FE_HumanResources.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\service-worker-assets.js",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "service-worker-assets.js",
-      "AssetKind": "Publish",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "BlazorServiceWorker",
-      "AssetTraitValue": "ServiceWorkerManifest",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "obj\\Release\\net8.0\\service-worker-assets.js"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\service-worker-assets.js.build",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "service-worker-assets.js",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "BlazorServiceWorker",
-      "AssetTraitValue": "ServiceWorkerManifest",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "obj\\Release\\net8.0\\service-worker-assets.js.build"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\service-worker\\service-worker.js",
       "SourceId": "FE_HumanResources",
       "SourceType": "Computed",
@@ -9002,6 +8964,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\service-worker.published.js"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\service-worker-assets.js",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "service-worker-assets.js",
+      "AssetKind": "Publish",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorServiceWorker",
+      "AssetTraitValue": "ServiceWorkerManifest",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "obj\\Release\\net8.0\\service-worker-assets.js"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\obj\\Release\\net8.0\\service-worker-assets.js.build",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\bin\\Release\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "service-worker-assets.js",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorServiceWorker",
+      "AssetTraitValue": "ServiceWorkerManifest",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "obj\\Release\\net8.0\\service-worker-assets.js.build"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\demo\\chart-area-demo.js",
@@ -9726,25 +9726,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\illustrations\\403-error-forbidden.svg"
     },
     {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "assets/img/illustrations/404-error-with-a-cute-animal.svg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg"
-    },
-    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error.svg",
       "SourceId": "FE_HumanResources",
       "SourceType": "Discovered",
@@ -9762,6 +9743,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\illustrations\\404-error.svg"
+    },
+    {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "assets/img/illustrations/404-error-with-a-cute-animal.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\illustrations\\404-error-with-a-cute-animal.svg"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\assets\\img\\illustrations\\500-internal-server-error.svg",
@@ -10372,6 +10372,25 @@
       "OriginalItemSpec": "wwwroot\\source\\branding-institucional\\background-login.jpg"
     },
     {
+      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\Logo.png",
+      "SourceId": "FE_HumanResources",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "source/branding-institucional/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\source\\branding-institucional\\Logo.png"
+    },
+    {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\Logo-francelli.png",
       "SourceId": "FE_HumanResources",
       "SourceType": "Discovered",
@@ -10408,25 +10427,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\source\\branding-institucional\\logo-prodisa.png"
-    },
-    {
-      "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\Logo.png",
-      "SourceId": "FE_HumanResources",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "source/branding-institucional/Logo.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\source\\branding-institucional\\Logo.png"
     },
     {
       "Identity": "C:\\Users\\jeman\\OneDrive\\Documentos\\PRODISA\\GitProjects\\FE_HumanResources\\wwwroot\\source\\branding-institucional\\prodisa.png",

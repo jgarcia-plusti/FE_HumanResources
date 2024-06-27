@@ -192,8 +192,9 @@
                                             await LocalStorage.SetItemAsStringAsync("logedUser", contentUser);
                                             await LocalStorage.SetItemAsStringAsync("uuidUser", user.Uuid);
                                             await LocalStorage.SetItemAsStringAsync("jwt", JWT.Jwt);
+                                            await LocalStorage.SetItemAsStringAsync("uuidRole", user.UuidRole);
 
-                                            await AuthStateProvider.GetAuthenticationStateAsync();
+                                            AuthenticationState s = await AuthStateProvider.GetAuthenticationStateAsync();
                                             NavigationManager.NavigateTo("dashboard", true);
                                         }
                                         else

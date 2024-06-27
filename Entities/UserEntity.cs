@@ -17,6 +17,7 @@
         public bool Active { get; set; }
         public string Picture { get; set; }
         public string Country { get; set; }
+        public string NameRole { get; set; }
 
         public bool IsDeleted { get; set; }
         public DateTime DateModify { get; set; }

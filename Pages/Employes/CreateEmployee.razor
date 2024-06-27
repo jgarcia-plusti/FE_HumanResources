@@ -2,273 +2,283 @@
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
+@using FE_HumanResources.Pages.Authorization
 @inject ILocalStorageService LocalStorage
 @inject NotificationService NotificationService
 @inject NavigationManager NavigationManager
 @inject DialogService DialogService
 @inject HttpClient Http
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
-    <RadzenBreadCrumb>
-        <Template Context="item">
-            <RadzenBadge Text="@item.Text" IsPill="true" />
-        </Template>
-        <ChildContent>
-            <RadzenBreadCrumbItem Path="/employesgrid" Text="Empleados" />
-            <RadzenBreadCrumbItem Path="/CreateEmployes" Text="Crear Empleado" />
-        </ChildContent>
-    </RadzenBreadCrumb>
-    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { ValidateIsUser(); })">
-        <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
-            <RadzenColumn Size="12" SizeMD="6">
-                <RadzenStack>
-                    <RadzenFieldset Text="Información de Empleado">
-                        <RadzenStack Gap="1rem">
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Nombres" Component="Name" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="Employee.Name" />
-                                    <RadzenLengthValidator Component="Name" Min="5" Text="El nombre debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenLengthValidator Component="Name" Max="100" Text="El nombre debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenRequiredValidator Component="Name" Text="El Nombre es requerido" Popup=true Style="position: absolute" />
-                                    <RadzenCustomValidator Component="Name" Validator="@(() => ValidateOnlyText(Employee.Name))" Text="El campo solo acepta texto" Popup=true />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Apellidos" Component="LastName" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="LastName" @bind-Value="Employee.LastName" />
-                                    <RadzenLengthValidator Component="LastName" Min="5" Text="El apellido debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenLengthValidator Component="LastName" Max="100" Text="El apellido debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenRequiredValidator Component="LastName" Text="El apellido es requerido" Popup=true Style="position: absolute" />
-                                    <RadzenCustomValidator Component="LastName" Validator="@(() => ValidateOnlyText(Employee.LastName))" Text="El campo solo acepta texto" Popup=true />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Doc. Identificación" Component="Identification" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="Identification" @bind-Value="Employee.Identification" />
-                                    <RadzenLengthValidator Component="Identification" Min="13" Text="La identificación debe tener al menos 13 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenLengthValidator Component="Identification" Max="20" Text="La identificación debe tener como máximo 20 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenRequiredValidator Component="Identification" Text="La identificación es requerida" Popup=true Style="position: absolute" />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Dirección" Component="Adress" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="Adress" @bind-Value="Employee.Adress" />
-                                    <RadzenLengthValidator Component="Adress" Min="1" Text="La dirección debe tener al menos 1 caracter." Popup=true Style="position: absolute" />
-                                    <RadzenLengthValidator Component="Adress" Max="300" Text="La dirección debe tener como máximo 300 caracteres." Popup=true Style="position: absolute" />
-                                    <RadzenRequiredValidator Component="Adress" Text="La dirección es requerida" Popup=true Style="position: absolute" />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Género" Component="Gender" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.Gender" Data="@genders"
-                                        Style="width: 100%;" TextProperty="GenderName" ValueProperty="GenderName"
-                                        Name="Gender">
-                                    </RadzenDropDown>
-                                    <RadzenRequiredValidator Component="Gender" Text="La Seleccion del Género es requerida" Popup=true Style="position: absolute" />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Estado Civil" Component="MaritalStatusEmployee" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.MaritalStatus" Data="@MaritalStatus"
-                                                    Style="width: 100%;" TextProperty="Status" ValueProperty="Status"
-                                                    Name="MaritalStatusEmployee">
-                                    </RadzenDropDown>
-                                    <RadzenRequiredValidator Component="MaritalStatusEmployee" Text="La Seleccion de Estado Civil es requerida" Popup=true Style="position: absolute" />
+<AuthorizeView Roles="1A60AA0C-4DE7-4964-AF65-92409A85788E, 637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364">
+    <Authorized>
+        <RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+            <RadzenBreadCrumb>
+                <Template Context="item">
+                    <RadzenBadge Text="@item.Text" IsPill="true" />
+                </Template>
+                <ChildContent>
+                    <RadzenBreadCrumbItem Path="/employesgrid" Text="Empleados" />
+                    <RadzenBreadCrumbItem Path="/CreateEmployes" Text="Crear Empleado" />
+                </ChildContent>
+            </RadzenBreadCrumb>
+            <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { ValidateIsUser(); })">
+                <ChildContent Context="formContext">
+                    <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+                        <RadzenColumn Size="12" SizeMD="6">
+                            <RadzenStack>
+                                <RadzenFieldset Text="Información de Empleado">
+                                    <RadzenStack Gap="1rem">
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Nombres" Component="Name" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="Employee.Name" />
+                                                <RadzenLengthValidator Component="Name" Min="5" Text="El nombre debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenLengthValidator Component="Name" Max="100" Text="El nombre debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenRequiredValidator Component="Name" Text="El Nombre es requerido" Popup=true Style="position: absolute" />
+                                                <RadzenCustomValidator Component="Name" Validator="@(() => ValidateOnlyText(Employee.Name))" Text="El campo solo acepta texto" Popup=true />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Apellidos" Component="LastName" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenTextBox Style="width: 100%;" Name="LastName" @bind-Value="Employee.LastName" />
+                                                <RadzenLengthValidator Component="LastName" Min="5" Text="El apellido debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenLengthValidator Component="LastName" Max="100" Text="El apellido debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenRequiredValidator Component="LastName" Text="El apellido es requerido" Popup=true Style="position: absolute" />
+                                                <RadzenCustomValidator Component="LastName" Validator="@(() => ValidateOnlyText(Employee.LastName))" Text="El campo solo acepta texto" Popup=true />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Doc. Identificación" Component="Identification" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenTextBox Style="width: 100%;" Name="Identification" @bind-Value="Employee.Identification" />
+                                                <RadzenLengthValidator Component="Identification" Min="13" Text="La identificación debe tener al menos 13 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenLengthValidator Component="Identification" Max="20" Text="La identificación debe tener como máximo 20 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenRequiredValidator Component="Identification" Text="La identificación es requerida" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Dirección" Component="Adress" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenTextBox Style="width: 100%;" Name="Adress" @bind-Value="Employee.Adress" />
+                                                <RadzenLengthValidator Component="Adress" Min="1" Text="La dirección debe tener al menos 1 caracter." Popup=true Style="position: absolute" />
+                                                <RadzenLengthValidator Component="Adress" Max="300" Text="La dirección debe tener como máximo 300 caracteres." Popup=true Style="position: absolute" />
+                                                <RadzenRequiredValidator Component="Adress" Text="La dirección es requerida" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Género" Component="Gender" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.Gender" Data="@genders"
+                                                                Style="width: 100%;" TextProperty="GenderName" ValueProperty="GenderName"
+                                                                Name="Gender">
+                                                </RadzenDropDown>
+                                                <RadzenRequiredValidator Component="Gender" Text="La Seleccion del Género es requerida" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Estado Civil" Component="MaritalStatusEmployee" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.MaritalStatus" Data="@MaritalStatus"
+                                                                Style="width: 100%;" TextProperty="Status" ValueProperty="Status"
+                                                                Name="MaritalStatusEmployee">
+                                                </RadzenDropDown>
+                                                <RadzenRequiredValidator Component="MaritalStatusEmployee" Text="La Seleccion de Estado Civil es requerida" Popup=true Style="position: absolute" />
 
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Tipo de empleado" Component="TypeEmployee" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.TypeEmployee" Data="@EmployeeType"
-                                                    Style="width: 100%;" TextProperty="Type" ValueProperty="Type"
-                                                    Name="TypeEmployee">
-                                    </RadzenDropDown>
-                                    <RadzenRequiredValidator Component="TypeEmployee" Text="La Seleccion de Tipo de empleado es requerida" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Tipo de empleado" Component="TypeEmployee" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.TypeEmployee" Data="@EmployeeType"
+                                                                Style="width: 100%;" TextProperty="Type" ValueProperty="Type"
+                                                                Name="TypeEmployee">
+                                                </RadzenDropDown>
+                                                <RadzenRequiredValidator Component="TypeEmployee" Text="La Seleccion de Tipo de empleado es requerida" Popup=true Style="position: absolute" />
 
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Teléfono" Component="Phone" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenNumeric Style="width: 100%;" Name="Phone" @bind-Value="Employee.Phone" />
-                                    <RadzenLengthValidator Component="Phone" Min="7" Text="El Telefono debe tener al menos 7 caracter." Popup=true Style="position: absolute" />
-                                    <RadzenLengthValidator Component="Phone" Max="8" Text="El Telefono debe tener como máximo 13 caracteres." Popup=true Style="position: absolute" />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Fecha de Nacimiento" Component="DateOfBirth"
-                                        Style="margin-right: 8px; vertical-align: middle;" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Teléfono" Component="Phone" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenNumeric Style="width: 100%;" Name="Phone" @bind-Value="Employee.Phone" />
+                                                <RadzenLengthValidator Component="Phone" Min="7" Text="El Telefono debe tener al menos 7 caracter." Popup=true Style="position: absolute" />
+                                                <RadzenLengthValidator Component="Phone" Max="8" Text="El Telefono debe tener como máximo 13 caracteres." Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Fecha de Nacimiento" Component="DateOfBirth"
+                                                             Style="margin-right: 8px; vertical-align: middle;" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
 
-                                    <RadzenDatePicker @bind-Value="Employee.DateOfBirth" Name="DateOfBirth"
-                                        ShowCalendarWeek />
-                                </RadzenColumn>
-                                <RadzenRequiredValidator Component="DateOfBirth" Text="La Fecha es requerida" Popup=true Style="position: absolute" />
-                            </RadzenRow>
-                        </RadzenStack>
-                    </RadzenFieldset>
+                                                <RadzenDatePicker @bind-Value="Employee.DateOfBirth" Name="DateOfBirth"
+                                                                  ShowCalendarWeek />
+                                            </RadzenColumn>
+                                            <RadzenRequiredValidator Component="DateOfBirth" Text="La Fecha es requerida" Popup=true Style="position: absolute" />
+                                        </RadzenRow>
+                                    </RadzenStack>
+                                </RadzenFieldset>
+                            </RadzenStack>
+                        </RadzenColumn>
+                        <RadzenColumn Size="12" SizeMD="6">
+                            <RadzenStack>
+                                <RadzenFieldset Text="Informacion para la Empresa">
+                                    <RadzenStack Gap="1rem">
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Correo" Component="Email" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="Employee.Email" />
+                                                <RadzenRequiredValidator Component="Email" Text="El correo es requerido" Popup=true Style="position: absolute" />
+                                                <RadzenEmailValidator Component="Email" Text="Ingresa un correo valido" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Departamento" Component="Department" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.UuidDepartment" Data="@departments"
+                                                                Change="@(args => OnDepartmentChanged(Employee.UuidDepartment))"
+                                                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Department">
+                                                </RadzenDropDown>
+                                                <RadzenRequiredValidator Component="Department" Text="La seleccion es requerida" Popup=true Style="position: absolute" />
+
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Cargo" Component="JobTitles" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.UuidJobTitle" Data="@filteredJobTitles"
+                                                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="JobTitles">
+                                                </RadzenDropDown>
+                                                <RadzenRequiredValidator Component="JobTitles" Text="La seleccion es requerida" Popup=true Style="position: absolute" />
+
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Salario" Component="Salary" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenNumeric Style="width: 100%;" Name="Salary" @bind-Value="Employee.EmployeeSalary" />
+                                                <RadzenRequiredValidator Component="Salary" Text="El campo Salario es requerido" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Bono" Component="Bonus" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenNumeric Style="width: 100%;" Name="Bonus" @bind-Value="Employee.EmployeeBonus" />
+                                                <RadzenRequiredValidator Component="Salary" Text="El campo Bono es requerido" Popup=true Style="position: absolute" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow>
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Aplica ISR" Component="ApliessToISR" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenSwitch Name="ApliessToISR" @bind-Value="Employee.appliesToISR"
+                                                              InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.PaymentFrequency" Data="@PaymentFrequencyTypes"
+                                                                Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency"
+                                                                Name="PaymentFrequency">
+                                                </RadzenDropDown>
+                                                <RadzenRequiredValidator Component="PaymentFrequency" Text="La seleccion es requerida" Popup=true Style="position: absolute" />
+
+
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Gerente" Component="Manager" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.UuidManager" Data="@ListEmployees"
+                                                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Manager">
+                                                </RadzenDropDown>
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Supervisor" Component="Supervisor" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenDropDown @bind-Value="Employee.UuidSupervisor" Data="@ListEmployees"
+                                                                Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Supervisor">
+                                                </RadzenDropDown>
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow>
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Es Usuario" Component="IsUser" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+                                                <RadzenSwitch Name="IsUser" @bind-Value="Employee.IsUser"
+                                                              InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                        <RadzenRow AlignItems="AlignItems.Center">
+                                            <RadzenColumn Size="12" SizeMD="4">
+                                                <RadzenLabel Text="Fecha de Ingreso" Component="InitDate"
+                                                             Style="margin-right: 8px; vertical-align: middle;" />
+                                            </RadzenColumn>
+                                            <RadzenColumn Size="12" SizeMD="8">
+
+                                                <RadzenDatePicker @bind-Value="Employee.InitDate" Name="InitDate"
+                                                                  ShowCalendarWeek />
+                                            </RadzenColumn>
+                                        </RadzenRow>
+                                    </RadzenStack>
+                                </RadzenFieldset>
+                            </RadzenStack>
+                        </RadzenColumn>
+                    </RadzenRow>
+                    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                             Class="rz-mt-8 rz-mb-4">
+                    <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                                  Text="Regresar" Click="@ReturnMenu" />
                 </RadzenStack>
-            </RadzenColumn>
-            <RadzenColumn Size="12" SizeMD="6">
-                <RadzenStack>
-                    <RadzenFieldset Text="Informacion para la Empresa">
-                        <RadzenStack Gap="1rem">
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Correo" Component="Email" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="Employee.Email" />
-                                    <RadzenRequiredValidator Component="Email" Text="El correo es requerido" Popup=true Style="position: absolute" />
-                                    <RadzenEmailValidator Component="Email" Text="Ingresa un correo valido" Popup=true Style="position: absolute" />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Departamento" Component="Department" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenDropDown @bind-Value="Employee.UuidDepartment" Data="@departments" 
-                                        Change="@(args => OnDepartmentChanged(Employee.UuidDepartment))"
-                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Department" >
-                                    </RadzenDropDown>
-                                    <RadzenRequiredValidator Component="Department" Text="La seleccion es requerida" Popup=true Style="position: absolute" />
+                </ChildContent>
+            </RadzenTemplateForm>
+        </RadzenBody>
+    </Authorized>
+    <NotAuthorized>
+        <DenyAuthorization></DenyAuthorization>
+    </NotAuthorized>
+</AuthorizeView>
 
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Cargo" Component="JobTitles" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenDropDown @bind-Value="Employee.UuidJobTitle" Data="@filteredJobTitles"
-                                        Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="JobTitles">
-                                    </RadzenDropDown>
-                                    <RadzenRequiredValidator Component="JobTitles" Text="La seleccion es requerida" Popup=true Style="position: absolute" />
-
-                                </RadzenColumn>
-                            </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Salario" Component="Salary" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenNumeric Style="width: 100%;" Name="Salary" @bind-Value="Employee.EmployeeSalary" />
-                                     <RadzenRequiredValidator Component="Salary" Text="El campo Salario es requerido" Popup=true Style="position: absolute" />
-                                 </RadzenColumn>
-                             </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Bono" Component="Bonus" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenNumeric Style="width: 100%;" Name="Bonus" @bind-Value="Employee.EmployeeBonus" />
-                                     <RadzenRequiredValidator Component="Salary" Text="El campo Bono es requerido" Popup=true Style="position: absolute" />
-                                 </RadzenColumn>
-                             </RadzenRow>
-                             <RadzenRow>
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Aplica ISR" Component="ApliessToISR" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenSwitch Name="ApliessToISR" @bind-Value="Employee.appliesToISR"
-                                                   InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
-                                 </RadzenColumn>
-                             </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenDropDown @bind-Value="Employee.PaymentFrequency" Data="@PaymentFrequencyTypes"
-                                                     Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency"
-                                                     Name="PaymentFrequency">
-                                     </RadzenDropDown>
-                                     <RadzenRequiredValidator Component="PaymentFrequency" Text="La seleccion es requerida" Popup=true Style="position: absolute" />
-
-
-                                 </RadzenColumn>
-                             </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Gerente" Component="Manager" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenDropDown @bind-Value="Employee.UuidManager" Data="@ListEmployees"
-                                                     Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Manager">
-                                     </RadzenDropDown>
-                                 </RadzenColumn>
-                             </RadzenRow>
-                             <RadzenRow AlignItems="AlignItems.Center">
-                                 <RadzenColumn Size="12" SizeMD="4">
-                                     <RadzenLabel Text="Supervisor" Component="Supervisor" />
-                                 </RadzenColumn>
-                                 <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenDropDown @bind-Value="Employee.UuidSupervisor" Data="@ListEmployees"
-                                                     Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Supervisor">
-                                     </RadzenDropDown>
-                                 </RadzenColumn>
-                             </RadzenRow>
-                            <RadzenRow>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Es Usuario" Component="IsUser" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenSwitch Name="IsUser" @bind-Value="Employee.IsUser"
-                                        InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
-                                </RadzenColumn>
-                            </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Fecha de Ingreso" Component="InitDate"
-                                        Style="margin-right: 8px; vertical-align: middle;" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-
-                                    <RadzenDatePicker @bind-Value="Employee.InitDate" Name="InitDate"
-                                        ShowCalendarWeek />
-                                </RadzenColumn>
-                            </RadzenRow>
-                        </RadzenStack>
-                    </RadzenFieldset>
-                </RadzenStack>
-            </RadzenColumn>
-        </RadzenRow>
-        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
-            Class="rz-mt-8 rz-mb-4">
-            <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
-             <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
-                Text="Regresar" Click="@ReturnMenu" />
-        </RadzenStack>
-    </RadzenTemplateForm>
-</RadzenBody>
-
- @code {
+@code {
     EmployeeEntity Employee = new EmployeeEntity();
     ICollection<EmployeeEntity> ListEmployees;
     private ICollection<DepartmentEntity> departments;
@@ -279,7 +289,8 @@
     private string selectedCountry;
     string? jwt = null;
     string? uuidUserLoged = null;
-
+    string? uuidRole = null;
+    
     List<dynamic> genders = new List<dynamic>()
     {
         new { GenderName = "Masculino" },
@@ -314,6 +325,7 @@
         await base.OnInitializedAsync();
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
         string? uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+        string? uuidRole = await LocalStorage.GetItemAsync<string>("uuidRole");
 
         if (!string.IsNullOrEmpty(jwt))
         {

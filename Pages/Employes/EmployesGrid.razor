@@ -6,6 +6,7 @@
 @inject ContextMenuService ContextMenuService
 @inject NavigationManager NavigationManager
 @inject NotificationService NotificationService
+@inject AuthenticationStateProvider AuthStateProvider
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
@@ -81,17 +82,29 @@
         }
     }
 
-    void OnCellContextMenu(DataGridCellMouseEventArgs<EmployeeEntity> args)
+    async Task OnCellContextMenu(DataGridCellMouseEventArgs<EmployeeEntity> args)
     {
         selectedEmployee = new List<EmployeeEntity>() { args.Data };
+        
+        var contextMenuItems = new List<ContextMenuItem>
+        {
+            new ContextMenuItem() { Text = "Ver", Value = 4, Icon = "visibility" }
+        };
+
+        if (await UserIsInRole("0A8A30E0-1793-4C2A-95B3-A8AB44D9D23F") || await UserIsInRole("1A60AA0C-4DE7-4964-AF65-92409A85788E") || await UserIsInRole("637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364"))
+        {
+            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Editar", Value = 1, Icon = "search" });
+
+        }
+        if (await UserIsInRole("1A60AA0C-4DE7-4964-AF65-92409A85788E") || await UserIsInRole("637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364"))
+        {
+            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Ver Histórico del Registro", Value = 2, Icon = "home" });
+            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Ver Pagos", Value = 3, Icon = "account_balance_wallet" });
+            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Eliminar", Value = 4, Icon = "info" });
+        }
 
         ContextMenuService.Open(args,
-            new List<ContextMenuItem> {
-                new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
-                new ContextMenuItem(){ Text = "Ver Histórico del Registro", Value = 2, Icon = "home" },
-                new ContextMenuItem(){ Text = "Ver Pagos", Value = 3, Icon = "account_balance_wallet" },
-                new ContextMenuItem(){ Text = "Eliminar", Value = 4, Icon = "info" },
-            },
+            contextMenuItems,
             (e) =>
             {
                 if (e.Value.ToString() == "1")
@@ -102,8 +115,20 @@
                 {
                     NavigationManager.NavigateTo($"historicEmployee/{args.Data.Uuid}-{args.Data.Name}");
                 }
+                else if (e.Value.ToString() == "4")
+                {
+                    NavigationManager.NavigateTo($"/employee/{args.Data.Uuid}");
+                }
             }
          );
+    }
+
+    private async Task<bool> UserIsInRole(string uuidRole)
+    {
+        // Implementa la lógica para verificar si el usuario actual pertenece a un rol específico
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        return user.IsInRole(uuidRole);
     }
 
     private void showError(string messageInfo = null)

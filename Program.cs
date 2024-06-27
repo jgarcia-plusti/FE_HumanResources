@@ -12,9 +12,13 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp =>
     new HttpClient
     {
-        //BaseAddress = new Uri("https://ifrancelli.com:444") // production Api
+#if DEBUG
         BaseAddress = new Uri("https://localhost:7097") // developer Api
         //BaseAddress = new Uri("https://localhost:5082") // developer Api
+#else
+        BaseAddress = new Uri("https://ifrancelli.com:444") // production Api
+#endif
+
 
     });
 builder.Services.AddBlazoredLocalStorage();

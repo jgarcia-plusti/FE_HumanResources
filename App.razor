@@ -4,7 +4,11 @@
     <Router AppAssembly="@typeof(App).Assembly">
     
         <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Menu)" />
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Menu)" >
+                <NotAuthorized>
+                    Perdón, no estas autorizado/a, para utilizar esta opción. :(
+                </NotAuthorized>
+            </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
         <NotFound>

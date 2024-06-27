@@ -28,7 +28,7 @@
                                 <RadzenLabel Text="Nombres" Component="Name" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="Employee.Name" />
+                                <RadzenTextBox  Style="width: 100%;" Name="Name" @bind-Value="Employee.Name" />
                                     <RadzenLengthValidator Component="Name" Min="5" Text="El nombre debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
                                     <RadzenLengthValidator Component="Name" Max="100" Text="El nombre debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
                                     <RadzenRequiredValidator Component="Name" Text="El Nombre es requerido" Popup=true Style="position: absolute" />
@@ -41,7 +41,7 @@
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
                                 
-                                <RadzenTextBox Style="width: 100%;" Name="LastName" @bind-Value="Employee.LastName" />
+                                <RadzenTextBox  Style="width: 100%;" Name="LastName" @bind-Value="Employee.LastName" />
                             </RadzenColumn>
                         </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
@@ -49,7 +49,7 @@
                                 <RadzenLabel Text="Doc. Identificación" Component="Identification" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="Identification" @bind-Value="Employee.Identification" />
+                                <RadzenTextBox  Style="width: 100%;" Name="Identification" @bind-Value="Employee.Identification" />
                             </RadzenColumn>
                         </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
@@ -57,7 +57,7 @@
                                 <RadzenLabel Text="Dirección" Component="Adress" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenTextBox Style="width: 100%;" Name="Adress" @bind-Value="Employee.Adress" />
+                                <RadzenTextBox  Style="width: 100%;" Name="Adress" @bind-Value="Employee.Adress" />
                             </RadzenColumn>
                         </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
@@ -65,7 +65,7 @@
                                 <RadzenLabel Text="Género" Component="Gender" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDropDown @bind-Value="Employee.Gender" Placeholder="Femenino" Data="@genders" Style="width: 100%;"
+                                <RadzenDropDown  @bind-Value="Employee.Gender" Placeholder="Femenino" Data="@genders" Style="width: 100%;"
                                                 TextProperty="GenderName" ValueProperty="GenderName" Name="Gender">
                                 </RadzenDropDown>
                             </RadzenColumn>
@@ -75,7 +75,7 @@
                                     <RadzenLabel Text="Estado Civil" Component="MaritalStatusEmployee" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.MaritalStatus" Data="@MaritalStatus"
+                                    <RadzenDropDown  @bind-Value="Employee.MaritalStatus" Data="@MaritalStatus"
                                                     Style="width: 100%;" TextProperty="Status" ValueProperty="Status"
                                                     Name="MaritalStatusEmployee">
                                     </RadzenDropDown>
@@ -86,7 +86,7 @@
                                     <RadzenLabel Text="Tipo de empleado" Component="TypeEmployee" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDropDown @bind-Value="Employee.TypeEmployee" Data="@EmployeeType"
+                                    <RadzenDropDown  @bind-Value="Employee.TypeEmployee" Data="@EmployeeType"
                                                     Style="width: 100%;" TextProperty="Type" ValueProperty="Type"
                                                     Name="TypeEmployee">
                                     </RadzenDropDown>
@@ -122,7 +122,7 @@
                                  <RadzenLabel Text="Correo" Component="Email" />
                              </RadzenColumn>
                              <RadzenColumn Size="12" SizeMD="8">
-                                 <RadzenTextBox Style="width: 100%;" Name="Email" @bind-Value="Employee.Email" />
+                                 <RadzenTextBox  Style="width: 100%;" Name="Email" @bind-Value="Employee.Email" />
                              </RadzenColumn>
                          </RadzenRow>
                          <RadzenRow AlignItems="AlignItems.Center">
@@ -175,7 +175,7 @@
                                 <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDropDown @bind-Value="Employee.PaymentFrequency" Placeholder="Mensual" Data="@PaymentFrequencyTypes"
+                                    <RadzenDropDown  @bind-Value="Employee.PaymentFrequency" Placeholder="Mensual" Data="@PaymentFrequencyTypes"
                                                 Style="width: 100%;" TextProperty="PaymentFrequency" ValueProperty="PaymentFrequency"
                                                 Name="PaymentFrequency">
                                 </RadzenDropDown>
@@ -186,7 +186,7 @@
                                 <RadzenLabel Text="Gerente" Component="Manager" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDropDown @bind-Value="Employee.UuidManager" Data="@ListEmployees"
+                                <RadzenDropDown  @bind-Value="Employee.UuidManager" Data="@ListEmployees"
                                                 Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Manager">
                                 </RadzenDropDown>
                             </RadzenColumn>
@@ -196,7 +196,7 @@
                                 <RadzenLabel Text="Supervisor" Component="Supervisor" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDropDown @bind-Value="Employee.UuidSupervisor" Data="@ListEmployees"
+                                    <RadzenDropDown  @bind-Value="Employee.UuidSupervisor" Data="@ListEmployees"
                                                 Style="width: 100%;" TextProperty="Name" ValueProperty="Uuid" Name="Supervisor">
                                 </RadzenDropDown>
                             </RadzenColumn>
@@ -206,7 +206,7 @@
                                 <RadzenLabel Text="Fecha de Ingreso" Component="InitDate" Style="margin-right: 8px; vertical-align: middle;" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenDatePicker @bind-Value="Employee.InitDate" Name="InitDate" ShowCalendarWeek />
+                                   <RadzenDatePicker  @bind-Value="Employee.InitDate" Name="InitDate" ShowCalendarWeek />
                             </RadzenColumn>
                         </RadzenRow>
                      </RadzenStack>
@@ -220,7 +220,7 @@
      </RadzenStack>
  </RadzenTemplateForm>
 </RadzenBody>
- @code {
+@code {
     [Parameter]
     public string uuid { get; set; }
 
