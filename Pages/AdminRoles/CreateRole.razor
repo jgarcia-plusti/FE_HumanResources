@@ -1,0 +1,130 @@
+﻿@page "/CreateRole"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject ContextMenuService ContextMenuService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject HttpClient Http
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/AdminRoles" Text="Roles" />
+            <RadzenBreadCrumbItem Path="/CreateRole" Text="Crear Rol" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <RadzenTemplateForm Data="@RoleEntity" Submit="@((RoleEntity args) => { Create(); })">
+        <ChildContent Context="formContext">
+            <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+                <RadzenColumn Size="12" SizeMD="12">
+                    <RadzenStack>
+                        <RadzenFieldset Text="Informacón del Rol">
+                            <RadzenStack Gap="1rem">
+                                <RadzenRow AlignItems="AlignItems.Center">
+                                    <RadzenColumn Size="12" SizeMD="4">
+                                        <RadzenLabel Text="Nombre" Component="Name" />
+                                    </RadzenColumn>
+                                    <RadzenColumn Size="12" SizeMD="8">
+                                        <RadzenTextBox Style="width: 100%;" Name="Name" @bind-Value="RoleEntity.Name" />
+                                    </RadzenColumn>
+                                </RadzenRow>
+                                <RadzenRow AlignItems="AlignItems.Center">
+                                    <RadzenColumn Size="12" SizeMD="4">
+                                        <RadzenLabel Text="Descripción" Component="Description" />
+                                    </RadzenColumn>
+                                    <RadzenColumn Size="12" SizeMD="8">
+                                        <RadzenTextBox Style="width: 100%;" Name="Description" @bind-Value="RoleEntity.Description" />
+                                    </RadzenColumn>
+                                </RadzenRow>
+                            </RadzenStack>
+                        </RadzenFieldset>
+                    </RadzenStack>
+                </RadzenColumn>
+                <RadzenColumn Size="12" SizeMD="12">
+
+                    <RadzenTree AllowCheckBoxes="true" Data=@MenuEntities>
+                        <RadzenTreeLevel TextProperty="@nameof(MenuEntity.Name)" ChildrenProperty="SubMenus" HasChildren=@(a => ((MenuEntity)a).SubMenus != null && ((MenuEntity)a).SubMenus.Count > 0) />
+                        <RadzenTreeLevel TextProperty="@nameof(SubMenuEntity.Name)" ChildrenProperty="MenuActions" HasChildren=@(a => ((SubMenuEntity)a).MenuActions != null && ((SubMenuEntity)a).MenuActions.Count > 0) />
+                        <RadzenTreeLevel TextProperty="@nameof(MenuActionsEntity.Name)" HasChildren=@(a => false) />
+                    </RadzenTree>
+
+                </RadzenColumn>
+            </RadzenRow>
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                         Class="rz-mt-8 rz-mb-4">
+                <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back" Text="Regresar" Click="@ReturnMenu" />
+            </RadzenStack>
+        </ChildContent>
+    </RadzenTemplateForm>
+</RadzenBody>
+
+@code {
+    private IEnumerable<MenuEntity> MenuEntities;
+    private IEnumerable<SubMenuEntity> SubMenuEntities;
+    private IEnumerable<MenuActionsEntity> MenuActionsEntities;
+    private RoleEntity RoleEntity;
+    private List<PermissionsMenuEntity> PermisionsMenuEntities;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Menu/GetAll");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                MenuEntities = JsonConvert.DeserializeObject<IEnumerable<MenuEntity>>(content);
+                if (MenuEntities == null)
+                    showError("Perdón Algo salio mal");
+                else
+                {
+                    
+                }
+            }
+        }
+    }
+
+    private async Task Create()
+    {
+        
+    }
+
+    private async Task ReturnMenu()
+    {
+        NavigationManager.NavigateTo("/AdminRoles");
+    }
+ 
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Perdon algo salio mal!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+}

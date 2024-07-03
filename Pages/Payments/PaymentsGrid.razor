@@ -85,19 +85,19 @@
 
         ContextMenuService.Open(args,
             new List<ContextMenuItem> {
-                new ContextMenuItem(){ Text = "Editar", Value = 1, Icon = "search" },
-                //new ContextMenuItem(){ Text = "Ver Histórico del Registro", Value = 2, Icon = "home" },
+                new ContextMenuItem(){ Text = "Editar", Value = 2, Icon = "search" },
+                new ContextMenuItem(){ Text = "Ver ", Value = 1, Icon = "home" },
                 new ContextMenuItem(){ Text = "Eliminar", Value = 3, Icon = "info" },
                 },
             (e) =>
             {
-                if (e.Value.ToString() == "1")
+                if (e.Value.ToString() == "2")
                 {
                     NavigationManager.NavigateTo($"Payment/{args.Data.Uuid}");
                 }
-                else if (e.Value.ToString() == "2")
+                else if (e.Value.ToString() == "1")
                 {
-                    NavigationManager.NavigateTo($"historicEmployee/{args.Data.Uuid}");
+                    
                 }
             }
          );
