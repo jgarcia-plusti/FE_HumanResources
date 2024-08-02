@@ -1,0 +1,83 @@
+﻿@* @page "/PaymentConfigGrid"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject ContextMenuService ContextMenuService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+@inject HttpClient Http
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/" Text="Pagos / Planilla" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Lista de Pagos" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+    <br />
+    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
+                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@Payments" TItem="PaymentEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@SelectedPayment CellContextMenu="@OnCellContextMenu"
+                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+        <Columns>
+            <RadzenDataGridColumn TItem="PaymentEntity" Property="PaymentDate" Title="Fecha" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="PaymentEntity" Property="NameEmploye" Title="Empleado" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="PaymentEntity" Property="Amount" Title="Monto" Width="160px" />
+            <RadzenDataGridColumn TItem="PaymentEntity" Property="PaymentDescription" Title="Descripción" Width="160px" />
+        </Columns>
+    </RadzenDataGrid>
+</RadzenBody>
+
+
+@code {
+
+    private ICollection<EmployeeEntity> Employee;
+    private IList<PaymentEntity> SelectedPayment;
+    private ICollection<PaymentEntity> Payments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Reset();
+    }
+
+    private async Task Reset()
+    {
+        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.GetAsync("api/Payments/GetAll");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                Payments = JsonConvert.DeserializeObject<ICollection<PaymentEntity>>(content);
+                if (Payments == null)
+                {
+
+                }
+                else
+                {
+                    SelectedPayment = Payments.Take(1).ToList();
+                }
+
+            }
+            else
+            {
+                showError("Error al intentar cargar los datos!");
+            }
+        }
+        else
+        {
+            await LocalStorage.ClearAsync();
+            NavigationManager.NavigateTo("login", true);
+        }
+    }
+}
+ *@

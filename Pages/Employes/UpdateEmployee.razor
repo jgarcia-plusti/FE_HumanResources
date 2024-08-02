@@ -32,7 +32,7 @@
                                     <RadzenLengthValidator Component="Name" Min="5" Text="El nombre debe tener al menos 5 caracteres." Popup=true Style="position: absolute" />
                                     <RadzenLengthValidator Component="Name" Max="100" Text="El nombre debe tener como máximo 100 caracteres." Popup=true Style="position: absolute" />
                                     <RadzenRequiredValidator Component="Name" Text="El Nombre es requerido" Popup=true Style="position: absolute" />
-                                    <RadzenCustomValidator Component="Name" Validator="@(() => ValidateOnlyText(Employee.Name))" Text="El campo solo acepta texto" Popup=true />
+                                    @* <RadzenCustomValidator Component="Name" Validator="@(() => ValidateOnlyText(Employee.Name))" Text="El campo solo acepta texto" Popup=true /> *@
                             </RadzenColumn>
                         </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
@@ -145,15 +145,6 @@
                                  </RadzenDropDown>
                              </RadzenColumn>
                          </RadzenRow>
-                        <RadzenRow>
-                            <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Aplica ISR" Component="ApliessToISR" />
-                            </RadzenColumn>
-                            <RadzenColumn Size="12" SizeMD="8">
-                                     <RadzenSwitch Name="ApliessToISR" @bind-Value="Employee.appliesToISR"
-                                            InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "Switch value" }})" />
-                            </RadzenColumn>
-                        </RadzenRow>
                         <RadzenRow AlignItems="AlignItems.Center">
                             <RadzenColumn Size="12" SizeMD="4">
                                 <RadzenLabel Text="Salario" Component="Salary" />
@@ -162,14 +153,18 @@
                                 <RadzenNumeric Style="width: 100%;" Name="Salary" @bind-Value="Employee.EmployeeSalary" />
                             </RadzenColumn>
                         </RadzenRow>
-                            <RadzenRow AlignItems="AlignItems.Center">
+
+                        <RadzenRow AlignItems="AlignItems.Center">
                             <RadzenColumn Size="12" SizeMD="4">
-                                <RadzenLabel Text="Bono" Component="Bonus" />
+                                <RadzenLabel Text="Config. de pago" Component="Payment" />
                             </RadzenColumn>
                             <RadzenColumn Size="12" SizeMD="8">
-                                <RadzenNumeric Style="width: 100%;" Name="Bonus" @bind-Value="Employee.EmployeeBonus" />
+                                <RadzenDropDown @bind-Value="Employee.UuidPaymentConfiguration" Data="@paymentConfigurations"
+                                                Style="width: 100%;" TextProperty="Description" ValueProperty="Uuid" Name="Payment">
+                                </RadzenDropDown>
                             </RadzenColumn>
                         </RadzenRow>
+
                         <RadzenRow AlignItems="AlignItems.Center">
                             <RadzenColumn Size="12" SizeMD="4">
                                 <RadzenLabel Text="Frecuencia de Pago" Component="PaymentFrequency" />
@@ -228,6 +223,7 @@
     ICollection<EmployeeEntity> ListEmployees;
     private ICollection<DepartmentEntity> departments;
     private ICollection<JobTitleEntity> jobTitles;
+    private ICollection<PaymentConfigurationEntity> paymentConfigurations;
     string? jwt = null;
     string? uuidUserLoged = null;
 
@@ -294,6 +290,15 @@
                 if (departments == null)
                     showError();
                 
+            }
+
+            response = await Http.GetAsync("api/Payments/GetPaymentConfigList");
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                paymentConfigurations = JsonConvert.DeserializeObject<ICollection<PaymentConfigurationEntity>>(content);
+                if (paymentConfigurations == null)
+                    showError();
             }
 
             response = await Http.PostAsJsonAsync("api/Employee/Get", new PayloadGeneric()

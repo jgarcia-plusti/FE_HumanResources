@@ -19,19 +19,20 @@
         @onmouseover="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.IconAndText; } })"
         @onmouseout="@(args => { if(changeOnOver) { DisplayStyle = MenuItemDisplayStyle.Icon; } })">
         @* HOME *@
-        @foreach (MenuEntity menu in MenuEntities.OrderBy(o=> o.Order))
+        @foreach (MenuEntity menu in MenuEntities.Where(w => w.Allowed == true).OrderBy(o=> o.Order))
         {
             <RadzenPanelMenuItem Text="@menu.Name" Icon="@menu.Icon">
-                @foreach (SubMenuEntity subMenu in menu.SubMenus.OrderBy(o => o.Order))
-                {
-                    <RadzenPanelMenuItem Text="@subMenu.Name" Path="@subMenu.Path" Icon="@subMenu.Icon"></RadzenPanelMenuItem>
-                }
+            @foreach (SubMenuEntity subMenu in menu.SubMenus.Where(w => w.Allowed == true).OrderBy(o => o.Order))
+            {
+                <RadzenPanelMenuItem Text="@subMenu.Name" Path="@subMenu.Path" Icon="@subMenu.Icon"></RadzenPanelMenuItem>
+            }
             </RadzenPanelMenuItem>
         }
     </RadzenPanelMenu>
 @code {
     private UserEntity UserEntity = null;
     private IEnumerable<MenuEntity> MenuEntities;
+    private NewRolePermissions newRolePermissions;
     string username = "";
 
     bool multiple = true;
@@ -45,20 +46,65 @@
     {
 
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        string? uuidRole = await LocalStorage.GetItemAsync<string>("uuidRole");
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.GetAsync("api/Menu/GetAll");
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Permissions/Get", new PayloadGeneric()
+            {
+                Uuid = uuidRole,
+                payload = new { }
+            });
 
             if (response.IsSuccessStatusCode)
             {
-                string content = response.Content.ReadAsStringAsync().Result;
-                MenuEntities = JsonConvert.DeserializeObject<IEnumerable<MenuEntity>>(content);
-                if (MenuEntities != null)
-                    showInfo("Configuración cargada");
-                else
+                string content = await response.Content.ReadAsStringAsync(); // Cambiado a await para leer el contenido asincrónicamente
+                newRolePermissions = JsonConvert.DeserializeObject<NewRolePermissions>(content);
+                if (newRolePermissions == null)
                     showError("Perdón Algo salio mal");
+                else
+                {
 
+                    MenuEntities = newRolePermissions.Permissions.Select(s => new MenuEntity()
+                    {
+                        Uuid = s.Uuid,
+                        UuidMenu = s.UuidMenu,
+                        Allowed = s.Allowed,
+                        Name = s.Name,
+                        Description = s.Description,
+                        Icon = s.Icon,
+                        Order = s.Order,
+                        SubMenus = s.PermissionsSubMenus.Select(sm => new SubMenuEntity()
+                        {
+                            Uuid = sm.Uuid,
+                            UuidSubMenu = sm.UuidSubMenu,
+                            UuidMenu = sm.UuidMenu,
+                            Allowed = sm.Allowed,
+                            Name = sm.Name,
+                            Description = sm.Description,
+                            Icon = sm.Icon,
+                            Order = sm.Order,
+                            Path = sm.Path,
+                            MenuActions = sm.PermissionsMenuActions.Select(ma => new MenuActionsEntity()
+                            {
+                                Uuid = ma.Uuid,
+                                UuidMenuActions = ma.UuidMenuActions,
+                                UuidSubMenu = ma.UuidSubMenu,
+                                Allowed = ma.Allowed,
+                                Name = ma.Name,
+                                Description = ma.Description,
+                                Icon = ma.Icon,
+                                Order = ma.Order,
+                                Value = ma.Value
+                            }).ToList()
+                        }).ToList()
+                    }).ToList();
+
+                    if (!string.IsNullOrEmpty(await LocalStorage.GetItemAsync<string>("Permissions")))
+                        LocalStorage.RemoveItemAsync("Permissions");
+
+                    await LocalStorage.SetItemAsStringAsync("Permissions", JsonConvert.SerializeObject(MenuEntities));
+                }
             }
         }
 
@@ -96,9 +142,10 @@
                     NavigationManager.NavigateTo("login", true);
 
                 }
-                else
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    
+                    await LocalStorage.ClearAsync();
+                    NavigationManager.NavigateTo("login", true);
                 }
             }
         }

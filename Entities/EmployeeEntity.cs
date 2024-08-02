@@ -22,8 +22,7 @@ namespace FE_HumanResources.Entities
         public bool IsDeleted { get; set; }
         public DateTime DateModify { get; set; }
         public double EmployeeSalary { get; set; }
-        public double EmployeeBonus { get; set; }
-        public bool appliesToISR { get; set; }
+        public string UuidPaymentConfiguration { get; set; }
         public string PaymentFrequency { get; set; }
         public string TypeEmployee { get; set; }
         public string MaritalStatus { get; set; }

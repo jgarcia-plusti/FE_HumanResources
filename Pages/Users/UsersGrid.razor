@@ -19,7 +19,13 @@
         </ChildContent>
     </RadzenBreadCrumb>
     <br>
-    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
+    @if (MenuActions.Where(w => w.Name == "Crear").FirstOrDefault().Allowed == true)
+    {
+        <RadzenButton Text="Crear" Click="@Create" ButtonStyle="ButtonStyle.Primary" />
+    }
+    <RadzenButton Text="Refrescar Lista" Click="@Reset" ButtonStyle="ButtonStyle.Secondary" />
+    <br />
+    <br />
     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false"
         FilterMode="FilterMode.Simple" AllowSorting="true" PageSize="10" AllowPaging="true"
         PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true" Data="@UserEntity" TItem="UserEntity"
@@ -42,6 +48,8 @@
 @code {
     private UserEntity user = new UserEntity();
     private IEnumerable<UserEntity> UserEntity;
+    private IEnumerable<MenuEntity> MenuEntities;
+    List<MenuActionsEntity> MenuActions;
     private IList<UserEntity> selectedUser;
     private string uuidRole = "";
 
@@ -55,6 +63,15 @@
     {
         string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
         uuidRole = await LocalStorage.GetItemAsync<string>("uuidRole");
+        string permiss = await LocalStorage.GetItemAsync<string>("Permissions");
+
+        if (!string.IsNullOrEmpty(permiss))
+        {
+            MenuEntities = JsonConvert.DeserializeObject<IEnumerable<MenuEntity>>(permiss);
+
+            MenuActions = MenuEntities.Where(w => w.Name == "Usuarios").FirstOrDefault()
+                        .SubMenus.Where(z => z.Name == "Lista de Usuarios").FirstOrDefault().MenuActions.ToList();
+        }
 
         if (!string.IsNullOrEmpty(jwt))
         {
@@ -84,51 +101,44 @@
         }
     }
 
+    void Create()
+    {
+        NavigationManager.NavigateTo($"/CreateUser");
+    }
+
     async Task OnCellContextMenu(DataGridCellMouseEventArgs<UserEntity> args)
     {
         selectedUser = new List<UserEntity>() { args.Data };
 
-        var contextMenuItems = new List<ContextMenuItem>
-        {
-            new ContextMenuItem() { Text = "Ver", Value = 4, Icon = "visibility" }
-        };
+        var contextMenuItems = new List<ContextMenuItem>();
 
-        if (await UserIsInRole("0A8A30E0-1793-4C2A-95B3-A8AB44D9D23F") || await UserIsInRole("1A60AA0C-4DE7-4964-AF65-92409A85788E") || await UserIsInRole("637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364"))
+        foreach (MenuActionsEntity e in MenuActions.Where(w => w.Allowed == true && w.Name != "Crear").ToList().OrderBy(o => o.Order))
         {
-            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Editar", Value = 1, Icon = "search" });
-        }
-
-        if (await UserIsInRole("1A60AA0C-4DE7-4964-AF65-92409A85788E") || await UserIsInRole("637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364"))
-        {
-            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Eliminar", Value = 3, Icon = "info" });
-            contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Ver Histórico del Registro", Value = 2, Icon = "home" });
+            contextMenuItems.Insert(0, new ContextMenuItem() { Text = e.Name, Value = e.Value, Icon = e.Icon });
         }
 
         ContextMenuService.Open(args,
         contextMenuItems,
         (e) =>
         {
-            if (e.Value.ToString() == "1")
+            if (e.Value.ToString() == "2")
             {
                 NavigationManager.NavigateTo($"/User/{args.Data.Uuid}");
             }
-            else if (e.Value.ToString() == "2")
+            else if (e.Value.ToString() == "4")
             {
                 NavigationManager.NavigateTo($"/historicusergrid/{args.Data.Uuid}-{args.Data.UserName}");
             }
-            else if (e.Value.ToString() == "4")
+            else if (e.Value.ToString() == "3")
             {
                 NavigationManager.NavigateTo($"/User/{args.Data.Uuid}/{true}");
+            }
+            else if (e.Value.ToString() == "1")
+            {
+                
             }
         }
         );
     }
 
-    private async Task<bool> UserIsInRole(string uuidRole)
-    {
-        // Implementa la lógica para verificar si el usuario actual pertenece a un rol específico
-        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        return user.IsInRole(uuidRole);
-    }
 }

@@ -1,4 +1,4 @@
-﻿@page "/CreateRole"
+﻿@page "/UpdateRole/{uuid}"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
@@ -16,10 +16,10 @@
         </Template>
         <ChildContent>
             <RadzenBreadCrumbItem Path="/AdminRoles" Text="Roles" />
-            <RadzenBreadCrumbItem Path="/CreateRole" Text="Crear Rol" />
+            <RadzenBreadCrumbItem Path="/UpdateRole" Text="Editar Rol" />
         </ChildContent>
     </RadzenBreadCrumb>
-    <RadzenTemplateForm Data="@RoleEntity" Submit="@((RoleEntity args) => { Create(); })">
+    <RadzenTemplateForm Data="@RoleEntity" Submit="@((RoleEntity args) => { Update(); })">
         <ChildContent Context="formContext">
             <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
                 <RadzenColumn Size="12" SizeMD="12">
@@ -69,8 +69,12 @@
     </RadzenTemplateForm>
 </RadzenBody>
 
+
 @code {
+    [Parameter]
+    public string uuid { get; set; }
     private IEnumerable<MenuEntity> MenuEntities;
+    private IEnumerable<MenuEntity> originalMenuEntities;
     private IEnumerable<SubMenuEntity> SubMenuEntities;
     private IEnumerable<MenuActionsEntity> MenuActionsEntities;
     private RoleEntity RoleEntity = new RoleEntity();
@@ -78,7 +82,6 @@
     private NewRolePermissions newRolePermissions;
     private string? jwt;
     IEnumerable<object> checkedValues;
-
     IEnumerable<object> CheckedValues
     {
         get => checkedValues;
@@ -114,9 +117,6 @@
             ).ToList();
         }
     }
-
-    private IEnumerable<MenuEntity> originalMenuEntities;
-
 
     private void OnTreeChange(object value)
     {
@@ -161,64 +161,123 @@
         }
     }
 
-
     protected override async Task OnInitializedAsync()
     {
         jwt = await LocalStorage.GetItemAsync<string>("jwt");
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.GetAsync("api/Menu/GetAll");
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Permissions/Get", new PayloadGeneric()
+                {
+                    Uuid = this.uuid,
+                    payload = new { }
+                });
 
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                originalMenuEntities = JsonConvert.DeserializeObject<IEnumerable<MenuEntity>>(content);
-                MenuEntities = originalMenuEntities;
+                newRolePermissions = JsonConvert.DeserializeObject<NewRolePermissions>(content);
 
-                if (MenuEntities == null)
-                    showError("Perdón, algo salió mal");
+                // Imprimir datos obtenidos para depuración
+                Console.WriteLine(JsonConvert.SerializeObject(newRolePermissions, Formatting.Indented));
+
+                if (newRolePermissions == null)
+                    showError("Perdón Algo salio mal");
+                else
+                {
+                    RoleEntity.Uuid = newRolePermissions.UuidRole;
+                    RoleEntity.Name = newRolePermissions.RoleName;
+                    RoleEntity.Description = newRolePermissions.RoleDescription;
+
+                    originalMenuEntities = newRolePermissions.Permissions.Select(s => new MenuEntity()
+                        {
+                            Uuid = s.Uuid,
+                            Allowed = s.Allowed,
+                            Name = s.Name,
+                            Description = s.Description,
+                            Icon = s.Icon,
+                            Order = s.Order,
+                            SubMenus = s.PermissionsSubMenus.Select(sm => new SubMenuEntity()
+                            {
+                                Uuid = sm.Uuid,
+                                Allowed = sm.Allowed,
+                                Name = sm.Name,
+                                Description = sm.Description,
+                                Icon = sm.Icon,
+                                Order = sm.Order,
+                                MenuActions = sm.PermissionsMenuActions.Select(ma => new MenuActionsEntity()
+                                {
+                                    Uuid = ma.Uuid,
+                                    Allowed = ma.Allowed,
+                                    Name = ma.Name,
+                                    Description = ma.Description,
+                                    Icon = ma.Icon,
+                                    Order = ma.Order
+                                }).ToList()
+                            }).ToList()
+                        }).ToList();
+
+                    MenuEntities = originalMenuEntities;
+
+                    // Inicializa los valores permitidos en los valores marcados
+                    var checkedItems = new List<object>();
+                    foreach (var menu in MenuEntities)
+                    {
+                        if (menu.Allowed) checkedItems.Add(menu);
+                        foreach (var subMenu in menu.SubMenus)
+                        {
+                            if (subMenu.Allowed) checkedItems.Add(subMenu);
+                            foreach (var action in subMenu.MenuActions)
+                            {
+                                if (action.Allowed) checkedItems.Add(action);
+                            }
+                        }
+                    }
+                    CheckedValues = checkedItems;
+                }
             }
         }
     }
 
 
-    private async Task Create()
+    private async Task Update()
     {
         newRolePermissions = new NewRolePermissions()
-            {
-                RoleName = RoleEntity.Name,
-                RoleDescription = RoleEntity.Description,
-                Permissions = MenuEntities.Select(s => new PermissionsMenuEntity()
-                {
-                    Uuid = "",
-                    UuidMenu = s.Uuid,
-                    Allowed = s.Allowed,
-                    PermissionsSubMenus = s.SubMenus.Select(sm => new PermissionsSubMenuEntity()
-                    {
-                        Uuid = "",
-                        UuidSubMenu = sm.Uuid,
-                        UuidMenu = s.Uuid,
-                        Allowed = sm.Allowed,
-                        PermissionsMenuActions = sm.MenuActions.Select(ma => new PermissionsMenuActionsEntity()
-                        {
-                            Uuid = "",
-                            UuidMenuActions = ma.Uuid,
-                            UuidSubMenu = sm.Uuid,
-                            Allowed = ma.Allowed,
+        {
+            UuidRole = RoleEntity.Uuid,
+            RoleName = RoleEntity.Name,
+            RoleDescription = RoleEntity.Description,
 
-                        }).ToList(),
+            Permissions = MenuEntities.Select(s => new PermissionsMenuEntity()
+            {
+                Uuid = s.Uuid,
+                UuidMenu = s.UuidMenu,
+                Allowed = s.Allowed,
+                PermissionsSubMenus = s.SubMenus.Select(sm => new PermissionsSubMenuEntity()
+                {
+                    Uuid = sm.Uuid,
+                    UuidSubMenu = sm.UuidSubMenu,
+                    UuidMenu = s.Uuid,
+                    Allowed = sm.Allowed,
+                    PermissionsMenuActions = sm.MenuActions.Select(ma => new PermissionsMenuActionsEntity()
+                    {
+                        Uuid = ma.Uuid,
+                        UuidMenuActions = ma.UuidMenuActions,
+                        UuidSubMenu = sm.Uuid,
+                        Allowed = ma.Allowed,
 
                     }).ToList(),
 
                 }).ToList(),
 
-            };
+            }).ToList(),
+
+        };
 
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Permissions/New", new PayloadGeneric()
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Permissions/Update", new PayloadGeneric()
                 {
                     Uuid = "",
                     payload = newRolePermissions
@@ -226,7 +285,7 @@
 
             if (response.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                showInfo("Creado con éxito!");
+                showInfo("Actualizado con éxito!");
                 MenuEntities = null;
                 RoleEntity = new RoleEntity();
                 NavigationManager.NavigateTo("/AdminRoles");

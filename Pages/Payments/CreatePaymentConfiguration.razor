@@ -1,0 +1,50 @@
+﻿@* @page "/CreatePaymentConfig"
+@using System.Net.Http.Headers
+@using FE_HumanResources.Models
+@using FE_HumanResources.Entities
+@inject ILocalStorageService LocalStorage
+@inject NotificationService NotificationService
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+    <RadzenBreadCrumb>
+        <Template Context="item">
+            <RadzenBadge Text="@item.Text" IsPill="true" />
+        </Template>
+        <ChildContent>
+            <RadzenBreadCrumbItem Path="/CreatePayment" Text="Pagos / Planilla" />
+        </ChildContent>
+    </RadzenBreadCrumb>
+
+    <RadzenTemplateForm Data="@Employee" Submit="@((EmployeeEntity args) => { ValidateIsUser(); })">
+        <ChildContent Context="formContext">
+            <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+
+            </RadzenRow>
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Gap="1rem"
+                         Class="rz-mt-8 rz-mb-4">
+                <RadzenButton ButtonType="ButtonType.Submit" Size="ButtonSize.Large" Icon="save" Text="Guardar" />
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back"
+                              Text="Regresar" Click="@ReturnMenu" />
+            </RadzenStack>
+        </ChildContent>
+    </RadzenTemplateForm>
+
+</RadzenBody>
+
+@code {
+    private PaymentConfigurationEntity Payment = new PaymentConfigurationEntity();
+    private ICollection<EmployeeEntity> Employee;
+    string? jwt;
+    string? uuidUserLoged;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
+
+    }
+}
+ *@
