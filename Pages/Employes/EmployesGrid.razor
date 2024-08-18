@@ -6,6 +6,7 @@
 @inject ContextMenuService ContextMenuService
 @inject NavigationManager NavigationManager
 @inject NotificationService NotificationService
+@inject DialogService DialogService
 @inject AuthenticationStateProvider AuthStateProvider
 @inject HttpClient Http
 
@@ -47,7 +48,7 @@
     private EmployeeEntity user = new EmployeeEntity();
     private IEnumerable<EmployeeEntity> EmployeeEntity;
     private IList<EmployeeEntity> selectedEmployee;
-
+    string? jwt;
     private string uuidRole;
     private IEnumerable<MenuEntity> MenuEntities;
     List<MenuActionsEntity> MenuActions;
@@ -60,7 +61,7 @@
 
     private async Task Reset()
     {
-        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
         uuidRole = await LocalStorage.GetItemAsync<string>("uuidRole");
 
         string permiss = await LocalStorage.GetItemAsync<string>("Permissions");
@@ -138,10 +139,49 @@
                 }
                 else if (e.Value.ToString() == "3")
                 {
-                    
+                    ShowInlineDialog(args.Data.Uuid);
                 }
             }
          );
+    }
+
+    async Task ShowInlineDialog(string Uuid)
+    {
+        var result = await DialogService.OpenAsync("Eliminar", ds =>
+        @<RadzenStack Gap="1.5rem">
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                <RadzenStack Orientation="Orientation.Horizontal">
+                    <RadzenButton Text="Cancelar" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Danger" />
+                </RadzenStack>
+                <RadzenButton Text="Ok" Click="() => { ds.Close(true); Delete(Uuid); }" Style="width: 80px;" />
+            </RadzenStack>
+        </RadzenStack>
+        );
+    }
+
+    private async Task Delete(string Uuid)
+    {
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/Delete", new PayloadGeneric()
+                {
+                    Uuid = Uuid,
+                    payload = new { }
+                });
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                ResponseGeneric result = JsonConvert.DeserializeObject<ResponseGeneric>(content);
+                showInfo(result.message);
+                await Reset();
+            }
+            else
+            {
+                showError("Error al intentar eliminar el registro!");
+            }
+        }
     }
 
     private void showError(string messageInfo = null)

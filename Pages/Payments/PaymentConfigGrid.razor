@@ -1,4 +1,4 @@
-﻿@* @page "/PaymentConfigGrid"
+﻿@page "/PaymentConfigGrid"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
@@ -6,6 +6,7 @@
 @inject ContextMenuService ContextMenuService
 @inject NavigationManager NavigationManager
 @inject NotificationService NotificationService
+@inject DialogService DialogService
 @inject HttpClient Http
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12">
@@ -15,21 +16,25 @@
         </Template>
         <ChildContent>
             <RadzenBreadCrumbItem Path="/" Text="Pagos / Planilla" />
-            <RadzenBreadCrumbItem Path="/usersgrid" Text="Lista de Pagos" />
+            <RadzenBreadCrumbItem Path="/usersgrid" Text="Configuraciones de Planilla" />
         </ChildContent>
     </RadzenBreadCrumb>
     <br />
-    <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
+    @if (MenuActions.Where(w => w.Name == "Crear").FirstOrDefault().Allowed == true)
+    {
+        <RadzenButton Text="Crear" Click="@Create" ButtonStyle="ButtonStyle.Primary" />
+    }
+    <RadzenButton Text="Refrescar Lista" Click="@Reset" ButtonStyle="ButtonStyle.Secondary" />
+    <br />
+    <br />
     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
                     AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                    Data="@Payments" TItem="PaymentEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
-                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@SelectedPayment CellContextMenu="@OnCellContextMenu"
+                    Data="@PaymentsConfig" TItem="PaymentConfigurationEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@SelectedPaymentConfig CellContextMenu="@OnCellContextMenu"
                     FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
         <Columns>
-            <RadzenDataGridColumn TItem="PaymentEntity" Property="PaymentDate" Title="Fecha" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
-            <RadzenDataGridColumn TItem="PaymentEntity" Property="NameEmploye" Title="Empleado" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
-            <RadzenDataGridColumn TItem="PaymentEntity" Property="Amount" Title="Monto" Width="160px" />
-            <RadzenDataGridColumn TItem="PaymentEntity" Property="PaymentDescription" Title="Descripción" Width="160px" />
+            <RadzenDataGridColumn TItem="PaymentConfigurationEntity" Property="Description" Title="Descripción" Frozen="true" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="PaymentConfigurationEntity" Property="CountryName" Title="País" Frozen="true" TextAlign="TextAlign.Center" />
         </Columns>
     </RadzenDataGrid>
 </RadzenBody>
@@ -38,33 +43,47 @@
 @code {
 
     private ICollection<EmployeeEntity> Employee;
-    private IList<PaymentEntity> SelectedPayment;
-    private ICollection<PaymentEntity> Payments;
+    private IList<PaymentConfigurationEntity> SelectedPaymentConfig;
+    private ICollection<PaymentConfigurationEntity> PaymentsConfig;
+    private string uuidRole;
+    string? jwt;
+    private IEnumerable<MenuEntity> MenuEntities;
+    List<MenuActionsEntity> MenuActions;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        string permiss = await LocalStorage.GetItemAsync<string>("Permissions");
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        uuidRole = await LocalStorage.GetItemAsync<string>("uuidRole");
+        if (!string.IsNullOrEmpty(permiss))
+        {
+            MenuEntities = JsonConvert.DeserializeObject<IEnumerable<MenuEntity>>(permiss);
+
+            MenuActions = MenuEntities.Where(w => w.Name == "Pagos / Planilla").FirstOrDefault()
+                    .SubMenus.Where(z => z.Name == "Configuración de Planillas").FirstOrDefault().MenuActions.ToList();
+        }
         await Reset();
     }
 
     private async Task Reset()
     {
-        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
-            HttpResponseMessage response = await Http.GetAsync("api/Payments/GetAll");
+            HttpResponseMessage response = await Http.GetAsync("api/Payments/GetPaymentConfigList");
             if (response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
-                Payments = JsonConvert.DeserializeObject<ICollection<PaymentEntity>>(content);
-                if (Payments == null)
+                PaymentsConfig = JsonConvert.DeserializeObject<ICollection<PaymentConfigurationEntity>>(content);
+                if (PaymentsConfig == null)
                 {
 
                 }
                 else
                 {
-                    SelectedPayment = Payments.Take(1).ToList();
+                    SelectedPaymentConfig = PaymentsConfig.Take(1).ToList();
                 }
 
             }
@@ -79,5 +98,103 @@
             NavigationManager.NavigateTo("login", true);
         }
     }
+
+    void Create()
+    {
+        NavigationManager.NavigateTo($"/CreatePaymentConfig");
+    }
+
+    async Task OnCellContextMenu(DataGridCellMouseEventArgs<PaymentConfigurationEntity> args)
+    {
+        SelectedPaymentConfig = new List<PaymentConfigurationEntity>() { args.Data };
+
+        var contextMenuItems = new List<ContextMenuItem>();
+
+        foreach (MenuActionsEntity e in MenuActions.Where(w => w.Allowed == true && w.Name != "Crear").ToList().OrderBy(o => o.Order))
+        {
+            contextMenuItems.Insert(0, new ContextMenuItem() { Text = e.Name, Value = e.Value, Icon = e.Icon });
+        }
+
+        ContextMenuService.Open(args,
+            contextMenuItems,
+            (e) =>
+            {
+                if (e.Value.ToString() == "1")
+                {
+                    NavigationManager.NavigateTo($"");
+                }
+                else if (e.Value.ToString() == "2")
+                {
+                    NavigationManager.NavigateTo($"UpdatePaymentConfig/{args.Data.Uuid}");
+                }
+                else if (e.Value.ToString() == "3")
+                {
+                    ShowInlineDialog(args.Data.Uuid);    
+                }
+            }
+         );
+    }
+
+    async Task ShowInlineDialog(string Uuid)
+    {
+        var result = await DialogService.OpenAsync("Eliminar", ds =>
+        @<RadzenStack Gap="1.5rem">
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                <RadzenStack Orientation="Orientation.Horizontal">
+                    <RadzenButton Text="Cancelar" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Danger" />
+                </RadzenStack>
+            <RadzenButton Text="Ok" Click="() => { ds.Close(true); Delete(Uuid); }" Style="width: 80px;" />
+            </RadzenStack>
+        </RadzenStack>
+    );
+    }
+
+    private async Task Delete(string Uuid)
+    {
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/Payments/DeletePaymentConfig", new PayloadGeneric()
+            {
+                Uuid = Uuid,
+                payload = new { }
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                ResponseGeneric result = JsonConvert.DeserializeObject<ResponseGeneric>(content);
+                showInfo(result.message);
+                await Reset();
+            }
+            else
+            {
+                showError("Error al intentar eliminar el registro!");
+            }
+        }
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
 }
- *@

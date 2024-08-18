@@ -146,6 +146,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcVXBkYXRlUGF5bWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/UpdatePaymentConfiguration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcVXBkYXRlUGF5bWVudENvbmZpZ3VyYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Users/CreateUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcQ3JlYXRlVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

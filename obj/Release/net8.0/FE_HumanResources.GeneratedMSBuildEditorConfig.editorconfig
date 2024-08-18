@@ -38,6 +38,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFRvcE5hdi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/AdminRoles/AdminRoles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Sb2xlc1xBZG1pblJvbGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/AdminRoles/CreateRole.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Sb2xlc1xDcmVhdGVSb2xlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/AdminRoles/UpdateRole.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5Sb2xlc1xVcGRhdGVSb2xlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Authorization/DenyAuthorization.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aG9yaXphdGlvblxEZW55QXV0aG9yaXphdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Dashboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -110,8 +126,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcQ3JlYXRlUGF5bWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/CreatePaymentConfiguration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcQ3JlYXRlUGF5bWVudENvbmZpZ3VyYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/GeneratePayments.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcR2VuZXJhdGVQYXltZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/PaymentConfigGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcUGF5bWVudENvbmZpZ0dyaWQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/PaymentsGrid.razor]
@@ -120,6 +144,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/UpdatePayment.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcVXBkYXRlUGF5bWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Payments/UpdatePaymentConfiguration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcVXBkYXRlUGF5bWVudENvbmZpZ3VyYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Users/CreateUser.razor]

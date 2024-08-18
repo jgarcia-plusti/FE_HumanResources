@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "FE_HumanResources",
   "resources": {
-    "hash": "sha256-I3lYtiE58a8PoNDmrvOgY8sb1TNrFbv5kPrOcfQCdfE=",
+    "hash": "sha256-3g0doqq/Zlv/QiIb2gPOu9bSMCOqobCXkYxxALA/yno=",
     "jsModuleNative": {
       "dotnet.native.8.0.5.60gejzx023.js": "sha256-LcFqTjcmOSS2DG1y7UgiFZu4Gk4UF8ap5SaU2vAsCWw="
     },
@@ -18,7 +18,7 @@
     },
     "assembly": {
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
-      "FE_HumanResources.wasm": "sha256-tOyGRXTrEhJkWJA/vSxei/P0y5Urd0aMUymhPVF7at0=",
+      "FE_HumanResources.wasm": "sha256-zRu2A54eYCFmZ2Mfu4mr0lF7Pg+/N8Vza8F5UqHoWI8=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-WzYk8W6wXxTyK/z+WDW4ja65SmfAZUQpN2qdRY+sfkc=",
       "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-bLEW5ULj5vcAy+LnchSNYYkPi2fpHOW5cgI5VuKoRuM=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-PiFm/DM104e9g0JN2PnU9rIsN8f1mqTHhcvRNH8dcVU=",

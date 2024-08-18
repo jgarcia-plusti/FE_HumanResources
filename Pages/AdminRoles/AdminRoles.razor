@@ -103,18 +103,6 @@
             new ContextMenuItem() { Text = "Editar", Value = 4, Icon = "visibility" }
         };
 
-        // if (await UserIsInRole("0A8A30E0-1793-4C2A-95B3-A8AB44D9D23F") || await UserIsInRole("1A60AA0C-4DE7-4964-AF65-92409A85788E") || await UserIsInRole("637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364"))
-        // {
-        //     contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Editar", Value = 1, Icon = "search" });
-
-        // }
-        // if (await UserIsInRole("1A60AA0C-4DE7-4964-AF65-92409A85788E") || await UserIsInRole("637D8DF2-4E4F-4CB8-B0F9-B12C66A6C364"))
-        // {
-        //     contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Ver Histórico del Registro", Value = 2, Icon = "home" });
-        //     contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Ver Pagos", Value = 3, Icon = "account_balance_wallet" });
-        //     contextMenuItems.Insert(0, new ContextMenuItem() { Text = "Eliminar", Value = 4, Icon = "info" });
-        // }
-
         ContextMenuService.Open(args,
             contextMenuItems,
             (e) =>

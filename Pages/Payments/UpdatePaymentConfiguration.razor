@@ -1,4 +1,4 @@
-﻿@page "/CreatePaymentConfig"
+﻿@page "/UpdatePaymentConfig/{uuid}"
 @using System.Net.Http.Headers
 @using FE_HumanResources.Models
 @using FE_HumanResources.Entities
@@ -15,10 +15,10 @@
         </Template>
         <ChildContent>
             <RadzenBreadCrumbItem Path="/" Text="Pagos / Planilla" />
-            <RadzenBreadCrumbItem Path="/CreatePaymentConfig" Text="Crear Configuración de Planilla" />
+            <RadzenBreadCrumbItem Path="/UpdatePaymentConfig" Text="Editar Configuración de Planilla" />
         </ChildContent>
     </RadzenBreadCrumb>
-    <RadzenTemplateForm Data="@paymentConfigurationEntity" Submit="@((PaymentConfigurationEntity args) => { Create(args); })">
+    <RadzenTemplateForm Data="@paymentConfigurationEntity" Submit="@((PaymentConfigurationEntity args) => { Update(args); })">
         <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="12">
                 <RadzenStack>
@@ -26,7 +26,7 @@
                         <RadzenStack Gap="1rem">
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn>
-                                    <RadzenLabel Text="Nombre para la Configuración" Component="description" />
+                                    <RadzenLabel Text="Descripción" Component="description" />
                                 </RadzenColumn>
                                 <RadzenColumn>
                                     <RadzenTextBox Name="description" @bind-Value="paymentConfigurationEntity.Description" />
@@ -89,19 +89,19 @@
                                     <RadzenLabel Text="Salario anual desde" Component="amountFrom" />
                                 </RadzenColumn>
                                 <RadzenColumn>
-                                    <RadzenNumeric Name="amountFrom" @bind-Value="DetailToAdd.AmountFrom" />
+                                            <RadzenNumeric Name="amountFrom" @bind-Value="DetailToAdd.AmountFrom" />
                                 </RadzenColumn>
                                 <RadzenColumn>
                                     <RadzenLabel Text="Salario anual hasta" Component="amountTo" />
                                 </RadzenColumn>
                                 <RadzenColumn>
-                                    <RadzenNumeric Name="amountTo" @bind-Value="DetailToAdd.AmountTo" />
+                                            <RadzenNumeric Name="amountTo" @bind-Value="DetailToAdd.AmountTo" />
                                 </RadzenColumn>
                                 <RadzenColumn>
                                     <RadzenLabel Text="Porcentaje Exedente" Component="AmountOutstanding" />
                                 </RadzenColumn>
                                 <RadzenColumn>
-                                    <RadzenNumeric Name="AmountOutstanding" @bind-Value="DetailToAdd.AmountOutstanding" />
+                                            <RadzenNumeric Name="AmountOutstanding" @bind-Value="DetailToAdd.AmountOutstanding" />
                                 </RadzenColumn>
                             }
                         </RadzenRow>
@@ -114,27 +114,27 @@
             </RadzenFieldset>
             <RadzenFieldset Text="Detalles de la configuración de Planilla">
                 <RadzenRow AlignItems="AlignItems.Center">
-
-                    <RadzenDataGrid AllowColumnResize="true" AllowAlternatingRows="true" FilterMode="FilterMode.Simple"
-                                    AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                                    FilterPopupRenderMode="PopupRenderMode.OnDemand"
-                                    Data="@ListDetails" ColumnWidth="200px">
-                        <Columns>
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Description" Title="Descripción" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Amount" Title="Monto" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="CalculationType" Title="Tipo de Calculo" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AccumulationType" Title="Tipo de Acumulación" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountFrom" Title="Monto Desde" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountTo" Title="Monto Hasta" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountOutstanding" Title="Porcentaje Exedente" />
-                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Uuid" Title="Remover">
-                                <Template Context="data">
-                                    <RadzenButton Click="@(() => RemoveToDetail(data))" Icon="delete" ButtonStyle="ButtonStyle.Secondary" Size="ButtonSize.Small" />
-                                </Template>
-                            </RadzenDataGridColumn>
-                        </Columns>
-                    </RadzenDataGrid>
-                </RadzenRow>
+                
+                <RadzenDataGrid AllowColumnResize="true" AllowAlternatingRows="true" FilterMode="FilterMode.Simple"
+                                AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                FilterPopupRenderMode="PopupRenderMode.OnDemand"
+                                Data="@ListDetails" ColumnWidth="200px">
+                    <Columns>
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Description" Title="Descripción" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Amount" Title="Monto" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="CalculationType" Title="Tipo de Calculo" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AccumulationType" Title="Tipo de Acumulación" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountFrom" Title="Monto Desde" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountTo" Title="Monto Hasta" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountOutstanding" Title="Porcentaje Exedente" />
+                        <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Uuid" Title="Remover">
+                            <Template Context="data">
+                                <RadzenButton Click="@(() => RemoveToDetail(data))" Icon="delete" ButtonStyle="ButtonStyle.Secondary" Size="ButtonSize.Small" />
+                            </Template>
+                        </RadzenDataGridColumn>
+                    </Columns>
+                </RadzenDataGrid>
+            </RadzenRow>
             </RadzenFieldset>
         </RadzenRow>
 
@@ -149,7 +149,8 @@
 </RadzenBody>
 
 @code {
-
+    [Parameter]
+    public string uuid { get; set; }
     string? jwt;
     PaymentConfigurationEntity paymentConfigurationEntity = new PaymentConfigurationEntity();
     PaymentConfigurationDetailEntity DetailToAdd = new PaymentConfigurationDetailEntity();
@@ -178,7 +179,27 @@
         if (!string.IsNullOrEmpty(jwt))
         {
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+
             HttpResponseMessage response;
+            response = await Http.PostAsJsonAsync("api/Payments/GetPaymentConfig", new PayloadGeneric()
+            {
+                Uuid = this.uuid!,
+                payload = new
+                {
+                    Uuid = this.uuid
+                }
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                paymentConfigurationEntity = JsonConvert.DeserializeObject<PaymentConfigurationEntity>(content);
+                if (paymentConfigurationEntity == null)
+                    showError();
+                else
+                    ListDetails = paymentConfigurationEntity.Details.ToList();
+            }
+
             response = await Http.GetAsync("api/Catalogs/Countries");
             if (response.IsSuccessStatusCode)
             {
@@ -192,7 +213,7 @@
 
     void AddDetail()
     {
-        DetailToAdd.Uuid = "";
+        DetailToAdd.Uuid = Guid.NewGuid().ToString().ToUpper();
         ListDetails.Add(DetailToAdd);
         DetailToAdd = new PaymentConfigurationDetailEntity();
         ListDetails = new List<PaymentConfigurationDetailEntity>(ListDetails);
@@ -206,7 +227,7 @@
         StateHasChanged();
     }
 
-    protected async Task Create(PaymentConfigurationEntity args)
+    protected async Task Update(PaymentConfigurationEntity args)
     {
         this.paymentConfigurationEntity.Details = this.ListDetails;
 
@@ -215,12 +236,11 @@
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
 
             HttpResponseMessage response;
-            paymentConfigurationEntity.Uuid = "";
-            response = await Http.PostAsJsonAsync("api/Payments/SavePaymentConfig", this.paymentConfigurationEntity);
+            response = await Http.PostAsJsonAsync("api/Payments/UpdatePaymentConfig", this.paymentConfigurationEntity);
 
             if (response.IsSuccessStatusCode)
             {
-                showInfo("Configuración de Planilla creada correctamente!");
+                showInfo("Configuración de Planilla actualizada correctamente!");
                 NavigationManager.NavigateTo($"/PaymentConfigGrid", true);
             }
             else

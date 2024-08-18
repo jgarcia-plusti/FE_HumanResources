@@ -6,6 +6,8 @@
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
 @inject ContextMenuService ContextMenuService
+@inject DialogService DialogService
+@inject NotificationService NotificationService
 @inject AuthenticationStateProvider AuthStateProvider
 
 <RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
@@ -52,6 +54,7 @@
     List<MenuActionsEntity> MenuActions;
     private IList<UserEntity> selectedUser;
     private string uuidRole = "";
+    string? jwt, uuidUserLoged;
 
     protected override async Task OnInitializedAsync()
     {
@@ -61,8 +64,9 @@
 
     private async Task Reset()
     {
-        string? jwt = await LocalStorage.GetItemAsync<string>("jwt");
+        jwt = await LocalStorage.GetItemAsync<string>("jwt");
         uuidRole = await LocalStorage.GetItemAsync<string>("uuidRole");
+        uuidUserLoged = await LocalStorage.GetItemAsync<string>("uuidUser");
         string permiss = await LocalStorage.GetItemAsync<string>("Permissions");
 
         if (!string.IsNullOrEmpty(permiss))
@@ -131,7 +135,7 @@
             }
             else if (e.Value.ToString() == "3")
             {
-                NavigationManager.NavigateTo($"/User/{args.Data.Uuid}/{true}");
+            ShowInlineDialog(args.Data.Uuid);
             }
             else if (e.Value.ToString() == "1")
             {
@@ -141,4 +145,66 @@
         );
     }
 
+    async Task ShowInlineDialog(string Uuid)
+    {
+        var result = await DialogService.OpenAsync("Eliminar", ds =>
+        @<RadzenStack Gap="1.5rem">
+            <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween">
+                <RadzenStack Orientation="Orientation.Horizontal">
+                    <RadzenButton Text="Cancelar" Click="() => ds.Close(false)" ButtonStyle="ButtonStyle.Danger" />
+                </RadzenStack>
+                <RadzenButton Text="Ok" Click="() => { ds.Close(true); Delete(Uuid); }" Style="width: 80px;" />
+            </RadzenStack>
+        </RadzenStack>
+    );
+    }
+
+    private async Task Delete(string Uuid)
+    {
+        if (!string.IsNullOrEmpty(jwt))
+        {
+            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
+            HttpResponseMessage response = await Http.PostAsJsonAsync("api/User/DeleteUser", new PayloadGeneric()
+            {
+                Uuid = uuidUserLoged,
+                payload = new { Uuid = Uuid }
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                string content = response.Content.ReadAsStringAsync().Result;
+                ResponseGeneric result = JsonConvert.DeserializeObject<ResponseGeneric>(content);
+                showInfo(result.message);
+                await Reset();
+            }
+            else
+            {
+                showError("Error al intentar eliminar el registro!");
+            }
+        }
+    }
+
+    private void showError(string messageInfo = null)
+    {
+        if (string.IsNullOrEmpty(messageInfo))
+            messageInfo = $"Error al intentar obtener datos del servidor!";
+
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
+
+    private void showInfo(string msg)
+    {
+        string messageInfo = msg;
+        NotificationService.Notify(new NotificationMessage()
+            {
+                Severity = NotificationSeverity.Info,
+                Summary = messageInfo,
+                Duration = 4000
+            });
+    }
 }

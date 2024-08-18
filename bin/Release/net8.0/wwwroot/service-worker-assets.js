@@ -1137,15 +1137,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-tOyGRXTrEhJkWJA\/vSxei\/P0y5Urd0aMUymhPVF7at0=",
+      "hash": "sha256-zRu2A54eYCFmZ2Mfu4mr0lF7Pg+\/N8Vza8F5UqHoWI8=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-QcbufYV4KktDL0BVrv\/vVbbUNFSiI+uOY8WqNHYnO5A=",
+      "hash": "sha256-+DNkjECAhRx2ywQj4pGr4zKGGVQaCMO3EByGC96\/AMY=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-861dw3yW44aOIuLy62gtab6MY+ggpDVaCx57yH4QUt8=",
+      "hash": "sha256-1zurbZ2c\/JElyGVxuUIM7rmCs4N2JBGm2naudqEYhPE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1345,5 +1345,5 @@
       "url": "_content\/Radzen.Blazor\/Radzen.Blazor.js"
     }
   ],
-  "version": "e4FEHoXH"
+  "version": "uPcCU46p"
 };
