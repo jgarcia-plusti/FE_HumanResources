@@ -22,5 +22,6 @@
         public double AmountFrom { get; set; }
         public double AmountTo { get; set; }
         public int AmountOutstanding { get; set; }
+        public bool IsrDiscount { get; set; }
     }
 }

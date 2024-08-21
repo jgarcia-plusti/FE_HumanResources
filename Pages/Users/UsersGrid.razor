@@ -107,7 +107,7 @@
 
     void Create()
     {
-        NavigationManager.NavigateTo($"/CreateUser");
+        NavigationManager.NavigateTo($"CreateUser");
     }
 
     async Task OnCellContextMenu(DataGridCellMouseEventArgs<UserEntity> args)
@@ -127,11 +127,11 @@
         {
             if (e.Value.ToString() == "2")
             {
-                NavigationManager.NavigateTo($"/User/{args.Data.Uuid}");
+                NavigationManager.NavigateTo($"User/{args.Data.Uuid}");
             }
             else if (e.Value.ToString() == "4")
             {
-                NavigationManager.NavigateTo($"/historicusergrid/{args.Data.Uuid}-{args.Data.UserName}");
+                NavigationManager.NavigateTo($"historicusergrid/{args.Data.Uuid}-{args.Data.UserName}");
             }
             else if (e.Value.ToString() == "3")
             {

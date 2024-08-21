@@ -229,7 +229,7 @@
                 showInfo("Creado con éxito!");
                 MenuEntities = null;
                 RoleEntity = new RoleEntity();
-                NavigationManager.NavigateTo("/AdminRoles");
+                NavigationManager.NavigateTo("AdminRoles");
             }
             else
                 showError();
@@ -238,7 +238,7 @@
 
     private async Task ReturnMenu()
     {
-        NavigationManager.NavigateTo("/AdminRoles");
+        NavigationManager.NavigateTo("AdminRoles");
     }
 
     private void showError(string messageInfo = null)

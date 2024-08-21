@@ -88,7 +88,7 @@
             {
                 if (e.Value.ToString() == "1")
                 {
-                    NavigationManager.NavigateTo($"/UpdateEvaluations/{args.Data.Uuid}");
+                    NavigationManager.NavigateTo($"UpdateEvaluations/{args.Data.Uuid}");
                 }
             }
         );
@@ -96,7 +96,7 @@
 
     void GoToEvaluation()
     {
-        NavigationManager.NavigateTo($"/Evaluations", true);
+        NavigationManager.NavigateTo($"Evaluations");
     }
 
     private void showError(string messageInfo = null)

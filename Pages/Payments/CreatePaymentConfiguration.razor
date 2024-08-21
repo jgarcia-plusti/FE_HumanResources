@@ -25,16 +25,16 @@
                     <RadzenFieldset Text="Configuración de Planilla">
                         <RadzenStack Gap="1rem">
                             <RadzenRow AlignItems="AlignItems.Center">
-                                <RadzenColumn>
+                                <RadzenColumn Size="2">
                                     <RadzenLabel Text="Nombre para la Configuración" Component="description" />
                                 </RadzenColumn>
-                                <RadzenColumn>
+                                <RadzenColumn Size="4">
                                     <RadzenTextBox Name="description" @bind-Value="paymentConfigurationEntity.Description" />
                                 </RadzenColumn>
-                                <RadzenColumn>
+                                <RadzenColumn Size="2">
                                     <RadzenLabel Text="País" Component="contry" />
                                 </RadzenColumn>
-                                <RadzenColumn>
+                                <RadzenColumn Size="4">
                                     <RadzenDropDown @bind-Value="paymentConfigurationEntity.UuidCountry" Data="@Countries"
                                                     TextProperty="Name" ValueProperty="Uuid" Name="contry">
                                     </RadzenDropDown>
@@ -59,12 +59,6 @@
                             </RadzenColumn>
 
                             <RadzenColumn>
-                                <RadzenLabel Text="Monto" Component="amount" />
-                            </RadzenColumn>
-                            <RadzenColumn>
-                                <RadzenNumeric Name="amount" @bind-Value="DetailToAdd.Amount" />
-                            </RadzenColumn>
-                            <RadzenColumn>
                                 <RadzenLabel Text="Tipo de Calculo" Component="CalculationTypes" />
                             </RadzenColumn>
                             <RadzenColumn>
@@ -72,6 +66,14 @@
                                                 TextProperty="Name" ValueProperty="Name" Name="CalculationTypes">
                                 </RadzenDropDown>
                             </RadzenColumn>
+
+                            <RadzenColumn>
+                                <RadzenLabel Text="Monto" Component="amount" />
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenNumeric Name="amount" @bind-Value="DetailToAdd.Amount" />
+                            </RadzenColumn>
+                            
                             <RadzenColumn>
                                 <RadzenLabel Text="Tipo de Acumulación" Component="AccumulationTypes" />
                             </RadzenColumn>
@@ -80,6 +82,15 @@
                                                 TextProperty="Name" ValueProperty="Name" Name="AccumulationTypes">
                                 </RadzenDropDown>
                             </RadzenColumn>
+                            @if (DetailToAdd.CalculationType == "Monto Fijo")
+                            {
+                                <RadzenColumn>
+                                    <RadzenLabel Text="Aplica Descuento de ISR?" />
+                                </RadzenColumn>
+                                <RadzenColumn>
+                                    <RadzenSwitch @bind-Value="DetailToAdd.IsrDiscount" />
+                                </RadzenColumn>
+                            }
                         </RadzenRow>
 
                         <RadzenRow AlignItems="AlignItems.Center">
@@ -118,7 +129,7 @@
                     <RadzenDataGrid AllowColumnResize="true" AllowAlternatingRows="true" FilterMode="FilterMode.Simple"
                                     AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                                     FilterPopupRenderMode="PopupRenderMode.OnDemand"
-                                    Data="@ListDetails" ColumnWidth="200px">
+                                    Data="@ListDetails">
                         <Columns>
                             <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Description" Title="Descripción" />
                             <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Amount" Title="Monto" />
@@ -127,6 +138,7 @@
                             <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountFrom" Title="Monto Desde" />
                             <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountTo" Title="Monto Hasta" />
                             <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="AmountOutstanding" Title="Porcentaje Exedente" />
+                            <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="IsrDiscount" Title="Aplica Descuento ISR" />
                             <RadzenDataGridColumn TItem="PaymentConfigurationDetailEntity" Property="Uuid" Title="Remover">
                                 <Template Context="data">
                                     <RadzenButton Click="@(() => RemoveToDetail(data))" Icon="delete" ButtonStyle="ButtonStyle.Secondary" Size="ButtonSize.Small" />
@@ -221,7 +233,7 @@
             if (response.IsSuccessStatusCode)
             {
                 showInfo("Configuración de Planilla creada correctamente!");
-                NavigationManager.NavigateTo($"/PaymentConfigGrid", true);
+                NavigationManager.NavigateTo($"PaymentConfigGrid");
             }
             else
                 showError();
@@ -233,7 +245,7 @@
 
     public void ReturnMenu()
     {
-        NavigationManager.NavigateTo($"/PaymentConfigGrid", true);
+        NavigationManager.NavigateTo($"PaymentConfigGrid");
     }
 
     private void showError(string messageInfo = null)
