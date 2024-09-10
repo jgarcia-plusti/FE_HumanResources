@@ -28,19 +28,40 @@
     <RadzenButton Text="Refrescar Lista" Click="@Reset" ButtonStyle="ButtonStyle.Secondary" />
     <br />
     <br />
-    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Simple"
-                    AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                    Data="@EmployeeEntity" TItem="EmployeeEntity" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or"
-                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu"
-                    FilterPopupRenderMode="PopupRenderMode.OnDemand" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
-        <Columns>
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Name" Title="Nombre" Frozen="true" Width="80px" TextAlign="TextAlign.Center" />
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="LastName" Title="Apellido" Frozen="true" Width="160px" />
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Identification" Title="Identificación" Width="160px" />
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Phone" Title="teléfono" FormatString="{0:d}" Width="200px" />
-            <RadzenDataGridColumn TItem="EmployeeEntity" Property="Email" Title="Correo" Width="300px" />
-        </Columns>
-    </RadzenDataGrid>
+    <div>
+
+        <RadzenDataGrid AllowFiltering="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
+                        AllowSorting="true" PageSize="15" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                        Data="@EmployeeEntity" LogicalFilterOperator="LogicalFilterOperator.Or" TItem="EmployeeEntity"
+                        SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu">
+            <Columns>
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Name" Title="Nombre" Frozen="true" TextAlign="TextAlign.Center" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="LastName" Title="Apellido" TextAlign="TextAlign.Center" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="DateOfBirth" Title="Fecha de Nacimiento" FormatString="{0:d}" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Gender" Title="Sexo" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Identification" Title="DPI" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="CountryDeparmetName" Title="Departamento" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="MunicipalityName" Title="Monicipio" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="CountryName" Title="País" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="MaritalStatus" Title="Estado Civil" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="BloodType" Title="Tipo sanguíneo" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="SignLanguage" Title="¿Sabe el lenguaje de señas?" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Religion" Title="Religión" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="HasReligiousPosition" Title="¿Tiene algún cargo religioso?" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="ReligiousPosition" Title="¿Cuál cargo religioso?" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Town" Title="Pueblo" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="LinguisticCommunity" Title="Comunidad lingüística" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Passport" Title="Número de pasaporte" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="NIT" Title="NIT" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="IgssAffiliation" Title="Afiliación IGSS" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Phone" Title="teléfono" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Email" Title="Correo personal" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="InstitutionalEmail" Title="Correo institucional" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="PhonePrivateDoctor" Title="Número de médico particular" />
+                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Profession" Title="Profesión" />
+            </Columns>
+        </RadzenDataGrid>
+    </div>
 </RadzenBody>
 
 

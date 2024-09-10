@@ -231,14 +231,14 @@
             else
             {
                 showInfo(Evaluation.message);
-                NavigationManager.NavigateTo($"/Evaluations", true);
+                NavigationManager.NavigateTo($"/Evaluations");
             }
         }
     }
 
     private void ReturnMenu()
     {
-        NavigationManager.NavigateTo($"/Evaluations", true);
+        NavigationManager.NavigateTo($"/Evaluations");
     }
 
     private void showError(string messageInfo = null)

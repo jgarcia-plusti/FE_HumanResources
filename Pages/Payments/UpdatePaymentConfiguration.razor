@@ -250,7 +250,7 @@
             if (response.IsSuccessStatusCode)
             {
                 showInfo("Configuración de Planilla actualizada correctamente!");
-                NavigationManager.NavigateTo($"PaymentConfigGrid");
+                NavigationManager.NavigateTo("/PaymentConfigGrid");
             }
             else
                 showError();
@@ -262,7 +262,7 @@
 
     public void ReturnMenu()
     {
-        NavigationManager.NavigateTo($"PaymentConfigGrid");
+        NavigationManager.NavigateTo("/PaymentConfigGrid");
     }
 
     private void showError(string messageInfo = null)
