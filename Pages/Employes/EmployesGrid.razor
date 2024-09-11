@@ -20,6 +20,7 @@
             <RadzenBreadCrumbItem Path="/usersgrid" Text="Lista de Empleados" />
         </ChildContent>
     </RadzenBreadCrumb>
+
     <br />
     @if (MenuActions.Where(w => w.Name == "Crear").FirstOrDefault().Allowed == true)
     {
@@ -28,11 +29,11 @@
     <RadzenButton Text="Refrescar Lista" Click="@Reset" ButtonStyle="ButtonStyle.Secondary" />
     <br />
     <br />
-    <div>
+    <div style="overflow-x: auto; width: 100%;">
 
-        <RadzenDataGrid AllowFiltering="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" 
+        <RadzenDataGrid AllowFiltering="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced"
                         AllowSorting="true" PageSize="15" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                        Data="@EmployeeEntity" LogicalFilterOperator="LogicalFilterOperator.Or" TItem="EmployeeEntity"
+                        Data="@EmployeeEntity" ColumnWidth="150px" LogicalFilterOperator="LogicalFilterOperator.Or" TItem="EmployeeEntity"
                         SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu">
             <Columns>
                 <RadzenDataGridColumn TItem="EmployeeEntity" Property="Name" Title="Nombre" Frozen="true" TextAlign="TextAlign.Center" />
