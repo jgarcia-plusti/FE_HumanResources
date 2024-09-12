@@ -6751,8 +6751,8 @@ C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Deb
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Net.WebSockets.wasm.gz
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Numerics.Vectors.wasm.gz
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\_framework\System.Xml.Serialization.wasm.gz
-C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\service-worker-assets.js
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\service-worker.js
+C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\wwwroot\service-worker-assets.js
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\FE_HumanResources.staticwebassets.runtime.json
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\FE_HumanResources.dll
 C:\Users\jeman\OneDrive\Documentos\PRODISA\GitProjects\FE_HumanResources\bin\Debug\net8.0\FE_HumanResources.pdb

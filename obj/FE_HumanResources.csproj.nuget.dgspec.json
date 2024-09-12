@@ -85,7 +85,7 @@
             },
             "Radzen.Blazor": {
               "target": "Package",
-              "version": "[4.27.1, )"
+              "version": "[5.1.11, )"
             }
           },
           "imports": [

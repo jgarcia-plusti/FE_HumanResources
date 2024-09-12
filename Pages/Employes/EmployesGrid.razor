@@ -10,7 +10,7 @@
 @inject AuthenticationStateProvider AuthStateProvider
 @inject HttpClient Http
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12">
+<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="width: 100%;">
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
@@ -29,40 +29,38 @@
     <RadzenButton Text="Refrescar Lista" Click="@Reset" ButtonStyle="ButtonStyle.Secondary" />
     <br />
     <br />
-    <div style="overflow-x: auto; width: 100%;">
-
-        <RadzenDataGrid AllowFiltering="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced"
-                        AllowSorting="true" PageSize="15" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
-                        Data="@EmployeeEntity" ColumnWidth="150px" LogicalFilterOperator="LogicalFilterOperator.Or" TItem="EmployeeEntity"
-                        SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu">
-            <Columns>
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Name" Title="Nombre" Frozen="true" TextAlign="TextAlign.Center" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="LastName" Title="Apellido" TextAlign="TextAlign.Center" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="DateOfBirth" Title="Fecha de Nacimiento" FormatString="{0:d}" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Gender" Title="Sexo" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Identification" Title="DPI" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="CountryDeparmetName" Title="Departamento" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="MunicipalityName" Title="Monicipio" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="CountryName" Title="País" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="MaritalStatus" Title="Estado Civil" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="BloodType" Title="Tipo sanguíneo" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="SignLanguage" Title="¿Sabe el lenguaje de señas?" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Religion" Title="Religión" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="HasReligiousPosition" Title="¿Tiene algún cargo religioso?" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="ReligiousPosition" Title="¿Cuál cargo religioso?" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Town" Title="Pueblo" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="LinguisticCommunity" Title="Comunidad lingüística" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Passport" Title="Número de pasaporte" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="NIT" Title="NIT" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="IgssAffiliation" Title="Afiliación IGSS" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Phone" Title="teléfono" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Email" Title="Correo personal" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="InstitutionalEmail" Title="Correo institucional" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="PhonePrivateDoctor" Title="Número de médico particular" />
-                <RadzenDataGridColumn TItem="EmployeeEntity" Property="Profession" Title="Profesión" />
-            </Columns>
-        </RadzenDataGrid>
-    </div>
+    <RadzenDataGrid AllowFiltering="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced"
+                    AllowSorting="true" PageSize="15" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@EmployeeEntity" LogicalFilterOperator="LogicalFilterOperator.Or" TItem="EmployeeEntity"
+                    SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu"
+                    ColumnWidth="300px">
+        <Columns>
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Name" Title="Nombre" Frozen="true" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="LastName" Title="Apellido" TextAlign="TextAlign.Center" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="DateOfBirth" Title="Fecha de Nacimiento" FormatString="{0:d}" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Gender" Title="Sexo" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Identification" Title="DPI" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="CountryDeparmetName" Title="Departamento" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="MunicipalityName" Title="Monicipio" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="CountryName" Title="País" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="MaritalStatus" Title="Estado Civil" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="BloodType" Title="Tipo sanguíneo" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="SignLanguage" Title="¿Sabe el lenguaje de señas?" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Religion" Title="Religión" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="HasReligiousPosition" Title="¿Tiene algún cargo religioso?" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="ReligiousPosition" Title="¿Cuál cargo religioso?" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Town" Title="Pueblo" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="LinguisticCommunity" Title="Comunidad lingüística" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Passport" Title="Número de pasaporte" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="NIT" Title="NIT" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="IgssAffiliation" Title="Afiliación IGSS" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Phone" Title="teléfono" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Email" Title="Correo personal" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="InstitutionalEmail" Title="Correo institucional" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="PhonePrivateDoctor" Title="Número de médico particular" />
+            <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Profession" Title="Profesión" />
+        </Columns>
+    </RadzenDataGrid>
 </RadzenBody>
 
 
@@ -185,11 +183,12 @@
     {
         if (!string.IsNullOrEmpty(jwt))
         {
+            string uuidUserAction = await LocalStorage.GetItemAsync<string>("uuidUser");
             Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", jwt);
             HttpResponseMessage response = await Http.PostAsJsonAsync("api/Employee/Delete", new PayloadGeneric()
                 {
-                    Uuid = Uuid,
-                    payload = new { }
+                    Uuid = uuidUserAction,
+                    payload = new { Uuid = Uuid }
                 });
 
             if (response.IsSuccessStatusCode)

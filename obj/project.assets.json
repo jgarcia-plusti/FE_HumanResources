@@ -483,7 +483,7 @@
           }
         }
       },
-      "Radzen.Blazor/4.27.1": {
+      "Radzen.Blazor/5.1.11": {
         "type": "package",
         "dependencies": {
           "DartSassBuilder": "1.0.0",
@@ -1061,7 +1061,7 @@
           }
         }
       },
-      "Radzen.Blazor/4.27.1": {
+      "Radzen.Blazor/5.1.11": {
         "type": "package",
         "dependencies": {
           "DartSassBuilder": "1.0.0",
@@ -2184,10 +2184,10 @@
         "packageIcon.png"
       ]
     },
-    "Radzen.Blazor/4.27.1": {
-      "sha512": "dwbehgTsHrakw4ceaOziFI+dMeClCwfD5jYjwv86IylRj8ar2ir5WMEiEngWF7pTpt3Ju7l2FRG+of5jeOsB6g==",
+    "Radzen.Blazor/5.1.11": {
+      "sha512": "J3N4tmRPY0OheHaJRYs4m50qXYdoTkibVVV1HKcqvaaFtQ0S0lKCt/DLCOl1K5feQotC/VslvKIi0YEcNSb0pA==",
       "type": "package",
-      "path": "radzen.blazor/4.27.1",
+      "path": "radzen.blazor/5.1.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2198,17 +2198,13 @@
         "buildMultiTargeting/Radzen.Blazor.props",
         "buildTransitive/Radzen.Blazor.props",
         "icon.png",
-        "lib/net5.0/Radzen.Blazor.dll",
-        "lib/net5.0/Radzen.Blazor.xml",
         "lib/net6.0/Radzen.Blazor.dll",
         "lib/net6.0/Radzen.Blazor.xml",
         "lib/net7.0/Radzen.Blazor.dll",
         "lib/net7.0/Radzen.Blazor.xml",
         "lib/net8.0/Radzen.Blazor.dll",
         "lib/net8.0/Radzen.Blazor.xml",
-        "lib/netstandard2.1/Radzen.Blazor.dll",
-        "lib/netstandard2.1/Radzen.Blazor.xml",
-        "radzen.blazor.4.27.1.nupkg.sha512",
+        "radzen.blazor.5.1.11.nupkg.sha512",
         "radzen.blazor.nuspec",
         "staticwebassets/Radzen.Blazor.js",
         "staticwebassets/css/dark-base.css",
@@ -2222,10 +2218,14 @@
         "staticwebassets/css/fluent-dark.css",
         "staticwebassets/css/fluent.css",
         "staticwebassets/css/humanistic-base.css",
+        "staticwebassets/css/humanistic-dark-base.css",
+        "staticwebassets/css/humanistic-dark-wcag.css",
+        "staticwebassets/css/humanistic-dark.css",
         "staticwebassets/css/humanistic-wcag.css",
         "staticwebassets/css/humanistic.css",
         "staticwebassets/css/material-base.css",
         "staticwebassets/css/material-dark-base.css",
+        "staticwebassets/css/material-dark-wcag.css",
         "staticwebassets/css/material-dark.css",
         "staticwebassets/css/material-wcag.css",
         "staticwebassets/css/material.css",
@@ -2234,31 +2234,21 @@
         "staticwebassets/css/material3-dark.css",
         "staticwebassets/css/material3.css",
         "staticwebassets/css/software-base.css",
+        "staticwebassets/css/software-dark-base.css",
+        "staticwebassets/css/software-dark-wcag.css",
+        "staticwebassets/css/software-dark.css",
         "staticwebassets/css/software-wcag.css",
         "staticwebassets/css/software.css",
         "staticwebassets/css/standard-base.css",
+        "staticwebassets/css/standard-dark-base.css",
+        "staticwebassets/css/standard-dark-wcag.css",
+        "staticwebassets/css/standard-dark.css",
         "staticwebassets/css/standard-wcag.css",
         "staticwebassets/css/standard.css",
-        "staticwebassets/fonts/MaterialIcons-Regular.woff",
-        "staticwebassets/fonts/SourceSansPro-Black.woff",
-        "staticwebassets/fonts/SourceSansPro-BlackIt.woff",
-        "staticwebassets/fonts/SourceSansPro-Bold.woff",
-        "staticwebassets/fonts/SourceSansPro-BoldIt.woff",
-        "staticwebassets/fonts/SourceSansPro-ExtraLight.woff",
-        "staticwebassets/fonts/SourceSansPro-ExtraLightIt.woff",
-        "staticwebassets/fonts/SourceSansPro-It.woff",
-        "staticwebassets/fonts/SourceSansPro-Light.woff",
-        "staticwebassets/fonts/SourceSansPro-LightIt.woff",
-        "staticwebassets/fonts/SourceSansPro-Regular.woff",
-        "staticwebassets/fonts/SourceSansPro-Semibold.woff",
-        "staticwebassets/fonts/SourceSansPro-SemiboldIt.woff",
-        "staticwebassets/fonts/roboto-v15-latin-300.woff",
-        "staticwebassets/fonts/roboto-v15-latin-700.woff",
-        "staticwebassets/fonts/roboto-v15-latin-regular.woff",
-        "staticwebassets/fonts/roboto-v30-latin-300.woff",
-        "staticwebassets/fonts/roboto-v30-latin-500.woff",
-        "staticwebassets/fonts/roboto-v30-latin-700.woff",
-        "staticwebassets/fonts/roboto-v30-latin-regular.woff"
+        "staticwebassets/fonts/MaterialSymbolsOutlined.woff2",
+        "staticwebassets/fonts/RobotoFlex.woff2",
+        "staticwebassets/fonts/SourceSans3VF-Italic.ttf.woff2",
+        "staticwebassets/fonts/SourceSans3VF-Upright.ttf.woff2"
       ]
     },
     "System.IO.Pipelines/8.0.0": {
@@ -2467,7 +2457,7 @@
       "Microsoft.NET.ILLink.Tasks >= 8.0.5",
       "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.5",
       "Newtonsoft.Json >= 13.0.3",
-      "Radzen.Blazor >= 4.27.1"
+      "Radzen.Blazor >= 5.1.11"
     ]
   },
   "packageFolders": {
@@ -2555,7 +2545,7 @@
           },
           "Radzen.Blazor": {
             "target": "Package",
-            "version": "[4.27.1, )"
+            "version": "[5.1.11, )"
           }
         },
         "imports": [
