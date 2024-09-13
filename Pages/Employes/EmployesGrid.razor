@@ -33,7 +33,7 @@
                     AllowSorting="true" PageSize="15" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
                     Data="@EmployeeEntity" LogicalFilterOperator="LogicalFilterOperator.Or" TItem="EmployeeEntity"
                     SelectionMode="DataGridSelectionMode.Single" @bind-Value=@selectedEmployee CellContextMenu="@OnCellContextMenu"
-                    ColumnWidth="300px">
+                    ColumnWidth="300px" style="width: 1100px;">
         <Columns>
             <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="Name" Title="Nombre" Frozen="true" TextAlign="TextAlign.Center" />
             <RadzenDataGridColumn TItem="EmployeeEntity" Width="150px" Property="LastName" Title="Apellido" TextAlign="TextAlign.Center" />

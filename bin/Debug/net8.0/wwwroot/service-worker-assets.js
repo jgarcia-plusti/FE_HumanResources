@@ -309,12 +309,12 @@
       "url": "source\/branding-institucional\/Slogan-francelli.png"
     },
     {
-      "hash": "sha256-Gu0UVfrncmsYcQIjBDEuIQy\/OGFLtFOHvvHGSC4575w=",
-      "url": "FE_HumanResources.styles.css"
-    },
-    {
       "hash": "sha256-rcIWTVNnYus6VWf2Z2U1g\/JzlC07Ym02cFjHtI59Xsc=",
       "url": "_framework\/blazor.webassembly.js"
+    },
+    {
+      "hash": "sha256-Gu0UVfrncmsYcQIjBDEuIQy\/OGFLtFOHvvHGSC4575w=",
+      "url": "FE_HumanResources.styles.css"
     },
     {
       "hash": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7\/icnnYcU=",
@@ -1137,15 +1137,15 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-F7xC3V3DqwYug60OfEZ6iq00RSScDpJoiUIXHkuRJZk=",
+      "hash": "sha256-+ze0wvRmA0XMHYyinV2pfIO3o37OUWXrvhmyMhBcmSw=",
       "url": "_framework\/FE_HumanResources.wasm"
     },
     {
-      "hash": "sha256-k8IiUtsklMI9EURGt1pBdz4X6Wi8aDUWgFabU07+DCI=",
+      "hash": "sha256-3b6HAM1KlkOjOhzkyjHZ69Bgt6TUe+2gSSHL8oejozY=",
       "url": "_framework\/FE_HumanResources.pdb"
     },
     {
-      "hash": "sha256-PMBHa9Wcgsycs7iJR7rGa438u+mCj\/gVnei3GYmtqLQ=",
+      "hash": "sha256-lfV54TwkIqmtNMPctQSpvimHUZK9qVMtGLQOsg\/BsPA=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -1321,5 +1321,5 @@
       "url": "_content\/Radzen.Blazor\/Radzen.Blazor.js"
     }
   ],
-  "version": "NpiwFb9Y"
+  "version": "mHDVkThu"
 };
