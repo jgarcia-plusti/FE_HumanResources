@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "FE_HumanResources",
   "resources": {
-    "hash": "sha256-QIFqjQ9wD9WIGT1ood/9wbXxdXmUgkB927YCVpi+u+Y=",
+    "hash": "sha256-OKvpKbaW4+M3piEFwzs1d+GwRymRL+ThrJ/gh3vacN8=",
     "jsModuleNative": {
       "dotnet.native.8.0.5.ew1vqrwwsw.js": "sha256-boyHe+0RMZDkzBKGhsrnXPhPg3oZ6UqJnTUzngJPjNY="
     },
@@ -213,10 +213,10 @@
       "mscorlib.wasm": "sha256-XvLAB5IyfVSmj5aaGnPwgVFaaZz8jXmbN8WmeopiPBM=",
       "netstandard.wasm": "sha256-TbMssdnuTiKq1gjTPkpgROAuWN0uhvPnagvWR+wAgNs=",
       "System.Private.CoreLib.wasm": "sha256-sscg+Efk8ROPq+q4IVmhShzITuoOYvB8Bsc+Mp9vcSM=",
-      "FE_HumanResources.wasm": "sha256-NYdnXY2S89AvPGtP7+gpwEpqTQWfQ8qw9RYs1d+L/Jo="
+      "FE_HumanResources.wasm": "sha256-RKGprM5Yiqjh/jzrJTTGdPw7x9KLjG203MwdMiySBm0="
     },
     "pdb": {
-      "FE_HumanResources.pdb": "sha256-iwGFuPBLtHzk08q1d7GgFq3IEdViF1XgZrOvoI5vwHM="
+      "FE_HumanResources.pdb": "sha256-bO3DBPySXNQI5RywhheMA8fKT4d/im1yxqmwQxgFVCw="
     }
   },
   "cacheBootResources": true,

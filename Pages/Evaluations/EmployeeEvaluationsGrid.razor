@@ -8,7 +8,6 @@
 @inject ContextMenuService ContextMenuService
 @inject NotificationService NotificationService
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
     <br>
     <RadzenButton Text="Actualizar" Click="@Reset" Style="margin-bottom: 20px;" />
     <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false"
@@ -23,7 +22,6 @@
             <RadzenDataGridColumn TItem="EmployeeEvaluationEntity" Property="DateOfEvaluation" Title="Fecha" Width="160px" />
         </Columns>
     </RadzenDataGrid>
-</RadzenBody>
 
 @code {
     private EmployeeEvaluationEntity EmployeeEvaluationEntity = new EmployeeEvaluationEntity();

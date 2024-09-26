@@ -19,17 +19,22 @@ else
                 <TopMenu />
             </RadzenStack>
         </RadzenHeader>
-        <RadzenSidebar Responsive="false" @bind-Expanded="@sidebarExpanded">
-            <div class="rz-p-4">
+        <RadzenSidebar Responsive="false" @bind-Expanded="@sidebarExpanded" style="position: absolute; z-index: 3">
+            <div>
                 <SideBar />
             </div>
         </RadzenSidebar>
-        <article class="content px-4">
+         <RadzenBody Gap="1rem" Class="rz-p-sm-12"  Style="Width:100%; height:100%; overflow-y:auto; overflow-x:auto;">
             @Body
-        </article>
+        </RadzenBody>
+        @if (sidebarExpanded)
+        {
+            <div @onclick="@(() => sidebarExpanded = false)" class="rz-dialog-mask" style="position: absolute; z-index: 2"></div>
+        }
         <RadzenFooter class="rz-text-align-center">
-            Industrias Francelli Todos los Derechos Reservados 2024
+            Industrias Francelli Todos los Derechos Reservados @Year
         </RadzenFooter>
+        
     </RadzenLayout>
 
 }
@@ -41,10 +46,12 @@ else
 <RadzenTooltip />
 
 @code {
+    private int Year;
     bool sidebarExpanded = true;
     private UserEntity? userModel = new UserEntity();
     protected override async Task OnInitializedAsync()
     {
+        Year = DateTime.Now.Year;
         userModel = null;
         string? usr = await LocalStorage.GetItemAsync<string>("logedUser");
 

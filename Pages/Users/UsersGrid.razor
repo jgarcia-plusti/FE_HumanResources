@@ -10,7 +10,6 @@
 @inject NotificationService NotificationService
 @inject AuthenticationStateProvider AuthStateProvider
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
@@ -44,7 +43,7 @@
             <RadzenDataGridColumn TItem="UserEntity" Property="Email" Title="Correo" Width="300px" />
         </Columns>
     </RadzenDataGrid>
-</RadzenBody>
+
 
 
 @code {

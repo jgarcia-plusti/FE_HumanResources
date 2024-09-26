@@ -150,6 +150,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudHNcVXBkYXRlUGF5bWVudENvbmZpZ3VyYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Person/Person.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29uXFBlcnNvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Person/PersonGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29uXFBlcnNvbkdyaWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/jeman/OneDrive/Documentos/PRODISA/GitProjects/FE_HumanResources/Pages/Users/CreateUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcQ3JlYXRlVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

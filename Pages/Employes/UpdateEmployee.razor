@@ -6,7 +6,7 @@
 @inject NotificationService NotificationService
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
-<RadzenBody Gap="1rem" Class="rz-p-sm-12" Style="height:100vh; overflow-y:auto;">
+
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
@@ -386,7 +386,6 @@
              <RadzenButton ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Large" Icon="arrow_back" Text="Regresar" Click="@ReturnMenu" />
      </RadzenStack>
  </RadzenTemplateForm>
-</RadzenBody>
 @code {
     [Parameter]
     public string uuid { get; set; }

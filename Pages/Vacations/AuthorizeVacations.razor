@@ -9,7 +9,6 @@
 @inject DialogService DialogService
 @inject HttpClient Http
 
-<RadzenBody Gap="1rem" Class="rz-p-sm-12">
     <RadzenBreadCrumb>
         <Template Context="item">
             <RadzenBadge Text="@item.Text" IsPill="true" />
@@ -34,7 +33,6 @@
             <RadzenDataGridColumn TItem="VacationsEntity" Property="State" Title="Estado" Width="200px" />
         </Columns>
     </RadzenDataGrid>
-</RadzenBody>
 
 
 @code {
